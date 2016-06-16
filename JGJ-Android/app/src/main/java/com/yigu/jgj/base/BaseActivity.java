@@ -21,6 +21,7 @@ import com.yigu.jgj.widget.LoadingDialog;
  * Created by brain on 2016/6/16.
  */
 public class BaseActivity extends AppCompatActivity {
+    
     protected UserSP userSP;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
