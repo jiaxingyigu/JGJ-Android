@@ -22,6 +22,9 @@ import com.yigu.jgj.widget.LoadingDialog;
  */
 public class BaseActivity extends AppCompatActivity {
 
+
+
+
     protected UserSP userSP;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
