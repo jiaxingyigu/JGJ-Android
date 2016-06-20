@@ -22,6 +22,9 @@
         <item name="android:windowContentOverlay">@null</item>
     </style>
 
-
+    <style name="textViewStyle">
+        <item name="android:textColor">@color/jgj_black</item>
+        <item name="android:textSize">@dimen/text_normal</item>
+    </style>
 
 </resources>
