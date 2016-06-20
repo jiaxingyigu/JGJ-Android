@@ -1,8 +1,9 @@
-package com.yigu.jgj;
+package com.yigu.jgj.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
+import com.yigu.jgj.R;
 import com.yigu.jgj.base.BaseActivity;
 
 public class MainActivity extends BaseActivity {
