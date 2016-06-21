@@ -1,1 +1,11 @@
-/build
+# Created by .ignore support plugin (hsz.mobi)
+.gradle
+local.properties
+.idea
+.DS_Store
+build
+ws.iml
+common.iml
+app.iml
+.idea/workspace.xml
+
