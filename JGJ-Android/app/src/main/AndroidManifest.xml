@@ -3,7 +3,7 @@
     package="com.yigu.jgj">
 
     <application
-        android:name="com.yigu.jgj.commom.application.AppContext"
+        android:name=".commom.application.AppContext"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,10 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".base.BaseActivity"
+        <activity
+            android:name=".base.BaseActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.daily.DailyActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
