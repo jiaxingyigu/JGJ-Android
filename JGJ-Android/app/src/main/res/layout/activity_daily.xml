@@ -28,7 +28,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/margin_2"
             android:hint="请输入店名或店主名称"
-            />
+            />d
 
     </LinearLayout>
 
