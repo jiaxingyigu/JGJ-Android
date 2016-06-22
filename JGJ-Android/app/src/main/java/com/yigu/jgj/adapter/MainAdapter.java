@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.yigu.jgj.R;
+import com.yigu.jgj.jgjinterface.RecyOnItemClickListener;
 
 import java.util.List;
 import java.util.Map;
@@ -23,6 +24,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
 
     private List<Integer> mList;
     private LayoutInflater inflater;
+
+    private RecyOnItemClickListener onItemClickListener;
+
+    public void setOnItemClickListener(RecyOnItemClickListener onItemClickListener){
+        this.onItemClickListener = onItemClickListener;
+    }
 
     public MainAdapter(Context context,  List<Integer> list) {
         this.mList = list;
@@ -42,6 +49,14 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(MainAdapter.ViewHolder holder, int position) {
         holder.image.setImageResource(mList.get(position));
+        holder.image.setTag(position);
+        holder.image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(null!=onItemClickListener)
+                    onItemClickListener.onItemClick(view,(Integer)view.getTag());
+            }
+        });
         String text = "";
         switch (position){
             case 0:
@@ -77,5 +92,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
             ButterKnife.bind(this,itemView);
         }
     }
+
+
 
 }

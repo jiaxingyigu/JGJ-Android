@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.yigu.jgj.R;
 import com.yigu.jgj.adapter.MainAdapter;
 import com.yigu.jgj.base.BaseActivity;
+import com.yigu.jgj.jgjinterface.RecyOnItemClickListener;
+import com.yigu.jgj.util.ControllerUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +35,7 @@ public class MainActivity extends BaseActivity {
     RecyclerView recyclerView;
     MainAdapter mAdapter;
     List<Integer> mList = new ArrayList<>();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,7 @@ public class MainActivity extends BaseActivity {
         ButterKnife.bind(this);
         initView();
         initData();
+        initListener();
     }
     private void initView(){
         back.setVisibility(View.INVISIBLE);
@@ -57,5 +61,33 @@ public class MainActivity extends BaseActivity {
         recyclerView.setLayoutManager(manager);
         mAdapter = new MainAdapter(this,mList);
         recyclerView.setAdapter(mAdapter);
+    }
+
+    private void initListener(){
+        mAdapter.setOnItemClickListener(new RecyOnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                switch (position){
+                    case 0:
+                        ControllerUtil.go2Daily();
+                        break;
+                    case 1:
+
+                        break;
+                    case 2:
+
+                        break;
+                    case 3:
+
+                        break;
+                    case 4:
+
+                        break;
+                    case 5:
+
+                        break;
+                }
+            }
+        });
     }
 }
