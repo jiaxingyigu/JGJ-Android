@@ -38,9 +38,17 @@
         android:background="@color/divider_line"
         />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <com.yigu.jgj.widget.BestSwipeRefreshLayout
+        android:id="@+id/swipeLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        >
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </com.yigu.jgj.widget.BestSwipeRefreshLayout>
+
 
 </LinearLayout>

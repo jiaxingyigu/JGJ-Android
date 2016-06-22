@@ -1,7 +1,6 @@
 package com.yigu.jgj.activity.daily;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +12,7 @@ import com.yigu.jgj.adapter.daily.DailyAdapter;
 import com.yigu.jgj.base.BaseActivity;
 import com.yigu.jgj.jgjinterface.RecyOnItemClickListener;
 import com.yigu.jgj.util.ControllerUtil;
+import com.yigu.jgj.widget.BestSwipeRefreshLayout;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -25,6 +25,9 @@ public class DailyActivity extends BaseActivity {
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
     DailyAdapter mAdapter;
+    @Bind(R.id.swipeLayout)
+    BestSwipeRefreshLayout swipeLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,11 +55,17 @@ public class DailyActivity extends BaseActivity {
         recyclerView.setAdapter(mAdapter);
     }
 
-    private void initListener(){
+    private void initListener() {
         mAdapter.setOnItemClickListener(new RecyOnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 ControllerUtil.go2DailySecond();
+            }
+        });
+        swipeLayout.setBestRefreshListener(new BestSwipeRefreshLayout.BestRefreshListener() {
+            @Override
+            public void onBestRefresh() {
+                swipeLayout.setRefreshing(false);
             }
         });
     }
