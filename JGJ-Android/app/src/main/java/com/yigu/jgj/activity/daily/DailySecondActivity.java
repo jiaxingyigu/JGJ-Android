@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.yigu.jgj.R;
+import com.yigu.jgj.adapter.daily.DailySecondAdapter;
 import com.yigu.jgj.base.BaseActivity;
 
 import butterknife.Bind;
@@ -22,7 +23,7 @@ public class DailySecondActivity extends BaseActivity {
     TextView tvRight;
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
-
+    DailySecondAdapter mAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,11 +45,12 @@ public class DailySecondActivity extends BaseActivity {
 
     private void initView(){
         tvCenter.setText("日常巡查");
-        tvCenter.setText("下一步");
+        tvRight.setText("下一步");
         LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setOrientation(OrientationHelper.VERTICAL);
         recyclerView.setLayoutManager(manager);
-
+        mAdapter = new DailySecondAdapter(this);
+        recyclerView.setAdapter(mAdapter);
     }
 
 }

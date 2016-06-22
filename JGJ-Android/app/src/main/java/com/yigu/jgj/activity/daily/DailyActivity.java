@@ -11,6 +11,8 @@ import android.widget.TextView;
 import com.yigu.jgj.R;
 import com.yigu.jgj.adapter.daily.DailyAdapter;
 import com.yigu.jgj.base.BaseActivity;
+import com.yigu.jgj.jgjinterface.RecyOnItemClickListener;
+import com.yigu.jgj.util.ControllerUtil;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -29,6 +31,7 @@ public class DailyActivity extends BaseActivity {
         setContentView(R.layout.activity_daily);
         ButterKnife.bind(this);
         initView();
+        initListener();
     }
 
     @OnClick({R.id.back})
@@ -47,6 +50,15 @@ public class DailyActivity extends BaseActivity {
         recyclerView.setLayoutManager(manager);
         mAdapter = new DailyAdapter(this);
         recyclerView.setAdapter(mAdapter);
+    }
+
+    private void initListener(){
+        mAdapter.setOnItemClickListener(new RecyOnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                ControllerUtil.go2DailySecond();
+            }
+        });
     }
 
 }
