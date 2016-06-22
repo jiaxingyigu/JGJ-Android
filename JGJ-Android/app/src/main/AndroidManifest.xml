@@ -22,7 +22,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.daily.DailyActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.daily.DailySecondActivity"></activity>
     </application>
 
 </manifest>

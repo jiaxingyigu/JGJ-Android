@@ -37,19 +37,17 @@
         android:gravity="center_vertical"
         android:paddingLeft="@dimen/margin_2"
         android:paddingRight="@dimen/margin_2"
-        android:textSize="@dimen/text_big"
+        android:textSize="@dimen/text_normal"
         />
 
     <ImageView
         android:id="@+id/iv_right"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:src="@mipmap/back"
         android:paddingLeft="@dimen/margin_2"
         android:paddingRight="@dimen/margin_2"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
-        android:visibility="gone"
         />
 
 </RelativeLayout>

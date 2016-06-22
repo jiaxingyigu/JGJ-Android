@@ -9,7 +9,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/jgj_green</item>
         <!--可以统一背景色-->
-        <item name="android:windowBackground">@color/background_all</item>
+        <item name="android:windowBackground">@android:color/white</item>
     </style>
 
     <style name="loading_dialog" parent="Widget.AppCompat.ProgressBar">
