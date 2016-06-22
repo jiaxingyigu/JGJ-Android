@@ -26,6 +26,12 @@
         <activity android:name=".activity.daily.DailySecondActivity"
             android:screenOrientation="portrait"
             ></activity>
+        <activity
+            android:name=".activity.company.CompanyMessageActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.company.CompanyAddActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
