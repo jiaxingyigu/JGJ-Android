@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <TextView
+        android:id="@+id/tv_permit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/margin_4"
+        android:layout_marginLeft="@dimen/margin_2"
+        android:drawableLeft="@mipmap/line_title_front"
+        android:drawablePadding="@dimen/margin_2"
+        android:layout_marginTop="3dp"
+        android:text="许可项目"
+        android:textSize="@dimen/text_big"/>
+
+    <TextView
+        android:id="@+id/tv_food_sale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_permit"
+        android:layout_marginTop="@dimen/margin_2"
+        android:layout_marginLeft="@dimen/margin_5"
+        android:text="食品销售"
+        android:textSize="@dimen/text_normal"
+        android:drawableRight="@mipmap/rg_checknull"
+        android:drawablePadding="@dimen/margin_1"
+        />
+    <TextView
+        android:id="@+id/tv_food_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_permit"
+        android:layout_toRightOf="@+id/tv_food_sale"
+        android:layout_marginTop="@dimen/margin_2"
+        android:layout_marginLeft="@dimen/margin_2"
+        android:text="餐饮服务"
+        android:textSize="@dimen/text_normal"
+        android:drawableRight="@mipmap/rg_checknull"
+        android:drawablePadding="@dimen/margin_1"
+        />
+    <TextView
+        android:id="@+id/tv_canteen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_permit"
+        android:layout_toRightOf="@+id/tv_food_service"
+        android:layout_marginTop="@dimen/margin_2"
+        android:layout_marginLeft="@dimen/margin_2"
+        android:text="单位食堂"
+        android:textSize="@dimen/text_normal"
+        android:drawableRight="@mipmap/rg_checknull"
+        android:drawablePadding="@dimen/margin_1"
+        />
+
+
+    <TextView
+        android:id="@+id/tv_business_license"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/margin_4"
+        android:layout_marginLeft="@dimen/margin_2"
+        android:layout_below="@id/tv_food_sale"
+        android:layout_marginTop="@dimen/margin_3"
+        android:drawableLeft="@mipmap/line_title_front"
+        android:drawablePadding="@dimen/margin_2"
+        android:text="营业执照"
+        android:textSize="@dimen/text_big"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+</RelativeLayout>
