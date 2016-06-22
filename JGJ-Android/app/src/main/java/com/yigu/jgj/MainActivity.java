@@ -14,5 +14,4 @@ public class MainActivity extends BaseActivity {
         showLoading();
     }
 }
-    git config --global user.email "948335818@qq.com"
-        git config --global user.name "yzb199211"
+
