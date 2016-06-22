@@ -75,7 +75,7 @@ public class MainActivity extends BaseActivity {
 
                         break;
                     case 2:
-
+                        ControllerUtil.go2CompanyMessage();
                         break;
                     case 3:
 

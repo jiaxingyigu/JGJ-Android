@@ -22,7 +22,14 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.daily.DailyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.company.CompanyMessageActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.company.CompanyAddActivity"
             android:screenOrientation="portrait"></activity>
     </application>
+    Add
 
 </manifest>

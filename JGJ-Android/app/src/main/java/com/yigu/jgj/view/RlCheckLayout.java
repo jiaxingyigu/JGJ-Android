@@ -13,23 +13,23 @@ import butterknife.ButterKnife;
 /**
  * Created by yzb on 2016/6/21.
  */
-public class RlCheck extends RelativeLayout{
+public class RlCheckLayout extends RelativeLayout{
     View view;
     Context mContext;
-    public RlCheck(Context context) {
+    public RlCheckLayout(Context context) {
 
         super(context);
         mContext = context;
         initView();
     }
 
-    public RlCheck(Context context, AttributeSet attrs) {
+    public RlCheckLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
         initView();
     }
 
-    public RlCheck(Context context, AttributeSet attrs, int defStyleAttr) {
+    public RlCheckLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mContext = context;
         initView();

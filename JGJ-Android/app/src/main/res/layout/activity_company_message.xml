@@ -4,10 +4,10 @@
     android:layout_height="match_parent"
     android:background="@color/gray_light"
     android:orientation="vertical">
-
+<include layout="@layout/lay_header"/>
     <LinearLayout
-        android:layout_width="375dp"
-        android:layout_height="542dp"
+        android:layout_width="355dp"
+        android:layout_height="532dp"
         android:layout_gravity="center_horizontal"
         android:background="@mipmap/bg_company_message"
         android:orientation="vertical">
@@ -73,31 +73,9 @@
                 android:textSize="@dimen/text_normal" />
         </LinearLayout>
 
-        <LinearLayout
+        <com.yigu.jgj.view.RlCheckLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/margin_2">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="@dimen/margin_1"
-                    android:layout_height="@dimen/margin_3"
-                    android:background="@mipmap/line_title_front"/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginRight="@dimen/margin_4"
-                    android:layout_marginLeft="@dimen/margin_2"
-                    android:layout_gravity="center_vertical"
-                    android:text="许可项目"
-                    android:textSize="@dimen/text_big"/>
-            </LinearLayout>
-
-        </LinearLayout>
+            android:layout_weight="1"></com.yigu.jgj.view.RlCheckLayout>
     </LinearLayout>
 </LinearLayout>
