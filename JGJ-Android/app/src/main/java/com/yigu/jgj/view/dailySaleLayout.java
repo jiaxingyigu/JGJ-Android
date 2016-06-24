@@ -47,6 +47,7 @@ public class DailySaleLayout extends RelativeLayout{
         view = LayoutInflater.from(mContext).inflate(R.layout.layout_daily_sale, this);
         ButterKnife.bind(this, view);
         LinearLayoutManager manager = new LinearLayoutManager(mContext);
+
         recyclerView.setLayoutManager(manager);
         mAdapter = new DailyItemAdapter(mContext);
         recyclerView.setAdapter(mAdapter);
