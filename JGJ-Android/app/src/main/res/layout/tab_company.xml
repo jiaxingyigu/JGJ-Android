@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <LinearLayout
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="有照"
+        android:textColor="@color/jgj_black"
+        android:textSize="@dimen/text_big_x"
+        android:gravity="center" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/jgj_green"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/no_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="无照"
+            android:textColor="@color/jgj_black"
+            android:textSize="@dimen/text_big_x"
+            android:gravity="center" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/jgj_green"
+            android:visibility="gone"/>
+    </LinearLayout>
+</LinearLayout>

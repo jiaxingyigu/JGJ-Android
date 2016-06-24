@@ -3,6 +3,7 @@ package com.yigu.jgj.util;
 import android.content.Intent;
 
 import com.yigu.jgj.activity.company.CompanyAddActivity;
+import com.yigu.jgj.activity.company.CompanyListActivity;
 import com.yigu.jgj.activity.company.CompanyMessageActivity;
 import com.yigu.jgj.activity.daily.DailyActivity;
 import com.yigu.jgj.activity.daily.DailySecondActivity;
@@ -29,7 +30,11 @@ public class ControllerUtil {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         AppContext.getInstance().startActivity(intent);
     }
-
+    public static void go2CompanyList() {
+        Intent intent = new Intent(AppContext.getInstance(), CompanyListActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        AppContext.getInstance().startActivity(intent);
+    }
     public static void go2CompanyMessage() {
         Intent intent = new Intent(AppContext.getInstance(), CompanyMessageActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
