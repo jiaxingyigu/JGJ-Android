@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.yigu.jgj.R;
 import com.yigu.jgj.adapter.daily.DailySecondAdapter;
 import com.yigu.jgj.base.BaseActivity;
+import com.yigu.jgj.util.ControllerUtil;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -32,17 +33,6 @@ public class DailySecondActivity extends BaseActivity {
         initView();
     }
 
-    @OnClick({R.id.back, R.id.tv_right})
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.back:
-                finish();
-                break;
-            case R.id.tv_right:
-                break;
-        }
-    }
-
     private void initView(){
         tvCenter.setText("日常巡查");
         tvRight.setText("下一步");
@@ -51,6 +41,18 @@ public class DailySecondActivity extends BaseActivity {
         recyclerView.setLayoutManager(manager);
         mAdapter = new DailySecondAdapter(this);
         recyclerView.setAdapter(mAdapter);
+    }
+
+    @OnClick({R.id.back, R.id.tv_right})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.back:
+                finish();
+                break;
+            case R.id.tv_right:
+                ControllerUtil.go2DailyThird();
+                break;
+        }
     }
 
 }

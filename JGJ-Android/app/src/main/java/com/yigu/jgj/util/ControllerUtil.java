@@ -7,6 +7,7 @@ import com.yigu.jgj.activity.company.CompanyListActivity;
 import com.yigu.jgj.activity.company.CompanyMessageActivity;
 import com.yigu.jgj.activity.daily.DailyActivity;
 import com.yigu.jgj.activity.daily.DailySecondActivity;
+import com.yigu.jgj.activity.daily.DailyThirdActivity;
 import com.yigu.jgj.commom.application.AppContext;
 
 /**
@@ -42,6 +43,15 @@ public class ControllerUtil {
     }
     public static void go2CompanyAdd() {
         Intent intent = new Intent(AppContext.getInstance(), CompanyAddActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        AppContext.getInstance().startActivity(intent);
+    }
+
+    /**
+     * 日常巡查第三步
+     */
+    public static void go2DailyThird() {
+        Intent intent = new Intent(AppContext.getInstance(), DailyThirdActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         AppContext.getInstance().startActivity(intent);
     }

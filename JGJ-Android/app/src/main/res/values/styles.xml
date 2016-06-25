@@ -61,6 +61,14 @@
         <item name="android:singleLine">true</item>
     </style>
 
+    <style name="editViewStyle_bg_white">
+        <item name="android:textColor">@color/jgj_black</item>
+        <item name="android:background">@drawable/edit_shape_rect_color_white</item>
+        <item name="android:textSize">@dimen/text_small</item>
+        <item name="android:textColorHint">@color/gray_light</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
     <style name="text_tip_style">
         <item name="android:textSize">@dimen/text_small_x</item>
         <item name="android:textColor">@color/gray_light</item>

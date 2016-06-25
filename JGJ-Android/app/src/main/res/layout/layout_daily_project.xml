@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    android:layout_marginLeft="@dimen/margin_1"
+    android:layout_marginLeft="@dimen/margin_10dp"
     android:layout_marginRight="@dimen/margin_2"
     >
 
@@ -17,7 +17,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/shop_iv"
-        android:layout_marginLeft="@dimen/margin_3"
         >
 
         <TextView
@@ -28,6 +27,7 @@
             android:textSize="@dimen/text_big"
             android:text="项目检测"
             android:layout_marginTop="@dimen/margin_3"
+            android:layout_marginLeft="@dimen/margin_3"
             />
         <LinearLayout
             android:id="@+id/person_ll"
@@ -36,6 +36,7 @@
             android:orientation="horizontal"
             android:layout_below="@+id/name_tv"
             android:layout_marginTop="13dp"
+            android:layout_marginLeft="@dimen/margin_3"
             >
 
             <TextView
@@ -87,6 +88,7 @@
             android:orientation="horizontal"
             android:layout_below="@+id/person_ll"
             android:layout_marginTop="13dp"
+            android:layout_marginLeft="@dimen/margin_3"
             >
 
             <TextView
@@ -160,7 +162,7 @@
             android:layout_height="wrap_content"
             android:scrollbars="none"
             android:layout_below="@+id/health_ll"
-            android:layout_marginTop="@dimen/margin_3"
+            android:layout_marginTop="12dp"
             />
 
     </RelativeLayout>

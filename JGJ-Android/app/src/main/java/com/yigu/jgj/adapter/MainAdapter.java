@@ -63,25 +63,24 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
                 text = "日常巡查";
                 break;
             case 1:
-                text = "巡查档案";
-                break;
-            case 2:
                 text = "企业管理";
                 break;
-            case 3:
-                text = "人员管理";
-                break;
-            case 4:
+            case 2:
                 text = "我的任务";
                 break;
+            case 3:
+                text = "隐患档案";
+                break;
+            case 4:
+                text = "人员管理";
+                break;
             case 5:
-                text = "巡查档案";
+                text = "归档信息";
                 break;
         }
         holder.title.setText(text);
 
     }
-
    public class ViewHolder extends RecyclerView.ViewHolder{
         @Bind(R.id.image)
         ImageView image;

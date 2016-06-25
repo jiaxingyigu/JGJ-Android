@@ -34,7 +34,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.company.CompanyListActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.daily.DailyThirdActivity"></activity>
     </application>
 
 </manifest>
