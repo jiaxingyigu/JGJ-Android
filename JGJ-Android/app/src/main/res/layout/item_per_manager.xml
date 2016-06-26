@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/margin_10dp"
+    android:layout_marginRight="@dimen/margin_10dp"
+    >
+
+    <RelativeLayout
+        android:id="@+id/name_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_2"
+        android:orientation="horizontal"
+        >
+
+        <ImageView
+            android:id="@+id/per_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/persion"
+            />
+
+        <TextView
+            android:id="@+id/name_tv"
+            style="@style/textViewStyle_middle"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="张一一"
+            android:layout_marginLeft="@dimen/margin_1"
+            android:layout_toRightOf="@+id/per_iv"
+            />
+
+        <TextView
+            android:id="@+id/tag_addr"
+            style="@style/tag_text_style_color_green"
+            android:layout_toRightOf="@+id/name_tv"
+            android:layout_marginLeft="@dimen/margin_4"
+            android:text="东栅街道"
+            />
+
+        <TextView
+            android:id="@+id/tag_organize"
+            style="@style/tag_text_style_color_yellow"
+            android:layout_toRightOf="@+id/tag_addr"
+            android:layout_marginLeft="@dimen/margin_4"
+            android:text="市场监管"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/tel_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_2"
+        android:layout_marginBottom="@dimen/margin_2"
+        android:layout_below="@+id/name_rl"
+        >
+
+        <ImageView
+            android:id="@+id/tel_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/tel"
+            />
+
+        <TextView
+            android:id="@+id/tel_tv"
+            style="@style/textViewStyle_middle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="15024321682"
+            android:layout_marginLeft="@dimen/margin_1"
+            android:layout_toRightOf="@+id/tel_iv"
+            />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/divider_line"
+       android:layout_below="@+id/tel_rl"
+        />
+
+</RelativeLayout>

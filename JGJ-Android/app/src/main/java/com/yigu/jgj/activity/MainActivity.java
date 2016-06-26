@@ -81,7 +81,7 @@ public class MainActivity extends BaseActivity {
 
                         break;
                     case 4:
-
+                        ControllerUtil.go2PerManage();
                         break;
                     case 5:
 

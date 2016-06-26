@@ -8,6 +8,7 @@ import com.yigu.jgj.activity.company.CompanyMessageActivity;
 import com.yigu.jgj.activity.daily.DailyActivity;
 import com.yigu.jgj.activity.daily.DailySecondActivity;
 import com.yigu.jgj.activity.daily.DailyThirdActivity;
+import com.yigu.jgj.activity.person.PerManageActivity;
 import com.yigu.jgj.commom.application.AppContext;
 
 /**
@@ -52,6 +53,15 @@ public class ControllerUtil {
      */
     public static void go2DailyThird() {
         Intent intent = new Intent(AppContext.getInstance(), DailyThirdActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        AppContext.getInstance().startActivity(intent);
+    }
+
+    /**
+     * 人员管理
+     */
+    public static void go2PerManage() {
+        Intent intent = new Intent(AppContext.getInstance(), PerManageActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         AppContext.getInstance().startActivity(intent);
     }
