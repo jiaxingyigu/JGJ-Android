@@ -72,10 +72,10 @@ public class MainActivity extends BaseActivity {
                         ControllerUtil.go2Daily();
                         break;
                     case 1:
-
+                        ControllerUtil.go2CompanyList();
                         break;
                     case 2:
-                        ControllerUtil.go2CompanyList();
+                      
                         break;
                     case 3:
 
