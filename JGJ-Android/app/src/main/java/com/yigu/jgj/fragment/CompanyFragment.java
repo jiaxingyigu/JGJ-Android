@@ -32,10 +32,11 @@ public class CompanyFragment extends Fragment {
 
     CompanyAdapter mAdapter;
 
-    public CompanyFragment() {
-        // Required empty public constructor
-    }
 
+//    public static CompanyFragment newInstance(int page){
+//        CompanyFragment fragment = new CompanyFragment();
+//        return fragment;
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

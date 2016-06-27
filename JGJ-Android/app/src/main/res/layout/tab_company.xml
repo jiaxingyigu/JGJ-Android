@@ -17,6 +17,7 @@
         android:textSize="@dimen/text_big_x"
         android:gravity="center" />
         <View
+            android:id="@+id/bg_tab"
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="@color/jgj_green"/>
@@ -36,6 +37,7 @@
             android:textSize="@dimen/text_big_x"
             android:gravity="center" />
         <View
+            android:id="@+id/tab_notitle"
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="@color/jgj_green"
