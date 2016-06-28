@@ -45,6 +45,8 @@
             android:name=".activity.task.TaskActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".activity.task.TaskDetailActivity"></activity>
+            android:name=".activity.company.CompanyListActivity2"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

@@ -32,10 +32,11 @@ public class CompanyNoTitleFragment extends Fragment {
     BestSwipeRefreshLayout swipeLayout;
 
     CompanyNoTitleAdapter mAdapter;
-
-    public CompanyNoTitleFragment() {
-        // Required empty public constructor
-    }
+//
+//    public static CompanyNoTitleFragment newInstance(int page) {
+//        CompanyNoTitleFragment fragment = new CompanyNoTitleFragment();
+//        return fragment;
+//    }
 
 
     @Override
