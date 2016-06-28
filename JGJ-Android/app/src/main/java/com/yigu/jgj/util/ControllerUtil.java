@@ -9,6 +9,8 @@ import com.yigu.jgj.activity.daily.DailyActivity;
 import com.yigu.jgj.activity.daily.DailySecondActivity;
 import com.yigu.jgj.activity.daily.DailyThirdActivity;
 import com.yigu.jgj.activity.person.PerManageActivity;
+import com.yigu.jgj.activity.task.TaskActivity;
+import com.yigu.jgj.activity.task.TaskDetailActivity;
 import com.yigu.jgj.commom.application.AppContext;
 
 /**
@@ -62,6 +64,24 @@ public class ControllerUtil {
      */
     public static void go2PerManage() {
         Intent intent = new Intent(AppContext.getInstance(), PerManageActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        AppContext.getInstance().startActivity(intent);
+    }
+
+    /**
+     * 我的任务
+     */
+    public static void go2MyTask() {
+        Intent intent = new Intent(AppContext.getInstance(), TaskActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        AppContext.getInstance().startActivity(intent);
+    }
+
+    /**
+     * 我的任务-详情
+     */
+    public static void go2TaskDetail() {
+        Intent intent = new Intent(AppContext.getInstance(), TaskDetailActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         AppContext.getInstance().startActivity(intent);
     }

@@ -35,12 +35,16 @@
         <activity
             android:name=".activity.company.CompanyListActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.daily.DailyThirdActivity"
-            android:screenOrientation="portrait"
-            />
-        <activity android:name=".activity.person.PerManageActivity"
-            android:screenOrientation="portrait"
-            />
+        <activity
+            android:name=".activity.daily.DailyThirdActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.person.PerManageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.task.TaskActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.task.TaskDetailActivity"></activity>
     </application>
 
 </manifest>

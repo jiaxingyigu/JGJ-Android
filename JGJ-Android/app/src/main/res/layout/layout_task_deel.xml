@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/margin_2"
+    android:layout_marginRight="@dimen/margin_2"
+    android:layout_marginTop="@dimen/margin_2"
+    android:paddingBottom="@dimen/margin_5"
+    >
+
+
+
+        <TextView
+            android:id="@+id/change"
+            style="@style/submit_button_style_color_green"
+            android:layout_width="120dp"
+            android:layout_height="@dimen/margin_5"
+            android:text="责令整改"
+            />
+
+        <TextView
+            android:id="@+id/investigation"
+            style="@style/submit_button_style_color_green"
+            android:layout_width="120dp"
+            android:layout_height="@dimen/margin_5"
+            android:text="立案查处"
+            android:layout_alignParentRight="true"
+            />
+
+
+
+
+</RelativeLayout>

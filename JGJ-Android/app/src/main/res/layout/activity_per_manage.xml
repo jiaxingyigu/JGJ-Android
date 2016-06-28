@@ -9,7 +9,7 @@
 
     <include layout="@layout/lay_header" />
 
-    <LinearLayout
+    <RelativeLayout
         style="@style/search_layout_style"
         android:layout_marginBottom="@dimen/margin_10dp"
         android:layout_marginTop="@dimen/margin_10dp"
@@ -17,21 +17,43 @@
         >
 
         <ImageView
+            android:id="@+id/search_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/search"
             android:layout_marginLeft="@dimen/margin_2"
+            android:layout_centerVertical="true"
             />
 
         <EditText
+            android:id="@+id/search_et"
             style="@style/editViewStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/margin_2"
             android:hint="请输入店名或店主名称"
+            android:layout_toRightOf="@+id/search_iv"
+            android:layout_toLeftOf="@+id/address_tv"
             />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/address_tv"
+            android:layout_width="57dp"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/text_small"
+            android:textColor="@android:color/white"
+            android:drawableRight="@mipmap/search_down"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/search_shape_half_rect_color_green"
+            android:text="区域"
+            android:gravity="center"
+            android:paddingLeft="@dimen/margin_1"
+            android:paddingRight="@dimen/margin_1"
+            android:maxLines="1"
+            android:ellipsize="end"
+            />
+
+    </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
@@ -39,17 +61,33 @@
         android:background="@color/divider_line"
         />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <com.yigu.jgj.widget.BestSwipeRefreshLayout
-        android:id="@+id/swipeLayout"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
 
-    </com.yigu.jgj.widget.BestSwipeRefreshLayout>
+        <com.yigu.jgj.widget.BestSwipeRefreshLayout
+            android:id="@+id/swipeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </com.yigu.jgj.widget.BestSwipeRefreshLayout>
+
+        <View
+            android:id="@+id/bg_color"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#80000000"
+            android:visibility="gone"
+            />
+
+    </RelativeLayout>
+
+
+
+
 
 </LinearLayout>

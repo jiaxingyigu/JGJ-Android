@@ -6,12 +6,28 @@
     android:layout_marginRight="@dimen/margin_10dp"
     >
 
+    <TextView
+        android:id="@+id/name_circle"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/shape_circle_color_lightgreen"
+        android:text="意义"
+        android:layout_alignParentLeft="true"
+        android:gravity="center"
+        android:layout_centerVertical="true"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:maxLength="2"
+        />
+
     <RelativeLayout
         android:id="@+id/name_rl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_2"
         android:orientation="horizontal"
+        android:layout_toRightOf="@+id/name_circle"
+        android:layout_marginLeft="@dimen/margin_2"
         >
 
         <ImageView
@@ -35,7 +51,7 @@
             android:id="@+id/tag_addr"
             style="@style/tag_text_style_color_green"
             android:layout_toRightOf="@+id/name_tv"
-            android:layout_marginLeft="@dimen/margin_4"
+            android:layout_marginLeft="@dimen/margin_1"
             android:text="东栅街道"
             />
 
@@ -43,7 +59,7 @@
             android:id="@+id/tag_organize"
             style="@style/tag_text_style_color_yellow"
             android:layout_toRightOf="@+id/tag_addr"
-            android:layout_marginLeft="@dimen/margin_4"
+            android:layout_marginLeft="@dimen/margin_3"
             android:text="市场监管"
             />
 
@@ -56,6 +72,8 @@
         android:layout_marginTop="@dimen/margin_2"
         android:layout_marginBottom="@dimen/margin_2"
         android:layout_below="@+id/name_rl"
+        android:layout_toRightOf="@+id/name_circle"
+        android:layout_marginLeft="@dimen/margin_2"
         >
 
         <ImageView

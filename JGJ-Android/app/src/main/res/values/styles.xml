@@ -1,16 +1,23 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="BaseAppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
+        <item name="android:textColorPrimary">@android:color/black</item>
         <!--导航栏底色-->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <!--状态栏底色-->
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+      <!--  <item name="colorPrimary">@color/colorPrimary</item>-->
         <item name="colorAccent">@color/jgj_green</item>
         <!--可以统一背景色-->
         <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:textColor">@color/jgj_black</item>
+        <item name="android:textSize">@dimen/text_normal</item>
     </style>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="BaseAppTheme"/>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
 
     <style name="loading_dialog" parent="Widget.AppCompat.ProgressBar">
         <item name="android:windowFrame">@null</item>
@@ -88,7 +95,7 @@
     <style name="submit_button_style_color_green">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">40dp</item>
-
+        <item name="android:background">@drawable/selector_btn_green</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">@dimen/text_big</item>
@@ -101,7 +108,7 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">@dimen/text_normal</item>
         <item name="android:gravity">center</item>
-        <item name="android:background"> @drawable/txttag_shape_rect_color_green</item>
+        <item name="android:background">@drawable/txttag_shape_rect_color_lightgreen</item>
         <item name="android:singleLine">true</item>
         <item name="android:paddingLeft">5dp</item>
         <item name="android:paddingRight">5dp</item>
@@ -117,6 +124,11 @@
         <item name="android:singleLine">true</item>
         <item name="android:paddingLeft">5dp</item>
         <item name="android:paddingRight">5dp</item>
+    </style>
+
+    <style name="PopupWindowAnimation">
+        <item name="android:windowEnterAnimation">@anim/popshow_anim</item>
+        <item name="android:windowExitAnimation">@anim/pophidden_anim</item>
     </style>
 
 </resources>

@@ -1,0 +1,8 @@
+<resources>
+
+    <style name="AppTheme" parent="BaseAppTheme">
+        <!--状态栏底色-->
+        <item name="android:colorPrimaryDark">@color/jgj_green</item>
+    </style>
+
+</resources>
