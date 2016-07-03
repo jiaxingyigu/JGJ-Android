@@ -2,6 +2,8 @@ package com.yigu.jgj.util;
 
 import android.content.Intent;
 
+import com.yigu.jgj.activity.assign.AssignDetailActivity;
+import com.yigu.jgj.activity.assign.AssignTaskActivity;
 import com.yigu.jgj.activity.company.CompanyAddActivity;
 import com.yigu.jgj.activity.company.CompanyListActivity;
 import com.yigu.jgj.activity.company.CompanyListActivity2;
@@ -91,4 +93,23 @@ public class ControllerUtil {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         AppContext.getInstance().startActivity(intent);
     }
+
+    /**
+     * 任务分派
+     */
+    public static void go2AssignTask() {
+        Intent intent = new Intent(AppContext.getInstance(), AssignTaskActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        AppContext.getInstance().startActivity(intent);
+    }
+
+    /**
+     * 任务分派-详情
+     */
+    public static void go2AssignDetail() {
+        Intent intent = new Intent(AppContext.getInstance(), AssignDetailActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        AppContext.getInstance().startActivity(intent);
+    }
+
 }

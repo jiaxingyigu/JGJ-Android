@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="wrap_content"
     android:layout_marginLeft="@dimen/margin_10dp"
-    android:layout_marginRight="@dimen/margin_2"
+    android:layout_marginRight="@dimen/margin_10dp"
     >
 
     <ImageView
@@ -20,7 +20,7 @@
         android:layout_marginLeft="@dimen/margin_2"
         >
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/name_ll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,24 +28,27 @@
             android:layout_marginTop="23dp"
             >
             <TextView
+                android:id="@+id/name_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/jgj_green"
                 android:textSize="15sp"
-                android:text="被检查单位："
+                android:text="被检查单位：粥行天下（万达店）"
+                android:maxLines="1"
+                android:ellipsize="end"
                 />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/jgj_green"
                 android:textSize="15sp"
-                android:text="粥行天下 （万达店）"
+                android:text="2015.07.03"
                 android:maxLines="1"
                 android:ellipsize="end"
+                android:layout_alignParentRight="true"
                 />
 
-        </LinearLayout>
+        </RelativeLayout>
 
         <LinearLayout
             android:id="@+id/person_ll"

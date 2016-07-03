@@ -75,7 +75,8 @@ public class MainActivity extends BaseActivity {
                         ControllerUtil.go2CompanyList2();
                         break;
                     case 2:
-                        ControllerUtil.go2MyTask();
+//                        ControllerUtil.go2MyTask();
+                        ControllerUtil.go2AssignTask();
                         break;
                     case 3:
 

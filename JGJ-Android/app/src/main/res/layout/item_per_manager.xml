@@ -12,6 +12,8 @@
         android:layout_height="50dp"
         android:background="@drawable/shape_circle_color_lightgreen"
         android:text="意义"
+        android:textSize="@dimen/text_normal"
+        android:textColor="@android:color/white"
         android:layout_alignParentLeft="true"
         android:gravity="center"
         android:layout_centerVertical="true"
@@ -40,7 +42,7 @@
         <TextView
             android:id="@+id/name_tv"
             style="@style/textViewStyle_middle"
-            android:layout_width="80dp"
+            android:layout_width="74dp"
             android:layout_height="wrap_content"
             android:text="张一一"
             android:layout_marginLeft="@dimen/margin_1"
@@ -51,7 +53,6 @@
             android:id="@+id/tag_addr"
             style="@style/tag_text_style_color_green"
             android:layout_toRightOf="@+id/name_tv"
-            android:layout_marginLeft="@dimen/margin_1"
             android:text="东栅街道"
             />
 
@@ -59,7 +60,7 @@
             android:id="@+id/tag_organize"
             style="@style/tag_text_style_color_yellow"
             android:layout_toRightOf="@+id/tag_addr"
-            android:layout_marginLeft="@dimen/margin_3"
+            android:layout_marginLeft="@dimen/margin_2"
             android:text="市场监管"
             />
 
@@ -91,6 +92,15 @@
             android:text="15024321682"
             android:layout_marginLeft="@dimen/margin_1"
             android:layout_toRightOf="@+id/tel_iv"
+            />
+
+        <ImageView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/circle_green_right"
+            android:layout_alignParentRight="true"
+            android:visibility="gone"
             />
 
     </RelativeLayout>

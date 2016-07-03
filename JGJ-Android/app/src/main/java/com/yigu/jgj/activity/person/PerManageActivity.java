@@ -42,6 +42,7 @@ public class PerManageActivity extends BaseActivity {
     PerManageAdapter mAdapter;
     TopPopWindow topPopWindow;
     List<String> mList = new ArrayList<>();
+    int requestCode = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,11 +53,19 @@ public class PerManageActivity extends BaseActivity {
     }
 
     private void initView() {
-        tvCenter.setText("人员管理");
+        if(null!=getIntent().getExtras())
+            requestCode = getIntent().getExtras().getInt("requestCode",0);
+        if(requestCode>0){
+            tvCenter.setText("请选择分派人员");
+            tvRight.setText("确定");
+        }else{
+            tvCenter.setText("人员管理");
+        }
+
         LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setOrientation(OrientationHelper.VERTICAL);
         recyclerView.setLayoutManager(manager);
-        mAdapter = new PerManageAdapter(this);
+        mAdapter = new PerManageAdapter(this,requestCode);
         recyclerView.setAdapter(mAdapter);
         mList.clear();
         mList.add("东栅街道");
