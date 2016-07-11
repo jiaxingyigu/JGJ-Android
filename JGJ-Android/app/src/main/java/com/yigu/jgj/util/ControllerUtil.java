@@ -11,6 +11,7 @@ import com.yigu.jgj.activity.company.CompanyMessageActivity;
 import com.yigu.jgj.activity.daily.DailyActivity;
 import com.yigu.jgj.activity.daily.DailySecondActivity;
 import com.yigu.jgj.activity.daily.DailyThirdActivity;
+import com.yigu.jgj.activity.danger.DangerListActivity;
 import com.yigu.jgj.activity.person.PerManageActivity;
 import com.yigu.jgj.activity.task.TaskActivity;
 import com.yigu.jgj.activity.task.TaskDetailActivity;
@@ -108,6 +109,15 @@ public class ControllerUtil {
      */
     public static void go2AssignDetail() {
         Intent intent = new Intent(AppContext.getInstance(), AssignDetailActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        AppContext.getInstance().startActivity(intent);
+    }
+
+    /**
+     * 隐患档案-列表
+     */
+    public static void go2DangerList() {
+        Intent intent = new Intent(AppContext.getInstance(), DangerListActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         AppContext.getInstance().startActivity(intent);
     }

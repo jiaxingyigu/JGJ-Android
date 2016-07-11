@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:background="@android:color/white"
+    android:id="@+id/item_daily"
+    android:clickable="true"
+    >
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/canteen"
+        android:layout_marginLeft="@dimen/margin_10dp"
+        android:layout_centerVertical="true"
+        />
+
+    <TextView
+        android:layout_width="48dp"
+        android:layout_height="14dp"
+        android:layout_below="@+id/image"
+        android:layout_marginLeft="@dimen/margin_10dp"
+        android:text="立案查处"
+        android:gravity="center"
+        android:layout_marginTop="2dp"
+        android:textColor="@android:color/white"
+        android:textSize="10sp"
+        android:background="@drawable/shape_rect_color_red"
+        />
+
+    <LinearLayout
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_toRightOf="@+id/image"
+        android:layout_marginLeft="@dimen/margin_3"
+        android:layout_centerVertical="true"
+        >
+
+
+        <TextView
+            style="@style/textViewBigStyle_dark"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="粥行天下  (万达店)"
+            android:gravity="center_vertical"
+            />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:gravity="center_vertical"
+            >
+
+            <TextView
+                style="@style/textViewStyle_middle"
+                android:id="@+id/name"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="张一一"
+                />
+
+            <TextView
+                style="@style/textViewStyle_middle"
+                android:id="@+id/phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="13738258025"
+                android:layout_toRightOf="@+id/name"
+                android:layout_marginLeft="67dp"
+                />
+
+        </RelativeLayout>
+
+        <TextView
+            style="@style/textViewSmallStyle_light"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="嘉兴市南湖区广益路格林小镇A店铺"
+            android:layout_marginTop="@dimen/margin_10dp"
+            android:gravity="center_vertical"
+            />
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/right"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/margin_10dp"
+        android:layout_marginBottom="13dp"
+        />
+
+    <View
+        android:layout_width="290dp"
+        android:layout_height="0.5dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/divider_line"
+        android:layout_marginRight="@dimen/margin_10dp"
+        />
+
+</RelativeLayout>

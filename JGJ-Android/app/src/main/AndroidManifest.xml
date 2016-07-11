@@ -50,10 +50,13 @@
         <activity
             android:name=".activity.company.CompanyListActivity2"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.assign.AssignTaskActivity"
-            android:screenOrientation="portrait"
-            />
-        <activity android:name=".activity.assign.AssignDetailActivity"
+        <activity
+            android:name=".activity.assign.AssignTaskActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.assign.AssignDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.danger.DangerListActivity"
             android:screenOrientation="portrait"
             />
     </application>

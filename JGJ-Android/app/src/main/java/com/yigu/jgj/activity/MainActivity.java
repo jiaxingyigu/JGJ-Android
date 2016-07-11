@@ -78,8 +78,8 @@ public class MainActivity extends BaseActivity {
 //                        ControllerUtil.go2MyTask();
                         ControllerUtil.go2AssignTask();
                         break;
-                    case 3:
-
+                    case 3://隐患档案
+                        ControllerUtil.go2DangerList();
                         break;
                     case 4:
                         ControllerUtil.go2PerManage();
