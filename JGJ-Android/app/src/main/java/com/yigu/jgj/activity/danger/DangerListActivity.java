@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.yigu.jgj.R;
 import com.yigu.jgj.adapter.daily.DailyAdapter;
 import com.yigu.jgj.adapter.danager.DanagerListAdapter;
+import com.yigu.jgj.base.BaseActivity;
 import com.yigu.jgj.jgjinterface.RecyOnItemClickListener;
 import com.yigu.jgj.util.ControllerUtil;
 import com.yigu.jgj.widget.BestSwipeRefreshLayout;
@@ -19,7 +20,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class DangerListActivity extends AppCompatActivity {
+public class DangerListActivity extends BaseActivity {
 
     @Bind(R.id.tv_center)
     TextView tvCenter;
@@ -57,6 +58,7 @@ public class DangerListActivity extends AppCompatActivity {
         mAdapter.setOnItemClickListener(new RecyOnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
+                ControllerUtil.go2DanagerDetail();
             }
         });
         swipeLayout.setBestRefreshListener(new BestSwipeRefreshLayout.BestRefreshListener() {

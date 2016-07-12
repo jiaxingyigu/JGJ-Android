@@ -56,9 +56,10 @@
         <activity
             android:name=".activity.assign.AssignDetailActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.danger.DangerListActivity"
-            android:screenOrientation="portrait"
-            />
+        <activity
+            android:name=".activity.danger.DangerListActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.danger.DanagerDetailActivity"></activity>
     </application>
 
 </manifest>

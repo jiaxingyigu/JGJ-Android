@@ -5,10 +5,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import com.yigu.jgj.R;
 import com.yigu.jgj.jgjinterface.RecyOnItemClickListener;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
@@ -40,10 +42,19 @@ public class DanagerListAdapter extends RecyclerView.Adapter<DanagerListAdapter.
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-
+        holder.item_root.setTag(position);
+        holder.item_root.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(null!=onItemClickListener)
+                    onItemClickListener.onItemClick(view,(Integer)view.getTag());
+            }
+        });
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
+        @Bind(R.id.item_root)
+        RelativeLayout item_root;
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
