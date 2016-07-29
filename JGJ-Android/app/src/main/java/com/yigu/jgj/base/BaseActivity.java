@@ -18,6 +18,8 @@ import com.yigu.jgj.commom.application.AppContext;
 import com.yigu.jgj.commom.sharedpreferences.UserSP;
 import com.yigu.jgj.widget.LoadingDialog;
 
+import org.xutils.x;
+
 /**
  * Created by brain on 2016/6/16.
  */

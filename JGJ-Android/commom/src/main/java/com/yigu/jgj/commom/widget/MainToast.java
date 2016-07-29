@@ -1,8 +1,5 @@
 package com.yigu.jgj.commom.widget;
 
-import android.graphics.Color;
-import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.yigu.jgj.commom.application.AppContext;

@@ -14,4 +14,11 @@
         android:layout_below="@+id/header_layout"
         />
 
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:background="@mipmap/splash_bg"
+        android:id="@+id/startLayout"
+        android:orientation="horizontal"
+        />
+
 </RelativeLayout>

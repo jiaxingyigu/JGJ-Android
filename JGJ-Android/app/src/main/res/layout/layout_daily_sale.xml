@@ -29,14 +29,251 @@
             android:layout_marginLeft="@dimen/margin_2"
             />
 
-        <android.support.v7.widget.RecyclerView
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical" android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/name_tv"
+            android:id="@+id/sanitation_rl"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/un_success"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/margin_2"
+                android:visibility="gone"
+                />
+
+            <TextView
+                android:id="@+id/sanitation_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="3"
+                android:ellipsize="end"
+                android:textSize="@dimen/text_normal"
+                android:textColor="@color/gray_dark"
+                android:text="店内环境卫生整洁"
+                android:layout_marginTop="@dimen/margin_2"
+                android:layout_marginLeft="@dimen/margin_3"
+                />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_below="@+id/sanitation_tv"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="@dimen/margin_1"
+                >
+
+                <RadioButton
+                    android:id="@+id/sanitation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="是"
+                    android:textColor="@drawable/selector_radio_daily_txt"
+                    android:textSize="@dimen/text_normal"
+                    android:drawableLeft="@drawable/selector_radio_daily_yes"
+                    android:drawablePadding="@dimen/margin_1"
+                    android:background="@null"
+                    android:padding="@dimen/margin_1"
+                    />
+
+                <RadioButton
+                    android:id="@+id/sanitationNull"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="否"
+                    android:textColor="@drawable/selector_radio_daily_txt"
+                    android:textSize="@dimen/text_normal"
+                    android:drawableLeft="@drawable/selector_radio_daily_no"
+                    android:drawablePadding="@dimen/margin_1"
+                    android:layout_marginLeft="@dimen/margin_2"
+                    android:checked="false"
+                    android:background="@null"
+                    android:padding="@dimen/margin_1"
+                    />
+
+
+            </RadioGroup>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical" android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sanitation_rl"
+            android:id="@+id/overdue_rl"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/un_success"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/margin_2"
+                android:visibility="gone"
+                />
+
+            <TextView
+                android:id="@+id/overdue_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="3"
+                android:ellipsize="end"
+                android:textSize="@dimen/text_normal"
+                android:textColor="@color/gray_dark"
+                android:text="无出售过期、变质、伪劣食品"
+                android:layout_marginTop="@dimen/margin_2"
+                android:layout_marginLeft="@dimen/margin_3"
+                />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_below="@+id/overdue_tv"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="@dimen/margin_1"
+                >
+
+                <RadioButton
+                    android:id="@+id/overdue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="是"
+                    android:textColor="@drawable/selector_radio_daily_txt"
+                    android:textSize="@dimen/text_normal"
+                    android:drawableLeft="@drawable/selector_radio_daily_yes"
+                    android:drawablePadding="@dimen/margin_1"
+                    android:background="@null"
+                    android:padding="@dimen/margin_1"
+                    />
+
+                <RadioButton
+                    android:id="@+id/overdueNull"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="否"
+                    android:textColor="@drawable/selector_radio_daily_txt"
+                    android:textSize="@dimen/text_normal"
+                    android:drawableLeft="@drawable/selector_radio_daily_no"
+                    android:drawablePadding="@dimen/margin_1"
+                    android:layout_marginLeft="@dimen/margin_2"
+                    android:checked="false"
+                    android:background="@null"
+                    android:padding="@dimen/margin_1"
+                    />
+
+
+            </RadioGroup>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical" android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/overdue_rl"
+            android:id="@+id/fullmark_rl"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/un_success"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/margin_2"
+                android:visibility="gone"
+                />
+
+            <TextView
+                android:id="@+id/fullmark_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="3"
+                android:ellipsize="end"
+                android:textSize="@dimen/text_normal"
+                android:textColor="@color/gray_dark"
+                android:text="预包装食品标签、标志齐全"
+                android:layout_marginTop="@dimen/margin_2"
+                android:layout_marginLeft="@dimen/margin_3"
+                />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_below="@+id/fullmark_tv"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="@dimen/margin_1"
+                >
+
+                <RadioButton
+                    android:id="@+id/fullmark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="是"
+                    android:textColor="@drawable/selector_radio_daily_txt"
+                    android:textSize="@dimen/text_normal"
+                    android:drawableLeft="@drawable/selector_radio_daily_yes"
+                    android:drawablePadding="@dimen/margin_1"
+                    android:background="@null"
+                    android:padding="@dimen/margin_1"
+                    />
+
+                <RadioButton
+                    android:id="@+id/fullmarkNull"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="否"
+                    android:textColor="@drawable/selector_radio_daily_txt"
+                    android:textSize="@dimen/text_normal"
+                    android:drawableLeft="@drawable/selector_radio_daily_no"
+                    android:drawablePadding="@dimen/margin_1"
+                    android:layout_marginLeft="@dimen/margin_2"
+                    android:checked="false"
+                    android:background="@null"
+                    android:padding="@dimen/margin_1"
+                    />
+
+
+            </RadioGroup>
+
+
+        </RelativeLayout>
+
+       <!-- <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/name_tv"
             android:layout_marginTop="4dp"
             android:paddingBottom="@dimen/margin_2"
-            android:scrollbars="none" />
+            android:scrollbars="none" />-->
 
     </RelativeLayout>
 

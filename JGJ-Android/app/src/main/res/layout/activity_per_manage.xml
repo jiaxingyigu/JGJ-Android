@@ -38,7 +38,7 @@
 
         <TextView
             android:id="@+id/address_tv"
-            android:layout_width="59dp"
+            android:layout_width="71dp"
             android:layout_height="match_parent"
             android:textSize="@dimen/text_small"
             android:textColor="@android:color/white"
@@ -73,7 +73,8 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                />
         </com.yigu.jgj.widget.BestSwipeRefreshLayout>
 
         <View

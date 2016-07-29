@@ -55,9 +55,9 @@ public class TaskDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         if (holder instanceof HeadViewHolder) {
             ((HeadViewHolder)holder).taskHeadLayout.loadData();
         }else if(holder instanceof ProjectViewHolder){
-            ((ProjectViewHolder)holder).dailyProjectLayout.loadData();
+            ((ProjectViewHolder)holder).dailyProjectLayout.loadData(null,false);
         }else if(holder instanceof SaleViewHolder){
-            ((SaleViewHolder)holder).dailySaleLayout.loadData();
+            ((SaleViewHolder)holder).dailySaleLayout.loadData(null,false);
         }else if(holder instanceof DeelViewHolder){
             ((DeelViewHolder)holder).taskDeelLayout.loadData();
         }

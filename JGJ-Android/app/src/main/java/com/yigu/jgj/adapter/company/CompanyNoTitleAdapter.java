@@ -7,9 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.yigu.jgj.R;
+import com.yigu.jgj.commom.result.MapiItemResult;
 import com.yigu.jgj.jgjinterface.RecyOnItemClickListener;
+
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -23,17 +27,20 @@ public class CompanyNoTitleAdapter extends RecyclerView.Adapter<CompanyNoTitleAd
 
     private RecyOnItemClickListener onItemClickListener;
 
+    List<MapiItemResult> mList;
+
     public void setOnItemClickListener(RecyOnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }
 
-    public CompanyNoTitleAdapter(Context context) {
+    public CompanyNoTitleAdapter(Context context,List<MapiItemResult> mList) {
         inflater = LayoutInflater.from(context);
+        this.mList = mList;
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return  mList == null ? 0 : mList.size();
     }
 
     @Override
@@ -51,6 +58,25 @@ public class CompanyNoTitleAdapter extends RecyclerView.Adapter<CompanyNoTitleAd
                     onItemClickListener.onItemClick(view, (Integer) view.getTag());
             }
         });
+        MapiItemResult itemResult = mList.get(position);
+        holder.name.setText(itemResult.getNAME());
+        holder.lperson.setText(itemResult.getLPERSON());
+        holder.tel.setText(itemResult.getTEL());
+        holder.address.setText(itemResult.getADDRESS());
+        if(itemResult.getFOODSALES()==1){
+            holder.image.setImageResource(R.mipmap.sales);
+            return;
+        }
+
+        if(itemResult.getFOODSERVICE()==1){
+            holder.image.setImageResource(R.mipmap.service);
+            return;
+        }
+
+        if(itemResult.getCANTEEN()==1){
+            holder.image.setImageResource(R.mipmap.canteen);
+            return;
+        }
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -58,10 +84,17 @@ public class CompanyNoTitleAdapter extends RecyclerView.Adapter<CompanyNoTitleAd
         RelativeLayout item_daily;
         @Bind(R.id.image)
         ImageView image;
+        @Bind(R.id.name)
+        TextView name;
+        @Bind(R.id.lperson)
+        TextView lperson;
+        @Bind(R.id.tel)
+        TextView tel;
+        @Bind(R.id.address)
+        TextView address;
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-            image.setVisibility(View.GONE);
         }
     }
 

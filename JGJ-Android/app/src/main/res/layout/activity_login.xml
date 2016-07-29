@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.yigu.jgj.activity.LoginActivity"
+    >
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        />
+
+    <LinearLayout
+        android:id="@+id/user_ll"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginLeft="@dimen/margin_3"
+        android:layout_marginRight="@dimen/margin_3"
+        android:layout_below="@+id/logo"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="40dp"
+        >
+
+        <ImageView
+            android:id="@+id/user_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/user_icon"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/margin_1"
+            >
+
+            <EditText
+                android:id="@+id/user"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:textColor="@color/jgj_black"
+                android:textSize="@dimen/text_big"
+                android:textColorHint="@color/gray_light"
+                android:hint="用户名"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:paddingLeft="5dp"
+                android:text="15024321682"
+                />
+
+            <View
+                android:id="@+id/user_line"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_line"
+                android:layout_alignParentBottom="true"
+                />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/psd_ll"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginLeft="@dimen/margin_3"
+        android:layout_marginRight="@dimen/margin_3"
+        android:layout_below="@+id/user_ll"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="20dp"
+        >
+
+        <ImageView
+            android:id="@+id/psd_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/psd_icon"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/margin_1"
+            >
+
+            <EditText
+                android:id="@+id/psd"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:textColor="@color/jgj_black"
+                android:textSize="@dimen/text_big"
+                android:textColorHint="@color/gray_light"
+                android:hint="密码"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:paddingLeft="5dp"
+                android:inputType="textPassword"
+                android:text="123"
+                />
+
+            <View
+                android:id="@+id/psd_line"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_line"
+                android:layout_alignParentBottom="true"
+                />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/login"
+        style="@style/submit_button_style_color_green"
+        android:text="登录"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/psd_ll"
+        android:layout_marginTop="@dimen/margin_4"
+        android:layout_marginLeft="@dimen/margin_3"
+        android:layout_marginRight="@dimen/margin_3"
+        />
+
+</RelativeLayout>

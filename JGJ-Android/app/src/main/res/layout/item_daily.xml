@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="90dp"
     android:background="@android:color/white"
-    android:id="@+id/item_daily"
+    android:id="@+id/item_root"
     android:clickable="true"
     >
 
@@ -27,6 +27,7 @@
 
 
         <TextView
+            android:id="@+id/name"
             style="@style/textViewBigStyle_dark"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
@@ -45,7 +46,7 @@
 
             <TextView
                 style="@style/textViewStyle_middle"
-                android:id="@+id/name"
+                android:id="@+id/lperson"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:text="张一一"
@@ -53,17 +54,18 @@
 
             <TextView
                 style="@style/textViewStyle_middle"
-                android:id="@+id/phone"
+                android:id="@+id/tel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="13738258025"
-                android:layout_toRightOf="@+id/name"
+                android:layout_toRightOf="@+id/lperson"
                 android:layout_marginLeft="67dp"
                 />
 
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/address"
             style="@style/textViewSmallStyle_light"
             android:layout_width="wrap_content"
             android:layout_height="0dp"

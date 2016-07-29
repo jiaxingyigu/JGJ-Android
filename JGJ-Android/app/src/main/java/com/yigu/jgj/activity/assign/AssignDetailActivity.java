@@ -13,14 +13,24 @@ import com.yigu.jgj.R;
 import com.yigu.jgj.activity.person.PerManageActivity;
 import com.yigu.jgj.adapter.assign.AssignDetailAdapter;
 import com.yigu.jgj.adapter.assign.AssignTaskAdapter;
+import com.yigu.jgj.base.BaseActivity;
+import com.yigu.jgj.base.Config;
 import com.yigu.jgj.base.RequestCode;
+import com.yigu.jgj.commom.api.ItemApi;
+import com.yigu.jgj.commom.result.MapiItemResult;
+import com.yigu.jgj.commom.result.MapiTaskResult;
+import com.yigu.jgj.commom.util.RequestCallback;
+import com.yigu.jgj.commom.util.RequestExceptionCallback;
 import com.yigu.jgj.widget.BestSwipeRefreshLayout;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class AssignDetailActivity extends AppCompatActivity {
+public class AssignDetailActivity extends BaseActivity {
 
     @Bind(R.id.tv_center)
     TextView tvCenter;
@@ -28,35 +38,38 @@ public class AssignDetailActivity extends AppCompatActivity {
     TextView tvRight;
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
-    @Bind(R.id.swipeLayout)
-    BestSwipeRefreshLayout swipeLayout;
     AssignDetailAdapter mAdapter;
+
+    MapiTaskResult itemResult;
+    List<Integer> list = new ArrayList();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assign_detail);
         ButterKnife.bind(this);
-        initView();
-        initListener();
+        if(null!=getIntent().getExtras())
+            itemResult = (MapiTaskResult) getIntent().getSerializableExtra("item");
+        if(null!=itemResult){
+            initView();
+            load();
+        }
     }
 
     private void initView() {
         tvCenter.setText("任务分派");
         tvRight.setText("人员");
+        list.add(Config.daily_head);
+        list.add(Config.daily_project);
+        if(itemResult.getFOODSALES()==1)
+            list.add(Config.daily_sale);
+        if(itemResult.getFOODSERVICE()==1||itemResult.getCANTEEN()==1)
+            list.add(Config.daily_service_canteen);
         LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setOrientation(OrientationHelper.VERTICAL);
         recyclerView.setLayoutManager(manager);
-        mAdapter = new AssignDetailAdapter(this);
+        mAdapter = new AssignDetailAdapter(this,list);
         recyclerView.setAdapter(mAdapter);
-    }
-
-    private void initListener() {
-        swipeLayout.setBestRefreshListener(new BestSwipeRefreshLayout.BestRefreshListener() {
-            @Override
-            public void onBestRefresh() {
-                swipeLayout.setRefreshing(false);
-            }
-        });
     }
 
     @OnClick({R.id.back, R.id.tv_right})
@@ -68,20 +81,27 @@ public class AssignDetailActivity extends AppCompatActivity {
             case R.id.tv_right:
                 Intent intent = new Intent(this, PerManageActivity.class);
                 intent.putExtra("requestCode", RequestCode.assign_person);
-                startActivityForResult(intent,RequestCode.assign_person);
+                intent.putExtra("ID", itemResult.getID());
+                startActivity(intent);
                 break;
         }
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK){
-            switch (requestCode){
-                case RequestCode.assign_person:
-
-                    break;
+    private void load(){
+        ItemApi.dailyPatrolDetails(this, itemResult.getID(), new RequestCallback<MapiItemResult>() {
+            @Override
+            public void success(MapiItemResult success) {
+                if(null!=success){
+                    mAdapter.setItemResult(success);
+                    mAdapter.notifyDataSetChanged();
+                }
             }
-        }
+        }, new RequestExceptionCallback() {
+            @Override
+            public void error(String code, String message) {
+
+            }
+        });
     }
+
 }

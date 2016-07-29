@@ -2,21 +2,30 @@ package com.yigu.jgj.util;
 
 import android.content.Intent;
 
+import com.yigu.jgj.activity.LoginActivity;
+import com.yigu.jgj.activity.MainActivity;
+import com.yigu.jgj.activity.SelCommunityActivity;
 import com.yigu.jgj.activity.assign.AssignDetailActivity;
 import com.yigu.jgj.activity.assign.AssignTaskActivity;
 import com.yigu.jgj.activity.company.CompanyAddActivity;
 import com.yigu.jgj.activity.company.CompanyListActivity;
-import com.yigu.jgj.activity.company.CompanyListActivity2;
 import com.yigu.jgj.activity.company.CompanyMessageActivity;
 import com.yigu.jgj.activity.daily.DailyActivity;
 import com.yigu.jgj.activity.daily.DailySecondActivity;
 import com.yigu.jgj.activity.daily.DailyThirdActivity;
 import com.yigu.jgj.activity.danger.DanagerDetailActivity;
 import com.yigu.jgj.activity.danger.DangerListActivity;
+import com.yigu.jgj.activity.file.FileActivity;
 import com.yigu.jgj.activity.person.PerManageActivity;
 import com.yigu.jgj.activity.task.TaskActivity;
 import com.yigu.jgj.activity.task.TaskDetailActivity;
 import com.yigu.jgj.commom.application.AppContext;
+import com.yigu.jgj.commom.result.MapiItemResult;
+import com.yigu.jgj.commom.result.MapiResourceResult;
+import com.yigu.jgj.commom.result.MapiTaskResult;
+
+import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * Created by brain on 2016/6/22.
@@ -34,19 +43,18 @@ public class ControllerUtil {
     /**
      * 日常巡查第二步
      */
-    public static void go2DailySecond() {
+    public static void go2DailySecond(MapiItemResult itemResult) {
         Intent intent = new Intent(AppContext.getInstance(), DailySecondActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("item",itemResult);
         AppContext.getInstance().startActivity(intent);
     }
-    public static void go2CompanyList() {
-        Intent intent = new Intent(AppContext.getInstance(), CompanyListActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        AppContext.getInstance().startActivity(intent);
-    }
-    public static void go2CompanyMessage() {
+
+    public static void go2CompanyMessage(String action,MapiItemResult itemResult) {
         Intent intent = new Intent(AppContext.getInstance(), CompanyMessageActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("item",itemResult);
+        intent.putExtra("action",action);
         AppContext.getInstance().startActivity(intent);
     }
     public static void go2CompanyAdd() {
@@ -58,9 +66,10 @@ public class ControllerUtil {
     /**
      * 日常巡查第三步
      */
-    public static void go2DailyThird() {
+    public static void go2DailyThird(MapiItemResult itemResult) {
         Intent intent = new Intent(AppContext.getInstance(), DailyThirdActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("item",itemResult);
         AppContext.getInstance().startActivity(intent);
     }
 
@@ -90,8 +99,8 @@ public class ControllerUtil {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         AppContext.getInstance().startActivity(intent);
     }
-    public static void go2CompanyList2() {
-        Intent intent = new Intent(AppContext.getInstance(), CompanyListActivity2.class);
+    public static void go2CompanyList() {
+        Intent intent = new Intent(AppContext.getInstance(), CompanyListActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         AppContext.getInstance().startActivity(intent);
     }
@@ -108,9 +117,10 @@ public class ControllerUtil {
     /**
      * 任务分派-详情
      */
-    public static void go2AssignDetail() {
+    public static void go2AssignDetail(MapiTaskResult itemResult) {
         Intent intent = new Intent(AppContext.getInstance(), AssignDetailActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("item",itemResult);
         AppContext.getInstance().startActivity(intent);
     }
 
@@ -126,10 +136,37 @@ public class ControllerUtil {
     /**
      * 隐患档案-列表
      */
-    public static void go2DanagerDetail() {
+    public static void go2DanagerDetail(String id) {
         Intent intent = new Intent(AppContext.getInstance(), DanagerDetailActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("id",id);
+        AppContext.getInstance().startActivity(intent);
+    }
+
+    /**
+     * 归档信息-列表
+     */
+    public static void go2File() {
+        Intent intent = new Intent(AppContext.getInstance(), FileActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         AppContext.getInstance().startActivity(intent);
     }
 
+    /**
+     * 登录
+     */
+    public static void go2Login() {
+        Intent intent = new Intent(AppContext.getInstance(), LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        AppContext.getInstance().startActivity(intent);
+    }
+
+    /**
+     * 首页
+     */
+    public static void go2Main() {
+        Intent intent = new Intent(AppContext.getInstance(), MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        AppContext.getInstance().startActivity(intent);
+    }
 }

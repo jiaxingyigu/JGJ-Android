@@ -36,6 +36,7 @@
                 />
 
             <TextView
+                android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/jgj_green"
@@ -57,6 +58,7 @@
             >
 
             <TextView
+                android:id="@+id/lperson"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -68,6 +70,7 @@
                 />
 
             <TextView
+                android:id="@+id/tel"
                 android:layout_width="0dp"
                 android:layout_weight="2"
                 android:layout_height="wrap_content"
@@ -100,6 +103,7 @@
                 />
 
             <TextView
+                android:id="@+id/project"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_normal"

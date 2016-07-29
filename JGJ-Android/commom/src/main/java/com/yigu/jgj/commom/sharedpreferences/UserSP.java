@@ -11,9 +11,9 @@ import com.yigu.jgj.commom.result.MapiUserResult;
  */
 public class UserSP extends AbstractSP {
 
-    private final static String KEY_SP_USER = "fx.user";
+    private final static String KEY_SP_USER = "jgj.user";
     private final static String KEY_SP_USER_GUIDE = "user_guide";
-
+    private final static String KEY_SP_Resources = "jgj.resources";
     public UserSP(Context context) {
         super(context);
     }
@@ -30,8 +30,20 @@ public class UserSP extends AbstractSP {
         return JSONObject.parseObject(userJsonStr, MapiUserResult.class);
     }
 
+    public void saveResource(String json){
+        sharedPreferences.edit().putString(KEY_SP_Resources, json).commit();
+    }
+
+    public String getResource() {
+        String resourceJsonStr = sharedPreferences.getString(KEY_SP_Resources, null);
+        if (TextUtils.isEmpty(resourceJsonStr)) {
+            return null;
+        }
+        return resourceJsonStr;
+    }
+
     public boolean checkLogin() {
-        return getUserBean() != null && !TextUtils.isEmpty(getUserBean().getSession());
+        return getUserBean() != null && !TextUtils.isEmpty(getUserBean().getUSER_ID());
     }
 
     public void clearUserData() {

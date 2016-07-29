@@ -5,17 +5,35 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.yigu.jgj.R;
+import com.yigu.jgj.commom.result.MapiItemResult;
+import com.yigu.jgj.commom.util.StringUtil;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
  * Created by brain on 2016/6/26.
  */
-public class DanagerHeadLayout extends RelativeLayout{
+public class DanagerHeadLayout extends RelativeLayout {
+    @Bind(R.id.name)
+    TextView name;
+    @Bind(R.id.lperson)
+    TextView lperson;
+    @Bind(R.id.tel)
+    TextView tel;
+    @Bind(R.id.project)
+    TextView project;
+    @Bind(R.id.user)
+    TextView user;
     private Context mContext;
     private View view;
+
     public DanagerHeadLayout(Context context) {
         super(context);
         mContext = context;
@@ -34,14 +52,27 @@ public class DanagerHeadLayout extends RelativeLayout{
         initView();
     }
 
-    private void initView(){
-        if(isInEditMode())
+    private void initView() {
+        if (isInEditMode())
             return;
-        view = LayoutInflater.from(mContext).inflate(R.layout.layout_danager_head,this);
-        ButterKnife.bind(this,view);
+        view = LayoutInflater.from(mContext).inflate(R.layout.layout_danager_head, this);
+        ButterKnife.bind(this, view);
     }
 
-    public void loadData(){
+    public void loadData(MapiItemResult itemResult) {
+        if(null!=itemResult){
+            List<String> projectList = new ArrayList<>();
+            if (itemResult.getFOODSALES() == 1)
+                projectList.add("食品销售");
+            if (itemResult.getFOODSERVICE() == 1)
+                projectList.add("餐饮服务");
+            if (itemResult.getCANTEEN() == 1)
+                projectList.add("单位食堂");
+            name.setText(itemResult.getNAME());
+            lperson.setText(itemResult.getLPERSON());
+            tel.setText(itemResult.getTEL());
+            project.setText(StringUtil.listToString(projectList, "  "));
+        }
 
     }
 }

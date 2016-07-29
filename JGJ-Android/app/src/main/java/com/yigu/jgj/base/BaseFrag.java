@@ -1,20 +1,24 @@
 package com.yigu.jgj.base;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.yigu.jgj.commom.application.AppContext;
+import com.yigu.jgj.commom.sharedpreferences.UserSP;
+
 /**
  * Created by brain on 2016/6/26.
  */
 public class BaseFrag extends Fragment{
-    @Nullable
+    protected UserSP userSP;
+
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        userSP = new UserSP(AppContext.getInstance());
+        return super.onCreateView(inflater,container,savedInstanceState);
     }
 
     public void showLoading() {

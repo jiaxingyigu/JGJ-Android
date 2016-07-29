@@ -1,5 +1,7 @@
 package com.yigu.jgj.commom.util;
 
+import android.text.TextUtils;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -9,6 +11,9 @@ import java.util.Date;
  */
 public class DateUtil {
     private static final String YMDHM = "yyyyMMddHHmmss";
+    private static final String YMD = "yyyy.MM.dd";
+    private static final String YM_D = "yyyy.MM";
+    private static final String YM_H = "yyyy-MM";
     private static DateUtil dateUtil;
 
     public static DateUtil getInstance() {
@@ -73,4 +78,45 @@ public class DateUtil {
             return million / ONE_SECOND_IN_MILLIONSECOND + "秒前";
         else return "刚刚";
     }
+
+    /**
+     * yyyy-MM-dd HH:mm:ss 转 yyyy.MM.dd
+     * @param dateStr
+     * @return
+     */
+    public String YMDHMS2YMD(String dateStr){
+        if(TextUtils.isEmpty(dateStr))
+            return "";
+        try{
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date = dateFormat.parse(dateStr);
+            SimpleDateFormat dateFormat2 = new SimpleDateFormat(YMD);
+           return dateFormat2.format(date);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        return "";
+    }
+
+    /**
+     * yyyy-MM 转 yyyy.MM
+     * @param dateStr
+     * @return
+     */
+    public String YM_D2YMD_H(String dateStr){
+        if(TextUtils.isEmpty(dateStr))
+            return "";
+        try{
+            SimpleDateFormat dateFormat = new SimpleDateFormat(YM_D);
+            Date date = dateFormat.parse(dateStr);
+            SimpleDateFormat dateFormat2 = new SimpleDateFormat(YM_H);
+            return dateFormat2.format(date);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        return "";
+    }
+
 }

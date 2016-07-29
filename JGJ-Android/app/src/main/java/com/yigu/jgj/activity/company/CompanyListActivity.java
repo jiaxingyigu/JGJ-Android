@@ -1,101 +1,90 @@
 package com.yigu.jgj.activity.company;
 
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.view.animation.AnimationUtils;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.yigu.jgj.R;
+import com.yigu.jgj.adapter.company.CompanyFragmentAdapter;
+import com.yigu.jgj.broadCast.ReceiverAction;
+import com.yigu.jgj.commom.result.MapiItemResult;
+import com.yigu.jgj.commom.widget.MainToast;
 import com.yigu.jgj.fragment.CompanyFragment;
 import com.yigu.jgj.fragment.CompanyNoTitleFragment;
 import com.yigu.jgj.util.ControllerUtil;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class CompanyListActivity extends FragmentActivity implements View.OnClickListener {
-
-    @Bind(R.id.back)
-    ImageView back;
     @Bind(R.id.tv_center)
     TextView tvCenter;
     @Bind(R.id.tv_right)
     TextView tvRight;
+    @Bind(R.id.viewpager)
+    ViewPager viewpager;
+    @Bind(R.id.tablayout)
+    TabLayout tablayout;
+    @Bind(R.id.back)
+    ImageView back;
     @Bind(R.id.iv_right)
     ImageView ivRight;
-    @Bind(R.id.framelayout)
-    FrameLayout framelayout;
-    @Bind(R.id.title)
-    LinearLayout title;
-    @Bind(R.id.no_title)
-    LinearLayout noTitle;
-    @Bind(R.id.bg_tab)
-    View bg_tab;
-    @Bind(R.id.tab_notitle)
-    View tabNotitle;
+    private List<Fragment> list = new ArrayList<>();
+    private List<String> list_title = new ArrayList<>();
     private FragmentManager fragmentManager;
     public FragmentTransaction transaction;
     private CompanyFragment companyFragment;
     private CompanyNoTitleFragment companyNotitleFragment;
-    public Fragment fragment;
+    CompanyFragmentAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.acitivity_company_list);
         ButterKnife.bind(this);
-        inti();
+        initView();
+        initStockReceiver();
     }
 
-    private void inti() {
+    private void initView() {
         tvCenter.setText("企业管理");
         tvRight.setText("新增");
-        setdefault();
-
-
-    }
-
-    private void setdefault() {
         companyFragment = new CompanyFragment();
-        fragment = companyFragment;
-        fragmentManager = getSupportFragmentManager();
-        transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.framelayout, companyFragment);
-        transaction.commit();
+        companyNotitleFragment = new CompanyNoTitleFragment();
+        list.add(companyFragment);
+        list.add(companyNotitleFragment);
+        list_title.add("有照");
+        list_title.add("无照");
+        tablayout.setTabMode(TabLayout.MODE_FIXED);
+        tablayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        tablayout.addTab(tablayout.newTab().setText(list_title.get(0)));
+        tablayout.addTab(tablayout.newTab().setText(list_title.get(1)));
+        mAdapter = new CompanyFragmentAdapter(getSupportFragmentManager(), list, list_title);
+        viewpager.setAdapter(mAdapter);
+        tablayout.setupWithViewPager(viewpager);
     }
 
-    @OnClick({R.id.back, R.id.title, R.id.no_title, R.id.tv_right})
+    @OnClick({R.id.back, R.id.tv_right})
     public void onClick(View view) {
-        transaction = fragmentManager.beginTransaction();
         switch (view.getId()) {
             case R.id.back:
                 finish();
-                break;
-            case R.id.title:
-                if (companyFragment == null) {
-                    companyFragment = new CompanyFragment();
-                }
-                transaction.replace(R.id.framelayout, companyFragment);
-                transaction.commitAllowingStateLoss();
-                break;
-            case R.id.no_title:
-                if (companyNotitleFragment == null) {
-                    companyNotitleFragment = new CompanyNoTitleFragment();
-                }
-                bg_tab.setAnimation(AnimationUtils.loadAnimation(this, R.anim.tab_left_to_right));
-                tabNotitle.setAnimation(AnimationUtils.loadAnimation(this, R.anim.tab_left_to_right));
-                bg_tab.setVisibility(View.GONE);
-                tabNotitle.setVisibility(View.VISIBLE);
-                transaction.replace(R.id.framelayout, companyNotitleFragment);
-                transaction.commit();
                 break;
             case R.id.tv_right:
                 ControllerUtil.go2CompanyAdd();
@@ -103,5 +92,49 @@ public class CompanyListActivity extends FragmentActivity implements View.OnClic
         }
     }
 
+    private CompanyBroadCast companyBroadCast;
 
+    private void initStockReceiver() {
+        companyBroadCast = new CompanyBroadCast();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(ReceiverAction.addCompany_action);
+        filter.addAction(ReceiverAction.addCompanyNoTitle_action);
+        filter.addAction(ReceiverAction.updateCompany_action);
+        filter.setPriority(Integer.MAX_VALUE);
+        registerReceiver(companyBroadCast, filter);
+    }
+
+    /**
+     * 企业修改和新增的的广播接受者
+     */
+    public class CompanyBroadCast extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (action.equals(ReceiverAction.updateCompany_action)) {//修改
+                if(null!=companyFragment)
+                    companyFragment.refreshData();
+                if(null!=companyNotitleFragment)
+                    companyNotitleFragment.refreshData();
+            }
+
+            if(action.equals(ReceiverAction.addCompany_action)){//有照新增
+                if(null!=companyFragment) {
+                    companyFragment.refreshData();
+                }
+            }
+            if(action.equals(ReceiverAction.addCompanyNoTitle_action)){//无照新增
+                if(null!=companyNotitleFragment)
+                    companyNotitleFragment.refreshData();
+            }
+        }
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (null != companyBroadCast)
+            unregisterReceiver(companyBroadCast);
+    }
 }

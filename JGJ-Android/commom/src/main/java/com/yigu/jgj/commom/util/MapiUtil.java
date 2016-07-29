@@ -17,8 +17,17 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.lidroid.xutils.HttpUtils;
+import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.http.HttpHandler;
+import com.lidroid.xutils.http.RequestParams;
+import com.lidroid.xutils.http.ResponseInfo;
+import com.lidroid.xutils.http.callback.RequestCallBack;
+import com.lidroid.xutils.http.client.HttpRequest;
 import com.yigu.jgj.commom.api.BasicApi;
 import com.yigu.jgj.commom.application.AppContext;
+import com.yigu.jgj.commom.widget.MainToast;
+
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
@@ -55,7 +64,7 @@ public class MapiUtil {
      * @param response
      * @param fail
      */
-    public void getCall(Activity activity, String url, final MapiSuccessResponse response, final MapiFailResponse fail) {
+   /* public void getCall(Activity activity, String url, final MapiSuccessResponse response, final MapiFailResponse fail) {
         StringRequest stringRequest = new StringRequest(url,
                 new Response.Listener<String>() {
                     @Override
@@ -91,7 +100,7 @@ public class MapiUtil {
             }
         };
         requestQueue.add(stringRequest);
-    }
+    }*/
 
     /**
      * 网络通信volley
@@ -112,11 +121,11 @@ public class MapiUtil {
                     public void onResponse(String s) {
                         DebugLog.i("mapi response" + s);
                         JSONObject jsonObject = JSONObject.parseObject(s);
-                        if (jsonObject.getInteger("code") == 0) {
+                        if (jsonObject.getString("result").equals("01")) {
                             response.success(jsonObject);
                         }
-                        Integer code = jsonObject.getInteger("code");
-                        if (code == 9998) {
+                        String code = jsonObject.getString("result");
+                        if (code.equals("9998")) {
                             //打开登录UI
                             if (act == null) {
                                 return;
@@ -126,7 +135,7 @@ public class MapiUtil {
                             act.sendBroadcast(intent);
                             return;
                         }
-                        if (fail != null && code != 0) {
+                        if (fail != null && !code.equals("0")) {
                             fail.fail(code, jsonObject.getString("message"));//参数不满足条件
                         }
                     }
@@ -136,27 +145,135 @@ public class MapiUtil {
                 DebugLog.e("volleyError=" + volleyError);
                 if (volleyError != null) {
                     if (volleyError instanceof TimeoutError || volleyError instanceof NoConnectionError) {
-                        fail.fail(9999, "oops！网络异常请重新连接");
+                        fail.fail("9999", "oops！网络异常请重新连接");
                     } else {
-                        fail.fail(9999, volleyError.getMessage());
+                        fail.fail("9999", volleyError.getMessage());
                     }
                 }
             }
-        }) /*{
+        }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 return params;
             }
 
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String> heads = initHead();
-
-                return heads;
-            }
-        }*/;
+//            @Override
+//            public Map<String, String> getHeaders() throws AuthFailureError {
+//                Map<String, String> heads = initHead();
+//
+//                return heads;
+//            }
+        };
         requestQueue.add(stringRequest);
 //        requestQueue.start();//初始化的时候就已经调用
+    }
+
+
+   /* public void uploadFile(final Activity activity, String url, File file, final MapiSuccessResponse response, final MapiFailResponse fail) {
+        DebugLog.i("url=" +BasicApi.BASIC_URL + url );
+        String uploadUrl = BasicApi.BASIC_URL + url;
+        RequestParams params = new RequestParams(uploadUrl);
+//        Map<String, String> heads = initHead();//用户信息
+//        for (String key : heads.keySet()) {
+//            params.addHeader(key, heads.get(key));
+//        }
+        // 使用multipart表单上传文件
+        params.setMultipart(true);
+        params.addBodyParameter("file", file ,null); // 如果文件没有扩展名, 最好设置contentType参数.
+        x.http().post(params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                DebugLog.i("mapi response "+result);
+                 JSONObject jsonObject = JSONObject.parseObject(result);
+               if (jsonObject.getString("result").equals("01")) {
+                    response.success(jsonObject);
+                }
+               String code = jsonObject.getString("result");
+//                if (code == 9998) {//打开登录UI
+//                    Intent intent = new Intent();
+//                    intent.setAction("com.ypn.mobile.login");
+//                    activity.sendBroadcast(intent);
+//                    return;
+////                }
+                if (fail != null && !code.equals("0")) {
+                    fail.fail(code, jsonObject.getString("message"));
+                }
+            }
+
+            @Override
+            public void onError(Throwable throwable, boolean isOnCallback) {
+                MainToast.showLongToast("error");
+                if (throwable instanceof TimeoutError || throwable instanceof NoConnectionError) {
+                    DebugLog.i("1111"+throwable.getMessage());
+                    fail.fail("9999", "oops！网络异常请重新连接");
+                } else {
+                    fail.fail("9999", throwable.getMessage());
+                    DebugLog.i("9999"+throwable.getMessage());
+                }
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+        });
+
+
+    }*/
+
+    private static HttpUtils httpUtils;
+    private static int out_time = 1000*10;
+    /**
+     * 返回访问网络的httputils对象（xutils）
+     * @return
+     */
+    public static HttpUtils getHttpUtils(){
+        if(httpUtils==null){
+            httpUtils = new HttpUtils(out_time);
+            httpUtils.configSoTimeout(out_time);
+            httpUtils.configResponseTextCharset("UTF-8");
+        }
+        return httpUtils;
+    }
+
+    public void uploadFile(final Activity activity, String url, File file, final MapiSuccessResponse response, final MapiFailResponse fail) {
+        RequestParams params = new RequestParams();
+        params.addBodyParameter("file", file);
+        DebugLog.i("url=" +BasicApi.BASIC_URL + url );
+        HttpHandler<String> httpHandler = getHttpUtils().send(HttpRequest.HttpMethod.POST,
+                BasicApi.BASIC_URL + url , params, new RequestCallBack<String>() {
+
+                    @Override
+                    public void onFailure(HttpException arg0, String arg1) {
+                        if (arg0.getCause() instanceof TimeoutError || arg0.getCause() instanceof NoConnectionError) {
+                            fail.fail("9999", "oops！网络异常请重新连接");
+                        } else {
+                            fail.fail("9999", arg0.getMessage());
+                        }
+                    }
+                    @Override
+                    public void onSuccess(ResponseInfo<String> arg0) {
+                        DebugLog.i("mapi response"+arg0.result);
+                        JSONObject jsonObject = JSONObject.parseObject(arg0.result);
+                        if (jsonObject.getString("result").equals("01")) {
+                            response.success(jsonObject);
+                        }
+                        String code = jsonObject.getString("result");
+//                if (code == 9998) {//打开登录UI
+//                    Intent intent = new Intent();
+//                    intent.setAction("com.ypn.mobile.login");
+//                    activity.sendBroadcast(intent);
+//                    return;
+////                }
+                        if (fail != null && !code.equals("0")) {
+                            fail.fail(code, jsonObject.getString("message"));
+                        }
+                    }
+                });
     }
 
    /* public Map<String, String> initHead() {
@@ -189,7 +306,7 @@ public class MapiUtil {
 
     public interface MapiFailResponse {
 
-        void fail(Integer code, String failMessage);
+        void fail(String code, String failMessage);
 
     }
 }

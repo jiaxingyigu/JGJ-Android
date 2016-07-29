@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:clickable="true"
+    >
+
+    <RelativeLayout
+        android:id="@+id/start_rl"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:paddingRight="@dimen/margin_10dp"
+        android:paddingLeft="@dimen/margin_10dp"
+        >
+
+        <TextView
+            android:id="@+id/startTime"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="开始时间               "
+            android:textColor="@color/jgj_black"
+            android:textSize="@dimen/text_big"
+            android:drawableRight="@mipmap/circle_white"
+            android:gravity="center_vertical"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/divider_line"
+            android:layout_alignParentBottom="true"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:paddingRight="@dimen/margin_10dp"
+        android:paddingLeft="@dimen/margin_10dp"
+        android:layout_below="@+id/start_rl"
+        >
+
+        <TextView
+            android:id="@+id/endTime"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="结束时间               "
+            android:textColor="@color/jgj_black"
+            android:textSize="@dimen/text_big"
+            android:drawableRight="@mipmap/circle_white"
+            android:gravity="center_vertical"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/divider_line"
+            android:layout_alignParentBottom="true"
+            />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/confirm"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_height_45dp"
+        android:text="完成"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/text_normal"
+        android:textStyle="bold"
+        android:background="@color/jgj_green"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        />
+
+</RelativeLayout>

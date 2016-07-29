@@ -5,4 +5,7 @@ package com.yigu.jgj.base;
  */
 public class RequestCode {
     public static final int assign_person = 0x01;
+    public static final int sel_community = 0x02;
+    public static final int CAMERA = 0x03;
+    public static final int PICTURE = 0x04;
 }

@@ -50,11 +50,11 @@ public class DanagerDetailAdapter extends RecyclerView.Adapter<RecyclerView.View
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof HeadViewHolder) {
-            ((HeadViewHolder)holder).danagerHeadLayout.loadData();
+            ((HeadViewHolder)holder).danagerHeadLayout.loadData(null);
         }else if(holder instanceof ProjectViewHolder){
-            ((ProjectViewHolder)holder).dailyProjectLayout.loadData();
+            ((ProjectViewHolder)holder).dailyProjectLayout.loadData(null,false);
         }else if(holder instanceof SaleViewHolder){
-            ((SaleViewHolder)holder).dailySaleLayout.loadData();
+            ((SaleViewHolder)holder).dailySaleLayout.loadData(null,false);
         }
     }
 

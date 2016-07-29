@@ -53,20 +53,21 @@
                 >
 
                 <EditText
-                    android:id="@+id/work_et"
+                    android:id="@+id/ptioners"
                     style="@style/editViewStyle_gray"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:gravity="center"
+                    android:inputType="number"
                     />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
                     android:background="@color/divider_line"
-                    android:layout_below="@+id/work_et"
+                    android:layout_below="@+id/ptioners"
                     />
 
             </RelativeLayout>
@@ -105,20 +106,21 @@
                 >
 
                 <EditText
-                    android:id="@+id/health_et"
+                    android:id="@+id/hcate"
                     style="@style/editViewStyle_gray"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:gravity="center"
+                    android:inputType="number"
                     />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
                     android:background="@color/divider_line"
-                    android:layout_below="@+id/health_et"
+                    android:layout_below="@+id/hcate"
                     />
 
             </RelativeLayout>
@@ -139,6 +141,7 @@
                 />
 
             <TextView
+                android:id="@+id/oldhcatenk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="10"
@@ -156,14 +159,251 @@
 
         </LinearLayout>
 
-        <android.support.v7.widget.RecyclerView
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical" android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/health_ll"
+            android:id="@+id/showlicense_rl"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/un_success"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/margin_2"
+                android:visibility="gone"
+                />
+
+            <TextView
+                android:id="@+id/showlicense_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="3"
+                android:ellipsize="end"
+                android:textSize="@dimen/text_normal"
+                android:textColor="@color/gray_dark"
+                android:text="亮证经营（《食品经营许可证》、《食品流通许可证》、《餐饮服务许可证》、《营业执照》）"
+                android:layout_marginTop="@dimen/margin_2"
+                android:layout_marginLeft="@dimen/margin_3"
+                />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_below="@+id/showlicense_tv"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="@dimen/margin_1"
+                >
+
+                <RadioButton
+                    android:id="@+id/showlicense"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="是"
+                    android:textColor="@drawable/selector_radio_daily_txt"
+                    android:textSize="@dimen/text_normal"
+                    android:drawableLeft="@drawable/selector_radio_daily_yes"
+                    android:drawablePadding="@dimen/margin_1"
+                    android:background="@null"
+                    android:padding="@dimen/margin_1"
+                    />
+
+                <RadioButton
+                    android:id="@+id/showlicenseNull"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="否"
+                    android:textColor="@drawable/selector_radio_daily_txt"
+                    android:textSize="@dimen/text_normal"
+                    android:drawableLeft="@drawable/selector_radio_daily_no"
+                    android:drawablePadding="@dimen/margin_1"
+                    android:layout_marginLeft="@dimen/margin_2"
+                    android:checked="false"
+                    android:background="@null"
+                    android:padding="@dimen/margin_1"
+                    />
+
+
+            </RadioGroup>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical" android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/showlicense_rl"
+            android:id="@+id/hygiene_rl"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/un_success"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/margin_2"
+                android:visibility="gone"
+                />
+
+            <TextView
+                android:id="@+id/hygiene_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="3"
+                android:ellipsize="end"
+                android:textSize="@dimen/text_normal"
+                android:textColor="@color/gray_dark"
+                android:text="从业人员个人卫生情况（穿戴整洁工作衣帽，不留长指甲等）"
+                android:layout_marginTop="@dimen/margin_2"
+                android:layout_marginLeft="@dimen/margin_3"
+                />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_below="@+id/hygiene_tv"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="@dimen/margin_1"
+                >
+
+                <RadioButton
+                    android:id="@+id/hygiene"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="是"
+                    android:textColor="@drawable/selector_radio_daily_txt"
+                    android:textSize="@dimen/text_normal"
+                    android:drawableLeft="@drawable/selector_radio_daily_yes"
+                    android:drawablePadding="@dimen/margin_1"
+                    android:background="@null"
+                    android:padding="@dimen/margin_1"
+                    />
+
+                <RadioButton
+                    android:id="@+id/hygieneNull"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="否"
+                    android:textColor="@drawable/selector_radio_daily_txt"
+                    android:textSize="@dimen/text_normal"
+                    android:drawableLeft="@drawable/selector_radio_daily_no"
+                    android:drawablePadding="@dimen/margin_1"
+                    android:layout_marginLeft="@dimen/margin_2"
+                    android:checked="false"
+                    android:background="@null"
+                    android:padding="@dimen/margin_1"
+                    />
+
+
+            </RadioGroup>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical" android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/hygiene_rl"
+            android:id="@+id/invoice_rl"
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/un_success"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/margin_2"
+                android:visibility="gone"
+                />
+
+            <TextView
+                android:id="@+id/invoice_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="3"
+                android:ellipsize="end"
+                android:textSize="@dimen/text_normal"
+                android:textColor="@color/gray_dark"
+                android:text="建立索证索要台账（供货商许可证、营业执照、产品合格证、检验报告等）"
+                android:layout_marginTop="@dimen/margin_2"
+                android:layout_marginLeft="@dimen/margin_3"
+                />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_below="@+id/invoice_tv"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="@dimen/margin_1"
+                >
+
+                <RadioButton
+                    android:id="@+id/invoice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="是"
+                    android:textColor="@drawable/selector_radio_daily_txt"
+                    android:textSize="@dimen/text_normal"
+                    android:drawableLeft="@drawable/selector_radio_daily_yes"
+                    android:drawablePadding="@dimen/margin_1"
+                    android:background="@null"
+                    android:padding="@dimen/margin_1"
+                    />
+
+                <RadioButton
+                    android:id="@+id/invoiceNull"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="否"
+                    android:textColor="@drawable/selector_radio_daily_txt"
+                    android:textSize="@dimen/text_normal"
+                    android:drawableLeft="@drawable/selector_radio_daily_no"
+                    android:drawablePadding="@dimen/margin_1"
+                    android:layout_marginLeft="@dimen/margin_2"
+                    android:checked="false"
+                    android:background="@null"
+                    android:padding="@dimen/margin_1"
+                    />
+
+
+            </RadioGroup>
+
+
+        </RelativeLayout>
+
+       <!-- <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scrollbars="none"
             android:layout_below="@+id/health_ll"
             android:layout_marginTop="12dp"
-            />
+            />-->
 
     </RelativeLayout>
 

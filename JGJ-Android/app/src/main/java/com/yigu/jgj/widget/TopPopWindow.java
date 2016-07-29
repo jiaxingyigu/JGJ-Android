@@ -17,7 +17,9 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.yigu.jgj.R;
+import com.yigu.jgj.commom.result.MapiResourceResult;
 import com.yigu.jgj.commom.util.DebugLog;
+import com.yigu.jgj.jgjinterface.RecyOnItemClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,11 +36,11 @@ public class TopPopWindow extends PopupWindow implements PopupWindow.OnDismissLi
     private View contentView = null;
     private int mWidth = 0;
     private Context mContext;
-    List<String> list = new ArrayList<>();
+    List<MapiResourceResult> list = new ArrayList<>();
     private PopAdapter mAdapter;
     Activity activity;
     private int pos = -1;
-    public TopPopWindow(Activity context, int width, List<String> list, int style) {
+    public TopPopWindow(Activity context, int width, List<MapiResourceResult> list, int style) {
         inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mContext = context;
@@ -83,12 +85,12 @@ public class TopPopWindow extends PopupWindow implements PopupWindow.OnDismissLi
         recyclerView.setAdapter(mAdapter);
     }
 
-    private OnPopItemClickListener mOnPopItemClickListener;
+    private RecyOnItemClickListener mOnPopItemClickListener;
 
     /**
      * 设置item的点击监听事件
      */
-    public void setOnPopItemClickListener(OnPopItemClickListener l) {
+    public void setOnPopItemClickListener(RecyOnItemClickListener l) {
         mOnPopItemClickListener = l;
     }
 
@@ -96,14 +98,7 @@ public class TopPopWindow extends PopupWindow implements PopupWindow.OnDismissLi
     public void onDismiss() {
         DebugLog.i("pop==onDismiss");
         if (null != mOnPopItemClickListener)
-            mOnPopItemClickListener.onPopItemClick(null,0);
-    }
-
-    /**
-     * 自定义popupwindow item点击回调接口
-     */
-    public interface OnPopItemClickListener {
-        public void onPopItemClick(View view, int postion);
+            mOnPopItemClickListener.onItemClick(null,0);
     }
 
     /**
@@ -129,7 +124,7 @@ public class TopPopWindow extends PopupWindow implements PopupWindow.OnDismissLi
 
         @Override
         public int getItemCount() {
-            return list.size();
+            return list==null?0:list.size();
         }
 
         @Override
@@ -139,14 +134,17 @@ public class TopPopWindow extends PopupWindow implements PopupWindow.OnDismissLi
 
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
-            holder.text.setText(list.get(position));
+            holder.text.setText(list.get(position).getNAME());
             holder.text.setTag(position);
             holder.text.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    pos = (Integer)view.getTag();
+                    if(pos==(Integer)view.getTag())
+                        pos = -1;
+                    else
+                        pos = (Integer)view.getTag();
                     if (null != mOnPopItemClickListener)
-                        mOnPopItemClickListener.onPopItemClick(view, (Integer)view.getTag());
+                        mOnPopItemClickListener.onItemClick(view, pos);
                     notifyDataSetChanged();
                     dismiss();
                 }

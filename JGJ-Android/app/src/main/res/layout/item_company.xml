@@ -11,7 +11,6 @@
         android:id="@+id/image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/canteen"
         android:layout_marginLeft="@dimen/margin_10dp"
         android:layout_centerVertical="true"
         />
@@ -27,6 +26,7 @@
 
 
         <TextView
+            android:id="@+id/name"
             style="@style/textViewBigStyle_dark"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
@@ -45,7 +45,7 @@
 
             <TextView
                 style="@style/textViewStyle_middle"
-                android:id="@+id/name"
+                android:id="@+id/lperson"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:text="张一一"
@@ -53,17 +53,18 @@
 
             <TextView
                 style="@style/textViewStyle_middle"
-                android:id="@+id/phone"
+                android:id="@+id/tel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="13738258025"
-                android:layout_toRightOf="@+id/name"
+                android:layout_toRightOf="@+id/lperson"
                 android:layout_marginLeft="67dp"
                 />
 
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/address"
             style="@style/textViewSmallStyle_light"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
