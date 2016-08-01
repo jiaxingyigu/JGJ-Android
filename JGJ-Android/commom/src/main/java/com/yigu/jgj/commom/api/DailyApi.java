@@ -56,9 +56,9 @@ public class DailyApi extends BasicApi{
         params.put("userid",userid);
         params.put("ptioners",ptioners);
         params.put("hcate",hcate);
-        params.put("showlicense",showlicense);
-        params.put("hygiene",hygiene);
-        params.put("invoice",invoice);
+        params.put("showlicense",(TextUtils.isEmpty(showlicense)||"null".equals(showlicense))?"0":showlicense);
+        params.put("hygiene",(TextUtils.isEmpty(hygiene)||"null".equals(hygiene))?"0":hygiene);
+        params.put("invoice",(TextUtils.isEmpty(invoice)||"null".equals(invoice))?"0":invoice);
         params.put("sanitation",(TextUtils.isEmpty(sanitation)||"null".equals(sanitation))?"0":sanitation);
         params.put("overdue",(TextUtils.isEmpty(overdue)||"null".equals(overdue))?"0":overdue);
         params.put("fullmark",(TextUtils.isEmpty(fullmark)||"null".equals(fullmark))?"0":fullmark);
@@ -69,6 +69,7 @@ public class DailyApi extends BasicApi{
         if(!TextUtils.isEmpty(tasksend))
             params.put("tasksend",tasksend);
         params.put("image",image);
+        DebugLog.i(params.toString());
         MapiUtil.getInstance().call(activity,dailyPatrol,params,new MapiUtil.MapiSuccessResponse(){
             @Override
             public void success(JSONObject json) {
@@ -129,6 +130,59 @@ public class DailyApi extends BasicApi{
             }
         },new MapiUtil.MapiFailResponse(){
 
+            @Override
+            public void fail(String code, String failMessage) {
+                exceptionCallback.error(code,failMessage);
+            }
+        });
+    }
+
+    /**
+     * 任务分配-转移
+     * @param activity
+     * @param ROLE      登录人的角色ID
+     * @param ID        隐患ID
+     * @param callback
+     * @param exceptionCallback
+     */
+    public static void tasktransfer(Activity activity,String ROLE,String ID,final RequestCallback callback,final RequestExceptionCallback exceptionCallback){
+        Map<String,String> params = new HashMap<>();
+        params.put("ROLE",ROLE);
+        params.put("ID",ID);
+        MapiUtil.getInstance().call(activity,tasktransfer,params,new MapiUtil.MapiSuccessResponse(){
+            @Override
+            public void success(JSONObject json) {
+                DebugLog.i("json="+json);
+                callback.success(json);
+            }
+        },new MapiUtil.MapiFailResponse(){
+
+            @Override
+            public void fail(String code, String failMessage) {
+                exceptionCallback.error(code,failMessage);
+            }
+        });
+    }
+
+    /**
+     * 我的任务-处理 /隐患档案-完成
+     * @param activity
+     * @param type     归档传4  需立案查处传3  隐患档案完成传4
+     * @param ID       隐患ID
+     * @param callback
+     * @param exceptionCallback
+     */
+    public static void taskcomplete(Activity activity,String type,String ID,final RequestCallback callback,final RequestExceptionCallback exceptionCallback){
+        Map<String,String> params = new HashMap<>();
+        params.put("type",type);
+        params.put("ID",ID);
+        MapiUtil.getInstance().call(activity,taskcomplete,params,new MapiUtil.MapiSuccessResponse(){
+            @Override
+            public void success(JSONObject json) {
+                DebugLog.i("json="+json);
+                callback.success(json);
+            }
+        },new MapiUtil.MapiFailResponse(){
             @Override
             public void fail(String code, String failMessage) {
                 exceptionCallback.error(code,failMessage);

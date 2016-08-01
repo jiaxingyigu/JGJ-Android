@@ -13,6 +13,7 @@ import com.yigu.jgj.adapter.daily.DailySecondAdapter;
 import com.yigu.jgj.base.BaseActivity;
 import com.yigu.jgj.base.Config;
 import com.yigu.jgj.commom.result.MapiItemResult;
+import com.yigu.jgj.commom.widget.MainToast;
 import com.yigu.jgj.util.ControllerUtil;
 import com.yigu.jgj.view.DailyProjectLayout;
 import com.yigu.jgj.view.DailySaleLayout;
@@ -103,9 +104,9 @@ public class DailySecondActivity extends BaseActivity {
             if(view instanceof DailySaleLayout){
                 DailySaleLayout daily = (DailySaleLayout)view;
                 if(daily.vorify()){
-                    item.setShowlicense(daily.sanitationCheck());
-                    item.setHygiene(daily.overdueCheck());
-                    item.setInvoice(daily.fullmarkCheck());
+                    item.setSanitation(daily.sanitationCheck());
+                    item.setOverdue(daily.overdueCheck());
+                    item.setFullmark(daily.fullmarkCheck());
                 }else {
                     item = null;
                     break;
@@ -115,9 +116,9 @@ public class DailySecondActivity extends BaseActivity {
             if(view instanceof DailyServiceLayout){
                 DailyServiceLayout daily = (DailyServiceLayout)view;
                 if(daily.vorify()){
-                    item.setShowlicense(daily.trainCheck());
-                    item.setHygiene(daily.disinfectionCheck());
-                    item.setInvoice(daily.posterCheck());
+                    item.setTrain(daily.trainCheck());
+                    item.setDisinfection(daily.disinfectionCheck());
+                    item.setPoster(daily.posterCheck());
                 }else {
                     item = null;
                     break;

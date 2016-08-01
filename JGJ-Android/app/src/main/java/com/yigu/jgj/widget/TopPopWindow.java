@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 
 import com.yigu.jgj.R;
 import com.yigu.jgj.commom.result.MapiResourceResult;
+import com.yigu.jgj.commom.util.DPUtil;
 import com.yigu.jgj.commom.util.DebugLog;
 import com.yigu.jgj.jgjinterface.RecyOnItemClickListener;
 
@@ -81,6 +83,7 @@ public class TopPopWindow extends PopupWindow implements PopupWindow.OnDismissLi
         LinearLayoutManager manager = new LinearLayoutManager(mContext);
         manager.setOrientation(OrientationHelper.VERTICAL);
         recyclerView.setLayoutManager(manager);
+        recyclerView.addItemDecoration(new DividerListItemDecoration(mContext,LinearLayoutManager.HORIZONTAL, DPUtil.dip2px(1),mContext.getResources().getColor(R.color.divider_line)));//分割线
         mAdapter = new PopAdapter(mContext);
         recyclerView.setAdapter(mAdapter);
     }

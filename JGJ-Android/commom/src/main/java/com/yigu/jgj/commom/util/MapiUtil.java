@@ -135,7 +135,7 @@ public class MapiUtil {
                             act.sendBroadcast(intent);
                             return;
                         }
-                        if (fail != null && !code.equals("0")) {
+                        if (fail != null && !code.equals("01")) {
                             fail.fail(code, jsonObject.getString("message"));//参数不满足条件
                         }
                     }

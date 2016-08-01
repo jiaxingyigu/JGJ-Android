@@ -13,6 +13,7 @@ import java.util.regex.PatternSyntaxException;
  * Created by Administrator on 2016/2/17.
  */
 public class StringUtil {
+
     /**
      * 判断字符串是否为空
      *

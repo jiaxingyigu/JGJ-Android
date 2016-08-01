@@ -51,9 +51,25 @@ public class TaskDeelLayout extends RelativeLayout {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.change:
+                if(null!=l)
+                    l.change();
                 break;
             case R.id.investigation:
+                if(null!=l)
+                    l.investigation();
                 break;
         }
     }
+
+    private OnDeelClickListener l;
+
+    public interface OnDeelClickListener{
+        void change();
+        void investigation();
+    }
+
+    public void setOnDeelClickListener(OnDeelClickListener l){
+        this.l = l;
+    }
+
 }

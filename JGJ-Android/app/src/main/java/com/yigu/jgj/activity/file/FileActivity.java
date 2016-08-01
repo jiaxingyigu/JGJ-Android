@@ -19,6 +19,7 @@ import com.yigu.jgj.base.BaseActivity;
 import com.yigu.jgj.commom.api.ItemApi;
 import com.yigu.jgj.commom.result.MapiItemResult;
 import com.yigu.jgj.commom.result.MapiResourceResult;
+import com.yigu.jgj.commom.result.MapiTaskResult;
 import com.yigu.jgj.commom.util.DateUtil;
 import com.yigu.jgj.commom.util.DebugLog;
 import com.yigu.jgj.commom.util.RequestExceptionCallback;
@@ -60,7 +61,7 @@ public class FileActivity extends BaseActivity {
     FileAdapter mAdapter;
     FilterAddsPop filterAddsPop;
     List<MapiResourceResult> mList = new ArrayList<>();
-    List<MapiItemResult> itemList = new ArrayList<>();
+    List<MapiTaskResult> itemList = new ArrayList<>();
 
     String type = "";
     String COMMUNITY = "";
@@ -102,6 +103,7 @@ public class FileActivity extends BaseActivity {
         }
 
         COMMUNITY  = userSP.getUserBean().getCOMMUNITY();
+        DebugLog.i("COMMUNITY"+COMMUNITY);
         if(!TextUtils.isEmpty(COMMUNITY)&&!mList.isEmpty()) {
             for (MapiResourceResult resourceResult : mList) {
                 if (COMMUNITY.equals(resourceResult.getZD_ID())) {
@@ -119,7 +121,10 @@ public class FileActivity extends BaseActivity {
         mAdapter.setOnItemClickListener(new RecyOnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                ControllerUtil.go2DailySecond(itemList.get(position));
+                if("0".equals(type))
+                    ControllerUtil.go2FileDetail(itemList.get(position),"日常巡查");
+                else if("4".equals(type))
+                    ControllerUtil.go2FileDetail(itemList.get(position),"隐患");
             }
         });
         swipeLayout.setBestRefreshListener(new BestSwipeRefreshLayout.BestRefreshListener() {
@@ -134,6 +139,8 @@ public class FileActivity extends BaseActivity {
             public void onItemClick(View view, int postion) {
                 if (null != view) {
                     filterAdds.setText(mList.get(postion).getNAME());
+                    COMMUNITY = mList.get(postion).getZD_ID();
+                    refreshData();
                 }
             }
         });
@@ -221,9 +228,10 @@ public class FileActivity extends BaseActivity {
 
     public void load(){
         String COMPANY = userSP.getUserBean().getCOMPANY();
-        ItemApi.getFileList(this, type, COMPANY,COMMUNITY,startime,endtime, pageIndex+"",pageSize+"", new RequestPageCallback<List<MapiItemResult>>() {
+        DebugLog.i("COMPANY"+COMPANY);
+        ItemApi.getFileList(this, type, COMPANY,COMMUNITY,startime,endtime, pageIndex+"",pageSize+"", new RequestPageCallback<List<MapiTaskResult>>() {
             @Override
-            public void success(Integer isNext,List<MapiItemResult> success) {
+            public void success(Integer isNext,List<MapiTaskResult> success) {
                 swipeLayout.setRefreshing(false);
                 ISNEXT = isNext;
                 if(success.isEmpty())
@@ -248,9 +256,10 @@ public class FileActivity extends BaseActivity {
     }
 
     public void refreshData() {
-        if (null != mList) {
-            mList.clear();
+        if (null != itemList) {
+            itemList.clear();
             pageIndex = 0;
+            mAdapter.notifyDataSetChanged();
             load();
         }
     }

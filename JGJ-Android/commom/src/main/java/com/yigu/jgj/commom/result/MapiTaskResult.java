@@ -16,6 +16,51 @@ public class MapiTaskResult implements Serializable{
     private String ID;
     private String shopname;
     private String user;
+    private String senduser;
+    private String taskstime;
+    private String receiver;
+    private String taskotime;
+    private String LPERSON;
+
+    public String getLPERSON() {
+        return LPERSON;
+    }
+
+    public void setLPERSON(String LPERSON) {
+        this.LPERSON = LPERSON;
+    }
+
+    public String getReceiver() {
+        return receiver;
+    }
+
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
+    }
+
+    public String getSenduser() {
+        return senduser;
+    }
+
+    public void setSenduser(String senduser) {
+        this.senduser = senduser;
+    }
+
+    public String getTaskotime() {
+        return taskotime;
+    }
+
+    public void setTaskotime(String taskotime) {
+        this.taskotime = taskotime;
+    }
+
+    public String getTaskstime() {
+        return taskstime;
+    }
+
+    public void setTaskstime(String taskstime) {
+        this.taskstime = taskstime;
+    }
 
     public String getAddress() {
         return address;

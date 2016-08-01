@@ -102,12 +102,12 @@ public class CompanyNoTitleFragment extends BaseFrag {
         ItemApi.getShoplist(getActivity(), "", COMMUNITY, 1 + "", pageIndex+"",pageSize+"", new RequestPageCallback<List<MapiItemResult>>() {
             @Override
             public void success(Integer isNext,List<MapiItemResult> success) {
-                swipeLayout.setRefreshing(false);
                 ISNEXT = isNext;
                 if(success.isEmpty())
                     return;
                 mList.addAll(success);
                 mAdapter.notifyDataSetChanged();
+                swipeLayout.setRefreshing(false);
             }
         }, new RequestExceptionCallback() {
             @Override
@@ -129,6 +129,7 @@ public class CompanyNoTitleFragment extends BaseFrag {
         if (null != mList) {
             mList.clear();
             pageIndex = 0;
+            mAdapter.notifyDataSetChanged();
             load();
         }
     }

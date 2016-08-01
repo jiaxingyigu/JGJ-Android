@@ -5,6 +5,7 @@ import android.content.Intent;
 import com.yigu.jgj.activity.LoginActivity;
 import com.yigu.jgj.activity.MainActivity;
 import com.yigu.jgj.activity.SelCommunityActivity;
+import com.yigu.jgj.activity.SelRootActivity;
 import com.yigu.jgj.activity.assign.AssignDetailActivity;
 import com.yigu.jgj.activity.assign.AssignTaskActivity;
 import com.yigu.jgj.activity.company.CompanyAddActivity;
@@ -16,6 +17,7 @@ import com.yigu.jgj.activity.daily.DailyThirdActivity;
 import com.yigu.jgj.activity.danger.DanagerDetailActivity;
 import com.yigu.jgj.activity.danger.DangerListActivity;
 import com.yigu.jgj.activity.file.FileActivity;
+import com.yigu.jgj.activity.file.FileDetailActivity;
 import com.yigu.jgj.activity.person.PerManageActivity;
 import com.yigu.jgj.activity.task.TaskActivity;
 import com.yigu.jgj.activity.task.TaskDetailActivity;
@@ -94,9 +96,10 @@ public class ControllerUtil {
     /**
      * 我的任务-详情
      */
-    public static void go2TaskDetail() {
+    public static void go2TaskDetail(MapiTaskResult taskResult) {
         Intent intent = new Intent(AppContext.getInstance(), TaskDetailActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("item",taskResult);
         AppContext.getInstance().startActivity(intent);
     }
     public static void go2CompanyList() {
@@ -117,10 +120,10 @@ public class ControllerUtil {
     /**
      * 任务分派-详情
      */
-    public static void go2AssignDetail(MapiTaskResult itemResult) {
+    public static void go2AssignDetail(MapiTaskResult taskResult) {
         Intent intent = new Intent(AppContext.getInstance(), AssignDetailActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra("item",itemResult);
+        intent.putExtra("item",taskResult);
         AppContext.getInstance().startActivity(intent);
     }
 
@@ -136,10 +139,10 @@ public class ControllerUtil {
     /**
      * 隐患档案-列表
      */
-    public static void go2DanagerDetail(String id) {
+    public static void go2DanagerDetail(MapiItemResult itemResult) {
         Intent intent = new Intent(AppContext.getInstance(), DanagerDetailActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra("id",id);
+        intent.putExtra("item",itemResult);
         AppContext.getInstance().startActivity(intent);
     }
 
@@ -169,4 +172,26 @@ public class ControllerUtil {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         AppContext.getInstance().startActivity(intent);
     }
+
+    /**
+     * 汇报上级
+     */
+    public static void go2SelRoot(MapiItemResult itemResult) {
+        Intent intent = new Intent(AppContext.getInstance(), SelRootActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("item",itemResult);
+        AppContext.getInstance().startActivity(intent);
+    }
+
+    /**
+     * 归档-详情
+     */
+    public static void go2FileDetail(MapiTaskResult taskResult,String title) {
+        Intent intent = new Intent(AppContext.getInstance(), FileDetailActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("item",taskResult);
+        intent.putExtra("title",title);
+        AppContext.getInstance().startActivity(intent);
+    }
+
 }

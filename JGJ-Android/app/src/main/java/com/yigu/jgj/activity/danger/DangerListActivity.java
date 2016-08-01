@@ -1,5 +1,6 @@
 package com.yigu.jgj.activity.danger;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,10 +10,13 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.yigu.jgj.R;
+import com.yigu.jgj.activity.task.TaskDetailActivity;
 import com.yigu.jgj.adapter.daily.DailyAdapter;
 import com.yigu.jgj.adapter.danager.DanagerListAdapter;
 import com.yigu.jgj.base.BaseActivity;
+import com.yigu.jgj.base.RequestCode;
 import com.yigu.jgj.commom.api.ItemApi;
+import com.yigu.jgj.commom.application.AppContext;
 import com.yigu.jgj.commom.result.MapiItemResult;
 import com.yigu.jgj.commom.util.RequestExceptionCallback;
 import com.yigu.jgj.commom.util.RequestPageCallback;
@@ -70,7 +74,10 @@ public class DangerListActivity extends BaseActivity {
         mAdapter.setOnItemClickListener(new RecyOnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                ControllerUtil.go2DanagerDetail(mList.get(position).getID());
+                Intent intent = new Intent(AppContext.getInstance(), DanagerDetailActivity.class);
+                intent.putExtra("item",mList.get(position));
+                startActivityForResult(intent, RequestCode.Danager_Detail);
+//                ControllerUtil.go2DanagerDetail(mList.get(position));
             }
         });
         swipeLayout.setBestRefreshListener(new BestSwipeRefreshLayout.BestRefreshListener() {
@@ -105,12 +112,13 @@ public class DangerListActivity extends BaseActivity {
         ItemApi.getDangerList(this, COMPANY, COMMUNITY, pageIndex + "", pageSize+"", userId, new RequestPageCallback<List<MapiItemResult>>() {
             @Override
             public void success(Integer isNext, List<MapiItemResult> success) {
-                swipeLayout.setRefreshing(false);
                 ISNEXT = isNext;
-                if(success.isEmpty())
+                if(success.isEmpty()) {
                     return;
+                }
                 mList.addAll(success);
                 mAdapter.notifyDataSetChanged();
+                swipeLayout.setRefreshing(false);
             }
         }, new RequestExceptionCallback() {
             @Override
@@ -132,8 +140,20 @@ public class DangerListActivity extends BaseActivity {
         if (null != mList) {
             mList.clear();
             pageIndex = 0;
+            mAdapter.notifyDataSetChanged();
             load();
         }
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(RESULT_OK == resultCode){
+            if(requestCode == RequestCode.Danager_Detail){
+                refreshData();
+            }
+        }
+    }
+
 
 }

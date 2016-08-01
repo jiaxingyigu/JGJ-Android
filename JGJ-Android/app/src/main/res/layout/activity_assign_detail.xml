@@ -12,6 +12,16 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/header_layout"></android.support.v7.widget.RecyclerView>
+        android:layout_below="@+id/header_layout"
+        ></android.support.v7.widget.RecyclerView>
+
+    <View
+        android:id="@+id/bg_color"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000"
+        android:visibility="gone"
+        android:layout_below="@id/header_layout"
+        />
 
 </RelativeLayout>

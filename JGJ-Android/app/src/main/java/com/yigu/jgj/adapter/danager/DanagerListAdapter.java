@@ -58,7 +58,7 @@ public class DanagerListAdapter extends RecyclerView.Adapter<DanagerListAdapter.
         });
 
         MapiItemResult itemResult = mList.get(position);
-        holder.name.setText(itemResult.getNAME());
+        holder.name.setText(itemResult.getShopname());
         holder.lperson.setText(itemResult.getLPERSON());
         holder.tel.setText(itemResult.getTEL());
         holder.address.setText(itemResult.getADDRESS());

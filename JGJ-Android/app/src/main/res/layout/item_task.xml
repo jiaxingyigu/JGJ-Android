@@ -15,13 +15,13 @@
         >
 
             <TextView
+                android:id="@+id/taskstime"
                 style="@style/textViewSmallStyle_light"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2015..06.06"
                 />
         <TextView
-            android:id="@+id/name_tv"
+            android:id="@+id/senduser"
             style="@style/textViewSmallStyle_light"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -42,6 +42,7 @@
         >
 
         <TextView
+            android:id="@+id/shopname"
             style="@style/textViewStyle_middle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

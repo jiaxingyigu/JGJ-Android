@@ -117,8 +117,20 @@ public class RlCheckLayout extends RelativeLayout {
         tvFoodSale.setChecked((null!=resourceResult.getFOODSALES()&&resourceResult.getFOODSALES()==1)?true:false);
         tvFoodService.setChecked((null!=resourceResult.getFOODSERVICE()&&resourceResult.getFOODSERVICE()==1)?true:false);
         tvCanteen.setChecked((null!=resourceResult.getCANTEEN()&&resourceResult.getCANTEEN()==1)?true:false);
-        tvLicenseHave.setChecked((null!=resourceResult.getLICENSE()&&resourceResult.getLICENSE()==1)?true:false);
-        tvPermitHave.setChecked((null!=resourceResult.getPEMIT()&&resourceResult.getPEMIT()==1)?true:false);
+        if(null!=resourceResult.getLICENSE()){
+            if(resourceResult.getLICENSE()==1)
+                tvLicenseHave.setChecked(true);
+            else
+                tvLicenseNull.setChecked(true);
+        }
+
+        if(null!=resourceResult.getPEMIT()){
+            if(resourceResult.getPEMIT()==1)
+                tvPermitHave.setChecked(true);
+            else
+                tvPermitNull.setChecked(true);
+        }
+
     }
 
 }

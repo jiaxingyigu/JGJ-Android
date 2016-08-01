@@ -30,4 +30,10 @@ public class BasicApi {
     protected static String dailyPatrolDetails = "/appuser/dailyPatrolDetails";
     /**任务分配*/
     protected static String tasksend = "/appuser/tasksend";
+    /**我的任务-处理/隐患档案-完成*/
+    protected static String taskcomplete = "/appuser/taskcomplete";
+    /**任务分配-转移*/
+    protected static String tasktransfer = "/appuser/tasktransfer";
+
+
 }

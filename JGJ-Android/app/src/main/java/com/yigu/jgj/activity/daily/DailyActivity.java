@@ -4,7 +4,10 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.yigu.jgj.R;
@@ -12,7 +15,6 @@ import com.yigu.jgj.adapter.daily.DailyAdapter;
 import com.yigu.jgj.base.BaseActivity;
 import com.yigu.jgj.commom.api.ItemApi;
 import com.yigu.jgj.commom.result.MapiItemResult;
-import com.yigu.jgj.commom.util.RequestCallback;
 import com.yigu.jgj.commom.util.RequestExceptionCallback;
 import com.yigu.jgj.commom.util.RequestPageCallback;
 import com.yigu.jgj.jgjinterface.RecyOnItemClickListener;
@@ -35,12 +37,15 @@ public class DailyActivity extends BaseActivity {
     DailyAdapter mAdapter;
     @Bind(R.id.swipeLayout)
     BestSwipeRefreshLayout swipeLayout;
+    @Bind(R.id.search_et)
+    EditText searchEt;
 
     List<MapiItemResult> mList = new ArrayList<>();
-    private Integer pageIndex=0;
+
+    private Integer pageIndex = 0;
     private Integer pageSize = 8;
     private Integer ISNEXT = 1;
-
+    private String search = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +70,7 @@ public class DailyActivity extends BaseActivity {
         LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setOrientation(OrientationHelper.VERTICAL);
         recyclerView.setLayoutManager(manager);
-        mAdapter = new DailyAdapter(this,mList);
+        mAdapter = new DailyAdapter(this, mList);
         recyclerView.setAdapter(mAdapter);
     }
 
@@ -99,16 +104,35 @@ public class DailyActivity extends BaseActivity {
                 super.onScrolled(recyclerView, dx, dy);
             }
         });
+
+        searchEt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                search = charSequence.toString();
+                refreshData();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
     }
 
-    public void load(){
+    public void load() {
         String COMMUNITY = userSP.getUserBean().getCOMMUNITY();
-        ItemApi.getShoplist(this, "", COMMUNITY, 0 + "", pageIndex+"",pageSize+"", new RequestPageCallback<List<MapiItemResult>>() {
+        ItemApi.getShoplist(this, search, COMMUNITY, 0 + "", pageIndex + "", pageSize + "", new RequestPageCallback<List<MapiItemResult>>() {
             @Override
-            public void success(Integer isNext,List<MapiItemResult> success) {
+            public void success(Integer isNext, List<MapiItemResult> success) {
                 swipeLayout.setRefreshing(false);
                 ISNEXT = isNext;
-                if(success.isEmpty())
+                if (success.isEmpty())
                     return;
                 mList.addAll(success);
                 mAdapter.notifyDataSetChanged();
@@ -122,7 +146,7 @@ public class DailyActivity extends BaseActivity {
     }
 
     private void loadNext() {
-        if (ISNEXT != null && ISNEXT==0) {
+        if (ISNEXT != null && ISNEXT == 0) {
             return;
         }
         pageIndex++;
@@ -133,6 +157,7 @@ public class DailyActivity extends BaseActivity {
         if (null != mList) {
             mList.clear();
             pageIndex = 0;
+            mAdapter.notifyDataSetChanged();
             load();
         }
     }

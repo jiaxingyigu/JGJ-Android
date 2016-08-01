@@ -18,6 +18,7 @@ import com.alibaba.fastjson.TypeReference;
 import com.yigu.jgj.R;
 import com.yigu.jgj.adapter.PerManageAdapter;
 import com.yigu.jgj.base.BaseActivity;
+import com.yigu.jgj.broadCast.ReceiverAction;
 import com.yigu.jgj.commom.api.DailyApi;
 import com.yigu.jgj.commom.api.UserApi;
 import com.yigu.jgj.commom.result.MapiResourceResult;
@@ -29,6 +30,7 @@ import com.yigu.jgj.commom.util.RequestPageCallback;
 import com.yigu.jgj.commom.widget.MainToast;
 import com.yigu.jgj.jgjinterface.RecyOnItemClickListener;
 import com.yigu.jgj.util.ControllerUtil;
+import com.yigu.jgj.util.JGJDataSource;
 import com.yigu.jgj.widget.BestSwipeRefreshLayout;
 import com.yigu.jgj.widget.TopPopWindow;
 
@@ -73,6 +75,7 @@ public class PerManageActivity extends BaseActivity {
 
     private int pos = -1;
     private String ID = "";
+    String ROLE_ID = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +92,8 @@ public class PerManageActivity extends BaseActivity {
             requestCode = getIntent().getExtras().getInt("requestCode", 0);
             ID = getIntent().getExtras().getString("ID","");
         }
+        if(!TextUtils.isEmpty(ID))
+            ROLE_ID = JGJDataSource.manage_roleid;
         if(requestCode>0){
             tvCenter.setText("请选择分派人员");
             tvRight.setText("确定");
@@ -209,7 +214,7 @@ public class PerManageActivity extends BaseActivity {
 
     private void load(){
 
-        UserApi.getUserList(this, search, COMPANY, COMMUNITY, pageIndex + "", pageSize+"",new RequestPageCallback< List<MapiUserResult>>() {
+        UserApi.getUserList(this, search, COMPANY, COMMUNITY,ROLE_ID, pageIndex + "", pageSize+"",new RequestPageCallback< List<MapiUserResult>>() {
             @Override
             public void success(Integer isNext,List<MapiUserResult> success) {
                 swipeLayout.setRefreshing(false);
@@ -239,6 +244,7 @@ public class PerManageActivity extends BaseActivity {
         if (null != mList) {
             mList.clear();
             pageIndex = 0;
+            mAdapter.notifyDataSetChanged();
             load();
         }
     }
@@ -250,6 +256,7 @@ public class PerManageActivity extends BaseActivity {
             public void success(Object success) {
                 hideLoading();
                 MainToast.showShortToast("分配成功");
+                sendBroadcast(new Intent(ReceiverAction.task_action));//发送广播
                 ControllerUtil.go2AssignTask();
                 finish();
             }

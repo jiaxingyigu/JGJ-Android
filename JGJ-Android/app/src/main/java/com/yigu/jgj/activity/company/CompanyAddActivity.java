@@ -73,15 +73,24 @@ public class CompanyAddActivity extends BaseActivity {
 
     private void load() {
 
-        if(null!=userSP.getResource()){
+        if (null != userSP.getResource()) {
             JSONObject jsonObject = JSONObject.parseObject(userSP.getResource());
             Map<String, ArrayList<MapiResourceResult>> userBean = JSON.parseObject(jsonObject
                             .getJSONObject("data").toJSONString(),
                     new TypeReference<Map<String, ArrayList<MapiResourceResult>>>() {
                     });
             mList.clear();
-            if(!userBean.get("SQ").isEmpty())
+            if (!userBean.get("SQ").isEmpty())
                 mList.addAll(userBean.get("SQ"));
+            if (!TextUtils.isEmpty(userSP.getUserBean().getCOMMUNITY())) {
+                for (MapiResourceResult resourceResult : mList) {
+                    if (resourceResult.getZD_ID().equals(userSP.getUserBean().getCOMMUNITY())) {
+                        cid.setText(resourceResult.getNAME());
+                        cid_id = resourceResult.getZD_ID();
+                        break;
+                    }
+                }
+            }
         }
 
     }
@@ -125,26 +134,28 @@ public class CompanyAddActivity extends BaseActivity {
                 if (!rlCheckLayout.vorify())
                     return;
                 add(nameStr, addressStr, lpersonStr, cid_id, hcatenStr, rlCheckLayout.foodSaleCheck() + "", rlCheckLayout.tvFoodServiceCheck() + "", rlCheckLayout.tvCanteenCheck() + "",
-                        rlCheckLayout.tvLicenseHaveCheck() + "", rlCheckLayout.tvPermitHaveCheck() + "",telStr);
+                        rlCheckLayout.tvLicenseHaveCheck() + "", rlCheckLayout.tvPermitHaveCheck() + "", telStr);
                 break;
             case R.id.cid:
-                //startActivityForResult 在标准模式下有效
-                Intent intent = new Intent(AppContext.getInstance(), SelCommunityActivity.class);
-                intent.putExtra("list", mList);
-                startActivityForResult(intent, RequestCode.sel_community);
+                if (TextUtils.isEmpty(userSP.getUserBean().getCOMMUNITY())) {
+                    //startActivityForResult 在标准模式下有效
+                    Intent intent = new Intent(AppContext.getInstance(), SelCommunityActivity.class);
+                    intent.putExtra("list", mList);
+                    startActivityForResult(intent, RequestCode.sel_community);
+                }
                 break;
         }
     }
 
-    private void add(String name, String address, String lperson, String cid_id, String hcaten, String FOODSALES, String FOODSERVICE, String CANTEEN, final String LICENSE,final String PEMIT,String TEL) {
+    private void add(String name, String address, String lperson, String cid_id, String hcaten, String FOODSALES, String FOODSERVICE, String CANTEEN, final String LICENSE, final String PEMIT, String TEL) {
         showLoading();
-        ItemApi.addShop(this, FOODSALES, FOODSERVICE, CANTEEN, LICENSE, PEMIT, name, address, lperson, cid_id, hcaten,TEL, new RequestCallback() {
+        ItemApi.addShop(this, FOODSALES, FOODSERVICE, CANTEEN, LICENSE, PEMIT, name, address, lperson, cid_id, hcaten, TEL, new RequestCallback() {
             @Override
             public void success(Object success) {
                 hideLoading();
                 MainToast.showLongToast("新增成功");
                 String action = "";
-                if(LICENSE.equals("1")&&PEMIT.equals("1"))
+                if (LICENSE.equals("1") && PEMIT.equals("1"))
                     action = ReceiverAction.addCompany_action;
                 else
                     action = ReceiverAction.addCompanyNoTitle_action;

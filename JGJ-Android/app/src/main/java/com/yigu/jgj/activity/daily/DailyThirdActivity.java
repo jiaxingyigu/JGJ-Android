@@ -113,12 +113,14 @@ public class DailyThirdActivity extends BaseActivity {
                 file();
                 break;
             case R.id.submit:
-
+                getImages();
+                itemResult.setRemark(editText.getText().toString());
+                ControllerUtil.go2SelRoot(itemResult);
                 break;
         }
     }
 
-    private void file(){//归档
+    private void getImages(){
         String images = "";
         StringBuilder sb = new StringBuilder();
         for (MapiImageResult imageResult : mList) {
@@ -127,10 +129,16 @@ public class DailyThirdActivity extends BaseActivity {
             sb.append(imageResult.getID());
         }
         images = sb.toString();
+        itemResult.setImage(images);
+    }
+
+    private void file(){//归档
+        getImages();
+        itemResult.setRemark(editText.getText().toString());
         showLoading();
         DailyApi.dailyPatrol(this, "0", itemResult.getID(), userSP.getUserBean().getUSER_ID(), itemResult.getPtioners() + "", itemResult.getHCATEN() + "", itemResult.getShowlicense() + "",
                 itemResult.getHygiene() + "", itemResult.getInvoice() + "", itemResult.getSanitation() + "", itemResult.getOverdue() + "", itemResult.getFullmark() + "", itemResult.getTrain() + "",
-                itemResult.getDisinfection() + "", itemResult.getPoster() + "", editText.getText().toString(), tasksend, images, new RequestCallback() {
+                itemResult.getDisinfection() + "", itemResult.getPoster() + "",itemResult.getRemark() , tasksend, itemResult.getImage(), new RequestCallback() {
                     @Override
                     public void success(Object success) {
                         hideLoading();

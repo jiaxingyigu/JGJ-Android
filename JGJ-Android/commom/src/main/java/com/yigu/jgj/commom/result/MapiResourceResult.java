@@ -8,6 +8,28 @@ import java.io.Serializable;
 public class MapiResourceResult implements Serializable {
     private String NAME;
     private String ZD_ID;
+    private int id;
+    public MapiResourceResult(){
+
+    }
+    public MapiResourceResult(int id,String NAME) {
+        this.id = id;
+        this.NAME = NAME;
+    }
+
+    public MapiResourceResult(String ZD_ID,String NAME) {
+        this.ZD_ID = ZD_ID;
+        this.NAME = NAME;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     private boolean isCheck = false;
 
     public boolean isCheck() {

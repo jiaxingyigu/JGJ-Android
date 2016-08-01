@@ -53,10 +53,11 @@ public class UserApi extends BasicApi{
      *                社区ID 可选填
      * @param PAGENO
      * 　　　　　　　页码 必填
+     * @param ROLE_ID 任务分配时用
      * @param callback
      * @param exceptionCallback
      */
-    public static void getUserList(Activity activity, String USERNAME, String COMPANY, String COMMUNITY, String PAGENO, String SIZE, final RequestPageCallback callback, final RequestExceptionCallback exceptionCallback){
+    public static void getUserList(Activity activity, String USERNAME, String COMPANY, String COMMUNITY,String ROLE_ID, String PAGENO, String SIZE, final RequestPageCallback callback, final RequestExceptionCallback exceptionCallback){
 
         Map<String,String> params = new HashMap<>();
         params.put("USERNAME",USERNAME);
@@ -64,6 +65,8 @@ public class UserApi extends BasicApi{
             params.put("COMPANY",COMPANY);
         if(!TextUtils.isEmpty(COMMUNITY))
             params.put("COMMUNITY",COMMUNITY);
+        if(!TextUtils.isEmpty(ROLE_ID))
+            params.put("ROLE_ID",ROLE_ID);
         params.put("PAGENO",PAGENO);
         params.put("SIZE",SIZE);
         MapiUtil.getInstance().call(activity,getUserlist,params,new MapiUtil.MapiSuccessResponse(){

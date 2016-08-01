@@ -1,24 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/drawerLayout"
     >
 
-    <include
-        layout="@layout/lay_header"
-        />
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/header_layout"
-        />
+        >
+
+        <include
+            layout="@layout/lay_header"
+            />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/header_layout"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent" android:layout_height="match_parent"
+            android:background="@mipmap/splash_bg"
+            android:id="@+id/startLayout"
+            android:orientation="horizontal"
+            />
+
+    </RelativeLayout>
 
     <LinearLayout
-        android:layout_width="match_parent" android:layout_height="match_parent"
-        android:background="@mipmap/splash_bg"
-        android:id="@+id/startLayout"
-        android:orientation="horizontal"
-        />
+        android:id="@+id/ll_drawerlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        android:orientation="vertical"
+        android:clickable="true"
+        >
 
-</RelativeLayout>
+        <FrameLayout
+            android:id="@+id/fragment_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+        </FrameLayout>
+    </LinearLayout>
+
+</android.support.v4.widget.DrawerLayout>
+

@@ -9,7 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.yigu.jgj.R;
+import com.yigu.jgj.commom.result.MapiResourceResult;
 import com.yigu.jgj.jgjinterface.RecyOnItemClickListener;
+import com.yigu.jgj.util.JGJDataSource;
 
 import java.util.List;
 import java.util.Map;
@@ -22,7 +24,7 @@ import butterknife.ButterKnife;
  */
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
 
-    private List<Integer> mList;
+    private List<MapiResourceResult> mList;
     private LayoutInflater inflater;
 
     private RecyOnItemClickListener onItemClickListener;
@@ -31,7 +33,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
         this.onItemClickListener = onItemClickListener;
     }
 
-    public MainAdapter(Context context,  List<Integer> list) {
+    public MainAdapter(Context context,  List<MapiResourceResult> list) {
         this.mList = list;
         inflater = LayoutInflater.from(context);
     }
@@ -48,7 +50,31 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(MainAdapter.ViewHolder holder, int position) {
-        holder.image.setImageResource(mList.get(position));
+        int resId = R.mipmap.main_one;
+        switch (mList.get(position).getId()){
+            case JGJDataSource.TYPE_DAILY:
+                resId = R.mipmap.main_one;
+                break;
+            case JGJDataSource.TYPE_COMPANY:
+                resId = R.mipmap.main_two;
+                break;
+            case JGJDataSource.TYPE_TASK:
+                resId = R.mipmap.main_three;
+                break;
+            case JGJDataSource.TYPE_ASSIGN:
+                resId = R.mipmap.main_three;
+                break;
+            case JGJDataSource.TYPE_DANGER:
+                resId = R.mipmap.main_four;
+                break;
+            case JGJDataSource.TYPE_PERSON:
+                resId = R.mipmap.main_five;
+                break;
+            case JGJDataSource.TYPE_FILE:
+                resId = R.mipmap.main_six;
+                break;
+        }
+        holder.image.setImageResource(resId);
         holder.image.setTag(position);
         holder.image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,28 +83,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
                     onItemClickListener.onItemClick(view,(Integer)view.getTag());
             }
         });
-        String text = "";
-        switch (position){
-            case 0:
-                text = "日常巡查";
-                break;
-            case 1:
-                text = "企业管理";
-                break;
-            case 2:
-                text = "我的任务";
-                break;
-            case 3:
-                text = "隐患档案";
-                break;
-            case 4:
-                text = "人员管理";
-                break;
-            case 5:
-                text = "归档信息";
-                break;
-        }
-        holder.title.setText(text);
+
+        holder.title.setText(mList.get(position).getNAME());
 
     }
    public class ViewHolder extends RecyclerView.ViewHolder{

@@ -5,6 +5,7 @@ import android.text.TextUtils;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.yigu.jgj.commom.result.MapiImageResult;
 import com.yigu.jgj.commom.result.MapiItemResult;
 import com.yigu.jgj.commom.result.MapiTaskResult;
 import com.yigu.jgj.commom.result.MapiUserResult;
@@ -120,7 +121,7 @@ public class ItemApi extends BasicApi{
      * @param exceptionCallback
      */
     public static void editShop(Activity activity, String ID,String FOODSALES, String FOODSERVICE,String CANTEEN,String LICENSE,String PEMIT,String NAME,
-                               String ADDRESS,String LPERSON,String CID,String HCATEN,final RequestCallback callback, final RequestExceptionCallback exceptionCallback){
+                               String ADDRESS,String LPERSON,String TEL,String CID,String HCATEN,final RequestCallback callback, final RequestExceptionCallback exceptionCallback){
         Map<String,String> params = new HashMap<>();
         params.put("ID",ID);
         params.put("FOODSALES",FOODSALES);
@@ -131,6 +132,7 @@ public class ItemApi extends BasicApi{
         params.put("NAME",NAME);
         params.put("ADDRESS",ADDRESS);
         params.put("LPERSON",LPERSON);
+        params.put("TEL",TEL);
         params.put("CID",CID);
         params.put("HCATEN",HCATEN);
         MapiUtil.getInstance().call(activity,editShop,params,new MapiUtil.MapiSuccessResponse(){
@@ -201,6 +203,9 @@ public class ItemApi extends BasicApi{
             public void success(JSONObject json) {
                 DebugLog.i("json="+json);
                 MapiItemResult result = JSONObject.parseObject(json.getJSONObject("data").getJSONObject("details").toJSONString(),MapiItemResult.class);
+                List<MapiImageResult> images =  JSONArray.parseArray(json.getJSONObject("data").getJSONArray("images").toJSONString(),MapiImageResult.class);
+                if(!images.isEmpty())
+                    result.setImages(images);
                 callback.success(result);
             }
         },new MapiUtil.MapiFailResponse(){
@@ -283,7 +288,7 @@ public class ItemApi extends BasicApi{
             @Override
             public void success(JSONObject json) {
                 DebugLog.i("json="+json);
-                List<MapiItemResult> result = JSONArray.parseArray(json.getJSONObject("data").getJSONArray("lists").toJSONString(),MapiItemResult.class);
+                List<MapiTaskResult> result = JSONArray.parseArray(json.getJSONObject("data").getJSONArray("lists").toJSONString(),MapiTaskResult.class);
                 Integer ISNEXT = json.getJSONObject("data").getInteger("ISNEXT");
                 callback.success(ISNEXT,result);
             }
@@ -294,5 +299,45 @@ public class ItemApi extends BasicApi{
             }
         });
     }
+
+    /**
+     * 我的任务-列表
+     * @param activity
+     * @param COMPANY
+     * @param COMMUNITY
+     * @param receiver
+     * @param PAGENO
+     * @param SIZE
+     * @param callback
+     * @param exceptionCallback
+     */
+    public static void getTaskList(Activity activity,String COMPANY,String COMMUNITY, String receiver,String PAGENO,String SIZE
+            ,final RequestPageCallback callback,final RequestExceptionCallback exceptionCallback){
+        Map<String,String> params = new HashMap<>();
+        params.put("type","2");
+        if(!TextUtils.isEmpty(COMPANY))
+            params.put("COMPANY",COMPANY);
+        if(!TextUtils.isEmpty(COMMUNITY))
+            params.put("COMMUNITY",COMMUNITY);
+        params.put("receiver",receiver);
+        params.put("PAGENO",PAGENO);
+        params.put("SIZE",SIZE);
+        MapiUtil.getInstance().call(activity,getDailyPatrollist,params,new MapiUtil.MapiSuccessResponse(){
+            @Override
+            public void success(JSONObject json) {
+                DebugLog.i("json="+json);
+                List<MapiTaskResult> result = JSONArray.parseArray(json.getJSONObject("data").getJSONArray("lists").toJSONString(),MapiTaskResult.class);
+                Integer ISNEXT = json.getJSONObject("data").getInteger("ISNEXT");
+                callback.success(ISNEXT,result);
+            }
+        },new MapiUtil.MapiFailResponse(){
+            @Override
+            public void fail(String code, String failMessage) {
+                exceptionCallback.error(code,failMessage);
+            }
+        });
+    }
+
+
 
 }

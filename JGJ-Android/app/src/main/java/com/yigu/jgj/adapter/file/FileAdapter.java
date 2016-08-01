@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.yigu.jgj.R;
 import com.yigu.jgj.commom.result.MapiItemResult;
+import com.yigu.jgj.commom.result.MapiTaskResult;
 import com.yigu.jgj.jgjinterface.RecyOnItemClickListener;
 
 import java.util.List;
@@ -23,14 +24,14 @@ import butterknife.ButterKnife;
  */
 public class FileAdapter extends RecyclerView.Adapter<FileAdapter.ViewHolder>{
     private LayoutInflater inflater;
-    List<MapiItemResult> mList;
+    List<MapiTaskResult> mList;
     private RecyOnItemClickListener onItemClickListener;
 
     public void setOnItemClickListener(RecyOnItemClickListener onItemClickListener){
         this.onItemClickListener = onItemClickListener;
     }
 
-    public FileAdapter(Context context, List<MapiItemResult> list) {
+    public FileAdapter(Context context, List<MapiTaskResult> list) {
         inflater = LayoutInflater.from(context);
         mList = list;
     }
@@ -56,11 +57,11 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.ViewHolder>{
             }
         });
 
-        MapiItemResult itemResult = mList.get(position);
+        MapiTaskResult itemResult = mList.get(position);
         holder.name.setText(itemResult.getShopname());
         holder.lperson.setText(itemResult.getLPERSON());
         holder.tel.setText(itemResult.getTEL());
-        holder.address.setText(itemResult.getADDRESS());
+        holder.address.setText(itemResult.getAddress());
         if(itemResult.getFOODSALES()==1){
             holder.image.setImageResource(R.mipmap.sales);
             return;

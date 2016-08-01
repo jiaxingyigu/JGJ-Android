@@ -78,8 +78,7 @@ public class DailyProjectLayout extends RelativeLayout {
         if(null!=itemResult) {
             oldhcatenk.setText(itemResult.getHCATEN() + "");
             ptioners.setText(itemResult.getPtioners()==null?"":itemResult.getPtioners()+"");
-            if(!enable)
-                hcate.setText(itemResult.getHCATEN()==null?"":itemResult.getHCATEN()+"");
+            hcate.setText(itemResult.getHcate()==null?"":itemResult.getHcate()+"");
             if(itemResult.getShowlicense()!=null){
                 if(itemResult.getShowlicense()==1)
                     showlicense.setChecked(true);

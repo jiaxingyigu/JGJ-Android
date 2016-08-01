@@ -26,6 +26,7 @@ public class MapiItemResult implements Serializable {
     private Integer HCATEN;
 
     private Integer ptioners;
+    private Integer hcate;
     private Integer showlicense;
     private Integer hygiene;
     private Integer invoice;
@@ -38,6 +39,68 @@ public class MapiItemResult implements Serializable {
     private String remark;
     private String shopname;
     private String idate;
+    private String image;
+    private String user;
+    private String senduser;
+    private String taskstime;
+    private String receiver;
+    private String taskotime;
+
+    public String getSenduser() {
+        return senduser;
+    }
+
+    public void setSenduser(String senduser) {
+        this.senduser = senduser;
+    }
+
+    public String getTaskotime() {
+        return taskotime;
+    }
+
+    public void setTaskotime(String taskotime) {
+        this.taskotime = taskotime;
+    }
+
+    public String getTaskstime() {
+        return taskstime;
+    }
+
+    public void setTaskstime(String taskstime) {
+        this.taskstime = taskstime;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getReceiver() {
+        return receiver;
+    }
+
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
+    }
+
+    public Integer getHcate() {
+        return hcate;
+    }
+
+    public void setHcate(Integer hcate) {
+        this.hcate = hcate;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public String getIdate() {
         return idate;

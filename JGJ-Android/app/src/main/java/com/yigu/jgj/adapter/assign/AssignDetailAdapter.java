@@ -1,16 +1,20 @@
 package com.yigu.jgj.adapter.assign;
 
 import android.content.Context;
+import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.yigu.jgj.R;
 import com.yigu.jgj.base.Config;
 import com.yigu.jgj.commom.result.MapiItemResult;
 import com.yigu.jgj.view.AssignHeadLayout;
+import com.yigu.jgj.view.DailyImageLayout;
 import com.yigu.jgj.view.DailyProjectLayout;
+import com.yigu.jgj.view.DailyRemarkLayout;
 import com.yigu.jgj.view.DailySaleLayout;
 import com.yigu.jgj.view.DailyServiceLayout;
 
@@ -51,6 +55,10 @@ public class AssignDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
                 return new SaleViewHolder(mLayoutInflater.inflate(R.layout.lay_daily_sale, parent, false));
             case Config.daily_service_canteen:
                 return new ServiceViewHolder(mLayoutInflater.inflate(R.layout.lay_daily_service, parent, false));
+            case Config.daily_remark:
+                return new RemarkViewHolder(mLayoutInflater.inflate(R.layout.lay_daily_remark, parent, false));
+            case Config.daily_image:
+                return new ImageViewHolder(mLayoutInflater.inflate(R.layout.lay_daily_image, parent, false));
         }
         return null;
     }
@@ -65,6 +73,10 @@ public class AssignDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             ((SaleViewHolder)holder).dailySaleLayout.loadData(itemResult,false);
         }else if(holder instanceof ServiceViewHolder){
             ((ServiceViewHolder)holder).dailyServiceLayout.loadData(itemResult,false);
+        }else if(holder instanceof RemarkViewHolder){
+            ((RemarkViewHolder)holder).dailyRemarkLayout.loadData(itemResult);
+        }else if(holder instanceof ImageViewHolder){
+            ((ImageViewHolder)holder).dailyImageLayout.loadData(itemResult);
         }
     }
 
@@ -104,6 +116,24 @@ public class AssignDetailAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         @Bind(R.id.dailyServiceLayout)
         DailyServiceLayout dailyServiceLayout;
         public ServiceViewHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this,itemView);
+        }
+    }
+
+    class RemarkViewHolder extends RecyclerView.ViewHolder{
+        @Bind(R.id.dailyRemarkLayout)
+        DailyRemarkLayout dailyRemarkLayout;
+        public RemarkViewHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this,itemView);
+        }
+    }
+
+    class ImageViewHolder extends RecyclerView.ViewHolder{
+        @Bind(R.id.dailyImageLayout)
+        DailyImageLayout dailyImageLayout;
+        public ImageViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
         }

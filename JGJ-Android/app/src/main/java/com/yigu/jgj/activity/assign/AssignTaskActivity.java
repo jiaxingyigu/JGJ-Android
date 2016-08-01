@@ -1,5 +1,9 @@
 package com.yigu.jgj.activity.assign;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,6 +16,7 @@ import com.yigu.jgj.R;
 import com.yigu.jgj.adapter.PerManageAdapter;
 import com.yigu.jgj.adapter.assign.AssignTaskAdapter;
 import com.yigu.jgj.base.BaseActivity;
+import com.yigu.jgj.broadCast.ReceiverAction;
 import com.yigu.jgj.commom.api.ItemApi;
 import com.yigu.jgj.commom.result.MapiItemResult;
 import com.yigu.jgj.commom.result.MapiTaskResult;
@@ -51,6 +56,7 @@ public class AssignTaskActivity extends BaseActivity {
         initView();
         initListener();
         load();
+        initStockReceiver();
     }
 
     private void initView(){
@@ -133,8 +139,40 @@ public class AssignTaskActivity extends BaseActivity {
         if (null != mList) {
             mList.clear();
             pageIndex = 0;
+            mAdapter.notifyDataSetChanged();
             load();
         }
+    }
+
+    private TaskBroadCast taskBroadCast;
+
+    private void initStockReceiver() {
+        taskBroadCast = new TaskBroadCast();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(ReceiverAction.task_action);
+        filter.setPriority(Integer.MAX_VALUE);
+        registerReceiver(taskBroadCast, filter);
+    }
+
+    /**
+     * 企业修改和新增的的广播接受者
+     */
+    public class TaskBroadCast extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (action.equals(ReceiverAction.task_action)) {
+                refreshData();
+            }
+        }
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (null != taskBroadCast)
+            unregisterReceiver(taskBroadCast);
     }
 
 }

@@ -40,7 +40,7 @@ public class CompanyFragment extends BaseFrag {
 
     CompanyAdapter mAdapter;
     List<MapiItemResult> mList = new ArrayList<>();
-    private Integer pageIndex=0;
+    private Integer pageIndex = 0;
     private Integer pageSize = 8;
     private Integer ISNEXT = 1;
 
@@ -60,7 +60,7 @@ public class CompanyFragment extends BaseFrag {
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         manager.setOrientation(OrientationHelper.VERTICAL);
         recyclerView.setLayoutManager(manager);
-        mAdapter = new CompanyAdapter(getActivity(),mList);
+        mAdapter = new CompanyAdapter(getActivity(), mList);
         recyclerView.setAdapter(mAdapter);
     }
 
@@ -68,7 +68,7 @@ public class CompanyFragment extends BaseFrag {
         mAdapter.setOnItemClickListener(new RecyOnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                ControllerUtil.go2CompanyMessage(ReceiverAction.updateCompany_action,mList.get(position));
+                ControllerUtil.go2CompanyMessage(ReceiverAction.updateCompany_action, mList.get(position));
             }
         });
         swipeLayout.setBestRefreshListener(new BestSwipeRefreshLayout.BestRefreshListener() {
@@ -97,17 +97,17 @@ public class CompanyFragment extends BaseFrag {
         });
     }
 
-    public void load(){
+    public void load() {
         String COMMUNITY = userSP.getUserBean().getCOMMUNITY();
-        ItemApi.getShoplist(getActivity(), "", COMMUNITY, 0 + "", pageIndex+"",pageSize+"", new RequestPageCallback<List<MapiItemResult>>() {
+        ItemApi.getShoplist(getActivity(), "", COMMUNITY, 0 + "", pageIndex + "", pageSize + "", new RequestPageCallback<List<MapiItemResult>>() {
             @Override
-            public void success(Integer isNext,List<MapiItemResult> success) {
-                swipeLayout.setRefreshing(false);
+            public void success(Integer isNext, List<MapiItemResult> success) {
                 ISNEXT = isNext;
-                if(success.isEmpty())
+                if (success.isEmpty())
                     return;
                 mList.addAll(success);
                 mAdapter.notifyDataSetChanged();
+                swipeLayout.setRefreshing(false);
             }
         }, new RequestExceptionCallback() {
             @Override
@@ -118,7 +118,7 @@ public class CompanyFragment extends BaseFrag {
     }
 
     private void loadNext() {
-        if (ISNEXT != null && ISNEXT==0) {
+        if (ISNEXT != null && ISNEXT == 0) {
             return;
         }
         pageIndex++;
@@ -129,6 +129,7 @@ public class CompanyFragment extends BaseFrag {
         if (null != mList) {
             mList.clear();
             pageIndex = 0;
+            mAdapter.notifyDataSetChanged();
             load();
         }
     }
