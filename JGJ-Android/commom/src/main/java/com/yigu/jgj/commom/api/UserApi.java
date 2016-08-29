@@ -87,4 +87,31 @@ public class UserApi extends BasicApi{
 
     }
 
+    /**
+     * 人员下拉选择接口
+     * @param activity
+     * @param type
+     *          0=全部  1=本单位管理层+网格员 需要传COMPANY 登录人单位    2=所有网格员
+     * @param callback
+     * @param exceptionCallback
+     */
+    public static void getdropdownlist(Activity activity,String type,final RequestPageCallback callback, final RequestExceptionCallback exceptionCallback){
+        Map<String,String> params = new HashMap<>();
+        params.put("type",type);
+        MapiUtil.getInstance().call(activity,getdropdownlist,params,new MapiUtil.MapiSuccessResponse(){
+            @Override
+            public void success(JSONObject json) {
+                DebugLog.i("json="+json);
+                List<MapiUserResult> result = JSONArray.parseArray(json.getJSONArray("data").toJSONString(),MapiUserResult.class);
+                Integer ISNEXT = json.getInteger("ISNEXT");
+                callback.success(ISNEXT,result);
+            }
+        },new MapiUtil.MapiFailResponse(){
+            @Override
+            public void fail(String code, String failMessage) {
+                exceptionCallback.error(code,failMessage);
+            }
+        });
+    }
+
 }

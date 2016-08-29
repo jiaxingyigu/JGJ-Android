@@ -13,6 +13,7 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils;
 
 import com.yigu.jgj.commom.application.AppContext;
+import com.yigu.jgj.commom.sharedpreferences.UserSP;
 import com.yigu.jgj.commom.util.DebugLog;
 
 import cn.jpush.android.api.JPushInterface;
@@ -22,9 +23,8 @@ public class JpushUtil {
 	public static final String KEY_TITLE = "title";
 	public static final String KEY_MESSAGE = "message";
 	public static final String KEY_EXTRAS = "extras";
-	public SharedPreferences pref;
-	public SharedPreferences.Editor editor;
 	private volatile static JpushUtil jpushUtil;
+	protected UserSP userSP;
 
 	public static  JpushUtil getInstance() {
 		if (jpushUtil == null) {
@@ -36,8 +36,7 @@ public class JpushUtil {
 	}
 
 	private JpushUtil() {
-		pref = PreferenceManager.getDefaultSharedPreferences(AppContext.getInstance());
-		editor = pref.edit();
+		userSP = new UserSP(AppContext.getInstance());
 	}
 
 	public boolean isEmpty(String s) {
@@ -71,8 +70,7 @@ public class JpushUtil {
 	public void setAlias(String alias){
 		if(!TextUtils.isEmpty(alias)){
 			if (!isValidTagAndAlias(alias)) {
-				editor.putBoolean("isAlias", false);
-				editor.commit();
+				userSP.setAlias(false);
 				return;
 			}
 			//调用JPush API设置Alias
@@ -99,15 +97,13 @@ public class JpushUtil {
 			case 0:
 				logs = "Set tag and alias success";
 				DebugLog.i(logs);
-				editor.putBoolean("isAlias", true);
-				editor.commit();
+				userSP.setAlias(true);
 				break;
 
 			case 6002:
 				logs = "Failed to set alias and tags due to timeout. Try again after 60s.";
 				DebugLog.i(logs);
-				editor.putBoolean("isAlias", false);
-				editor.commit();
+				userSP.setAlias(false);
 				if (isConnected(AppContext.getInstance())) {
 					mHandler.sendMessageDelayed(mHandler.obtainMessage(MSG_SET_ALIAS, alias), 1000 * 60);
 				} else {
@@ -118,8 +114,7 @@ public class JpushUtil {
 			default:
 				logs = "Failed with errorCode = " + code;
 				DebugLog.e(logs);
-				editor.putBoolean("isAlias", false);
-				editor.commit();
+				userSP.setAlias(false);
 			}
 
 		}

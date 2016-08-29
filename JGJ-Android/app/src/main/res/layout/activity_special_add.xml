@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.yigu.jgj.activity.special.SpecialAddActivity"
+    android:orientation="vertical"
+    >
+
+    <include layout="@layout/lay_header" />
+
+   <ScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       >
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="vertical"
+           >
+
+            <com.yigu.jgj.view.SpecialBasicLayout
+                android:id="@+id/specialBasicLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_2"
+                />
+
+           <com.yigu.jgj.view.SpecialFindLayout
+               android:id="@+id/specialFindLayout"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="@dimen/margin_2"
+               />
+
+           <com.yigu.jgj.view.SpecialResultLayout
+               android:id="@+id/specialResultLayout"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="@dimen/margin_2"
+               />
+
+           <com.yigu.jgj.view.SpecialRemarkLayout
+               android:id="@+id/specialRemarkLayout"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="@dimen/margin_2"
+               />
+
+
+           <RelativeLayout
+               android:id="@+id/date_rl"
+               android:layout_width="match_parent"
+               android:layout_height="@dimen/text_height_45dp"
+               android:layout_marginLeft="@dimen/margin_10dp"
+               android:layout_marginRight="@dimen/margin_10dp"
+               android:layout_marginTop="@dimen/margin_2"
+               android:layout_marginBottom="@dimen/margin_2"
+               android:gravity="center_vertical"
+               >
+
+               <ImageView
+                   android:id="@+id/iv_date"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:src="@mipmap/line_title_front"
+                   />
+
+               <TextView
+                   android:id="@+id/tv_date"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textColor="@color/jgj_black"
+                   android:textSize="15sp"
+                   android:text="日期"
+                   android:layout_marginLeft="@dimen/margin_10dp"
+                   android:layout_toRightOf="@+id/iv_date"
+                   />
+
+               <LinearLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_alignParentRight="true"
+                   >
+
+                   <TextView
+                       android:id="@+id/date"
+                       style="@style/textViewStyle_dark"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_marginRight="@dimen/margin_2"
+                       android:text="2016-06-06"
+                       />
+
+                   <ImageView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:src="@mipmap/right"
+                       />
+
+               </LinearLayout>
+
+           </RelativeLayout>
+
+
+       </LinearLayout>
+
+   </ScrollView>
+
+</LinearLayout>

@@ -28,7 +28,9 @@ import com.yigu.jgj.adapter.MainAdapter;
 import com.yigu.jgj.base.BaseActivity;
 import com.yigu.jgj.broadCast.ReceiverAction;
 import com.yigu.jgj.commom.api.CommonApi;
+import com.yigu.jgj.commom.application.AppContext;
 import com.yigu.jgj.commom.result.MapiResourceResult;
+import com.yigu.jgj.commom.util.DPUtil;
 import com.yigu.jgj.commom.util.DebugLog;
 import com.yigu.jgj.commom.util.RequestCallback;
 import com.yigu.jgj.commom.util.RequestExceptionCallback;
@@ -38,6 +40,7 @@ import com.yigu.jgj.jgjinterface.RecyOnItemClickListener;
 import com.yigu.jgj.util.ControllerUtil;
 import com.yigu.jgj.util.JGJDataSource;
 import com.yigu.jgj.util.JpushUtil;
+import com.yigu.jgj.widget.DividerGridItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,28 +48,27 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.jpush.android.api.JPushInterface;
 
 public class MainActivity extends BaseActivity {
     @Bind(R.id.back)
     ImageView back;
     @Bind(R.id.tv_center)
     TextView tvCenter;
-    @Bind(R.id.tv_right)
-    TextView tvRight;
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
     @Bind(R.id.startLayout)
     LinearLayout startLayout;
     MainAdapter mAdapter;
     List<MapiResourceResult> mList = new ArrayList<>();
-    @Bind(R.id.fragment_content)
-    FrameLayout fragmentContent;
-    @Bind(R.id.drawerLayout)
-    DrawerLayout drawerLayout;
+//    @Bind(R.id.fragment_content)
+//    FrameLayout fragmentContent;
+//    @Bind(R.id.drawerLayout)
+//    DrawerLayout drawerLayout;
     @Bind(R.id.iv_right)
     ImageView ivRight;
-    @Bind(R.id.ll_drawerlayout)
-    LinearLayout llDrawerlayout;
+//    @Bind(R.id.ll_drawerlayout)
+//    LinearLayout llDrawerlayout;
 
     private FragmentManager fragmentManager;
     private PersonFragment personFragment;
@@ -84,8 +86,11 @@ public class MainActivity extends BaseActivity {
             initData();
             initListener();
             JpushUtil.getInstance().verifyInit(this);
-            if(!JpushUtil.getInstance().pref.getBoolean("isAlias", false)){
-                JpushUtil.getInstance().setAlias("1111");
+            if(JPushInterface.isPushStopped(AppContext.getInstance())){
+                JPushInterface.resumePush(AppContext.getInstance());
+            }
+            if(!userSP.getAlias()){
+                JpushUtil.getInstance().setAlias(userSP.getUserBean().getUSER_ID());
             }
             registerMessageReceiver();  // used for receive msg
             startLayout.postDelayed(new Runnable() {
@@ -106,19 +111,20 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initView() {
-        back.setImageResource(R.mipmap.person_icon);
-        tvRight.setVisibility(View.GONE);
+//        back.setImageResource(R.mipmap.person_icon);
+        back.setVisibility(View.INVISIBLE);
         tvCenter.setText(getResources().getString(R.string.main_title));
-        fragmentManager = getSupportFragmentManager();
-        try {
-            personFragment = new PersonFragment();
-            replaceFragment(personFragment);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        ivRight.setImageResource(R.mipmap.msg_have_icon);
+//        fragmentManager = getSupportFragmentManager();
+//        try {
+//            personFragment = new PersonFragment();
+//            replaceFragment(personFragment);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 
-    private void replaceFragment(PersonFragment newFragment) {
+    /*private void replaceFragment(PersonFragment newFragment) {
         FragmentTransaction transaction = fragmentManager.beginTransaction();// 创建事物操作对象
         if (!newFragment.isAdded()) {// 如果没有将fragment添加到
             transaction
@@ -130,22 +136,16 @@ public class MainActivity extends BaseActivity {
                     .commitAllowingStateLoss();
         }
 
-    }
+    }*/
 
     private void initData() {
-        String role_id = userSP.getUserBean().getROLE_ID();
         mList.clear();
-        if (!TextUtils.isEmpty(role_id)) {
-            if (role_id.equals(JGJDataSource.root_one_roleid) || role_id.equals(JGJDataSource.root_two_roleid))
-                mList.addAll(JGJDataSource.getRootResource());
-            else if (role_id.equals(JGJDataSource.manage_roleid))
-                mList.addAll(JGJDataSource.getManagerResource());
-            else
-                mList.addAll(JGJDataSource.getOtherResource());
-        }
-
-        GridLayoutManager manager = new GridLayoutManager(this, 2);
+        mList.addAll(JGJDataSource.getAllResource());
+        GridLayoutManager manager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(manager);
+        recyclerView.addItemDecoration(new DividerGridItemDecoration(this, DPUtil.dip2px(0.5f),getResources().getColor(R.color.divider_line)));
+        //如果可以确定每个item的高度是固定的，设置这个选项可以提高性能
+        recyclerView.setHasFixedSize(true);
         mAdapter = new MainAdapter(this, mList);
         recyclerView.setAdapter(mAdapter);
 //        if (TextUtils.isEmpty(userSP.getResource()))
@@ -170,26 +170,44 @@ public class MainActivity extends BaseActivity {
                         ControllerUtil.go2AssignTask();
                         break;
                     case JGJDataSource.TYPE_DANGER://隐患档案
+//                        ControllerUtil.go2File();
                         ControllerUtil.go2DangerList();
                         break;
                     case JGJDataSource.TYPE_PERSON:
-                        ControllerUtil.go2PerManage();
+                        ControllerUtil.go2PersonInfo();
                         break;
                     case JGJDataSource.TYPE_FILE:
                         ControllerUtil.go2File();
+                        break;
+                    case JGJDataSource.TYPE_TEL:
+                        ControllerUtil.go2PerManage();
+                        break;
+                    case JGJDataSource.TYPE_LICENSE:
+                        ControllerUtil.go2WithoutLicense();
+                        break;
+                    case JGJDataSource.TYPE_SPECIAL:
+                        ControllerUtil.go2SpecialList();
+                        break;
+                    case JGJDataSource.TYPE_NOTIFY:
+                        ControllerUtil.go2NotifyList();
                         break;
                 }
             }
         });
     }
 
-    @OnClick(R.id.back)
-    void person() {
-        if (null != drawerLayout && drawerLayout.isDrawerOpen(llDrawerlayout))
-            drawerLayout.closeDrawer(Gravity.LEFT);
-        else
-            drawerLayout.openDrawer(Gravity.LEFT);
-    }
+//    @OnClick(R.id.iv_right)
+//    void right(){
+//        ControllerUtil.go2MsgList();
+//    }
+
+//    @OnClick(R.id.back)
+//    void person() {
+//        if (null != drawerLayout && drawerLayout.isDrawerOpen(llDrawerlayout))
+//            drawerLayout.closeDrawer(Gravity.LEFT);
+//        else
+//            drawerLayout.openDrawer(Gravity.LEFT);
+//    }
 
     private void load() {
         CommonApi.loadResources(this, new RequestCallback<String>() {

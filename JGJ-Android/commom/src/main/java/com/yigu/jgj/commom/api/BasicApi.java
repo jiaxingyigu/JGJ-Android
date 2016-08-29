@@ -34,6 +34,30 @@ public class BasicApi {
     protected static String taskcomplete = "/appuser/taskcomplete";
     /**任务分配-转移*/
     protected static String tasktransfer = "/appuser/tasktransfer";
-
-
+    /**消息列表*/
+    protected static String  getMessagelist = "/appuser/getMessagelist";
+    /**档案管理列表*/
+    protected static String getArchiveslist = "/appuser/getArchiveslist";
+    /**无照上报列表*/
+    protected static String getNlicenselist  = "/appuser/getNlicenselist";
+    /**新增无照上报*/
+    protected static String addNLShop = "/appuser/addNLShop";
+    /**任务指令-无照*/
+    protected static String tasksendNLS = "/appuser/tasksendNLS";
+    /**我的任务-无照-完成*/
+    protected static String taskcompleteNLS = "/appuser/taskcompleteNLS";
+    /**专项行动-列表*/
+    protected static String specialactionlist = "/appuser/specialactionlist";
+    /**专项行动-新增*/
+    protected static String addSpecialaction = "/appuser/addSpecialaction";
+    /**人员下拉选择接口*/
+    protected static String getdropdownlist = "/appuser/getdropdownlist";
+    /**任务指令-新增*/
+    protected static String addtask = "/appuser/addtask";
+    /**我的任务-其他-列表*/
+    protected static String getOthertask = "/appuser/getOthertask";
+    /**Othertaskcomplete*/
+    protected static String Othertaskcomplete = "/appuser/Othertaskcomplete";
+    /**通知-新增*/
+    protected static String addMessage = "/appuser/addMessage";
 }

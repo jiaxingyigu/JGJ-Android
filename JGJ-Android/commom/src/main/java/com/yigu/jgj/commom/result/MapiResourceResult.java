@@ -9,6 +9,7 @@ public class MapiResourceResult implements Serializable {
     private String NAME;
     private String ZD_ID;
     private int id;
+
     public MapiResourceResult(){
 
     }

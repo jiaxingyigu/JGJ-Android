@@ -15,6 +15,7 @@ import com.yigu.jgj.R;
 import com.yigu.jgj.activity.SelCommunityActivity;
 import com.yigu.jgj.base.BaseActivity;
 import com.yigu.jgj.base.RequestCode;
+import com.yigu.jgj.broadCast.ReceiverAction;
 import com.yigu.jgj.commom.api.ItemApi;
 import com.yigu.jgj.commom.application.AppContext;
 import com.yigu.jgj.commom.result.MapiItemResult;
@@ -57,7 +58,6 @@ public class CompanyMessageActivity extends BaseActivity {
     ArrayList<MapiResourceResult> mList = new ArrayList<>();
     int selPos = -1;
     String cid_id = "";
-    String action = "";
 
 
     @Override
@@ -67,7 +67,6 @@ public class CompanyMessageActivity extends BaseActivity {
         ButterKnife.bind(this);
         if (null != getIntent().getExtras()) {
             itemResult = (MapiItemResult) getIntent().getSerializableExtra("item");
-            action = getIntent().getExtras().getString("action");
         }
         if (null != itemResult) {
             initView();
@@ -78,6 +77,7 @@ public class CompanyMessageActivity extends BaseActivity {
     private void initView() {
         tvCenter.setText("修改企业信息");
         tvRight.setText("修改");
+
         name.setText(itemResult.getNAME());
         address.setText(itemResult.getADDRESS());
         lperson.setText(itemResult.getLPERSON());
@@ -147,7 +147,7 @@ public class CompanyMessageActivity extends BaseActivity {
                 if (!rlCheckLayout.vorify())
                     return;
                 edit(nameStr, addressStr, lpersonStr, telStr,cid_id, hcatenStr, rlCheckLayout.foodSaleCheck() + "", rlCheckLayout.tvFoodServiceCheck() + "", rlCheckLayout.tvCanteenCheck() + "",
-                        rlCheckLayout.tvLicenseHaveCheck() + "", rlCheckLayout.tvPermitHaveCheck() + "");
+                       "1", "1",rlCheckLayout.getCATEGORY(),rlCheckLayout.getTYPE());
                 break;
             case R.id.cid:
                 if (TextUtils.isEmpty(userSP.getUserBean().getCOMMUNITY())) {
@@ -161,14 +161,15 @@ public class CompanyMessageActivity extends BaseActivity {
         }
     }
 
-    private void edit(String name, String address, String lperson, String tel,String cid_id, String hcaten, String FOODSALES, String FOODSERVICE, String CANTEEN, String LICENSE, String PEMIT) {
+    private void edit(String name, String address, String lperson, String tel,String cid_id, String hcaten, String FOODSALES, String FOODSERVICE, String CANTEEN, String LICENSE, String PEMIT
+    ,String CATEGORY,String TYPE) {
         showLoading();
-        ItemApi.editShop(this, itemResult.getID(), FOODSALES, FOODSERVICE, CANTEEN, LICENSE, PEMIT, name, address, lperson,tel, cid_id, hcaten, new RequestCallback() {
+        ItemApi.editShop(this, itemResult.getID(), FOODSALES, FOODSERVICE, CANTEEN, LICENSE, PEMIT, name, address, lperson,tel, cid_id, hcaten, CATEGORY,TYPE,new RequestCallback() {
             @Override
             public void success(Object success) {
                 hideLoading();
                 MainToast.showLongToast("修改成功");
-                sendBroadcast(new Intent(action));//发送广播
+                sendBroadcast(new Intent(ReceiverAction.updateCompany_action));//发送广播
                 finish();
 
             }

@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.yigu.jgj.R;
 import com.yigu.jgj.adapter.company.CompanyFragmentAdapter;
+import com.yigu.jgj.base.BaseActivity;
 import com.yigu.jgj.broadCast.ReceiverAction;
 import com.yigu.jgj.commom.result.MapiItemResult;
 import com.yigu.jgj.commom.widget.MainToast;
@@ -32,7 +33,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class CompanyListActivity extends FragmentActivity implements View.OnClickListener {
+public class CompanyListActivity extends BaseActivity implements View.OnClickListener {
     @Bind(R.id.tv_center)
     TextView tvCenter;
     @Bind(R.id.tv_right)

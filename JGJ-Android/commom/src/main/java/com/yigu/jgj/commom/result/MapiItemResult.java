@@ -45,6 +45,42 @@ public class MapiItemResult implements Serializable {
     private String taskstime;
     private String receiver;
     private String taskotime;
+    private String CATEGORY;
+    private String TYPE;
+    private String flag;
+    private String TIMES;
+
+    public String getTIMES() {
+        return TIMES;
+    }
+
+    public void setTIMES(String TIMES) {
+        this.TIMES = TIMES;
+    }
+
+    public String getCATEGORY() {
+        return CATEGORY;
+    }
+
+    public void setCATEGORY(String CATEGORY) {
+        this.CATEGORY = CATEGORY;
+    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
+    }
+
+    public String getTYPE() {
+        return TYPE;
+    }
+
+    public void setTYPE(String TYPE) {
+        this.TYPE = TYPE;
+    }
 
     public String getSenduser() {
         return senduser;

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_rect_solid_blue_round_5"
+    android:layout_marginLeft="@dimen/margin_10dp"
+    android:layout_marginRight="@dimen/margin_10dp"
+    android:paddingLeft="@dimen/margin_1"
+    android:paddingRight="@dimen/margin_1"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_10dp"
+        >
+
+        <TextView
+            android:id="@+id/name"
+            style="@style/textViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发送人：王所长"
+            />
+
+        <TextView
+            android:id="@+id/stime"
+            style="@style/textViewStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2016-08-03 16:53:39"
+            android:layout_alignParentRight="true"
+            />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/remark"
+        style="@style/textViewStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="4"
+        android:text="333333333333333333333333333333333333333333"
+        android:layout_marginTop="@dimen/margin_10dp"
+        android:lineSpacingMultiplier="1.3"
+        />
+
+    <TextView
+        android:id="@+id/url"
+        style="@style/textViewStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autoLink="web"
+        android:inputType="textMultiLine"
+        android:text="附件下载：33333333333333333333333333333"
+        android:layout_marginTop="@dimen/margin_10dp"
+        android:lineSpacingMultiplier="1.3"
+        android:layout_marginBottom="@dimen/margin_10dp"
+        />
+
+</LinearLayout>

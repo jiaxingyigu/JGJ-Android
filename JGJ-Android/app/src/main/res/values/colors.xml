@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="background_all">#f5f8fa</color>
+    <color name="jgj_blue">#0390d0</color>
+    <color name="light_blue">#62c5f4</color>
     <color name="jgj_green">#019b79</color>
     <color name="jgj_black">#333333</color>
     <color name="dark_green">#1e725f</color>

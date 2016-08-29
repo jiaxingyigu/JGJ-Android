@@ -15,6 +15,7 @@ import com.yigu.jgj.commom.result.MapiImageResult;
 import com.yigu.jgj.commom.result.MapiItemResult;
 import com.yigu.jgj.commom.util.DPUtil;
 import com.yigu.jgj.jgjinterface.RecyOnItemClickListener;
+import com.yigu.jgj.util.ControllerUtil;
 import com.yigu.jgj.widget.DividerGridItemDecoration;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class DailyImageLayout extends RelativeLayout {
     RecyclerView recyclerView;
     private Context mContext;
     private View view;
-    List<MapiImageResult> mList;
+    ArrayList<MapiImageResult> mList;
     ShowImageAdapter mAdapter;
     public DailyImageLayout(Context context) {
         super(context);
@@ -80,7 +81,7 @@ public class DailyImageLayout extends RelativeLayout {
         mAdapter.setOnItemClickListener(new RecyOnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-
+                ControllerUtil.go2ShowBigPic(mList,position);
             }
         });
     }

@@ -13,6 +13,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.yigu.jgj.R;
 import com.yigu.jgj.base.BaseFrag;
+import com.yigu.jgj.commom.application.AppContext;
 import com.yigu.jgj.commom.result.MapiResourceResult;
 import com.yigu.jgj.commom.result.MapiUserResult;
 import com.yigu.jgj.commom.util.StringUtil;
@@ -25,6 +26,7 @@ import java.util.Map;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.jpush.android.api.JPushInterface;
 
 /**
  * Created by brain on 2016/7/30.
@@ -122,9 +124,11 @@ public class PersonFragment extends BaseFrag {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.guide:
+                ControllerUtil.go2Guide();
                 break;
             case R.id.exit:
                 userSP.clearUserData();
+                JPushInterface.stopPush(AppContext.getInstance());
                 ControllerUtil.go2Login();
                 getActivity().finish();
                 break;

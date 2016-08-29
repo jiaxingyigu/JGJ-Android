@@ -78,4 +78,43 @@ public class MapiUserResult implements Serializable {
     public void setUSER_ID(String USER_ID) {
         this.USER_ID = USER_ID;
     }
+
+    //重写hashcode和equals使得根据id来判断是否是同一个bean
+
+    /* (non-Javadoc)
+     * @see java.lang.Object#hashCode()
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + (USER_ID == null ? 0 : USER_ID.hashCode());
+        return result;
+    }
+
+    /* (non-Javadoc)
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof MapiUserResult)) {
+            return false;
+        }
+        MapiUserResult other = (MapiUserResult) obj;
+        if (USER_ID == null) {
+            if (other.USER_ID != null) {
+                return false;
+            }
+        } else if (!USER_ID.equals(other.USER_ID)) {
+            return false;
+        }
+        return true;
+    }
+
 }

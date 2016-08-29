@@ -10,7 +10,6 @@ import android.widget.RelativeLayout;
 
 import com.yigu.jgj.R;
 import com.yigu.jgj.commom.result.MapiItemResult;
-import com.yigu.jgj.commom.result.MapiResourceResult;
 import com.yigu.jgj.commom.widget.MainToast;
 
 import butterknife.Bind;
@@ -28,14 +27,18 @@ public class RlCheckLayout extends RelativeLayout {
     CheckBox tvFoodService;
     @Bind(R.id.tv_canteen)
     CheckBox tvCanteen;
-    @Bind(R.id.tv_license_have)
-    RadioButton tvLicenseHave;
-    @Bind(R.id.tv_license_null)
-    RadioButton tvLicenseNull;
-    @Bind(R.id.tv_permit_have)
-    RadioButton tvPermitHave;
-    @Bind(R.id.tv_permit_null)
-    RadioButton tvPermitNull;
+    @Bind(R.id.tv_catering)
+    RadioButton tvCatering;
+    @Bind(R.id.tv_product)
+    RadioButton tvProduct;
+    @Bind(R.id.tv_currency)
+    RadioButton tvCurrency;
+    @Bind(R.id.tv_a)
+    RadioButton tvA;
+    @Bind(R.id.tv_b)
+    RadioButton tvB;
+    @Bind(R.id.tv_c)
+    RadioButton tvC;
 
     public RlCheckLayout(Context context) {
         super(context);
@@ -63,72 +66,118 @@ public class RlCheckLayout extends RelativeLayout {
     }
 
     public boolean vorify() {
-        if(!tvFoodSale.isChecked()&&!tvFoodService.isChecked()&&!tvCanteen.isChecked()){
-            MainToast.showLongToast("请检查许可项目");
+        if (!tvFoodSale.isChecked() && !tvFoodService.isChecked() && !tvCanteen.isChecked()) {
+            MainToast.showShortToast("请检查许可项目");
             return false;
         }
-        if(!tvLicenseHave.isChecked()&&!tvLicenseNull.isChecked()){
-            MainToast.showLongToast("请检查营业执照");
+//        if(!tvLicenseHave.isChecked()&&!tvLicenseNull.isChecked()){
+//            MainToast.showLongToast("请检查营业执照");
+//            return false;
+//        }
+//        if(!tvPermitHave.isChecked()&&!tvPermitNull.isChecked()){
+//            MainToast.showLongToast("请检查许可证");
+//            return false;
+//        }
+        if(!tvCatering.isChecked()&&!tvProduct.isChecked()&&!tvCurrency.isChecked()){
+            MainToast.showShortToast("请选择分类");
             return false;
         }
-        if(!tvPermitHave.isChecked()&&!tvPermitNull.isChecked()){
-            MainToast.showLongToast("请检查许可证");
+        if(!tvA.isChecked()&&!tvB.isChecked()&&!tvC.isChecked()){
+            MainToast.showShortToast("请选择类别");
             return false;
         }
         return true;
     }
 
-    public int foodSaleCheck(){
-        if(tvFoodSale.isChecked())
+    public int foodSaleCheck() {
+        if (tvFoodSale.isChecked())
             return 1;
         else
             return 0;
     }
 
-    public int tvFoodServiceCheck(){
-        if(tvFoodService.isChecked())
+    public int tvFoodServiceCheck() {
+        if (tvFoodService.isChecked())
             return 1;
         else
             return 0;
     }
 
-    public int tvCanteenCheck(){
-        if(tvCanteen.isChecked())
+    public int tvCanteenCheck() {
+        if (tvCanteen.isChecked())
             return 1;
         else
             return 0;
     }
 
-    public int tvLicenseHaveCheck(){
+    public String getCATEGORY(){
+        if(tvCatering.isChecked())
+            return "1";
+        else if(tvProduct.isChecked())
+            return "2";
+        else if(tvCurrency.isChecked())
+            return "3";
+        return "";
+    }
+
+    public String getTYPE(){
+        if(tvA.isChecked())
+            return "A";
+        else if(tvB.isChecked())
+            return "B";
+        else if(tvC.isChecked())
+            return "C";
+        return "";
+    }
+
+   /* public int tvLicenseHaveCheck() {
         if(tvLicenseHave.isChecked())
             return 1;
         else
-            return 0;
+        return 0;
     }
 
-    public int tvPermitHaveCheck(){
+    public int tvPermitHaveCheck() {
         if(tvPermitHave.isChecked())
             return 1;
         else
-            return 0;
-    }
+        return 0;
+    }*/
 
-    public void setData(MapiItemResult resourceResult){
-        tvFoodSale.setChecked((null!=resourceResult.getFOODSALES()&&resourceResult.getFOODSALES()==1)?true:false);
-        tvFoodService.setChecked((null!=resourceResult.getFOODSERVICE()&&resourceResult.getFOODSERVICE()==1)?true:false);
-        tvCanteen.setChecked((null!=resourceResult.getCANTEEN()&&resourceResult.getCANTEEN()==1)?true:false);
-        if(null!=resourceResult.getLICENSE()){
-            if(resourceResult.getLICENSE()==1)
-                tvLicenseHave.setChecked(true);
-            else
-                tvLicenseNull.setChecked(true);
+    public void setData(MapiItemResult resourceResult) {
+        tvFoodSale.setChecked((null != resourceResult.getFOODSALES() && resourceResult.getFOODSALES() == 1) ? true : false);
+        tvFoodService.setChecked((null != resourceResult.getFOODSERVICE() && resourceResult.getFOODSERVICE() == 1) ? true : false);
+        tvCanteen.setChecked((null != resourceResult.getCANTEEN() && resourceResult.getCANTEEN() == 1) ? true : false);
+        if (null != resourceResult.getLICENSE()) {
+//            if(resourceResult.getLICENSE()==1)
+//                tvLicenseHave.setChecked(true);
+//            else
+//                tvLicenseNull.setChecked(true);
         }
 
-        if(null!=resourceResult.getPEMIT()){
-            if(resourceResult.getPEMIT()==1)
-                tvPermitHave.setChecked(true);
-            else
-                tvPermitNull.setChecked(true);
+        if (null != resourceResult.getPEMIT()) {
+//            if(resourceResult.getPEMIT()==1)
+//                tvPermitHave.setChecked(true);
+//            else
+//                tvPermitNull.setChecked(true);
+        }
+
+        if (null != resourceResult.getCATEGORY()) {
+            if(resourceResult.getCATEGORY().equals("1"))
+                tvCatering.setChecked(true);
+            if(resourceResult.getCATEGORY().equals("2"))
+                tvProduct.setChecked(true);
+            if(resourceResult.getCATEGORY().equals("3"))
+                tvCurrency.setChecked(true);
+        }
+
+        if (null != resourceResult.getTYPE()) {
+            if(resourceResult.getTYPE().equals("A"))
+                tvA.setChecked(true);
+            if(resourceResult.getTYPE().equals("B"))
+                tvB.setChecked(true);
+            if(resourceResult.getTYPE().equals("C"))
+                tvC.setChecked(true);
         }
 
     }

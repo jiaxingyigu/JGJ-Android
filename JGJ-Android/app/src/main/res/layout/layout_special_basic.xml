@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/margin_10dp"
+    android:layout_marginRight="@dimen/margin_10dp"
+    >
+
+    <LinearLayout
+        android:id="@+id/people_ll"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        >
+
+        <TextView
+            style="@style/textViewStyle_dark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="出动人数："
+            />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/margin_1"
+            android:layout_marginLeft="@dimen/margin_1"
+            >
+
+            <EditText
+                android:id="@+id/people_num"
+                style="@style/editViewStyle_gray"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:gravity="right|center_vertical"
+                android:inputType="number"
+                android:text=""
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_line"
+                android:layout_alignParentBottom="true"
+                />
+
+        </RelativeLayout>
+
+        <TextView
+            style="@style/textViewStyle_dark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="人"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/shop_ll"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_below="@+id/people_ll"
+        android:layout_marginTop="@dimen/margin_2"
+        >
+
+        <TextView
+            style="@style/textViewStyle_dark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="检查经营主体："
+            />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/margin_1"
+            android:layout_marginLeft="@dimen/margin_1"
+            >
+
+            <EditText
+                android:id="@+id/shop_num"
+                style="@style/editViewStyle_gray"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:gravity="right|center_vertical"
+                android:inputType="number"
+                android:text=""
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_line"
+                android:layout_alignParentBottom="true"
+                />
+
+        </RelativeLayout>
+
+        <TextView
+            style="@style/textViewStyle_dark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="家"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/pledge_ll"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_below="@+id/shop_ll"
+        android:layout_marginTop="@dimen/margin_2"
+        >
+
+        <TextView
+            style="@style/textViewStyle_dark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="签订承诺书："
+            />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/margin_1"
+            android:layout_marginLeft="@dimen/margin_1"
+            >
+
+            <EditText
+                android:id="@+id/pledge_num"
+                style="@style/editViewStyle_gray"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:gravity="right|center_vertical"
+                android:inputType="number"
+                android:text=""
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_line"
+                android:layout_alignParentBottom="true"
+                />
+
+        </RelativeLayout>
+
+        <TextView
+            style="@style/textViewStyle_dark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="份"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/responsibility_ll"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_below="@+id/pledge_ll"
+        android:layout_marginTop="@dimen/margin_2"
+        >
+
+        <TextView
+            style="@style/textViewStyle_dark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="签订责任书："
+            />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/margin_1"
+            android:layout_marginLeft="@dimen/margin_1"
+            >
+
+            <EditText
+                android:id="@+id/responsibility_num"
+                style="@style/editViewStyle_gray"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:gravity="right|center_vertical"
+                android:inputType="number"
+                android:text=""
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_line"
+                android:layout_alignParentBottom="true"
+                />
+
+        </RelativeLayout>
+
+        <TextView
+            style="@style/textViewStyle_dark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="份"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+    </LinearLayout>
+
+</RelativeLayout>

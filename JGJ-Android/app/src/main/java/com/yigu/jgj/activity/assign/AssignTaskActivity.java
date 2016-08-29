@@ -107,9 +107,9 @@ public class AssignTaskActivity extends BaseActivity {
 
     public void load(){
         String COMMUNITY = userSP.getUserBean().getCOMMUNITY();
-        String COMPANY = userSP.getUserBean().getCOMPANY();
+//        String COMPANY = userSP.getUserBean().getCOMPANY();
         String role = userSP.getUserBean().getROLE_ID();
-        ItemApi.getAssignList(this, COMPANY, COMMUNITY,role, pageIndex + "", pageSize+"",  new RequestPageCallback<List<MapiTaskResult>>() {
+        ItemApi.getAssignList(this,COMMUNITY,role, pageIndex + "", pageSize+"",  new RequestPageCallback<List<MapiTaskResult>>() {
             @Override
             public void success(Integer isNext, List<MapiTaskResult> success) {
                 swipeLayout.setRefreshing(false);

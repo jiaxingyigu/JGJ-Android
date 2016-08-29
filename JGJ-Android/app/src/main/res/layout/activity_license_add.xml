@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_all"
+    android:orientation="vertical">
+
+    <include layout="@layout/lay_header" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="572dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@mipmap/bg_company_message"
+        android:layout_marginLeft="@dimen/margin_10dp"
+        android:layout_marginRight="@dimen/margin_10dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_4"
+                android:layout_marginTop="@dimen/margin_3"
+                android:lines="1"
+                android:text="企业名称："
+                android:textColor="@color/gray_middle"
+                android:textSize="@dimen/text_normal" />
+
+            <EditText
+                android:id="@+id/name"
+                style="@style/editViewStyle"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_3"
+                android:layout_toRightOf="@+id/tv_name"
+                android:hint=""
+                android:lines="1"
+                android:textColor="@color/gray_middle"
+                android:textSize="@dimen/text_normal" />
+
+            <View
+                android:layout_width="200dp"
+                android:layout_height="1dp"
+                android:layout_below="@+id/name"
+                android:layout_toRightOf="@+id/tv_name"
+                android:background="@color/gray_light" />
+
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_name"
+                android:layout_marginLeft="@dimen/margin_4"
+                android:layout_marginTop="@dimen/margin_3"
+                android:lines="1"
+                android:text="地    址："
+                android:textColor="@color/gray_middle"
+                android:textSize="@dimen/text_normal" />
+
+            <EditText
+                android:id="@+id/address"
+                style="@style/editViewStyle"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/name"
+                android:layout_marginTop="@dimen/margin_3"
+                android:layout_toRightOf="@+id/tv_address"
+                android:hint=""
+                android:lines="1"
+                android:textColor="@color/gray_middle"
+                android:textSize="@dimen/text_normal" />
+
+            <View
+                android:layout_width="200dp"
+                android:layout_height="1dp"
+                android:layout_below="@+id/address"
+                android:layout_toRightOf="@+id/tv_address"
+                android:background="@color/gray_light" />
+
+            <TextView
+                android:id="@+id/tv_corporation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_address"
+                android:layout_marginLeft="@dimen/margin_4"
+                android:layout_marginTop="@dimen/margin_3"
+                android:lines="1"
+                android:text="法    人： "
+                android:textColor="@color/gray_middle"
+                android:textSize="@dimen/text_normal" />
+
+            <EditText
+                android:id="@+id/lperson"
+                style="@style/editViewStyle"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/address"
+                android:layout_marginTop="@dimen/margin_3"
+                android:layout_toRightOf="@+id/tv_corporation"
+                android:hint=""
+                android:lines="1"
+                android:textColor="@color/gray_middle"
+                android:textSize="@dimen/text_normal" />
+
+            <View
+                android:layout_width="200dp"
+                android:layout_height="1dp"
+                android:layout_below="@+id/lperson"
+                android:layout_toRightOf="@+id/tv_corporation"
+                android:background="@color/gray_light" />
+
+            <TextView
+                android:id="@+id/tv_tel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_corporation"
+                android:layout_marginLeft="@dimen/margin_4"
+                android:layout_marginTop="@dimen/margin_3"
+                android:lines="1"
+                android:text="电    话： "
+                android:textColor="@color/gray_middle"
+                android:textSize="@dimen/text_normal" />
+
+            <EditText
+                android:id="@+id/tel"
+                style="@style/editViewStyle"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lperson"
+                android:layout_marginTop="@dimen/margin_3"
+                android:layout_toRightOf="@+id/tv_tel"
+                android:hint=""
+                android:lines="1"
+                android:textColor="@color/gray_middle"
+                android:textSize="@dimen/text_normal"
+                android:inputType="phone"
+                />
+
+            <View
+                android:layout_width="200dp"
+                android:layout_height="1dp"
+                android:layout_below="@+id/tel"
+                android:layout_toRightOf="@+id/tv_corporation"
+                android:background="@color/gray_light" />
+
+
+            <TextView
+                android:id="@+id/tv_street"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_tel"
+                android:layout_marginLeft="@dimen/margin_4"
+                android:layout_marginTop="@dimen/margin_3"
+                android:lines="1"
+                android:text="所属社区： "
+                android:textColor="@color/gray_middle"
+                android:textSize="@dimen/text_normal" />
+
+            <TextView
+                android:id="@+id/cid"
+                style="@style/editViewStyle"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tel"
+                android:layout_marginTop="@dimen/margin_3"
+                android:layout_toRightOf="@+id/tv_street"
+                android:hint=""
+                android:lines="1"
+                android:textColor="@color/gray_middle"
+                android:textSize="@dimen/text_normal" />
+
+            <View
+                android:layout_width="200dp"
+                android:layout_height="1dp"
+                android:layout_below="@+id/cid"
+                android:layout_toRightOf="@+id/tv_street"
+                android:background="@color/gray_light" />
+
+            <TextView
+                android:id="@+id/tv_health_certificate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_street"
+                android:layout_marginLeft="@dimen/margin_4"
+                android:layout_marginTop="@dimen/margin_3"
+                android:text="持有有效健康证明："
+                android:textColor="@color/gray_middle"
+                android:textSize="@dimen/text_normal" />
+
+            <EditText
+                android:id="@+id/hcaten"
+                style="@style/editViewStyle"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cid"
+                android:layout_marginTop="@dimen/margin_3"
+                android:layout_toRightOf="@+id/tv_health_certificate"
+                android:hint=""
+                android:inputType="number"
+                android:lines="1"
+                android:textColor="@color/gray_middle"
+                android:textSize="@dimen/text_normal"
+                android:gravity="center"
+                />
+
+            <View
+                android:layout_width="100dp"
+                android:layout_height="1dp"
+                android:layout_below="@+id/hcaten"
+                android:layout_toRightOf="@+id/tv_health_certificate"
+                android:background="@color/gray_light" />
+
+            <TextView
+                android:id="@+id/tv_health_certificate_unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_street"
+                android:layout_marginTop="@dimen/margin_3"
+                android:layout_toRightOf="@+id/hcaten"
+                android:text="人"
+                android:textColor="@color/gray_middle"
+                android:textSize="@dimen/text_normal" />
+        </RelativeLayout>
+
+        <com.yigu.jgj.view.LicenseCheckLayout
+            android:id="@+id/rlCheckLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.9"
+            ></com.yigu.jgj.view.LicenseCheckLayout>
+
+    </LinearLayout>
+</LinearLayout>

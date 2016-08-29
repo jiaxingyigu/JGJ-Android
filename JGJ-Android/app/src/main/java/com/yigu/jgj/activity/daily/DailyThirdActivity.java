@@ -33,6 +33,7 @@ import com.yigu.jgj.commom.widget.MainToast;
 import com.yigu.jgj.jgjinterface.RecyOnItemClickListener;
 import com.yigu.jgj.util.ControllerUtil;
 import com.yigu.jgj.widget.DividerGridItemDecoration;
+import com.yigu.jgj.widget.MainAlertDialog;
 import com.yigu.jgj.widget.PhotoDialog;
 
 import java.io.File;
@@ -58,7 +59,8 @@ public class DailyThirdActivity extends BaseActivity {
     private PhotoDialog photoDialog;
     MapiItemResult itemResult;
     String tasksend = "";
-
+    MainAlertDialog dialog;
+    private int deletePos = -1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,11 +77,14 @@ public class DailyThirdActivity extends BaseActivity {
     private void initView() {
         tvCenter.setText("日常巡查");
         mList = new ArrayList<>();
+        recyclerView.addItemDecoration(new DividerGridItemDecoration(this, DPUtil.dip2px(8), this.getResources().getColor(R.color.background_all)));//分割线
+        recyclerView.setHasFixedSize(true);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,3);
         recyclerView.setLayoutManager(gridLayoutManager);
-        recyclerView.addItemDecoration(new DividerGridItemDecoration(this, DPUtil.dip2px(2), this.getResources().getColor(R.color.background_all)));//分割线
         mAdapter = new ImageAdapter(this,mList);
         recyclerView.setAdapter(mAdapter);
+        dialog = new MainAlertDialog(this);
+        dialog.setLeftBtnText("取消").setRightBtnText("确认").setTitle("确认删除这张图片?");
     }
 
     private void initListener(){
@@ -87,17 +92,41 @@ public class DailyThirdActivity extends BaseActivity {
             @Override
             public void onItemClick(View view, int position) {
                 if(mList.size()>= Config.MAX_VALUE){
-                    MainToast.showLongToast("删除");
+                    deletePos = position;
+                    dialog.show();
+
                 }else{
-                    if(position==0){
+                    if(position==mList.size()){
                         if (photoDialog == null)
                             photoDialog = new PhotoDialog(DailyThirdActivity.this, R.style.image_dialog_theme);
                         photoDialog.setImagePath("daily_image.jpg");
                         photoDialog.showDialog();
                     }
-                    else
-                        MainToast.showLongToast("删除");
+                    else{
+                        deletePos = position;
+                        dialog.show();
+
+                    }
                 }
+            }
+        });
+
+        dialog.setLeftClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.setRightClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(deletePos>=0){
+                    mList.remove(deletePos);
+                    mAdapter.notifyItemRemoved(deletePos);
+                    mAdapter.notifyItemRangeRemoved(deletePos,mList.size()+1);
+                }
+                dialog.dismiss();
             }
         });
 
@@ -192,8 +221,7 @@ public class DailyThirdActivity extends BaseActivity {
                 hideLoading();
                 if(null!=success){
                     mList.add(success);
-                    mAdapter.notifyItemInserted(mList.size());
-                    mAdapter.notifyItemRangeChanged(mList.size(),mList.size());
+                    mAdapter.notifyDataSetChanged();
                 }
             }
         }, new RequestExceptionCallback() {

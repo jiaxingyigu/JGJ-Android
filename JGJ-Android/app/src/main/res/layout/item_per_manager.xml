@@ -11,7 +11,7 @@
         android:id="@+id/name_circle"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:background="@drawable/shape_circle_color_lightgreen"
+        android:background="@drawable/shape_circle_color_blue"
         android:text="意义"
         android:textSize="@dimen/text_normal"
         android:textColor="@android:color/white"
@@ -54,7 +54,7 @@
 
         <TextView
             android:id="@+id/tag_addr"
-            style="@style/tag_text_style_color_green"
+            style="@style/tag_text_style_color_blue"
             android:layout_toRightOf="@+id/name_tv"
             android:text="东栅街道"
             android:layout_centerVertical="true"

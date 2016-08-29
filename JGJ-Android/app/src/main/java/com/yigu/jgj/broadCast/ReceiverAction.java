@@ -10,4 +10,7 @@ public class ReceiverAction {
     public static String addCompanyNoTitle_action = "com.yigu,jgj.addCompanyNoTitle.SENDBROADCAST";
     public static String task_action = "com.yigu,jgj.task.SENDBROADCAST";
     public static String MESSAGE_RECEIVED_ACTION = "com.example.jpushdemo.MESSAGE_RECEIVED_ACTION";
+    public static String addLicense_action = "com.yigu,jgj.addLicense.SENDBROADCAST";
+    public static String assignDanager_action = "com.yigu,jgj.assignDanager.SENDBROADCAST";
+    public static String assignLicense_action = "com.yigu,jgj.assignLicense.SENDBROADCAST";
 }

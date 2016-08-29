@@ -227,9 +227,9 @@ public class FileActivity extends BaseActivity {
     }
 
     public void load(){
-        String COMPANY = userSP.getUserBean().getCOMPANY();
-        DebugLog.i("COMPANY"+COMPANY);
-        ItemApi.getFileList(this, type, COMPANY,COMMUNITY,startime,endtime, pageIndex+"",pageSize+"", new RequestPageCallback<List<MapiTaskResult>>() {
+//        String COMPANY = userSP.getUserBean().getCOMPANY();
+//        DebugLog.i("COMPANY"+COMPANY);
+        ItemApi.getFileList(this, type,COMMUNITY,startime,endtime, pageIndex+"",pageSize+"", new RequestPageCallback<List<MapiTaskResult>>() {
             @Override
             public void success(Integer isNext,List<MapiTaskResult> success) {
                 swipeLayout.setRefreshing(false);

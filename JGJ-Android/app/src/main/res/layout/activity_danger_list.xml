@@ -26,6 +26,7 @@
             />
 
         <EditText
+            android:id="@+id/search_et"
             style="@style/editViewStyle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

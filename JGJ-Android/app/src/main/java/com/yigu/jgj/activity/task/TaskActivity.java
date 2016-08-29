@@ -113,10 +113,8 @@ public class TaskActivity extends BaseActivity {
     }
 
     public void load(){
-        String COMMUNITY = userSP.getUserBean().getCOMMUNITY();
-        String COMPANY = userSP.getUserBean().getCOMPANY();
         String userId = userSP.getUserBean().getUSER_ID();
-        ItemApi.getTaskList(this, COMPANY, COMMUNITY,userId, pageIndex + "", pageSize+"",  new RequestPageCallback<List<MapiTaskResult>>() {
+        ItemApi.getTaskList(this,userId, pageIndex + "", pageSize+"",  new RequestPageCallback<List<MapiTaskResult>>() {
             @Override
             public void success(Integer isNext, List<MapiTaskResult> success) {
                 ISNEXT = isNext;

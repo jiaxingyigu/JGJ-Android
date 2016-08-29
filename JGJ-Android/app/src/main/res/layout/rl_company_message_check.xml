@@ -69,7 +69,7 @@
         />
 
 
-    <TextView
+    <!--<TextView
         android:id="@+id/tv_business_license"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -168,6 +168,134 @@
             android:drawableRight="@drawable/selector_radio_check"
             android:drawablePadding="@dimen/margin_1"
             android:text="无"
+            android:textSize="@dimen/text_normal"
+            android:textColor="@color/gray_middle"
+            android:button="@null"
+            android:padding="@dimen/margin_1"
+            />
+
+    </RadioGroup>-->
+
+    <TextView
+        android:id="@+id/tv_assortment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/margin_3"
+        android:layout_marginLeft="@dimen/margin_3"
+        android:layout_below="@id/tv_food_sale"
+        android:layout_marginTop="@dimen/margin_3"
+        android:drawableLeft="@mipmap/line_title_front"
+        android:drawablePadding="@dimen/margin_2"
+        android:text="分类"
+        android:textSize="@dimen/text_big"
+        android:textColor="@color/gray_dark"/>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_2"
+        android:orientation="horizontal"
+        android:layout_toRightOf="@id/tv_assortment"
+        android:layout_below="@id/tv_food_sale"
+        >
+
+        <RadioButton
+            android:id="@+id/tv_catering"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/selector_radio_check"
+            android:drawablePadding="@dimen/margin_1"
+            android:text="餐饮"
+            android:textSize="@dimen/text_normal"
+            android:textColor="@color/gray_middle"
+            android:button="@null"
+            android:padding="@dimen/margin_1"
+            />
+        <RadioButton
+            android:id="@+id/tv_product"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_2"
+            android:drawableRight="@drawable/selector_radio_check"
+            android:drawablePadding="@dimen/margin_1"
+            android:text="生产"
+            android:textSize="@dimen/text_normal"
+            android:textColor="@color/gray_middle"
+            android:button="@null"
+            android:padding="@dimen/margin_1"
+            />
+        <RadioButton
+            android:id="@+id/tv_currency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_2"
+            android:drawableRight="@drawable/selector_radio_check"
+            android:drawablePadding="@dimen/margin_1"
+            android:text="流通"
+            android:textSize="@dimen/text_normal"
+            android:textColor="@color/gray_middle"
+            android:button="@null"
+            android:padding="@dimen/margin_1"
+            />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tv_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/margin_3"
+        android:layout_marginLeft="@dimen/margin_3"
+        android:layout_below="@id/tv_assortment"
+        android:layout_marginTop="@dimen/margin_3"
+        android:drawableLeft="@mipmap/line_title_front"
+        android:drawablePadding="@dimen/margin_2"
+        android:text="类别"
+        android:textSize="@dimen/text_big"
+        android:textColor="@color/gray_dark"/>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_2"
+        android:orientation="horizontal"
+        android:layout_toRightOf="@id/tv_category"
+        android:layout_below="@id/tv_assortment"
+        >
+
+        <RadioButton
+            android:id="@+id/tv_a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/selector_radio_check"
+            android:drawablePadding="@dimen/margin_1"
+            android:text="A"
+            android:textSize="@dimen/text_normal"
+            android:textColor="@color/gray_middle"
+            android:button="@null"
+            android:padding="@dimen/margin_1"
+            />
+        <RadioButton
+            android:id="@+id/tv_b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_3"
+            android:drawableRight="@drawable/selector_radio_check"
+            android:drawablePadding="@dimen/margin_1"
+            android:text="B"
+            android:textSize="@dimen/text_normal"
+            android:textColor="@color/gray_middle"
+            android:button="@null"
+            android:padding="@dimen/margin_1"
+            />
+        <RadioButton
+            android:id="@+id/tv_c"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_3"
+            android:drawableRight="@drawable/selector_radio_check"
+            android:drawablePadding="@dimen/margin_1"
+            android:text="C"
             android:textSize="@dimen/text_normal"
             android:textColor="@color/gray_middle"
             android:button="@null"

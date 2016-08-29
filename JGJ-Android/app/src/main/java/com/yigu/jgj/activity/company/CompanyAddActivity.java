@@ -134,7 +134,7 @@ public class CompanyAddActivity extends BaseActivity {
                 if (!rlCheckLayout.vorify())
                     return;
                 add(nameStr, addressStr, lpersonStr, cid_id, hcatenStr, rlCheckLayout.foodSaleCheck() + "", rlCheckLayout.tvFoodServiceCheck() + "", rlCheckLayout.tvCanteenCheck() + "",
-                        rlCheckLayout.tvLicenseHaveCheck() + "", rlCheckLayout.tvPermitHaveCheck() + "", telStr);
+                        "1", "1", telStr,rlCheckLayout.getCATEGORY(),rlCheckLayout.getTYPE());
                 break;
             case R.id.cid:
                 if (TextUtils.isEmpty(userSP.getUserBean().getCOMMUNITY())) {
@@ -147,18 +147,15 @@ public class CompanyAddActivity extends BaseActivity {
         }
     }
 
-    private void add(String name, String address, String lperson, String cid_id, String hcaten, String FOODSALES, String FOODSERVICE, String CANTEEN, final String LICENSE, final String PEMIT, String TEL) {
+    private void add(String name, String address, String lperson, String cid_id, String hcaten, String FOODSALES, String FOODSERVICE, String CANTEEN, final String LICENSE, final String PEMIT, String TEL
+                     ,String CATEGORY,String TYPE) {
         showLoading();
-        ItemApi.addShop(this, FOODSALES, FOODSERVICE, CANTEEN, LICENSE, PEMIT, name, address, lperson, cid_id, hcaten, TEL, new RequestCallback() {
+        ItemApi.addShop(this, FOODSALES, FOODSERVICE, CANTEEN, LICENSE, PEMIT, name, address, lperson, cid_id, hcaten, TEL,CATEGORY,TYPE,new RequestCallback() {
             @Override
             public void success(Object success) {
                 hideLoading();
                 MainToast.showLongToast("新增成功");
-                String action = "";
-                if (LICENSE.equals("1") && PEMIT.equals("1"))
-                    action = ReceiverAction.addCompany_action;
-                else
-                    action = ReceiverAction.addCompanyNoTitle_action;
+                String action = ReceiverAction.updateCompany_action;
                 sendBroadcast(new Intent(action));//发送广播
                 finish();
             }
@@ -166,6 +163,7 @@ public class CompanyAddActivity extends BaseActivity {
             @Override
             public void error(String code, String message) {
                 hideLoading();
+                MainToast.showLongToast(message);
             }
         });
     }

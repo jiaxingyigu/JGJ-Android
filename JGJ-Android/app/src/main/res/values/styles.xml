@@ -5,8 +5,8 @@
         <!-- Customize your theme here. -->
         <item name="android:textColorPrimary">@android:color/black</item>
         <!--导航栏底色-->
-      <!--  <item name="colorPrimary">@color/colorPrimary</item>-->
-        <item name="colorAccent">@color/jgj_green</item>
+        <!--  <item name="colorPrimary">@color/colorPrimary</item>-->
+        <item name="colorAccent">@color/jgj_blue</item>
         <!--可以统一背景色-->
         <item name="android:windowBackground">@android:color/white</item>
         <item name="android:textColor">@color/jgj_black</item>
@@ -14,10 +14,11 @@
     </style>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="BaseAppTheme"/>
+    <style name="AppTheme" parent="BaseAppTheme" />
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="loading_dialog" parent="Widget.AppCompat.ProgressBar">
         <item name="android:windowFrame">@null</item>
@@ -32,6 +33,12 @@
     <style name="textViewStyle">
         <item name="android:textColor">@color/jgj_black</item>
         <item name="android:textSize">@dimen/text_normal</item>
+    </style>
+
+    <style name="textViewStyle_dark">
+        <item name="android:textColor">@color/gray_dark</item>
+        <item name="android:textSize">@dimen/text_normal</item>
+        <item name="android:singleLine">true</item>
     </style>
 
     <style name="textViewBigStyle_dark">
@@ -116,6 +123,21 @@
         <item name="android:paddingRight">5dp</item>
     </style>
 
+    <style name="tag_text_style_color_blue">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">18dp</item>
+        <item name="android:minWidth">66dp</item>
+        <item name="android:maxWidth">90dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/text_normal</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/txttag_shape_rect_color_blue</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingRight">5dp</item>
+    </style>
+
     <style name="tag_text_style_color_yellow">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">18dp</item>
@@ -124,7 +146,7 @@
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">@dimen/text_normal</item>
         <item name="android:gravity">center</item>
-        <item name="android:background"> @drawable/txttag_shape_rect_color_yellow</item>
+        <item name="android:background">@drawable/txttag_shape_rect_color_yellow</item>
         <item name="android:singleLine">true</item>
         <item name="android:ellipsize">end</item>
         <item name="android:paddingLeft">5dp</item>
@@ -161,6 +183,7 @@
         <item name="android:windowCloseOnTouchOutside">true</item>
         <item name="android:windowAnimationStyle">@style/slideAnimation</item>
     </style>
+
     <style name="slideAnimation">
         <item name="android:windowEnterAnimation">@anim/slide_down_in_duration</item>
         <item name="android:windowExitAnimation">@anim/slide_down_out_duration</item>
@@ -174,6 +197,16 @@
         <item name="android:gravity">center</item>
         <item name="android:textSize">@dimen/text_big</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <!--弹框样式-->
+    <style name="dialog_theme">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item><!--边框-->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsTranslucent">true</item><!--是否半透明-->
+        <item name="android:backgroundDimEnabled">true</item><!--模糊-->
     </style>
 
 </resources>

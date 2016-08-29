@@ -48,14 +48,14 @@ public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        if(getItemCount()>= Config.MAX_VALUE+1&&position==0){
+        if(getItemCount()>= Config.MAX_VALUE+1&&position==getItemCount()-1){
             holder.simpleDraweeView.setVisibility(View.GONE);
         }else{
             holder.simpleDraweeView.setVisibility(View.VISIBLE);
-            if(position==0){
+            if(position==getItemCount()-1){
                 holder.simpleDraweeView.setImageResource(R.mipmap.add);//ImageURI(Uri.parse("android.resource://com.yigu.jgj/mipmap/add.png"));
             }else{
-                holder.simpleDraweeView.setImageURI(Uri.parse(BasicApi.BASIC_IMAGE+"/"+mList.get(position-1).getPATH()));
+                holder.simpleDraweeView.setImageURI(Uri.parse(BasicApi.BASIC_IMAGE+mList.get(position).getPATH()));
             }
         }
 

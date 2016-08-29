@@ -14,6 +14,7 @@ public class UserSP extends AbstractSP {
     private final static String KEY_SP_USER = "jgj.user";
     private final static String KEY_SP_USER_GUIDE = "user_guide";
     private final static String KEY_SP_Resources = "jgj.resources";
+    private final static String KEY_SP_Alias = "user_Alias";
     public UserSP(Context context) {
         super(context);
     }
@@ -42,12 +43,22 @@ public class UserSP extends AbstractSP {
         return resourceJsonStr;
     }
 
+    public void setAlias(boolean isAlias){
+        sharedPreferences.edit().putBoolean(KEY_SP_Alias, isAlias).commit();
+    }
+
+    public boolean getAlias(){
+        boolean isAlias = sharedPreferences.getBoolean(KEY_SP_Alias,false);
+        return isAlias;
+    }
+
     public boolean checkLogin() {
         return getUserBean() != null && !TextUtils.isEmpty(getUserBean().getUSER_ID());
     }
 
     public void clearUserData() {
         sharedPreferences.edit().remove(KEY_SP_USER).commit();
+        sharedPreferences.edit().remove(KEY_SP_Alias).commit();
     }
 
     /**

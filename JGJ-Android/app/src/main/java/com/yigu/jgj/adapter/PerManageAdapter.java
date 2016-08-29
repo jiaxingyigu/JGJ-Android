@@ -33,6 +33,9 @@ public class PerManageAdapter extends RecyclerView.Adapter<PerManageAdapter.View
     public void setOnItemClickListener(RecyOnItemClickListener onItemClickListener){
         this.onItemClickListener = onItemClickListener;
     }
+    public void setSelPos(int selPos){
+        this.selPos = selPos;
+    }
     public PerManageAdapter(Context context,int requestCode,List<MapiUserResult> mList) {
         inflater = LayoutInflater.from(context);
         this.requestCode = requestCode;
@@ -56,7 +59,14 @@ public class PerManageAdapter extends RecyclerView.Adapter<PerManageAdapter.View
             holder.tag_addr.setVisibility(View.VISIBLE);
             holder.tag_addr.setText(result.getCOMMUNITY());
         }
-        holder.tag_organize.setText(result.getCOMPANY());
+
+        if(TextUtils.isEmpty(result.getCOMPANY()))
+            holder.tag_organize.setVisibility(View.GONE);
+        else{
+            holder.tag_organize.setVisibility(View.VISIBLE);
+            holder.tag_organize.setText(result.getCOMPANY());
+        }
+
         holder.name_circle.setText(StringUtil.nameFormat(result.getNAME()));
 
         if(requestCode>0){
@@ -81,7 +91,7 @@ public class PerManageAdapter extends RecyclerView.Adapter<PerManageAdapter.View
                 }
             });
             if(result.isCheck())
-                holder.status.setImageResource(R.mipmap.circle_green_right);
+                holder.status.setImageResource(R.mipmap.circle_blue_right);
             else
                 holder.status.setImageResource(R.mipmap.circle_white);
         }else{

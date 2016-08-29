@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.yigu.jgj.commom.result.MapiImageResult;
+import com.yigu.jgj.commom.result.MapiItemResult;
 import com.yigu.jgj.commom.result.MapiUserResult;
 import com.yigu.jgj.commom.util.DebugLog;
 import com.yigu.jgj.commom.util.MapiUtil;
@@ -183,6 +184,141 @@ public class DailyApi extends BasicApi{
                 callback.success(json);
             }
         },new MapiUtil.MapiFailResponse(){
+            @Override
+            public void fail(String code, String failMessage) {
+                exceptionCallback.error(code,failMessage);
+            }
+        });
+    }
+
+    /**
+     * 任务指令-无照上报
+     * @param activity
+     * @param taskreceive  选的人的ID
+     * @param ID           隐患ID
+     * @param callback
+     * @param exceptionCallback
+     */
+    public static void tasksendNLS(Activity activity,String taskreceive,String ID,final RequestCallback callback,final RequestExceptionCallback exceptionCallback){
+        Map<String,String> params = new HashMap<>();
+        params.put("taskreceive",taskreceive);
+        params.put("ID",ID);
+        MapiUtil.getInstance().call(activity,tasksendNLS,params,new MapiUtil.MapiSuccessResponse(){
+            @Override
+            public void success(JSONObject json) {
+                DebugLog.i("json="+json);
+                callback.success(json);
+            }
+        },new MapiUtil.MapiFailResponse(){
+
+            @Override
+            public void fail(String code, String failMessage) {
+                exceptionCallback.error(code,failMessage);
+            }
+        });
+    }
+
+    /**
+     * 我的任务-无照-完成
+     * @param activity
+     * @param ID           隐患ID
+     * @param callback
+     * @param exceptionCallback
+     */
+    public static void taskcompleteNLS(Activity activity,String ID,final RequestCallback callback,final RequestExceptionCallback exceptionCallback){
+        Map<String,String> params = new HashMap<>();
+        params.put("ID",ID);
+        MapiUtil.getInstance().call(activity,taskcompleteNLS,params,new MapiUtil.MapiSuccessResponse(){
+            @Override
+            public void success(JSONObject json) {
+                DebugLog.i("json="+json);
+                callback.success(json);
+            }
+        },new MapiUtil.MapiFailResponse(){
+
+            @Override
+            public void fail(String code, String failMessage) {
+                exceptionCallback.error(code,failMessage);
+            }
+        });
+    }
+
+    /**
+     * 任务指令-新增
+     * @param activity
+     * @param userid
+     * @param remark
+     * @param receives
+     * @param callback
+     * @param exceptionCallback
+     */
+    public static void addtask(Activity activity,String userid,String remark,String receives,final RequestCallback callback,final RequestExceptionCallback exceptionCallback){
+        Map<String,String> params = new HashMap<>();
+        params.put("userid",userid);
+        params.put("remark",remark);
+        params.put("receives",receives);
+        MapiUtil.getInstance().call(activity,addtask,params,new MapiUtil.MapiSuccessResponse(){
+            @Override
+            public void success(JSONObject json) {
+                DebugLog.i("json="+json);
+                callback.success(json);
+            }
+        },new MapiUtil.MapiFailResponse(){
+
+            @Override
+            public void fail(String code, String failMessage) {
+                exceptionCallback.error(code,failMessage);
+            }
+        });
+    }
+
+    /**
+     * 我的任务-其他任务-完成
+     * @param activity
+     * @param ID
+     * @param callback
+     * @param exceptionCallback
+     */
+    public static void Othertaskcomplete(Activity activity,String ID,final RequestCallback callback,final RequestExceptionCallback exceptionCallback){
+        Map<String,String> params = new HashMap<>();
+        params.put("ID",ID);
+        MapiUtil.getInstance().call(activity,Othertaskcomplete,params,new MapiUtil.MapiSuccessResponse(){
+            @Override
+            public void success(JSONObject json) {
+                DebugLog.i("json="+json);
+                callback.success(json);
+            }
+        },new MapiUtil.MapiFailResponse(){
+
+            @Override
+            public void fail(String code, String failMessage) {
+                exceptionCallback.error(code,failMessage);
+            }
+        });
+    }
+
+    /**
+     * 通知-新增
+     * @param activity
+     * @param userid
+     * @param remark
+     * @param receives
+     * @param callback
+     * @param exceptionCallback
+     */
+    public static void addMessage(Activity activity,String userid,String remark,String receives,final RequestCallback callback,final RequestExceptionCallback exceptionCallback){
+        Map<String,String> params = new HashMap<>();
+        params.put("userid",userid);
+        params.put("remark",remark);
+        params.put("receives",receives);
+        MapiUtil.getInstance().call(activity,addMessage,params,new MapiUtil.MapiSuccessResponse(){
+            @Override
+            public void success(JSONObject json) {
+                DebugLog.i("json="+json);
+                callback.success(json);
+            }
+        },new MapiUtil.MapiFailResponse(){
+
             @Override
             public void fail(String code, String failMessage) {
                 exceptionCallback.error(code,failMessage);

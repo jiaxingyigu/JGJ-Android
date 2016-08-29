@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.yigu.jgj.R;
@@ -52,31 +53,47 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
     public void onBindViewHolder(MainAdapter.ViewHolder holder, int position) {
         int resId = R.mipmap.main_one;
         switch (mList.get(position).getId()){
-            case JGJDataSource.TYPE_DAILY:
+            case JGJDataSource.TYPE_TEL:
                 resId = R.mipmap.main_one;
                 break;
             case JGJDataSource.TYPE_COMPANY:
                 resId = R.mipmap.main_two;
                 break;
-            case JGJDataSource.TYPE_TASK:
+            case JGJDataSource.TYPE_DAILY:
                 resId = R.mipmap.main_three;
                 break;
-            case JGJDataSource.TYPE_ASSIGN:
+            case JGJDataSource.TYPE_LICENSE:
                 resId = R.mipmap.main_three;
                 break;
-            case JGJDataSource.TYPE_DANGER:
+            case JGJDataSource.TYPE_PARTY:
                 resId = R.mipmap.main_four;
                 break;
-            case JGJDataSource.TYPE_PERSON:
+            case JGJDataSource.TYPE_SPECIAL:
                 resId = R.mipmap.main_five;
                 break;
-            case JGJDataSource.TYPE_FILE:
-                resId = R.mipmap.main_six;
+            case JGJDataSource.TYPE_ASSIGN:
+                resId = R.mipmap.main_seven;
                 break;
+            case JGJDataSource.TYPE_TASK:
+                resId = R.mipmap.main_eight;
+                break;
+            case JGJDataSource.TYPE_DANGER:
+                resId = R.mipmap.main_nine;
+                break;
+            case JGJDataSource.TYPE_NOTIFY:
+                resId = R.mipmap.main_ten;
+                break;
+            case JGJDataSource.TYPE_WARNING:
+                resId = R.mipmap.main_ele;
+                break;
+            case JGJDataSource.TYPE_PERSON:
+                resId = R.mipmap.main_twl;
+                break;
+
         }
         holder.image.setImageResource(resId);
-        holder.image.setTag(position);
-        holder.image.setOnClickListener(new View.OnClickListener() {
+        holder.root_view.setTag(position);
+        holder.root_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(null!=onItemClickListener)
@@ -92,6 +109,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
         ImageView image;
         @Bind(R.id.title)
         TextView title;
+       @Bind(R.id.root_view)
+       RelativeLayout root_view;
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);

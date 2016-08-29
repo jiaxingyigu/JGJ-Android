@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/margin_10dp"
+    android:layout_marginRight="@dimen/margin_10dp"
+    >
+
+    <ImageView
+        android:id="@+id/iv_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/line_title_front"
+        />
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/jgj_black"
+        android:textSize="15sp"
+        android:text="处置结果"
+        android:layout_marginLeft="@dimen/margin_10dp"
+        android:layout_toRightOf="@+id/iv_result"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/change_ll"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_below="@+id/tv_result"
+        android:layout_alignLeft="@+id/tv_result"
+        android:layout_marginTop="@dimen/margin_2"
+        >
+
+        <TextView
+            style="@style/textViewStyle_dark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="责令改正："
+            />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/margin_1"
+            android:layout_marginLeft="@dimen/margin_1"
+            >
+
+            <EditText
+                android:id="@+id/change_num"
+                style="@style/editViewStyle_gray"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:gravity="right|center_vertical"
+                android:inputType="number"
+                android:text=""
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_line"
+                android:layout_alignParentBottom="true"
+                />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/investigation_ll"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_below="@+id/change_ll"
+        android:layout_alignLeft="@+id/tv_result"
+        android:layout_marginTop="@dimen/margin_2"
+        >
+
+        <TextView
+            style="@style/textViewStyle_dark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="立案查处："
+            />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/margin_1"
+            android:layout_marginLeft="@dimen/margin_1"
+            >
+
+            <EditText
+                android:id="@+id/investigation_num"
+                style="@style/editViewStyle_gray"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:gravity="right|center_vertical"
+                android:inputType="number"
+                android:text=""
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_line"
+                android:layout_alignParentBottom="true"
+                />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/move_ll"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_below="@+id/investigation_ll"
+        android:layout_alignLeft="@+id/tv_result"
+        android:layout_marginTop="@dimen/margin_2"
+        >
+
+        <TextView
+            style="@style/textViewStyle_dark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="抄告、移送："
+            />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/margin_1"
+            android:layout_marginLeft="@dimen/margin_1"
+            >
+
+            <EditText
+                android:id="@+id/move_num"
+                style="@style/editViewStyle_gray"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:gravity="right|center_vertical"
+                android:inputType="number"
+                android:text=""
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_line"
+                android:layout_alignParentBottom="true"
+                />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/other_result_ll"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_below="@+id/move_ll"
+        android:layout_alignLeft="@+id/tv_result"
+        android:layout_marginTop="@dimen/margin_2"
+        >
+
+        <TextView
+            style="@style/textViewStyle_dark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="其他："
+            />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/margin_1"
+            android:layout_marginLeft="@dimen/margin_1"
+            >
+
+            <EditText
+                android:id="@+id/other_result_num"
+                style="@style/editViewStyle_gray"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:gravity="right|center_vertical"
+                android:text=""
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_line"
+                android:layout_alignParentBottom="true"
+                />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

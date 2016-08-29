@@ -18,22 +18,21 @@
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <!-- Optional for location -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-
-
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
-    <uses-permission android:name="android.permission.READ_CONTACTS" /> <!-- picture -->
-    <!--//调用相机接口-->
-    <uses-feature android:name="android.hardware.camera"/>
-    <uses-feature android:name="android.hardware.camera.autofocus"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <!-- picture -->
+    <!-- //调用相机接口 -->
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
         android:name=".commom.application.AppContext"
@@ -41,37 +40,34 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        >
+        android:theme="@style/AppTheme">
 
-        <!-- Rich push 核心功能 since 2.0.6-->
+        <!-- Rich push 核心功能 since 2.0.6 -->
         <activity
             android:name="cn.jpush.android.ui.PopWinActivity"
-            android:theme="@style/MyDialogStyle"
-            android:exported="false" >
-        </activity>
+            android:exported="false"
+            android:theme="@style/MyDialogStyle" />
 
-        <!-- Required SDK核心功能-->
+        <!-- Required SDK核心功能 -->
         <activity
             android:name="cn.jpush.android.ui.PushActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:theme="@android:style/Theme.NoTitleBar"
-            android:exported="false">
+            android:exported="false"
+            android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>
                 <action android:name="cn.jpush.android.ui.PushActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="com.yigu.jgj" />
             </intent-filter>
         </activity>
-        <!-- Required  SDK核心功能-->
+        <!-- Required  SDK核心功能 -->
         <service
             android:name="cn.jpush.android.service.DownloadService"
             android:enabled="true"
-            android:exported="false" >
-        </service>
+            android:exported="false" />
 
-
-        <!-- Required SDK 核心功能-->
+        <!-- Required SDK 核心功能 -->
         <!-- 可配置android:process参数将PushService放在其他进程中 -->
         <service
             android:name="cn.jpush.android.service.PushService"
@@ -85,13 +81,14 @@
             </intent-filter>
         </service>
 
-        <!-- Required SDK核心功能-->
+        <!-- Required SDK核心功能 -->
         <receiver
             android:name="cn.jpush.android.service.PushReceiver"
             android:enabled="true"
             android:exported="false">
             <intent-filter android:priority="1000">
-                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />   <!--Required  显示通知栏 -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
+                <!-- Required  显示通知栏 -->
                 <category android:name="com.yigu.jgj" />
             </intent-filter>
             <intent-filter>
@@ -102,42 +99,54 @@
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
                 <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
                 <data android:scheme="package" />
             </intent-filter>
-
         </receiver>
 
-        <!-- Required SDK核心功能-->
-        <receiver android:name="cn.jpush.android.service.AlarmReceiver" android:exported="false"/>
-
-        <!-- User defined.  For test only  用户自定义的广播接收器-->
+        <!-- Required SDK核心功能 -->
         <receiver
-            android:name="com.yigu.jgj.receiver.MyReceiver"
-            android:exported="false"
-            android:enabled="true">
+            android:name="cn.jpush.android.service.AlarmReceiver"
+            android:exported="false" />
+
+        <!-- User defined.  For test only  用户自定义的广播接收器 -->
+        <receiver
+            android:name=".receiver.MyReceiver"
+            android:enabled="true"
+            android:exported="false">
             <intent-filter>
-                <action android:name="cn.jpush.android.intent.REGISTRATION" /> <!--Required  用户注册SDK的intent-->
+                <action android:name="cn.jpush.android.intent.REGISTRATION" />
+                <!-- Required  用户注册SDK的intent -->
                 <action android:name="cn.jpush.android.intent.UNREGISTRATION" />
-                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" /> <!--Required  用户接收SDK消息的intent-->
-                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" /> <!--Required  用户接收SDK通知栏信息的intent-->
-                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" /> <!--Required  用户打开自定义通知栏的intent-->
-                <action android:name="cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK" /> <!--Optional 用户接受Rich Push Javascript 回调函数的intent-->
-                <action android:name="cn.jpush.android.intent.CONNECTION" /><!-- 接收网络变化 连接/断开 since 1.6.3 -->
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
+                <!-- Required  用户接收SDK消息的intent -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
+                <!-- Required  用户接收SDK通知栏信息的intent -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
+                <!-- Required  用户打开自定义通知栏的intent -->
+                <action android:name="cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK" />
+                <!-- Optional 用户接受Rich Push Javascript 回调函数的intent -->
+                <action android:name="cn.jpush.android.intent.CONNECTION" />
+                <!-- 接收网络变化 连接/断开 since 1.6.3 -->
                 <category android:name="com.yigu.jgj" />
             </intent-filter>
         </receiver>
 
         <!-- Required  . Enable it you can get statistics data with channel -->
-        <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
-        <meta-data android:name="JPUSH_APPKEY" android:value="e939ffcc41fd2798d7053db2" /> <!--  </>值来自开发者平台取得的AppKey-->
+        <meta-data
+            android:name="JPUSH_CHANNEL"
+            android:value="developer-default" />
+        <meta-data
+            android:name="JPUSH_APPKEY"
+            android:value="e939ffcc41fd2798d7053db2" />
+        <!-- </>值来自开发者平台取得的AppKey -->
 
-
-
-        <activity android:name=".activity.MainActivity"
-            android:launchMode="singleTask"
-        >
+        <activity
+            android:name=".activity.MainActivity"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -149,8 +158,7 @@
             android:name=".activity.daily.DailyActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"
-            />
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".activity.daily.DailySecondActivity"
             android:screenOrientation="portrait" />
@@ -164,17 +172,14 @@
             android:name=".activity.daily.DailyThirdActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"
-            />
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".activity.person.PerManageActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize"
-            />
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name=".activity.task.TaskActivity"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.task.TaskDetailActivity"
             android:screenOrientation="portrait" />
@@ -197,18 +202,88 @@
         <activity
             android:name=".activity.file.FileActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.LoginActivity"
-            android:screenOrientation="portrait"
-        />
-        <activity android:name=".activity.SelCommunityActivity"
-            android:screenOrientation="portrait"
-            />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.SelCommunityActivity"
+            android:screenOrientation="portrait" />
         <!-- 图片裁剪 -->
         <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
-        <activity android:name="com.yigu.jgj.activity.SelRootActivity"
+        <activity
+            android:name=".activity.SelRootActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.file.FileDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.ShowBigPicActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.msg.MsgListActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.GuideActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.company.CompanyListTwoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.license.WithoutLicenseActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.license.LicenseAddActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.assign.AssignTaskTwoActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.license.LicenseDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.assign.AssignAddActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.task.TaskTwoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.special.SpecialListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.special.SpecialAddActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.license.LicenseMessageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.task.TaskLicDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.person.OtherPersonActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.special.SpecialDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.LoginTwoActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.task.TaskOtherDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PersonInfoActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.notify.NotifyListActivity"
             android:screenOrientation="portrait"
             />
-        <activity android:name=".activity.file.FileDetailActivity"
+        <activity android:name=".activity.notify.NotifyAddActivity"
             android:screenOrientation="portrait"
             />
     </application>

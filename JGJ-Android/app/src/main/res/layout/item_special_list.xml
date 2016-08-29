@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/margin_10dp"
+    android:layout_marginRight="@dimen/margin_10dp"
+    android:id="@+id/item_root"
+    >
+
+    <TextView
+        android:id="@+id/name_circle"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/shape_circle_color_blue"
+        android:text="意义"
+        android:textSize="@dimen/text_normal"
+        android:textColor="@android:color/white"
+        android:layout_alignParentLeft="true"
+        android:gravity="center"
+        android:layout_centerVertical="true"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:maxLength="2"
+        />
+
+    <RelativeLayout
+        android:id="@+id/name_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_2"
+        android:orientation="horizontal"
+        android:layout_toRightOf="@+id/name_circle"
+        android:layout_marginLeft="@dimen/margin_2"
+        >
+
+        <ImageView
+            android:id="@+id/per_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/persion"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:id="@+id/name_tv"
+            style="@style/textViewStyle_middle"
+            android:layout_width="74dp"
+            android:layout_height="wrap_content"
+            android:text="张一一"
+            android:layout_marginLeft="@dimen/margin_1"
+            android:layout_toRightOf="@+id/per_iv"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:id="@+id/tag_addr"
+            style="@style/tag_text_style_color_blue"
+            android:layout_toRightOf="@+id/name_tv"
+            android:text="东栅街道"
+            android:layout_centerVertical="true"
+            />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/tel_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_2"
+        android:layout_marginBottom="@dimen/margin_2"
+        android:layout_below="@+id/name_rl"
+        android:layout_toRightOf="@+id/name_circle"
+        android:layout_marginLeft="@dimen/margin_2"
+        >
+
+        <TextView
+            android:id="@+id/date_tv"
+            style="@style/textViewStyle_middle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2016-08-22"
+            android:layout_marginLeft="@dimen/margin_1"
+            android:layout_centerVertical="true"
+            />
+
+        <ImageView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/right"
+            android:layout_alignParentRight="true"
+            />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/divider_line"
+        android:layout_below="@+id/tel_rl"
+        />
+
+</RelativeLayout>

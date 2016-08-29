@@ -15,7 +15,7 @@
 
         <TextView
             android:id="@+id/community"
-            style="@style/tag_text_style_color_green"
+            style="@style/tag_text_style_color_blue"
             android:text="东栅街道"
             />
 

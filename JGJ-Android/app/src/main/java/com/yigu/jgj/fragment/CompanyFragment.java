@@ -68,7 +68,7 @@ public class CompanyFragment extends BaseFrag {
         mAdapter.setOnItemClickListener(new RecyOnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                ControllerUtil.go2CompanyMessage(ReceiverAction.updateCompany_action, mList.get(position));
+                ControllerUtil.go2CompanyMessage(mList.get(position));
             }
         });
         swipeLayout.setBestRefreshListener(new BestSwipeRefreshLayout.BestRefreshListener() {

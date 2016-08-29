@@ -18,6 +18,7 @@ import com.alibaba.fastjson.TypeReference;
 import com.yigu.jgj.R;
 import com.yigu.jgj.adapter.PerManageAdapter;
 import com.yigu.jgj.base.BaseActivity;
+import com.yigu.jgj.base.RequestCode;
 import com.yigu.jgj.broadCast.ReceiverAction;
 import com.yigu.jgj.commom.api.DailyApi;
 import com.yigu.jgj.commom.api.UserApi;
@@ -92,6 +93,8 @@ public class PerManageActivity extends BaseActivity {
             requestCode = getIntent().getExtras().getInt("requestCode", 0);
             ID = getIntent().getExtras().getString("ID","");
         }
+        COMPANY = userSP.getUserBean().getCOMPANY();
+
         if(!TextUtils.isEmpty(ID))
             ROLE_ID = JGJDataSource.manage_roleid;
         if(requestCode>0){
@@ -99,6 +102,11 @@ public class PerManageActivity extends BaseActivity {
             tvRight.setText("确定");
         }else{
             tvCenter.setText("人员管理");
+            String roole = userSP.getUserBean().getROLE_ID();
+            if(!TextUtils.isEmpty(COMPANY)&&!TextUtils.isEmpty(roole)){
+                if(JGJDataSource.root_one_roleid.equals(roole)||JGJDataSource.root_two_roleid.equals(roole))
+                    COMPANY = "";
+            }
         }
         LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setOrientation(OrientationHelper.VERTICAL);
@@ -116,9 +124,9 @@ public class PerManageActivity extends BaseActivity {
                 sList.addAll(userBean.get("SQ"));
         }
         topPopWindow = new TopPopWindow(this, DPUtil.dip2px(149), sList, R.style.PopupWindowAnimation);
-        COMPANY = userSP.getUserBean().getCOMPANY();
+
         COMMUNITY = userSP.getUserBean().getCOMMUNITY();
-        if(TextUtils.isEmpty(COMMUNITY)&&!sList.isEmpty())
+        if(requestCode<=0&&TextUtils.isEmpty(COMMUNITY)&&!sList.isEmpty())
             addressTv.setVisibility(View.VISIBLE);
         else
             addressTv.setVisibility(View.GONE);
@@ -203,7 +211,10 @@ public class PerManageActivity extends BaseActivity {
                     MainToast.showShortToast("请选择分配人员");
                     return;
                 }
-                assign();
+                if(RequestCode.assign_license_person==requestCode)
+                    assign();
+                else if(RequestCode.assign_person==requestCode)
+                    assign();
                 break;
             case R.id.address_tv:
                 topPopWindow.showPopupWindow(view);
@@ -244,6 +255,7 @@ public class PerManageActivity extends BaseActivity {
         if (null != mList) {
             mList.clear();
             pageIndex = 0;
+            mAdapter.setSelPos(-1);
             mAdapter.notifyDataSetChanged();
             load();
         }
@@ -255,7 +267,7 @@ public class PerManageActivity extends BaseActivity {
             @Override
             public void success(Object success) {
                 hideLoading();
-                MainToast.showShortToast("分配成功");
+                MainToast.showShortToast("分派成功");
                 sendBroadcast(new Intent(ReceiverAction.task_action));//发送广播
                 ControllerUtil.go2AssignTask();
                 finish();
@@ -267,5 +279,25 @@ public class PerManageActivity extends BaseActivity {
             }
         });
     }
+
+    private void assignLicense(){
+        showLoading();
+        DailyApi.tasksend(this, mList.get(pos).getUSER_ID(), ID, new RequestCallback() {
+            @Override
+            public void success(Object success) {
+                hideLoading();
+                MainToast.showShortToast("分派成功");
+                sendBroadcast(new Intent(ReceiverAction.task_action));//发送广播
+                ControllerUtil.go2AssignTask();
+                finish();
+            }
+        }, new RequestExceptionCallback() {
+            @Override
+            public void error(String code, String message) {
+                hideLoading();
+            }
+        });
+    }
+
 
 }
