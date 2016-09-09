@@ -47,7 +47,7 @@ public class MapiItemResult implements Serializable {
     private String taskotime;
     private String CATEGORY;
     private String TYPE;
-    private String flag;
+    private Integer flag;
     private String TIMES;
 
     public String getTIMES() {
@@ -66,11 +66,11 @@ public class MapiItemResult implements Serializable {
         this.CATEGORY = CATEGORY;
     }
 
-    public String getFlag() {
+    public Integer getFlag() {
         return flag;
     }
 
-    public void setFlag(String flag) {
+    public void setFlag(Integer flag) {
         this.flag = flag;
     }
 

@@ -2,6 +2,7 @@ package com.yigu.jgj.adapter.assign;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,7 +57,11 @@ public class AssignTaskAdapter extends RecyclerView.Adapter<AssignTaskAdapter.Vi
             }
         });
         MapiTaskResult taskResult = mList.get(position);
-        holder.community.setText(taskResult.getCOMMUNITY());
+        if(TextUtils.isEmpty(taskResult.getCOMMUNITY())){
+            holder.community.setVisibility(View.GONE);
+        }else{
+            holder.community.setText(taskResult.getCOMMUNITY());
+        }
         String dateStr = DateUtil.getInstance().YMDHMS2YMD(taskResult.getIdate());
         holder.user.setText("上报人："+taskResult.getUser()+"    "+dateStr);
         holder.shopname.setText(taskResult.getShopname());

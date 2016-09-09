@@ -56,7 +56,7 @@ public class SpecialResultLayout extends RelativeLayout {
     }
 
     public boolean vorify() {
-        if (TextUtils.isEmpty(changeNum.getText().toString())) {
+       /* if (TextUtils.isEmpty(changeNum.getText().toString())) {
             MainToast.showLongToast("请输入责令改正");
             return false;
         }
@@ -71,20 +71,20 @@ public class SpecialResultLayout extends RelativeLayout {
         if (TextUtils.isEmpty(otherResultNum.getText().toString())) {
             MainToast.showLongToast("请输入其他结果");
             return false;
-        }
+        }*/
         return true;
     }
 
     public String getChangeNum() {
-        return changeNum.getText().toString();
+        return TextUtils.isEmpty(changeNum.getText().toString())?"0":changeNum.getText().toString();
     }
 
     public String getInvestigationNum() {
-        return investigationNum.getText().toString();
+        return TextUtils.isEmpty(investigationNum.getText().toString())?"0":investigationNum.getText().toString();
     }
 
     public String getMoveNum() {
-        return moveNum.getText().toString();
+        return TextUtils.isEmpty(moveNum.getText().toString())?"0":moveNum.getText().toString();
     }
 
     public String getOtherResultNum() {

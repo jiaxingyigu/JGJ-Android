@@ -75,7 +75,7 @@ public class SelCommunityAdapter extends RecyclerView.Adapter<SelCommunityAdapte
         MapiResourceResult mapiResourceResult = mList.get(position);
         holder.name.setText(mapiResourceResult.getNAME());
         if(mapiResourceResult.isCheck())
-            holder.image.setImageResource(R.mipmap.circle_green_right);
+            holder.image.setImageResource(R.mipmap.circle_blue_right);
         else
             holder.image.setImageResource(R.mipmap.circle_white);
     }

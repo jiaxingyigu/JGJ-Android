@@ -24,7 +24,7 @@
                 android:id="@+id/specialBasicLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_2"
+                android:layout_marginTop="@dimen/margin_1"
                 />
 
            <com.yigu.jgj.view.SpecialFindLayout

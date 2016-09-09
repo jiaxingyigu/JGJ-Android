@@ -85,7 +85,7 @@ public class SelRootActivity extends BaseActivity {
     private void load() {
         mList.clear();
         mList.add(new MapiResourceResult("9d0495a5ad044083903707e83b110baa","所长"));
-        mList.add(new MapiResourceResult("fa77590189db4a12b6a18491a0d85b36","站长"));
+        mList.add(new MapiResourceResult("fa77590189db4a12b6a18491a0d85b36","联络员"));
         mAdapter.notifyDataSetChanged();
     }
 
@@ -107,7 +107,7 @@ public class SelRootActivity extends BaseActivity {
         }
     }
 
-    private void submit(){//归档
+    private void submit(){//上报
         showLoading();
         DailyApi.dailyPatrol(this, "1", itemResult.getID(), userSP.getUserBean().getUSER_ID(), itemResult.getPtioners() + "", itemResult.getHCATEN() + "", itemResult.getShowlicense() + "",
                 itemResult.getHygiene() + "", itemResult.getInvoice() + "", itemResult.getSanitation() + "", itemResult.getOverdue() + "", itemResult.getFullmark() + "", itemResult.getTrain() + "",
@@ -115,6 +115,7 @@ public class SelRootActivity extends BaseActivity {
                     @Override
                     public void success(Object success) {
                         hideLoading();
+                        MainToast.showShortToast("上报成功");
                         ControllerUtil.go2Daily();
                         finish();
                     }

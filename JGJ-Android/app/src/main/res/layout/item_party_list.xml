@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="76dp"
+    android:paddingLeft="@dimen/margin_10dp"
+    android:paddingRight="@dimen/margin_10dp"
+    android:id="@+id/item_root"
+    >
+
+    <RelativeLayout
+        android:id="@+id/name_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        >
+
+        <ImageView
+            android:id="@+id/person_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/persion"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:id="@+id/name_tv"
+            style="@style/textViewStyle_middle"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/person_iv"
+            android:layout_marginLeft="@dimen/margin_1"
+            android:text="指导人：王一"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:id="@+id/tag_addr"
+            style="@style/tag_text_style_color_blue"
+            android:layout_toRightOf="@+id/name_tv"
+            android:text="东栅街道"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_10dp"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/tel_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_10dp"
+        android:layout_marginBottom="@dimen/margin_10dp"
+        android:layout_below="@+id/name_rl"
+        >
+
+        <TextView
+            android:id="@+id/date_tv"
+            style="@style/textViewStyle_middle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2016-08-22"
+            android:layout_marginLeft="@dimen/margin_3"
+            android:layout_centerVertical="true"
+            />
+
+        <ImageView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/right"
+            android:layout_alignParentRight="true"
+            />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/divider_line"
+        android:layout_alignParentBottom="true"
+        />
+
+
+</RelativeLayout>

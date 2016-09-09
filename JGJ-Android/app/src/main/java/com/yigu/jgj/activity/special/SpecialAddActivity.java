@@ -89,7 +89,7 @@ public class SpecialAddActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.tv_right:
-                if(!specialBasicLayout.vorify()||!specialFindLayout.vorify()||!specialResultLayout.vorify()||!specialRemarkLayout.vorify())
+                if(!specialBasicLayout.vorify())//||!specialFindLayout.vorify()||!specialResultLayout.vorify()||!specialRemarkLayout.vorify()
                     return;
                 add();
                 break;
@@ -103,7 +103,7 @@ public class SpecialAddActivity extends BaseActivity {
         showLoading();
         String userId = userSP.getUserBean().getUSER_ID();
         String CID = userSP.getUserBean().getCOMMUNITY();
-        ItemApi.addSpecialaction(this,userId,CID,dateTv.getText().toString(),specialBasicLayout.getPeppelNum(),specialBasicLayout.getShopNum(),specialBasicLayout.getPledgeNum(),
+        ItemApi.addSpecialaction(this,userId,CID,dateTv.getText().toString(),specialBasicLayout.getTitle(),specialBasicLayout.getPeppelNum(),specialBasicLayout.getShopNum(),specialBasicLayout.getPledgeNum(),
                 specialBasicLayout.getResponsibilityNum(),specialFindLayout.getLicenseNum(),specialFindLayout.getManageNum(),specialFindLayout.getIllegalNum(),specialFindLayout.getOtherNum(),
                 specialResultLayout.getChangeNum(),specialResultLayout.getInvestigationNum(),specialResultLayout.getMoveNum(),specialResultLayout.getOtherResultNum(),
                 specialRemarkLayout.getRemark(),new RequestCallback() {

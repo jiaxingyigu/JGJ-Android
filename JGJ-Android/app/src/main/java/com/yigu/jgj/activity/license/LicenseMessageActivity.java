@@ -83,6 +83,7 @@ public class LicenseMessageActivity extends BaseActivity {
         lperson.setEnabled(false);
         hcaten.setEnabled(false);
         tel.setEnabled(false);
+        cid.setEnabled(false);
         rlCheckLayout.setData(itemResult);
         rlCheckLayout.setNoEdit();
     }

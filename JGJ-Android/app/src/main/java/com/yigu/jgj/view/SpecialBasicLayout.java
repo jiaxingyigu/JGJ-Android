@@ -9,7 +9,6 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 
 import com.yigu.jgj.R;
-import com.yigu.jgj.commom.result.MapiItemResult;
 import com.yigu.jgj.commom.result.MapiSepcialResult;
 import com.yigu.jgj.commom.widget.MainToast;
 
@@ -28,6 +27,8 @@ public class SpecialBasicLayout extends RelativeLayout {
     EditText pledgeNum;
     @Bind(R.id.responsibility_num)
     EditText responsibilityNum;
+    @Bind(R.id.title_et)
+    EditText titleEt;
     private Context mContext;
     private View view;
 
@@ -54,10 +55,14 @@ public class SpecialBasicLayout extends RelativeLayout {
             return;
         view = LayoutInflater.from(mContext).inflate(R.layout.layout_special_basic, this);
         ButterKnife.bind(this, view);
-        peopleNum.requestFocus();
+        titleEt.requestFocus();
     }
 
     public boolean vorify() {
+        if(TextUtils.isEmpty(titleEt.getText().toString())){
+            MainToast.showLongToast("请输入行动名称");
+            return false;
+        }
         if (TextUtils.isEmpty(peopleNum.getText().toString())) {
             MainToast.showLongToast("请输入出动人数");
             return false;
@@ -77,18 +82,35 @@ public class SpecialBasicLayout extends RelativeLayout {
         return true;
     }
 
-    public String getPeppelNum(){return peopleNum.getText().toString();}
-    public String getShopNum(){return shopNum.getText().toString();}
-    public String getPledgeNum(){return pledgeNum.getText().toString();}
-    public String getResponsibilityNum(){return responsibilityNum.getText().toString();}
+    public String getTitle(){
+        return titleEt.getText().toString();
+    }
+
+    public String getPeppelNum() {
+        return peopleNum.getText().toString();
+    }
+
+    public String getShopNum() {
+        return shopNum.getText().toString();
+    }
+
+    public String getPledgeNum() {
+        return pledgeNum.getText().toString();
+    }
+
+    public String getResponsibilityNum() {
+        return responsibilityNum.getText().toString();
+    }
 
     public void loadData(MapiSepcialResult itemResult, boolean enable) {
-        if(null!=itemResult){
-            peopleNum.setText(itemResult.getPeople()+"");
-            shopNum.setText(itemResult.getShop()+"");
-            pledgeNum.setText(itemResult.getCbook()+"");
-            responsibilityNum.setText(itemResult.getRbook()+"");
+        if (null != itemResult) {
+            titleEt.setText(itemResult.getAcname());
+            peopleNum.setText(itemResult.getPeople() + "");
+            shopNum.setText(itemResult.getShop() + "");
+            pledgeNum.setText(itemResult.getCbook() + "");
+            responsibilityNum.setText(itemResult.getRbook() + "");
 
+            titleEt.setEnabled(enable);
             peopleNum.setEnabled(enable);
             shopNum.setEnabled(enable);
             pledgeNum.setEnabled(enable);

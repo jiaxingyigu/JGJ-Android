@@ -46,7 +46,7 @@ public class NotifyListActivity extends BaseActivity {
     BestSwipeRefreshLayout swipeLayout;
 
     private Integer pageIndex = 0;
-    private Integer pageSize = 6;
+    private Integer pageSize = 10;
     private Integer ISNEXT = 1;
     private NotifyListAdapter mAdapter;
     List<MapiMsgResult> mList = new ArrayList<>();
@@ -66,6 +66,7 @@ public class NotifyListActivity extends BaseActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.back:
+//                ControllerUtil.go2Main();
                 finish();
                 break;
             case R.id.tv_right:
@@ -74,6 +75,13 @@ public class NotifyListActivity extends BaseActivity {
 //                ControllerUtil.go2NotifyAdd();
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+//        ControllerUtil.go2Main();
+        finish();
     }
 
     private void initView() {

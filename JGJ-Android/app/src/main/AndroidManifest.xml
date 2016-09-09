@@ -31,8 +31,8 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <!-- picture -->
     <!-- //调用相机接口 -->
-    <uses-feature android:name="android.hardware.camera" />
-    <uses-feature android:name="android.hardware.camera.autofocus" />
+   <!-- <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />-->
 
     <application
         android:name=".commom.application.AppContext"
@@ -273,17 +273,38 @@
             android:name=".activity.LoginTwoActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name=".activity.task.TaskOtherDetailActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.PersonInfoActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.notify.NotifyListActivity"
+        <activity
+            android:name=".activity.notify.NotifyListActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.notify.NotifyAddActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.warning.WarningActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.warning.WarningAddActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.ModifyPsdActivity"
             android:screenOrientation="portrait"
             />
-        <activity android:name=".activity.notify.NotifyAddActivity"
+        <activity android:name=".activity.party.PartyActivity"
+            android:screenOrientation="portrait"
+            />
+        <activity android:name=".activity.party.PartyAddActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"
+            />
+        <activity android:name=".activity.party.ParryDetailActivity"
             android:screenOrientation="portrait"
             />
     </application>

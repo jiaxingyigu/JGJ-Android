@@ -26,6 +26,7 @@
             android:background="@mipmap/splash_bg"
             android:id="@+id/startLayout"
             android:orientation="horizontal"
+            android:visibility="gone"
             />
 
     </RelativeLayout>

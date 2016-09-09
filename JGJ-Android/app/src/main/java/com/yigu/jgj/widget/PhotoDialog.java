@@ -8,6 +8,7 @@ import android.provider.MediaStore;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
@@ -34,8 +35,8 @@ public class PhotoDialog extends Dialog {
     private String imagePath;
     private BaseActivity mActivity;
 
-    public PhotoDialog(Context context, int theme) {
-        super(context, theme);
+    public PhotoDialog(Context context,int theme) {
+        super(context,theme);
         mActivity = (BaseActivity) context;
         initView();
     }

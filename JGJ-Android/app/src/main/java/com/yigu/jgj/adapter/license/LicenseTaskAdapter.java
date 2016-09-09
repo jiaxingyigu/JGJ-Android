@@ -58,7 +58,11 @@ public class LicenseTaskAdapter extends RecyclerView.Adapter<LicenseTaskAdapter.
             }
         });
         MapiItemResult taskResult = mList.get(position);
-        holder.community.setText(taskResult.getCOMMUNITY());
+        if(TextUtils.isEmpty(taskResult.getCOMMUNITY())){
+            holder.community.setVisibility(View.GONE);
+        }else{
+            holder.community.setText(taskResult.getCOMMUNITY());
+        }
         String dateStr = DateUtil.getInstance().YMDHMS2YMD(taskResult.getTIMES());
         holder.user.setText("上报人："+ (TextUtils.isEmpty(taskResult.getUser())?"":taskResult.getUser())+"    "+dateStr);
         holder.shopname.setText(taskResult.getNAME());

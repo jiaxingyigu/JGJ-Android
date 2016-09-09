@@ -60,4 +60,16 @@ public class BasicApi {
     protected static String Othertaskcomplete = "/appuser/Othertaskcomplete";
     /**通知-新增*/
     protected static String addMessage = "/appuser/addMessage";
+    /**预警列表*/
+    protected static String getWarninglist = "/appuser/getWarninglist";
+    /**预警-新增*/
+    protected static String addWarning = "/appuser/addWarning";
+    /**任务指令-退回*/
+    protected static String taskback = "/appuser/taskback";
+    /**修改密码*/
+    protected static String editPassword = "/appuser/editPassword";
+    /**聚餐管理-新增*/
+    protected static String addDinner = "/appuser/addDinner";
+    /**聚餐管理-列表*/
+    protected static String Dinnerlist = "/appuser/Dinnerlist";
 }

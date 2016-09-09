@@ -56,7 +56,7 @@ public class SpecialFindLayout extends RelativeLayout {
     }
 
     public boolean vorify() {
-        if (TextUtils.isEmpty(licenseNum.getText().toString())) {
+      /*  if (TextUtils.isEmpty(licenseNum.getText().toString())) {
             MainToast.showLongToast("请输入无证无照");
             return false;
         }
@@ -71,13 +71,13 @@ public class SpecialFindLayout extends RelativeLayout {
         if (TextUtils.isEmpty(otherNum.getText().toString())) {
             MainToast.showLongToast("请输入其他问题");
             return false;
-        }
+        }*/
         return true;
     }
 
-    public String getLicenseNum(){return licenseNum.getText().toString();}
-    public String getManageNum(){return manageNum.getText().toString();}
-    public String getIllegalNum(){return illegalNum.getText().toString();}
+    public String getLicenseNum(){return TextUtils.isEmpty(licenseNum.getText().toString())?"0":licenseNum.getText().toString();}
+    public String getManageNum(){return TextUtils.isEmpty(manageNum.getText().toString())?"0":manageNum.getText().toString();}
+    public String getIllegalNum(){return  TextUtils.isEmpty(illegalNum.getText().toString())?"0":illegalNum.getText().toString();}
     public String getOtherNum(){return otherNum.getText().toString();}
 
     public void loadData(MapiSepcialResult itemResult, boolean enable) {

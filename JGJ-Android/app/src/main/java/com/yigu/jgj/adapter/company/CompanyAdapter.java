@@ -1,6 +1,7 @@
 package com.yigu.jgj.adapter.company;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,6 +50,9 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+
+
+
         holder.item_daily.setTag(position);
         holder.item_daily.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +62,12 @@ public class CompanyAdapter extends RecyclerView.Adapter<CompanyAdapter.ViewHold
             }
         });
         MapiItemResult itemResult = mList.get(position);
+        if(null!=itemResult.getFlag()){
+            if(itemResult.getFlag()==0)
+                holder.item_daily.setBackgroundColor(Color.parseColor("#fcfae1"));
+            else if(itemResult.getFlag()==1)
+                holder.item_daily.setBackgroundColor(Color.parseColor("#ffffff"));
+        }
         holder.name.setText(itemResult.getNAME());
         holder.lperson.setText(itemResult.getLPERSON());
         holder.tel.setText(itemResult.getTEL());

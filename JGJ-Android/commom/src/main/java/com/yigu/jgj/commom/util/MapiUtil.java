@@ -121,7 +121,7 @@ public class MapiUtil {
                     public void onResponse(String s) {
                         DebugLog.i("mapi response" + s);
                         JSONObject jsonObject = JSONObject.parseObject(s);
-                        if (jsonObject.getString("result").equals("01")) {
+                        if (jsonObject.getString("result").equals("01")||jsonObject.getString("result").equals("02")) {
                             response.success(jsonObject);
                         }
                         String code = jsonObject.getString("result");
@@ -135,8 +135,8 @@ public class MapiUtil {
                             act.sendBroadcast(intent);
                             return;
                         }
-                        if (fail != null && !code.equals("01")) {
-                            fail.fail(code, jsonObject.getString("message"));//参数不满足条件
+                        if (fail != null && !code.equals("01")&&!code.equals("02")) {
+                            fail.fail(code, jsonObject.getString("data"));//参数不满足条件
                         }
                     }
                 }, new Response.ErrorListener() {

@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    >
+
+    <LinearLayout
+        android:id="@+id/holdPeople_ll"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            style="@style/textViewStyle_dark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="举  办  人："
+            android:layout_gravity="bottom"
+            />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/margin_1"
+            >
+
+            <EditText
+                android:id="@+id/holdPeople"
+                style="@style/editViewStyle_gray"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:gravity="bottom"
+                android:text=""
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_line"
+                android:layout_alignParentBottom="true"
+                />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tel_ll"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:orientation="horizontal"
+        android:layout_below="@+id/holdPeople_ll"
+        android:layout_marginTop="@dimen/margin_1"
+        >
+
+        <TextView
+            style="@style/textViewStyle_dark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="联系电话："
+            android:layout_gravity="bottom"
+            />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/margin_1"
+            >
+
+            <EditText
+                android:id="@+id/tel"
+                style="@style/editViewStyle_gray"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:gravity="bottom"
+                android:text=""
+                android:inputType="number"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_line"
+                android:layout_alignParentBottom="true"
+                />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/chef_ll"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:orientation="horizontal"
+        android:layout_below="@+id/tel_ll"
+        android:layout_marginTop="@dimen/margin_1"
+        >
+
+        <TextView
+            style="@style/textViewStyle_dark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="厨        师："
+            android:layout_gravity="bottom"
+            />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/margin_1"
+            >
+
+            <EditText
+                android:id="@+id/chef"
+                style="@style/editViewStyle_gray"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:gravity="bottom"
+                android:text=""
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_line"
+                android:layout_alignParentBottom="true"
+                />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/community_ll"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:orientation="horizontal"
+        android:layout_below="@+id/chef_ll"
+        android:layout_marginTop="@dimen/margin_1"
+        >
+
+        <TextView
+            style="@style/textViewStyle_dark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="所属网格："
+            android:layout_gravity="bottom"
+            />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/margin_1"
+            >
+
+            <TextView
+                android:id="@+id/community"
+                style="@style/editViewStyle_gray"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:gravity="bottom"
+                android:text=""
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_line"
+                android:layout_alignParentBottom="true"
+                />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/addr_ll"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:orientation="horizontal"
+        android:layout_below="@+id/community_ll"
+        android:layout_marginTop="@dimen/margin_1"
+        >
+
+        <TextView
+            style="@style/textViewStyle_dark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="地        址："
+            android:layout_gravity="bottom"
+            />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/margin_1"
+            >
+
+            <EditText
+                android:id="@+id/addr"
+                style="@style/editViewStyle_gray"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:gravity="bottom"
+                android:text=""
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_line"
+                android:layout_alignParentBottom="true"
+                />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

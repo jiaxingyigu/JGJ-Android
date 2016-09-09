@@ -9,6 +9,7 @@ import com.yigu.jgj.commom.result.MapiImageResult;
 import com.yigu.jgj.commom.result.MapiItemResult;
 import com.yigu.jgj.commom.result.MapiMsgResult;
 import com.yigu.jgj.commom.result.MapiOtherResult;
+import com.yigu.jgj.commom.result.MapiPartyResult;
 import com.yigu.jgj.commom.result.MapiSepcialResult;
 import com.yigu.jgj.commom.result.MapiTaskResult;
 import com.yigu.jgj.commom.result.MapiUserResult;
@@ -579,7 +580,7 @@ public class ItemApi extends BasicApi{
      * @param callback
      * @param exceptionCallback
      */
-    public static void addSpecialaction(Activity activity,String userid,String CID,String date,String people,String shop,String cbook,String rbook,
+    public static void addSpecialaction(Activity activity,String userid,String CID,String date,String name,String people,String shop,String cbook,String rbook,
                                         String nlshop,String cscope,String contraband,String other1,String correction,String register,
                                         String chaogu,String other2,String remark,final RequestCallback callback, final RequestExceptionCallback exceptionCallback){
         Map<String,String> params = new HashMap<>();
@@ -587,6 +588,7 @@ public class ItemApi extends BasicApi{
         if(!TextUtils.isEmpty(CID))
             params.put("CID",CID);
         params.put("date",date);
+        params.put("name",name);
         params.put("people",people);
         params.put("shop",shop);
         params.put("cbook",cbook);
@@ -636,6 +638,118 @@ public class ItemApi extends BasicApi{
             public void success(JSONObject json) {
                 DebugLog.i("json="+json);
                 List<MapiOtherResult> result = JSONArray.parseArray(json.getJSONObject("data").getJSONArray("tasks").toJSONString(),MapiOtherResult.class);
+                Integer ISNEXT = json.getJSONObject("data").getInteger("ISNEXT");
+                callback.success(ISNEXT,result);
+            }
+        },new MapiUtil.MapiFailResponse(){
+            @Override
+            public void fail(String code, String failMessage) {
+                exceptionCallback.error(code,failMessage);
+            }
+        });
+    }
+
+    /**
+     * 预警列表列表
+     * @param activity
+     * @param USER_ID
+     * @param PAGENO
+     * @param SIZE
+     * @param callback
+     * @param exceptionCallback
+     */
+    public static void getWarninglist(Activity activity,String USER_ID,String PAGENO,String SIZE,final RequestPageCallback callback,final RequestExceptionCallback exceptionCallback){
+        Map<String,String> params = new HashMap<>();
+        params.put("USER_ID",USER_ID);
+        params.put("PAGENO",PAGENO);
+        params.put("SIZE",SIZE);
+        MapiUtil.getInstance().call(activity,getWarninglist,params,new MapiUtil.MapiSuccessResponse(){
+            @Override
+            public void success(JSONObject json) {
+                DebugLog.i("json="+json);
+                List<MapiMsgResult> result = JSONArray.parseArray(json.getJSONObject("data").getJSONArray("messages").toJSONString(),MapiMsgResult.class);
+                Integer ISNEXT = json.getJSONObject("data").getInteger("ISNEXT");
+                callback.success(ISNEXT,result);
+            }
+        },new MapiUtil.MapiFailResponse(){
+            @Override
+            public void fail(String code, String failMessage) {
+                exceptionCallback.error(code,failMessage);
+            }
+        });
+    }
+
+    /**
+     * 聚餐管理-新增
+     * @param activity
+     * @param stardate
+     * @param enddate
+     * @param sponsor
+     * @param tel
+     * @param cook
+     * @param CID
+     * @param address
+     * @param mealtime
+     * @param attend
+     * @param patient
+     * @param userid
+     * @param utel
+     * @param guidance
+     * @param callback
+     * @param exceptionCallback
+     */
+    public static void addDinner(Activity activity,String stardate,String enddate,String sponsor,String tel,String cook,String CID,
+                                 String address,String mealtime,String attend,String patient,String userid,String utel,String guidance,
+                                 final RequestCallback callback,final RequestExceptionCallback exceptionCallback ){
+        Map<String,String> params = new HashMap<>();
+        params.put("stardate",stardate);
+        params.put("enddate",enddate);
+        params.put("sponsor",sponsor);
+        params.put("tel",tel);
+        params.put("cook",cook);
+        if(!TextUtils.isEmpty(CID))
+            params.put("CID",CID);
+        params.put("address",address);
+        params.put("mealtime",mealtime);
+        params.put("attend",attend);
+        params.put("patient",patient);
+        params.put("userid",userid);
+        params.put("utel",utel);
+        params.put("guidance",guidance);
+        MapiUtil.getInstance().call(activity,addDinner,params,new MapiUtil.MapiSuccessResponse(){
+            @Override
+            public void success(JSONObject json) {
+                DebugLog.i("json="+json);
+                callback.success(json);
+            }
+        },new MapiUtil.MapiFailResponse(){
+            @Override
+            public void fail(String code, String failMessage) {
+                exceptionCallback.error(code,failMessage);
+            }
+        });
+    }
+
+    /**
+     * 聚餐管理-列表
+     * @param activity
+     * @param COMMUNITY
+     * @param PAGENO
+     * @param SIZE
+     * @param callback
+     * @param exceptionCallback
+     */
+    public static void Dinnerlist(Activity activity,String COMMUNITY,String PAGENO,String SIZE, final RequestPageCallback callback,final RequestExceptionCallback exceptionCallback){
+        Map<String,String> params = new HashMap<>();
+        if(!TextUtils.isEmpty(COMMUNITY))
+            params.put("COMMUNITY",COMMUNITY);
+        params.put("PAGENO",PAGENO);
+        params.put("SIZE",SIZE);
+        MapiUtil.getInstance().call(activity,Dinnerlist,params,new MapiUtil.MapiSuccessResponse(){
+            @Override
+            public void success(JSONObject json) {
+                DebugLog.i("json="+json);
+                List<MapiPartyResult> result = JSONArray.parseArray(json.getJSONObject("data").getJSONArray("dinner").toJSONString(),MapiPartyResult.class);
                 Integer ISNEXT = json.getJSONObject("data").getInteger("ISNEXT");
                 callback.success(ISNEXT,result);
             }

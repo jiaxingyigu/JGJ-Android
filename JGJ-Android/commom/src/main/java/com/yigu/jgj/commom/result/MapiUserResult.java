@@ -14,6 +14,15 @@ public class MapiUserResult implements Serializable {
     private String COMMUNITY;
     private String ROLE_NAME;
     private boolean isCheck = false;
+    private String USERNAME;
+
+    public String getUSERNAME() {
+        return USERNAME;
+    }
+
+    public void setUSERNAME(String USERNAME) {
+        this.USERNAME = USERNAME;
+    }
 
     public boolean isCheck() {
         return isCheck;

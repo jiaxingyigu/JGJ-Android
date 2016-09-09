@@ -6,6 +6,7 @@ import com.yigu.jgj.activity.GuideActivity;
 import com.yigu.jgj.activity.LoginActivity;
 import com.yigu.jgj.activity.LoginTwoActivity;
 import com.yigu.jgj.activity.MainActivity;
+import com.yigu.jgj.activity.ModifyPsdActivity;
 import com.yigu.jgj.activity.PersonInfoActivity;
 import com.yigu.jgj.activity.SelCommunityActivity;
 import com.yigu.jgj.activity.SelRootActivity;
@@ -32,6 +33,8 @@ import com.yigu.jgj.activity.license.WithoutLicenseActivity;
 import com.yigu.jgj.activity.msg.MsgListActivity;
 import com.yigu.jgj.activity.notify.NotifyAddActivity;
 import com.yigu.jgj.activity.notify.NotifyListActivity;
+import com.yigu.jgj.activity.party.ParryDetailActivity;
+import com.yigu.jgj.activity.party.PartyActivity;
 import com.yigu.jgj.activity.person.PerManageActivity;
 import com.yigu.jgj.activity.special.SpecialAddActivity;
 import com.yigu.jgj.activity.special.SpecialDetailActivity;
@@ -40,9 +43,11 @@ import com.yigu.jgj.activity.task.TaskActivity;
 import com.yigu.jgj.activity.task.TaskDetailActivity;
 import com.yigu.jgj.activity.task.TaskLicDetailActivity;
 import com.yigu.jgj.activity.task.TaskTwoActivity;
+import com.yigu.jgj.activity.warning.WarningActivity;
 import com.yigu.jgj.commom.application.AppContext;
 import com.yigu.jgj.commom.result.MapiImageResult;
 import com.yigu.jgj.commom.result.MapiItemResult;
+import com.yigu.jgj.commom.result.MapiPartyResult;
 import com.yigu.jgj.commom.result.MapiResourceResult;
 import com.yigu.jgj.commom.result.MapiSepcialResult;
 import com.yigu.jgj.commom.result.MapiTaskResult;
@@ -355,6 +360,43 @@ public class ControllerUtil {
     public static void go2NotifyAdd() {
         Intent intent = new Intent(AppContext.getInstance(), NotifyAddActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        AppContext.getInstance().startActivity(intent);
+    }
+
+    /**
+     * 通知-列表
+     */
+    public static void go2WarningList(){
+        Intent intent = new Intent(AppContext.getInstance(), WarningActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        AppContext.getInstance().startActivity(intent);
+    }
+
+    /**
+     * 修改密码
+     */
+    public static void go2ModifyPsd() {
+        Intent intent = new Intent(AppContext.getInstance(), ModifyPsdActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        AppContext.getInstance().startActivity(intent);
+    }
+
+    /**
+     * 聚餐管理
+     */
+    public static void go2Party() {
+        Intent intent = new Intent(AppContext.getInstance(), PartyActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        AppContext.getInstance().startActivity(intent);
+    }
+
+    /**
+     * 聚餐管理-详情
+     */
+    public static void go2ParryDetail(MapiPartyResult itemResult) {
+        Intent intent = new Intent(AppContext.getInstance(), ParryDetailActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("item",itemResult);
         AppContext.getInstance().startActivity(intent);
     }
 

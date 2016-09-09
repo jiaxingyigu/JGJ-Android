@@ -27,6 +27,7 @@ import com.yigu.jgj.broadCast.ReceiverAction;
 import com.yigu.jgj.commom.api.ItemApi;
 import com.yigu.jgj.commom.result.MapiItemResult;
 import com.yigu.jgj.commom.result.MapiResourceResult;
+import com.yigu.jgj.commom.util.DebugLog;
 import com.yigu.jgj.commom.util.RequestExceptionCallback;
 import com.yigu.jgj.commom.util.RequestPageCallback;
 import com.yigu.jgj.commom.widget.MainToast;
@@ -89,6 +90,7 @@ public class CompanyListTwoActivity extends BaseActivity {
     private String TYPE = "";
     private String COMMUNITY = "";
     private String flag = "";
+    private boolean isClick = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -122,9 +124,19 @@ public class CompanyListTwoActivity extends BaseActivity {
             if (!userBean.get("SQ").isEmpty())
                 mList.addAll(userBean.get("SQ"));
         }
-        String COMMUNITY_def = userSP.getUserBean().getCOMMUNITY();
-        if(TextUtils.isEmpty(COMMUNITY_def))
-            mList.add(0, new MapiResourceResult("", "全部"));
+        COMMUNITY  = userSP.getUserBean().getCOMMUNITY();
+        DebugLog.i("COMMUNITY"+COMMUNITY);
+        if(!TextUtils.isEmpty(COMMUNITY)&&!mList.isEmpty()) {
+            for (MapiResourceResult resourceResult : mList) {
+                if (COMMUNITY.equals(resourceResult.getZD_ID())) {
+                    filterTwo.setText(resourceResult.getNAME());
+                    break;
+                }
+            }
+            isClick = false;
+            filterTwo.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+        }
+        mList.add(0, new MapiResourceResult("", "全部"));
         listOne.add(new MapiResourceResult("", "全部"));
         listOne.add(new MapiResourceResult("A", "A类"));
         listOne.add(new MapiResourceResult("B", "B类"));
@@ -159,8 +171,8 @@ public class CompanyListTwoActivity extends BaseActivity {
                 bgVieww.setBackgroundColor(Color.parseColor("#00000000"));
                 if (null != view) {
                     filterOne.setText(listOne.get(postion).getNAME());
-                    refreshData();
                     TYPE = listOne.get(postion).getZD_ID();
+                    refreshData();
                 }
             }
         });
@@ -257,11 +269,13 @@ public class CompanyListTwoActivity extends BaseActivity {
 
                 break;
             case R.id.filter_two:
-                filterTwoPop.showPopupWindow(filter_rl);
-                if (null != filterTwoPop && filterTwoPop.isShowing())
-                    bgVieww.setBackgroundColor(Color.parseColor("#b0000000"));
-                else
-                    bgVieww.setBackgroundColor(Color.parseColor("#00000000"));
+                if(isClick){
+                    filterTwoPop.showPopupWindow(filter_rl);
+                    if (null != filterTwoPop && filterTwoPop.isShowing())
+                        bgVieww.setBackgroundColor(Color.parseColor("#b0000000"));
+                    else
+                        bgVieww.setBackgroundColor(Color.parseColor("#00000000"));
+                }
                 break;
             case R.id.filter_three:
                 filterThreePop.showPopupWindow(filter_rl);
@@ -296,12 +310,12 @@ public class CompanyListTwoActivity extends BaseActivity {
         ItemApi.getArchiveslist(this, search, COMMUNITY, CATEGORY,TYPE,flag ,pageIndex + "", pageSize + "", new RequestPageCallback<List<MapiItemResult>>() {
             @Override
             public void success(Integer isNext, List<MapiItemResult> success) {
+                swipeLayout.setRefreshing(false);
                 ISNEXT = isNext;
                 if (success.isEmpty())
                     return;
                 itemList.addAll(success);
                 mAdapter.notifyDataSetChanged();
-                swipeLayout.setRefreshing(false);
             }
         }, new RequestExceptionCallback() {
             @Override

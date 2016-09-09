@@ -89,6 +89,7 @@ public class AssignDetailActivity extends BaseActivity {
         recyclerView.setAdapter(mAdapter);
         sList.add(new MapiResourceResult("0","分派"));
         sList.add(new MapiResourceResult("1","转移"));
+        sList.add(new MapiResourceResult("2","退回"));
         topPopWindow = new TopPopWindow(this, DPUtil.dip2px(149), sList, R.style.PopupWindowAnimation);
     }
 
@@ -105,6 +106,8 @@ public class AssignDetailActivity extends BaseActivity {
                             startActivity(intent);
                         }else if("1".equals(sList.get(postion).getZD_ID())){
                             transfer();
+                        }else if("2".equals(sList.get(postion).getZD_ID())){
+                            reBack();
                         }
                     }
 
@@ -157,7 +160,26 @@ public class AssignDetailActivity extends BaseActivity {
             public void success(Object success) {
                 hideLoading();
                 MainToast.showShortToast("转移完成");
-                sendBroadcast(new Intent(ReceiverAction.task_action));//发送广播
+                sendBroadcast(new Intent(ReceiverAction.assignDanager_action));//发送广播
+                ControllerUtil.go2AssignTask();
+                finish();
+            }
+        }, new RequestExceptionCallback() {
+            @Override
+            public void error(String code, String message) {
+                hideLoading();
+            }
+        });
+    }
+
+    private void reBack(){
+        showLoading();
+        DailyApi.taskback(this, taskResult.getID(), new RequestCallback() {
+            @Override
+            public void success(Object success) {
+                hideLoading();
+                MainToast.showShortToast("成功退回");
+                sendBroadcast(new Intent(ReceiverAction.assignDanager_action));//发送广播
                 ControllerUtil.go2AssignTask();
                 finish();
             }

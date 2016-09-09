@@ -134,13 +134,13 @@ public class DangerListActivity extends BaseActivity {
         ItemApi.getDangerList(this, NAME, pageIndex + "", pageSize + "", userId, roleId, new RequestPageCallback<List<MapiItemResult>>() {
             @Override
             public void success(Integer isNext, List<MapiItemResult> success) {
+                swipeLayout.setRefreshing(false);
                 ISNEXT = isNext;
                 if (success.isEmpty()) {
                     return;
                 }
                 mList.addAll(success);
                 mAdapter.notifyDataSetChanged();
-                swipeLayout.setRefreshing(false);
             }
         }, new RequestExceptionCallback() {
             @Override

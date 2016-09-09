@@ -28,12 +28,12 @@
     <LinearLayout
         android:id="@+id/change_ll"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="35dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:layout_below="@+id/tv_result"
         android:layout_alignLeft="@+id/tv_result"
-        android:layout_marginTop="@dimen/margin_2"
+        android:layout_marginTop="@dimen/margin_1"
         >
 
         <TextView
@@ -41,6 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="责令改正："
+            android:layout_gravity="bottom"
             />
 
         <RelativeLayout
@@ -58,7 +59,7 @@
                 android:layout_height="match_parent"
                 android:maxLines="1"
                 android:ellipsize="end"
-                android:gravity="right|center_vertical"
+                android:gravity="right|bottom"
                 android:inputType="number"
                 android:text=""
                 />
@@ -76,12 +77,12 @@
     <LinearLayout
         android:id="@+id/investigation_ll"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="35dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:layout_below="@+id/change_ll"
         android:layout_alignLeft="@+id/tv_result"
-        android:layout_marginTop="@dimen/margin_2"
+        android:layout_marginTop="@dimen/margin_1"
         >
 
         <TextView
@@ -89,6 +90,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="立案查处："
+            android:layout_gravity="bottom"
             />
 
         <RelativeLayout
@@ -106,7 +108,7 @@
                 android:layout_height="match_parent"
                 android:maxLines="1"
                 android:ellipsize="end"
-                android:gravity="right|center_vertical"
+                android:gravity="right|bottom"
                 android:inputType="number"
                 android:text=""
                 />
@@ -124,12 +126,12 @@
     <LinearLayout
         android:id="@+id/move_ll"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="35dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:layout_below="@+id/investigation_ll"
         android:layout_alignLeft="@+id/tv_result"
-        android:layout_marginTop="@dimen/margin_2"
+        android:layout_marginTop="@dimen/margin_1"
         >
 
         <TextView
@@ -137,6 +139,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="抄告、移送："
+            android:layout_gravity="bottom"
             />
 
         <RelativeLayout
@@ -154,7 +157,7 @@
                 android:layout_height="match_parent"
                 android:maxLines="1"
                 android:ellipsize="end"
-                android:gravity="right|center_vertical"
+                android:gravity="right|bottom"
                 android:inputType="number"
                 android:text=""
                 />
@@ -172,12 +175,12 @@
     <LinearLayout
         android:id="@+id/other_result_ll"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="35dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:layout_below="@+id/move_ll"
         android:layout_alignLeft="@+id/tv_result"
-        android:layout_marginTop="@dimen/margin_2"
+        android:layout_marginTop="@dimen/margin_1"
         >
 
         <TextView
@@ -185,6 +188,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="其他："
+            android:layout_gravity="bottom"
             />
 
         <RelativeLayout
@@ -202,7 +206,7 @@
                 android:layout_height="match_parent"
                 android:maxLines="1"
                 android:ellipsize="end"
-                android:gravity="right|center_vertical"
+                android:gravity="right|bottom"
                 android:text=""
                 />
 

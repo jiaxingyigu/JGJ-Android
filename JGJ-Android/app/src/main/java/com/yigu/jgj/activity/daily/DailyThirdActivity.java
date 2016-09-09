@@ -171,6 +171,7 @@ public class DailyThirdActivity extends BaseActivity {
                     @Override
                     public void success(Object success) {
                         hideLoading();
+                        MainToast.showShortToast("归档成功");
                         ControllerUtil.go2Daily();
                         finish();
                     }

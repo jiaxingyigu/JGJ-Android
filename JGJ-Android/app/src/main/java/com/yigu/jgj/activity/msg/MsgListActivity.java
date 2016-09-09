@@ -93,7 +93,14 @@ public class MsgListActivity extends BaseActivity {
 
     @OnClick(R.id.back)
     public void onClick() {
-        ControllerUtil.go2Main();
+//        ControllerUtil.go2Main();
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+//        ControllerUtil.go2Main();
         finish();
     }
 

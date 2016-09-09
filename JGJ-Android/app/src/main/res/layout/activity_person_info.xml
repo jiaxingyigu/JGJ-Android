@@ -142,41 +142,104 @@
 
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/psd_rl"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center_vertical"
-
+        android:layout_height="@dimen/text_height_45dp"
+        android:paddingLeft="27dp"
+        android:paddingRight="10dp"
         >
 
+        <ImageView
+            android:id="@+id/psd_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/psd"
+            android:layout_centerVertical="true"
+            />
+
         <TextView
-            android:id="@+id/guide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="修改密码"
+            android:textColor="#666666"
+            android:layout_toRightOf="@+id/psd_iv"
+            android:layout_marginLeft="18dp"
+            android:layout_centerVertical="true"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/right"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+
+        <View
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginLeft="@dimen/margin_3"
-            android:layout_marginRight="@dimen/margin_3"
+            android:layout_height="0.5dp"
+            android:background="@color/divider_line"
+            android:layout_alignParentBottom="true"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/guide_rl"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/text_height_45dp"
+        android:paddingLeft="27dp"
+        android:paddingRight="10dp"
+        >
+
+        <ImageView
+            android:id="@+id/guide_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/guide"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="新手指导"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/text_big_xx"
-            android:gravity="center"
-            android:background="@drawable/selector_btn_light_blue"
+            android:textColor="#666666"
+            android:layout_toRightOf="@+id/guide_iv"
+            android:layout_marginLeft="18dp"
+            android:layout_centerVertical="true"
             />
 
-        <TextView
-            android:id="@+id/exit"
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/right"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+
+        <View
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginLeft="@dimen/margin_3"
-            android:layout_marginRight="@dimen/margin_3"
-            android:text="退    出"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/text_big_xx"
-            android:gravity="center"
-            android:layout_marginTop="52dp"
-            android:background="@drawable/shape_rect_color_darktwo_blue"
+            android:layout_height="0.5dp"
+            android:background="@color/divider_line"
+            android:layout_alignParentBottom="true"
             />
 
-    </LinearLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/exit"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginLeft="@dimen/margin_3"
+        android:layout_marginRight="@dimen/margin_3"
+        android:text="退    出"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/text_big_xx"
+        android:gravity="center"
+        android:layout_marginTop="130dp"
+        android:background="@drawable/shape_rect_color_darktwo_blue"
+        />
 
 </LinearLayout>

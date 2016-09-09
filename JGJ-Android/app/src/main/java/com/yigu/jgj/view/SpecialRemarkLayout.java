@@ -50,10 +50,10 @@ public class SpecialRemarkLayout extends RelativeLayout {
     }
 
     public boolean vorify() {
-        if (TextUtils.isEmpty(remark.getText().toString())) {
+        /*if (TextUtils.isEmpty(remark.getText().toString())) {
             MainToast.showLongToast("请输入备注");
             return false;
-        }
+        }*/
         return true;
     }
 

@@ -23,6 +23,15 @@ public class MapiSepcialResult  implements Serializable {
     private String date;
     private String name;
     private String COMMUNITY;
+    private String acname;
+
+    public String getAcname() {
+        return acname;
+    }
+
+    public void setAcname(String acname) {
+        this.acname = acname;
+    }
 
     public String getCOMMUNITY() {
         return COMMUNITY;

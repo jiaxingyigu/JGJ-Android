@@ -326,4 +326,89 @@ public class DailyApi extends BasicApi{
         });
     }
 
+    /**
+     * 预警-新增
+     * @param activity
+     * @param userid
+     * @param remark
+     * @param receives
+     * @param callback
+     * @param exceptionCallback
+     */
+    public static void addWarning(Activity activity,String userid,String remark,String receives,final RequestCallback callback,final RequestExceptionCallback exceptionCallback){
+        Map<String,String> params = new HashMap<>();
+        params.put("userid",userid);
+        params.put("remark",remark);
+        params.put("receives",receives);
+        MapiUtil.getInstance().call(activity,addWarning,params,new MapiUtil.MapiSuccessResponse(){
+            @Override
+            public void success(JSONObject json) {
+                DebugLog.i("json="+json);
+                callback.success(json);
+            }
+        },new MapiUtil.MapiFailResponse(){
+
+            @Override
+            public void fail(String code, String failMessage) {
+                exceptionCallback.error(code,failMessage);
+            }
+        });
+    }
+
+    /**
+     * 任务指令-退回
+     * @param activity
+     * @param ID        隐患ID
+     * @param callback
+     * @param exceptionCallback
+     */
+    public static void taskback(Activity activity,String ID,final RequestCallback callback,final RequestExceptionCallback exceptionCallback){
+        Map<String,String> params = new HashMap<>();
+        params.put("ID",ID);
+        MapiUtil.getInstance().call(activity,taskback,params,new MapiUtil.MapiSuccessResponse(){
+            @Override
+            public void success(JSONObject json) {
+                DebugLog.i("json="+json);
+                callback.success(json);
+            }
+        },new MapiUtil.MapiFailResponse(){
+
+            @Override
+            public void fail(String code, String failMessage) {
+                exceptionCallback.error(code,failMessage);
+            }
+        });
+    }
+
+    /**
+     * 修改密码
+     * @param activity
+     * @param USERNAME
+     * @param PASSWORD
+     * @param NEWPASSWORD
+     * @param callback
+     * @param exceptionCallback
+     */
+    public static void editPassword(Activity activity,String USER_ID,String USERNAME,String PASSWORD,String NEWPASSWORD,final RequestCallback callback,final RequestExceptionCallback exceptionCallback){
+        Map<String,String> params = new HashMap<>();
+        params.put("USER_ID",USER_ID);
+        params.put("USERNAME",USERNAME);
+        params.put("PASSWORD",PASSWORD);
+        params.put("NEWPASSWORD",NEWPASSWORD);
+        MapiUtil.getInstance().call(activity,editPassword,params,new MapiUtil.MapiSuccessResponse(){
+            @Override
+            public void success(JSONObject json) {
+                DebugLog.i("json="+json);
+                callback.success(json);
+            }
+        },new MapiUtil.MapiFailResponse(){
+
+            @Override
+            public void fail(String code, String failMessage) {
+                exceptionCallback.error(code,failMessage);
+            }
+        });
+    }
+
+
 }

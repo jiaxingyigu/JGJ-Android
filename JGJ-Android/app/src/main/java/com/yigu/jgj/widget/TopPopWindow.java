@@ -154,7 +154,7 @@ public class TopPopWindow extends PopupWindow implements PopupWindow.OnDismissLi
             });
             if(pos==position){
                 holder.text.setTextColor(Color.parseColor("#ffffff"));
-                holder.text.setBackgroundColor(Color.parseColor("#019b79"));
+                holder.text.setBackgroundColor(Color.parseColor("#0390d0"));
             }else{
                 holder.text.setTextColor(Color.parseColor("#333333"));
                 holder.text.setBackgroundColor(Color.parseColor("#ffffff"));

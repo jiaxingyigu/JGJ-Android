@@ -1,5 +1,6 @@
 package com.yigu.jgj.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -43,8 +44,6 @@ public class PersonInfoActivity extends BaseActivity {
     LinearLayout communityLl;
     @Bind(R.id.tel)
     TextView tel;
-    @Bind(R.id.guide)
-    TextView guide;
     @Bind(R.id.exit)
     TextView exit;
     List<MapiResourceResult> companyList = new ArrayList<>();
@@ -112,20 +111,26 @@ public class PersonInfoActivity extends BaseActivity {
         }
     }
 
-    @OnClick({R.id.guide, R.id.exit,R.id.back})
+    @OnClick({R.id.guide_rl, R.id.exit,R.id.back,R.id.psd_rl})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.guide:
+            case R.id.guide_rl:
                 ControllerUtil.go2Guide();
                 break;
             case R.id.exit:
                 userSP.clearUserData();
                 JPushInterface.stopPush(AppContext.getInstance());
-                ControllerUtil.go2Login();
+                Intent i = new Intent(this, MainActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);//| Intent.FLAG_ACTIVITY_CLEAR_TOP
+                i.putExtra("type",3);
+                startActivity(i);
                 finish();
                 break;
             case R.id.back:
                 finish();
+                break;
+            case R.id.psd_rl:
+                ControllerUtil.go2ModifyPsd();
                 break;
         }
     }

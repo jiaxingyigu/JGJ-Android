@@ -57,8 +57,8 @@ public class MainActivity extends BaseActivity {
     TextView tvCenter;
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
-    @Bind(R.id.startLayout)
-    LinearLayout startLayout;
+//    @Bind(R.id.startLayout)
+//    LinearLayout startLayout;
     MainAdapter mAdapter;
     List<MapiResourceResult> mList = new ArrayList<>();
 //    @Bind(R.id.fragment_content)
@@ -76,6 +76,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (!userSP.checkLogin()) {
             ControllerUtil.go2Login();
             finish();
@@ -93,20 +94,28 @@ public class MainActivity extends BaseActivity {
                 JpushUtil.getInstance().setAlias(userSP.getUserBean().getUSER_ID());
             }
             registerMessageReceiver();  // used for receive msg
-            startLayout.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-
-                    startLayout.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            setLogoHideAnimation(R.anim.start_alpha_fade_1000);
-                        }
-                    }, 2000);
-
-
-                }
-            }, 500);
+//            startLayout.postDelayed(new Runnable() {
+//                @Override
+//                public void run() {
+//
+//                    startLayout.postDelayed(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            setLogoHideAnimation(R.anim.start_alpha_fade_1000);
+//                        }
+//                    }, 2000);
+//
+//
+//                }
+//            }, 500);
+        }
+        if(null!=getIntent()){
+            int type = getIntent().getIntExtra("type",0);
+            if(type==1){
+                ControllerUtil.go2NotifyList();
+            }else if(type==2){
+                ControllerUtil.go2WarningList();
+            }
         }
     }
 
@@ -191,6 +200,12 @@ public class MainActivity extends BaseActivity {
                     case JGJDataSource.TYPE_NOTIFY:
                         ControllerUtil.go2NotifyList();
                         break;
+                    case JGJDataSource.TYPE_WARNING:
+                        ControllerUtil.go2WarningList();
+                        break;
+                    case JGJDataSource.TYPE_PARTY:
+                        ControllerUtil.go2Party();
+                        break;
                 }
             }
         });
@@ -210,14 +225,17 @@ public class MainActivity extends BaseActivity {
 //    }
 
     private void load() {
+        showLoading();
         CommonApi.loadResources(this, new RequestCallback<String>() {
             @Override
             public void success(String success) {
+                hideLoading();
                 userSP.saveResource(success);
             }
         }, new RequestExceptionCallback() {
             @Override
             public void error(String code, String message) {
+                hideLoading();
                 MainToast.showShortToast(message);
             }
         });
@@ -229,7 +247,7 @@ public class MainActivity extends BaseActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             if ((System.currentTimeMillis() - exitTime) > 2000) {
-                Toast.makeText(getApplicationContext(), "再按一次退出食品监管", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "再按一次退出市场智慧监管", Toast.LENGTH_SHORT).show();
                 exitTime = System.currentTimeMillis();
             } else {
                 finish();
@@ -242,7 +260,7 @@ public class MainActivity extends BaseActivity {
     /**
      * 隐藏启动页
      */
-    private void setLogoHideAnimation(int id) {
+   /* private void setLogoHideAnimation(int id) {
         Animation animation = AnimationUtils.loadAnimation(this, id);
         animation.setAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -263,7 +281,7 @@ public class MainActivity extends BaseActivity {
             }
         });
         startLayout.startAnimation(animation);
-    }
+    }*/
 
     //for receive customer msg from jpush server
     private MessageReceiver mMessageReceiver;
@@ -289,6 +307,20 @@ public class MainActivity extends BaseActivity {
                 }
                 MainToast.showLongToast(showMsg.toString());
             }
+        }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        int type = intent.getIntExtra("type",0);
+        if(type==1){
+            ControllerUtil.go2NotifyList();
+        }else if(type==2){
+            ControllerUtil.go2WarningList();
+        }else if(type==3){
+            ControllerUtil.go2Login();
+            finish();
         }
     }
 

@@ -212,7 +212,7 @@ public class PerManageActivity extends BaseActivity {
                     return;
                 }
                 if(RequestCode.assign_license_person==requestCode)
-                    assign();
+                    assignLicense();
                 else if(RequestCode.assign_person==requestCode)
                     assign();
                 break;
@@ -268,7 +268,7 @@ public class PerManageActivity extends BaseActivity {
             public void success(Object success) {
                 hideLoading();
                 MainToast.showShortToast("分派成功");
-                sendBroadcast(new Intent(ReceiverAction.task_action));//发送广播
+                sendBroadcast(new Intent(ReceiverAction.assignDanager_action));//发送广播
                 ControllerUtil.go2AssignTask();
                 finish();
             }
@@ -282,12 +282,12 @@ public class PerManageActivity extends BaseActivity {
 
     private void assignLicense(){
         showLoading();
-        DailyApi.tasksend(this, mList.get(pos).getUSER_ID(), ID, new RequestCallback() {
+        DailyApi.tasksendNLS(this, mList.get(pos).getUSER_ID(), ID, new RequestCallback() {
             @Override
             public void success(Object success) {
                 hideLoading();
                 MainToast.showShortToast("分派成功");
-                sendBroadcast(new Intent(ReceiverAction.task_action));//发送广播
+                sendBroadcast(new Intent(ReceiverAction.assignLicense_action));//发送广播
                 ControllerUtil.go2AssignTask();
                 finish();
             }

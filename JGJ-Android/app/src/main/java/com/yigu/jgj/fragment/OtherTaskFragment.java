@@ -44,7 +44,7 @@ public class OtherTaskFragment extends BaseFrag{
     List<MapiOtherResult> mList = new ArrayList<>();
     private Integer pageIndex=0;
     private Integer pageSize = 10;
-    private Integer ISNEXT = 1;
+    private Integer ISNEXT = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -61,6 +61,7 @@ public class OtherTaskFragment extends BaseFrag{
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         manager.setOrientation(OrientationHelper.VERTICAL);
         recyclerView.setLayoutManager(manager);
+        mList.clear();
         mAdapter = new OtherTaskAdapter(getActivity(),mList);
         recyclerView.setAdapter(mAdapter);
     }

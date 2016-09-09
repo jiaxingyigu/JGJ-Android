@@ -66,7 +66,7 @@
                 android:textSize="@dimen/text_big"
                 android:textColorHint="@color/gray_light"
                 android:hint="请输入手机号"
-                android:text="13515731985"
+                android:text=""
                 />
 
         </LinearLayout>
@@ -112,7 +112,7 @@
                 android:textColorHint="@color/gray_light"
                 android:hint="请输入密码"
                 android:inputType="textPassword"
-                android:text="123"
+                android:text=""
                 />
 
         </LinearLayout>

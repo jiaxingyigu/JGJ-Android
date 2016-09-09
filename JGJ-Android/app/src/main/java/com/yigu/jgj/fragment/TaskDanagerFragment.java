@@ -43,7 +43,7 @@ public class TaskDanagerFragment extends BaseFrag{
     List<MapiTaskResult> mList = new ArrayList<>();
     private Integer pageIndex=0;
     private Integer pageSize = 10;
-    private Integer ISNEXT = 1;
+    private Integer ISNEXT = 0;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);

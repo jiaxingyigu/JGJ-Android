@@ -2,6 +2,7 @@ package com.yigu.jgj.adapter.special;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,7 +54,12 @@ public class SpecialListAdapter extends RecyclerView.Adapter<SpecialListAdapter.
             }
         });
         holder.nameCircle.setText(StringUtil.nameFormat(result.getName()+""));
-        holder.tag_addr.setText(result.getCOMMUNITY());
+        if(TextUtils.isEmpty(result.getCOMMUNITY())){
+            holder.tag_addr.setVisibility(View.GONE);
+        }else{
+            holder.tag_addr.setText(result.getCOMMUNITY());
+        }
+
         holder.date_tv.setText(result.getDate());
         holder.nameTv.setText(result.getName()+"");
     }

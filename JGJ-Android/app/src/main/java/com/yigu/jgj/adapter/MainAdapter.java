@@ -63,13 +63,13 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
                 resId = R.mipmap.main_three;
                 break;
             case JGJDataSource.TYPE_LICENSE:
-                resId = R.mipmap.main_three;
-                break;
-            case JGJDataSource.TYPE_PARTY:
                 resId = R.mipmap.main_four;
                 break;
-            case JGJDataSource.TYPE_SPECIAL:
+            case JGJDataSource.TYPE_PARTY:
                 resId = R.mipmap.main_five;
+                break;
+            case JGJDataSource.TYPE_SPECIAL:
+                resId = R.mipmap.main_six;
                 break;
             case JGJDataSource.TYPE_ASSIGN:
                 resId = R.mipmap.main_seven;

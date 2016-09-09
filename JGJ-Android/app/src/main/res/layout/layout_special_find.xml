@@ -28,12 +28,12 @@
     <LinearLayout
         android:id="@+id/license_ll"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="35dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:layout_below="@+id/tv_find"
         android:layout_alignLeft="@+id/tv_find"
-        android:layout_marginTop="@dimen/margin_2"
+        android:layout_marginTop="@dimen/margin_1"
         >
 
         <TextView
@@ -41,6 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="无证无照："
+            android:layout_gravity="bottom"
             />
 
         <RelativeLayout
@@ -58,7 +59,7 @@
                 android:layout_height="match_parent"
                 android:maxLines="1"
                 android:ellipsize="end"
-                android:gravity="right|center_vertical"
+                android:gravity="right|bottom"
                 android:inputType="number"
                 android:text=""
                 />
@@ -76,12 +77,12 @@
     <LinearLayout
         android:id="@+id/manage_ll"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="35dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:layout_below="@+id/license_ll"
         android:layout_alignLeft="@+id/tv_find"
-        android:layout_marginTop="@dimen/margin_2"
+        android:layout_marginTop="@dimen/margin_1"
         >
 
         <TextView
@@ -89,6 +90,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="改变经营事项："
+            android:layout_gravity="bottom"
             />
 
         <RelativeLayout
@@ -106,7 +108,7 @@
                 android:layout_height="match_parent"
                 android:maxLines="1"
                 android:ellipsize="end"
-                android:gravity="right|center_vertical"
+                android:gravity="right|bottom"
                 android:inputType="number"
                 android:text=""
                 />
@@ -124,12 +126,12 @@
     <LinearLayout
         android:id="@+id/illegal_ll"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="35dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:layout_below="@+id/manage_ll"
         android:layout_alignLeft="@+id/tv_find"
-        android:layout_marginTop="@dimen/margin_2"
+        android:layout_marginTop="@dimen/margin_1"
         >
 
         <TextView
@@ -137,6 +139,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="发现违法物品："
+            android:layout_gravity="bottom"
             />
 
         <RelativeLayout
@@ -154,7 +157,7 @@
                 android:layout_height="match_parent"
                 android:maxLines="1"
                 android:ellipsize="end"
-                android:gravity="right|center_vertical"
+                android:gravity="right|bottom"
                 android:inputType="number"
                 android:text=""
                 />
@@ -172,12 +175,12 @@
     <LinearLayout
         android:id="@+id/other_ll"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="35dp"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:layout_below="@+id/illegal_ll"
         android:layout_alignLeft="@+id/tv_find"
-        android:layout_marginTop="@dimen/margin_2"
+        android:layout_marginTop="@dimen/margin_1"
         >
 
         <TextView
@@ -185,6 +188,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="其他："
+            android:layout_gravity="bottom"
             />
 
         <RelativeLayout
@@ -202,7 +206,7 @@
                 android:layout_height="match_parent"
                 android:maxLines="1"
                 android:ellipsize="end"
-                android:gravity="right|center_vertical"
+                android:gravity="right|bottom"
                 android:text=""
                 />
 
