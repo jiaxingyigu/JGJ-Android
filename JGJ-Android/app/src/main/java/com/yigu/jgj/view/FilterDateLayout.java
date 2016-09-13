@@ -109,15 +109,15 @@ public class FilterDateLayout extends RelativeLayout {
                 break;
             case R.id.confirm:
                 if(null==startDate) {
-                    MainToast.showLongToast("请选择开始时间");
+                    MainToast.showShortToast("请选择开始时间");
                     return;
                 }
                 if(null==endDate) {
-                    MainToast.showLongToast("请选择结束时间");
+                    MainToast.showShortToast("请选择结束时间");
                     return;
                 }
                 if(startDate.compareTo(endDate)>0){
-                    MainToast.showLongToast("开始时间不能大于结束时间");
+                    MainToast.showShortToast("开始时间不能大于结束时间");
                     return;
                 }
                 if(null!=onTiemInterface){

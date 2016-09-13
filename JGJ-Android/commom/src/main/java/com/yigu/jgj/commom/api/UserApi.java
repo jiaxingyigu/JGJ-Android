@@ -30,8 +30,15 @@ public class UserApi extends BasicApi{
             @Override
             public void success(JSONObject json) {
                 DebugLog.i("json="+json);
-                MapiUserResult result = JSONObject.parseObject(json.getJSONObject("data").toJSONString(),MapiUserResult.class);
-                callback.success(result);
+                MapiUserResult result = null;
+                try{
+                    result = JSONObject.parseObject(json.getJSONObject("data").toJSONString(),MapiUserResult.class);
+                }catch (Exception e){
+
+                }finally {
+                    callback.success(result);
+                }
+
             }
         },new MapiUtil.MapiFailResponse(){
 

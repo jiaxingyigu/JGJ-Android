@@ -102,15 +102,15 @@ public class DailyServiceLayout extends RelativeLayout {
 
     public boolean vorify() {
         if (!train.isChecked() && !trainNull.isChecked()) {
-            MainToast.showLongToast("请检查培训记录");
+            MainToast.showShortToast("请检查培训记录");
             return false;
         }
         if (!disinfection.isChecked() && !disinfectionNull.isChecked()) {
-            MainToast.showLongToast("请检查消毒记录");
+            MainToast.showShortToast("请检查消毒记录");
             return false;
         }
         if (!poster.isChecked() && !posterNull.isChecked()) {
-            MainToast.showLongToast("请检查桌牌和海报");
+            MainToast.showShortToast("请检查桌牌和海报");
             return false;
         }
         return true;

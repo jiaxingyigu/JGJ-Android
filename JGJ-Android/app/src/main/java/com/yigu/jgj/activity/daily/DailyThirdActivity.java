@@ -54,7 +54,7 @@ public class DailyThirdActivity extends BaseActivity {
     TextView submit;
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
-    List<MapiImageResult> mList;
+    ArrayList<MapiImageResult> mList;
     ImageAdapter mAdapter;
     private PhotoDialog photoDialog;
     MapiItemResult itemResult;
@@ -243,6 +243,20 @@ public class DailyThirdActivity extends BaseActivity {
         Uri outUrl = Uri
                 .fromFile(FileUtil.createFile(this, "daily_image_crop.jpg",FileUtil.TYPE_IMAGE));
         Crop.of(uri, outUrl).asSquare().withMaxSize(600, 600).start(this);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putSerializable("item",itemResult);
+        outState.putSerializable("list",mList);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        itemResult = (MapiItemResult) savedInstanceState.getSerializable("item");
+        mList = (ArrayList<MapiImageResult>) savedInstanceState.getSerializable("list");
     }
 
 }

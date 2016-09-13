@@ -101,15 +101,15 @@ public class DailySaleLayout extends RelativeLayout {
 
     public boolean vorify(){
         if(!sanitation.isChecked()&&!sanitationNull.isChecked()){
-            MainToast.showLongToast("请检查店内环境卫生");
+            MainToast.showShortToast("请检查店内环境卫生");
             return false;
         }
         if(!overdue.isChecked()&&!overdueNull.isChecked()){
-            MainToast.showLongToast("请检查过期变质");
+            MainToast.showShortToast("请检查过期变质");
             return false;
         }
         if(!fullmark.isChecked()&&!fullmarkNull.isChecked()){
-            MainToast.showLongToast("请检查标签标识");
+            MainToast.showShortToast("请检查标签标识");
             return false;
         }
         return true;

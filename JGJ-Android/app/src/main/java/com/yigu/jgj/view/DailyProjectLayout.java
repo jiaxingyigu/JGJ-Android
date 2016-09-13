@@ -112,27 +112,27 @@ public class DailyProjectLayout extends RelativeLayout {
 
     public boolean vorify() {
         if (TextUtils.isEmpty(ptioners.getText().toString())) {
-            MainToast.showLongToast("请输入从业人员数量");
+            MainToast.showShortToast("请输入从业人员数量");
             return false;
         }
 
         if (TextUtils.isEmpty(hcate.getText().toString())) {
-            MainToast.showLongToast("请输入健康证数");
+            MainToast.showShortToast("请输入健康证数");
             return false;
         }
 
         if (!showlicense.isChecked()&&!showlicenseNull.isChecked()) {
-            MainToast.showLongToast("请检查是否亮证经营");
+            MainToast.showShortToast("请检查是否亮证经营");
             return false;
         }
 
         if (!hygiene.isChecked()&&!hygieneNull.isChecked()) {
-            MainToast.showLongToast("请检查个人卫生情况");
+            MainToast.showShortToast("请检查个人卫生情况");
             return false;
         }
 
         if (!invoice.isChecked()&&!invoiceNull.isChecked()) {
-            MainToast.showLongToast("请检查是否建立索证索票");
+            MainToast.showShortToast("请检查是否建立索证索票");
             return false;
         }
         return true;

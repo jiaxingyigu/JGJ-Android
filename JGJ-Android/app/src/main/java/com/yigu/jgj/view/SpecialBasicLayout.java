@@ -60,23 +60,23 @@ public class SpecialBasicLayout extends RelativeLayout {
 
     public boolean vorify() {
         if(TextUtils.isEmpty(titleEt.getText().toString())){
-            MainToast.showLongToast("请输入行动名称");
+            MainToast.showShortToast("请输入行动名称");
             return false;
         }
         if (TextUtils.isEmpty(peopleNum.getText().toString())) {
-            MainToast.showLongToast("请输入出动人数");
+            MainToast.showShortToast("请输入出动人数");
             return false;
         }
         if (TextUtils.isEmpty(shopNum.getText().toString())) {
-            MainToast.showLongToast("请输入检查经营主体");
+            MainToast.showShortToast("请输入检查经营主体");
             return false;
         }
         if (TextUtils.isEmpty(pledgeNum.getText().toString())) {
-            MainToast.showLongToast("请输入签订承诺书");
+            MainToast.showShortToast("请输入签订承诺书");
             return false;
         }
         if (TextUtils.isEmpty(responsibilityNum.getText().toString())) {
-            MainToast.showLongToast("请输入责任书");
+            MainToast.showShortToast("请输入责任书");
             return false;
         }
         return true;

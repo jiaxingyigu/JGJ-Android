@@ -55,8 +55,8 @@ public class DailyApi extends BasicApi{
         params.put("type",type);
         params.put("shopid",shopid);
         params.put("userid",userid);
-        params.put("ptioners",ptioners);
-        params.put("hcate",hcate);
+        params.put("ptioners",TextUtils.isEmpty(ptioners)?"0":ptioners);
+        params.put("hcate",TextUtils.isEmpty(hcate)?"0":hcate);
         params.put("showlicense",(TextUtils.isEmpty(showlicense)||"null".equals(showlicense))?"0":showlicense);
         params.put("hygiene",(TextUtils.isEmpty(hygiene)||"null".equals(hygiene))?"0":hygiene);
         params.put("invoice",(TextUtils.isEmpty(invoice)||"null".equals(invoice))?"0":invoice);

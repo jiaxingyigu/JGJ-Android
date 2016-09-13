@@ -51,15 +51,19 @@ public class LoginTwoActivity extends BaseActivity{
             @Override
             public void success(MapiUserResult success) {
                 hideLoading();
-                userSP.saveUserBean(success);
-                ControllerUtil.go2Main();
-                finish();
+                if(null==success){
+                    MainToast.showShortToast("用户名或密码错误");
+                }else{
+                    userSP.saveUserBean(success);
+                    ControllerUtil.go2Main();
+                    finish();
+                }
+
             }
         }, new RequestExceptionCallback() {
             @Override
             public void error(String code, String message) {
                 hideLoading();
-                MainToast.showShortToast("用户名或密码错误");
             }
         });
 
