@@ -1,7 +1,6 @@
 package com.yigu.jgj.activity.license;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -16,7 +15,7 @@ import com.yigu.jgj.R;
 import com.yigu.jgj.activity.SelCommunityActivity;
 import com.yigu.jgj.base.BaseActivity;
 import com.yigu.jgj.base.RequestCode;
-import com.yigu.jgj.broadCast.ReceiverAction;
+import com.yigu.jgj.broadcast.ReceiverAction;
 import com.yigu.jgj.commom.api.ItemApi;
 import com.yigu.jgj.commom.application.AppContext;
 import com.yigu.jgj.commom.result.MapiResourceResult;
@@ -24,7 +23,6 @@ import com.yigu.jgj.commom.util.RequestCallback;
 import com.yigu.jgj.commom.util.RequestExceptionCallback;
 import com.yigu.jgj.commom.widget.MainToast;
 import com.yigu.jgj.view.LicenseCheckLayout;
-import com.yigu.jgj.view.RlCheckLayout;
 
 import java.util.ArrayList;
 import java.util.Map;

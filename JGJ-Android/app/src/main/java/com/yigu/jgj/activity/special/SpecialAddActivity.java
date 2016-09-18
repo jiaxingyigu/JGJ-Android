@@ -1,6 +1,5 @@
 package com.yigu.jgj.activity.special;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -9,8 +8,6 @@ import android.widget.TextView;
 import com.bigkoo.pickerview.TimePickerView;
 import com.yigu.jgj.R;
 import com.yigu.jgj.base.BaseActivity;
-import com.yigu.jgj.base.RequestCode;
-import com.yigu.jgj.broadCast.ReceiverAction;
 import com.yigu.jgj.commom.api.ItemApi;
 import com.yigu.jgj.commom.util.DateUtil;
 import com.yigu.jgj.commom.util.RequestCallback;

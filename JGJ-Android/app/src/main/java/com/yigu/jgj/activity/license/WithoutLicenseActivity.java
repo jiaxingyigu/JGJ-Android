@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.yigu.jgj.R;
 import com.yigu.jgj.adapter.company.CompanyAdapter;
 import com.yigu.jgj.base.BaseActivity;
-import com.yigu.jgj.broadCast.ReceiverAction;
+import com.yigu.jgj.broadcast.ReceiverAction;
 import com.yigu.jgj.commom.api.ItemApi;
 import com.yigu.jgj.commom.result.MapiItemResult;
 import com.yigu.jgj.commom.util.RequestExceptionCallback;

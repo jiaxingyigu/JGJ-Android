@@ -1,8 +1,13 @@
 package com.yigu.jgj.widget;
 
+import android.app.Activity;
 import android.app.Dialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.view.Display;
@@ -16,6 +21,9 @@ import com.yigu.jgj.R;
 import com.yigu.jgj.base.BaseActivity;
 import com.yigu.jgj.base.RequestCode;
 import com.yigu.jgj.commom.util.FileUtil;
+
+import java.util.Iterator;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -79,8 +87,24 @@ public class PhotoDialog extends Dialog {
 
     private void goCamera() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        try {// 尽可能调用系统相机
+            String cameraPackageName = getCameraPhoneAppInfos(mActivity);
+            if (cameraPackageName == null) {
+                cameraPackageName = "com.android.camera";
+            }
+            final Intent intent_camera = mActivity.getPackageManager()
+                    .getLaunchIntentForPackage(cameraPackageName);
+            if (intent_camera != null) {
+                intent.setPackage(cameraPackageName);
+            }
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        intent.addCategory(Intent.CATEGORY_DEFAULT);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(FileUtil.createFile(mActivity, imagePath,FileUtil.TYPE_IMAGE)));
         mActivity.startActivityForResult(intent, RequestCode.CAMERA);
+//        launchCamera();
         dismiss();
     }
 
@@ -88,6 +112,106 @@ public class PhotoDialog extends Dialog {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         mActivity.startActivityForResult(intent, RequestCode.PICTURE);
         dismiss();
+    }
+
+    //启动相机
+    private void launchCamera()
+    {
+        try{
+            //获取相机包名
+            Intent infoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            ResolveInfo res = mActivity.getPackageManager().
+                    resolveActivity(infoIntent, 0);
+            if (res != null)
+            {
+                String packageName=res.activityInfo.packageName;
+                if(packageName.equals("android"))
+                {
+                    infoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE_SECURE);
+
+                    res = mActivity.getPackageManager().
+                            resolveActivity(infoIntent, 0);
+                    if (res != null)
+                        packageName=res.activityInfo.packageName;
+                }
+                //启动相机
+                startApplicationByPackageName(packageName);
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+
+    }
+
+    //通过包名启动应用
+    private void startApplicationByPackageName(String packName)
+    {
+        PackageInfo packageInfo=null;
+        try{
+            packageInfo=mActivity.getPackageManager().getPackageInfo(packName, 0);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        if(null==packageInfo){
+            return;
+        }
+        Intent resolveIntent=new Intent();
+        resolveIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+        resolveIntent.setPackage(packageInfo.packageName);
+        List<ResolveInfo> resolveInfoList =mActivity.getPackageManager().queryIntentActivities(resolveIntent, 0);
+        if(null==resolveInfoList){
+            return;
+        }
+        Iterator<ResolveInfo> iter=resolveInfoList.iterator();
+        while(iter.hasNext()){
+            ResolveInfo resolveInfo=(ResolveInfo) iter.next();
+            if(null==resolveInfo){
+                return;
+            }
+            String packageName=resolveInfo.activityInfo.packageName;
+            String className=resolveInfo.activityInfo.name;
+            Intent intent=new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_LAUNCHER);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            ComponentName cn=new ComponentName(packageName, className);
+            intent.setComponent(cn);
+//            mActivity.startActivityForResult(intent, RequestCode.CAMERA);
+            mActivity.startActivity(intent);
+        }//while
+    }//method
+
+    // 对使用系统拍照的处理
+
+    public String getCameraPhoneAppInfos(Activity context) {
+        try {
+            String strCamera = "";
+            List<PackageInfo> packages = context.getPackageManager()
+                    .getInstalledPackages(0);
+            for (int i = 0; i < packages.size(); i++) {
+                try {
+                    PackageInfo packageInfo = packages.get(i);
+                    String strLabel = packageInfo.applicationInfo.loadLabel(
+                            context.getPackageManager()).toString();
+                    // 一般手机系统中拍照软件的名字
+                    if ("相机,照相机,照相,拍照,摄像,Camera,camera".contains(strLabel)) {
+                        strCamera = packageInfo.packageName;
+                        if ((packageInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
+                            break;
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            if (strCamera != null) {
+                return strCamera;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

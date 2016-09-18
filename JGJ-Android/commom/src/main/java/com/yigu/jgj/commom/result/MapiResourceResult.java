@@ -9,6 +9,33 @@ public class MapiResourceResult implements Serializable {
     private String NAME;
     private String ZD_ID;
     private int id;
+    private String remark;
+    private int version;
+    private String url;
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
+    }
 
     public MapiResourceResult(){
 

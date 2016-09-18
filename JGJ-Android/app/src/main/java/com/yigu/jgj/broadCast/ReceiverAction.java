@@ -1,4 +1,4 @@
-package com.yigu.jgj.broadCast;
+package com.yigu.jgj.broadcast;
 
 /**
  * Created by brain on 2016/7/24.

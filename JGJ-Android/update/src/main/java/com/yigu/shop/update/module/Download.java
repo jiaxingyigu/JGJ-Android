@@ -146,7 +146,7 @@ public class Download extends Thread {
                 appDir.mkdir();
             }
             apkFile = new File(appDir, DownloadKey.saveFileName);
-            FileOutputStream fileOutputStream = new FileOutputStream(apkFile);
+            FileOutputStream fileOutputStream =new FileOutputStream(apkFile);
             long temFileLength = appDir.length();
             byte buf[] = new byte[1024];
             int times = 0;//这很重要
@@ -196,6 +196,24 @@ public class Download extends Thread {
         if (!apkFile.exists()) {
             return;
         }
+        Log.i("UpdateFun TAG",apkFile.getAbsolutePath());
+        Log.i("UpdateFun TAG","执行安装");
+        try {
+            Process p = Runtime.getRuntime().exec("chmod 755 " + apkFile);
+            int status = p.waitFor();
+            if (status == 0) {
+                Log.i("UpdateFun TAG","权限修改成功");
+//              Toast.makeText(context, "权限修改成功", Toast.LENGTH_SHORT).show();
+            }else{
+                Log.i("UpdateFun TAG","权限修改失败");
+//              Toast.makeText(context, "权限修改失败", Toast.LENGTH_SHORT).show();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setDataAndType(Uri.parse("file://" + apkFile.toString()),
                 "application/vnd.android.package-archive");

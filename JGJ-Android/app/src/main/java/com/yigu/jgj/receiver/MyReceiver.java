@@ -6,13 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.yigu.jgj.activity.MainActivity;
-import com.yigu.jgj.activity.msg.MsgListActivity;
-import com.yigu.jgj.activity.notify.NotifyListActivity;
-import com.yigu.jgj.activity.warning.WarningActivity;
-import com.yigu.jgj.adapter.msg.MsgListAdapter;
-import com.yigu.jgj.broadCast.ReceiverAction;
+import com.yigu.jgj.broadcast.ReceiverAction;
 import com.yigu.jgj.commom.util.DebugLog;
-import com.yigu.jgj.commom.widget.MainToast;
 import com.yigu.jgj.util.JpushUtil;
 
 import org.json.JSONException;

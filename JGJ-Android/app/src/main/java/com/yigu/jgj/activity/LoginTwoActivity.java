@@ -64,6 +64,7 @@ public class LoginTwoActivity extends BaseActivity{
             @Override
             public void error(String code, String message) {
                 hideLoading();
+                MainToast.showShortToast(message);
             }
         });
 

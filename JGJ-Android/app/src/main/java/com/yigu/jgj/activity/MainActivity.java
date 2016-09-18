@@ -7,31 +7,25 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
 import com.yigu.jgj.R;
 import com.yigu.jgj.adapter.MainAdapter;
 import com.yigu.jgj.base.BaseActivity;
-import com.yigu.jgj.broadCast.ReceiverAction;
+import com.yigu.jgj.broadcast.ReceiverAction;
 import com.yigu.jgj.commom.api.CommonApi;
 import com.yigu.jgj.commom.application.AppContext;
 import com.yigu.jgj.commom.result.MapiResourceResult;
 import com.yigu.jgj.commom.util.DPUtil;
-import com.yigu.jgj.commom.util.DebugLog;
 import com.yigu.jgj.commom.util.RequestCallback;
 import com.yigu.jgj.commom.util.RequestExceptionCallback;
 import com.yigu.jgj.commom.widget.MainToast;
@@ -49,10 +43,10 @@ import com.yigu.shop.update.utils.GetAppInfo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import cn.jpush.android.api.JPushInterface;
 
 public class MainActivity extends BaseActivity {
@@ -117,7 +111,7 @@ public class MainActivity extends BaseActivity {
         if(null!=getIntent()){
             int type = getIntent().getIntExtra("type",0);
             if(type==1){
-                ControllerUtil.go2NotifyList();
+                ControllerUtil.go2NotifyList(); 
             }else if(type==2){
                 ControllerUtil.go2WarningList();
             }
@@ -136,13 +130,6 @@ public class MainActivity extends BaseActivity {
 //        } catch (Exception e) {
 //            e.printStackTrace();
 //        }
-        // TODO: 2016/9/13  调试更新接口 
-        MapiUpdateVersionResult result = new MapiUpdateVersionResult();
-        result.setVersion(2);
-        result.setContent("1.本次更新\n2.版本2");
-        result.setUrl("http://img.bstapp.cn/ws/apk/app-release.apk");
-
-        checkVersion(result);
 
     }
 
@@ -151,10 +138,10 @@ public class MainActivity extends BaseActivity {
      *
      * @param result
      */
-    private void checkVersion(MapiUpdateVersionResult result) {
+    private void checkVersion(MapiResourceResult result) {
         if (!GetAppInfo.getAppVersionCode(this).equals(result.getVersion())) {
             DownloadKey.version = result.getVersion();
-            DownloadKey.changeLog = result.getContent();
+            DownloadKey.changeLog = result.getRemark();
             DownloadKey.apkUrl = result.getUrl();
             //如果你想通过Dialog来进行下载，可以如下设置
             UpdateKey.DialogOrNotification= UpdateKey.WITH_DIALOG;
@@ -274,6 +261,22 @@ public class MainActivity extends BaseActivity {
             public void success(String success) {
                 hideLoading();
                 userSP.saveResource(success);
+                if(null!=userSP.getResource()){
+                    JSONObject jsonObject = JSONObject.parseObject(userSP.getResource());
+                    Map<String, ArrayList<MapiResourceResult>> userBean = JSON.parseObject(jsonObject
+                                    .getJSONObject("data").toJSONString(),
+                            new TypeReference<Map<String, ArrayList<MapiResourceResult>>>() {
+                            });
+                    if(null!=userBean){
+                        List<MapiResourceResult> list = new ArrayList<MapiResourceResult>();
+                        list.clear();
+                        if(!userBean.get("version").isEmpty())
+                            list.addAll(userBean.get("version"));
+                        if(null!=list&&list.size()>0)
+                            checkVersion(list.get(0));
+                    }
+
+                }
             }
         }, new RequestExceptionCallback() {
             @Override

@@ -2,7 +2,6 @@ package com.yigu.jgj.activity.assign;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
@@ -14,11 +13,10 @@ import android.widget.TextView;
 import com.yigu.jgj.R;
 import com.yigu.jgj.activity.person.PerManageActivity;
 import com.yigu.jgj.adapter.assign.AssignDetailAdapter;
-import com.yigu.jgj.adapter.assign.AssignTaskAdapter;
 import com.yigu.jgj.base.BaseActivity;
 import com.yigu.jgj.base.Config;
 import com.yigu.jgj.base.RequestCode;
-import com.yigu.jgj.broadCast.ReceiverAction;
+import com.yigu.jgj.broadcast.ReceiverAction;
 import com.yigu.jgj.commom.api.DailyApi;
 import com.yigu.jgj.commom.api.ItemApi;
 import com.yigu.jgj.commom.result.MapiItemResult;
@@ -31,7 +29,6 @@ import com.yigu.jgj.commom.util.RequestExceptionCallback;
 import com.yigu.jgj.commom.widget.MainToast;
 import com.yigu.jgj.jgjinterface.RecyOnItemClickListener;
 import com.yigu.jgj.util.ControllerUtil;
-import com.yigu.jgj.widget.BestSwipeRefreshLayout;
 import com.yigu.jgj.widget.TopPopWindow;
 
 import java.util.ArrayList;

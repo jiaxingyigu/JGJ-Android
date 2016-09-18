@@ -19,7 +19,7 @@ import com.yigu.jgj.R;
 import com.yigu.jgj.adapter.PerManageAdapter;
 import com.yigu.jgj.base.BaseActivity;
 import com.yigu.jgj.base.RequestCode;
-import com.yigu.jgj.broadCast.ReceiverAction;
+import com.yigu.jgj.broadcast.ReceiverAction;
 import com.yigu.jgj.commom.api.DailyApi;
 import com.yigu.jgj.commom.api.UserApi;
 import com.yigu.jgj.commom.result.MapiResourceResult;
@@ -36,7 +36,6 @@ import com.yigu.jgj.widget.BestSwipeRefreshLayout;
 import com.yigu.jgj.widget.TopPopWindow;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 

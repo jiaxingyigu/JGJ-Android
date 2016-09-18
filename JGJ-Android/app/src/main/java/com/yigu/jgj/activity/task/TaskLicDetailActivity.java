@@ -11,10 +11,8 @@ import android.widget.TextView;
 
 import com.yigu.jgj.R;
 import com.yigu.jgj.activity.SelCommunityActivity;
-import com.yigu.jgj.activity.person.PerManageActivity;
 import com.yigu.jgj.base.BaseActivity;
 import com.yigu.jgj.base.RequestCode;
-import com.yigu.jgj.broadCast.ReceiverAction;
 import com.yigu.jgj.commom.api.DailyApi;
 import com.yigu.jgj.commom.application.AppContext;
 import com.yigu.jgj.commom.result.MapiItemResult;
@@ -22,7 +20,6 @@ import com.yigu.jgj.commom.result.MapiResourceResult;
 import com.yigu.jgj.commom.util.RequestCallback;
 import com.yigu.jgj.commom.util.RequestExceptionCallback;
 import com.yigu.jgj.commom.widget.MainToast;
-import com.yigu.jgj.util.ControllerUtil;
 import com.yigu.jgj.view.LicenseCheckLayout;
 
 import java.util.ArrayList;

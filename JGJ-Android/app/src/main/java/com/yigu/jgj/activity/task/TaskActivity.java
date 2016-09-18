@@ -1,11 +1,7 @@
 package com.yigu.jgj.activity.task;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
@@ -16,15 +12,12 @@ import com.yigu.jgj.R;
 import com.yigu.jgj.adapter.task.TaskAdapter;
 import com.yigu.jgj.base.BaseActivity;
 import com.yigu.jgj.base.RequestCode;
-import com.yigu.jgj.broadCast.ReceiverAction;
 import com.yigu.jgj.commom.api.ItemApi;
 import com.yigu.jgj.commom.application.AppContext;
 import com.yigu.jgj.commom.result.MapiTaskResult;
 import com.yigu.jgj.commom.util.RequestExceptionCallback;
 import com.yigu.jgj.commom.util.RequestPageCallback;
-import com.yigu.jgj.commom.widget.MainToast;
 import com.yigu.jgj.jgjinterface.RecyOnItemClickListener;
-import com.yigu.jgj.util.ControllerUtil;
 import com.yigu.jgj.widget.BestSwipeRefreshLayout;
 
 import java.util.ArrayList;

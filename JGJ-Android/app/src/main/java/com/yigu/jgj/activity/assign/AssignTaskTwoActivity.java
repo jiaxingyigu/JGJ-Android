@@ -18,7 +18,7 @@ import android.widget.TextView;
 import com.yigu.jgj.R;
 import com.yigu.jgj.adapter.company.CompanyFragmentAdapter;
 import com.yigu.jgj.base.BaseActivity;
-import com.yigu.jgj.broadCast.ReceiverAction;
+import com.yigu.jgj.broadcast.ReceiverAction;
 import com.yigu.jgj.fragment.AssignTaskFragment;
 import com.yigu.jgj.fragment.WithoutLicenseFragment;
 import com.yigu.jgj.util.ControllerUtil;
