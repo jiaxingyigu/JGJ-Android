@@ -5,8 +5,8 @@ package com.yigu.jgj.commom.api;
  */
 public class BasicApi {
 
-    public static String BASIC_URL = "http://115.159.118.182/MASU";
-    public static String BASIC_IMAGE = "http://115.159.118.182/MASU/uploadFiles/uploadImgs/";
+    public static String BASIC_URL = "http://115.159.118.182:8081/MASU";//http://182.254.152.46/MASU
+    public static String BASIC_IMAGE = "http://182.254.152.46/MASU/uploadFiles/uploadImgs/";
 
     /**user*/
     protected static String loginUrl = "/appuser/getLogin";
@@ -72,4 +72,6 @@ public class BasicApi {
     protected static String addDinner = "/appuser/addDinner";
     /**聚餐管理-列表*/
     protected static String Dinnerlist = "/appuser/Dinnerlist";
+    /**数据查询*/
+    protected static String GetHisData = "/appuser/GetHisData";
 }

@@ -113,8 +113,7 @@ public class MapiUtil {
      */
     public void call(final Activity act, final String url, final Map<String, String> params,
                      final MapiSuccessResponse response, final MapiFailResponse fail) {
-        if (params != null)
-//            DebugLog.i("params=" + params.toString());
+        params.put(Constants.Token, Constants.Token_VALUE);
         DebugLog.i("url=" + BasicApi.BASIC_URL + url);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, BasicApi.BASIC_URL + url,
                 new Response.Listener<String>() {
@@ -157,12 +156,12 @@ public class MapiUtil {
                 return params;
             }
 
-//            @Override
-//            public Map<String, String> getHeaders() throws AuthFailureError {
-//                Map<String, String> heads = initHead();
-//
-//                return heads;
-//            }
+   /*         @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> heads = initHead();
+
+                return heads;
+            }*/
         };
         requestQueue.add(stringRequest);
 //        requestQueue.start();//初始化的时候就已经调用
@@ -276,16 +275,16 @@ public class MapiUtil {
                 });
     }
 
-   /* public Map<String, String> initHead() {
+    public Map<String, String> initHead() {
         if (head == null) {
             head = new HashMap<>();
             //参考 http://wiki.fredzhu.com/bin/view/Main/HTTP%E4%BA%A4%E4%BA%92%E8%AF%B4%E6%98%8E 说明设置值
-            head.put(Constant.APPKEY, Constant.APPKEY_VALUE);
-            head.put(Constant.PLATFORM, Constant.PLATFORM_VALUE);
-            head.put(Constant.VERSION, Constant.VERSION_VALUE);
-            head.put(Constant.NETWORK_TYPE_KEY, Constant.NETWORK_TYPE);
+//            head.put(Constants.Token, Constants.Token_VALUE);
+//            head.put(Constant.PLATFORM, Constant.PLATFORM_VALUE);
+//            head.put(Constant.VERSION, Constant.VERSION_VALUE);
+//            head.put(Constant.NETWORK_TYPE_KEY, Constant.NETWORK_TYPE);
         }
-        UserSP sp = new UserSP(AppContext.getInstance());
+      /*  UserSP sp = new UserSP(AppContext.getInstance());
         MapiUserResult user = sp.getUserBean();
         if (user != null) {
             head.put(Constant.USER_ID, user.getId().toString());
@@ -294,9 +293,9 @@ public class MapiUtil {
         } else {
             head.put(Constant.USER_ID, "");
             head.put(Constant.USER_SESSION, "");
-        }
+        }*/
         return head;
-    }*/
+    }
 
     public interface MapiSuccessResponse {
 

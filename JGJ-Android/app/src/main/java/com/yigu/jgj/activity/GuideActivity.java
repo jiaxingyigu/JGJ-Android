@@ -74,18 +74,19 @@ public class GuideActivity extends BaseActivity {
             mAdapter.notifyDataSetChanged();
         }*/
         resList1.clear();
-        resList1.add(R.mipmap.guide_daily);
+        resList1.add(R.mipmap.guide_daily_one);
         resList1.add(R.mipmap.guide_daily_two);
+        resList1.add(R.mipmap.guide_daily_three);
         mList.add(new IndexData(0,"0",resList1));
         resList2.clear();
         resList2.add(R.mipmap.guide_license);
-        resList2.add(R.mipmap.guide_license_two);
         mList.add(new IndexData(1,"1",resList2));
         resList3.clear();
         resList3.add(R.mipmap.guide_special);
         mList.add(new IndexData(2,"2",resList3));
         resList4.clear();
-        resList4.add(R.mipmap.guide_notify);
+        resList4.add(R.mipmap.guide_notify_one);
+        resList4.add(R.mipmap.guide_notify_two);
         mList.add(new IndexData(3,"3",resList4));
         mAdapter.notifyDataSetChanged();
     }
@@ -116,11 +117,18 @@ public class GuideActivity extends BaseActivity {
                 List<Integer> resList = (List<Integer>) mList.get(position).getData();
                 ImageView image = (ImageView) channelView.findViewById(R.id.image);
                 ImageView imageTwo = (ImageView) channelView.findViewById(R.id.image_two);
+                ImageView imageThree = (ImageView) channelView.findViewById(R.id.image_three);
                 Bitmap bitmap = readBitMap(GuideActivity.this,resList.get(0));
                 image.setImageBitmap(bitmap);
                 if(null!=resList&&resList.size()>1){
                     Bitmap bitmapTwo = readBitMap(GuideActivity.this,resList.get(1));
                     imageTwo.setImageBitmap(bitmapTwo);
+                    if(resList.size()>2){
+                        Bitmap bitmapThree = readBitMap(GuideActivity.this,resList.get(2));
+                        imageThree.setImageBitmap(bitmapThree);
+                    }else{
+                        imageThree.setVisibility(View.GONE);
+                    }
                 }else{
                     imageTwo.setVisibility(View.GONE);
                 }

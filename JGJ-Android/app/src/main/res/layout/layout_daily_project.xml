@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:layout_marginLeft="@dimen/margin_10dp"
-    android:layout_marginRight="@dimen/margin_2"
+
     >
 
     <ImageView
@@ -17,6 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/shop_iv"
+
         >
 
         <TextView
@@ -37,6 +38,7 @@
             android:layout_below="@+id/name_tv"
             android:layout_marginTop="13dp"
             android:layout_marginLeft="@dimen/margin_3"
+            android:layout_marginRight="@dimen/margin_2"
             >
 
             <TextView
@@ -61,6 +63,7 @@
                     android:ellipsize="end"
                     android:gravity="center"
                     android:inputType="number"
+                    android:maxLength="5"
                     />
 
                 <View
@@ -97,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/text_normal"
                 android:textColor="@color/gray_dark"
-                android:text="持有有限健康证明"
+                android:text="持有有效健康证明"
                 />
 
             <RelativeLayout
@@ -114,6 +117,7 @@
                     android:ellipsize="end"
                     android:gravity="center"
                     android:inputType="number"
+                    android:maxLength="5"
                     />
 
                 <View
@@ -138,15 +142,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="（应有"
+                android:maxLines="1"
                 />
 
             <TextView
                 android:id="@+id/oldhcatenk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="10"
+                android:text=""
                 android:textSize="@dimen/text_small_x"
                 android:textColor="@color/jgj_green"
+                android:maxLines="1"
+                android:ellipsize="end"
                 />
             <TextView
                 style="@style/text_tip_style"
@@ -156,7 +163,6 @@
                 android:maxLines="1"
                 android:ellipsize="end"
                 />
-
         </LinearLayout>
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -164,6 +170,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/health_ll"
             android:id="@+id/showlicense_rl"
+            android:layout_marginRight="@dimen/margin_2"
             >
 
             <ImageView
@@ -243,6 +250,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/showlicense_rl"
             android:id="@+id/hygiene_rl"
+            android:layout_marginRight="@dimen/margin_2"
             >
 
             <ImageView
@@ -322,6 +330,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/hygiene_rl"
             android:id="@+id/invoice_rl"
+            android:layout_marginRight="@dimen/margin_2"
             >
 
             <ImageView

@@ -242,7 +242,7 @@ public class DailyThirdActivity extends BaseActivity {
     public void startPhotoZoom(Uri uri) {
         Uri outUrl = Uri
                 .fromFile(FileUtil.createFile(this, "daily_image_crop.jpg",FileUtil.TYPE_IMAGE));
-        Crop.of(uri, outUrl).asSquare().withMaxSize(600, 600).start(this);
+        Crop.of(uri, outUrl).asSquare().withMaxSize(500, 500).start(this);
     }
 
     @Override

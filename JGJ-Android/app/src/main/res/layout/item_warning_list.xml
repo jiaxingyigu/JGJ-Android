@@ -53,12 +53,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="end"
-            android:maxLines="4"
+            android:inputType="textMultiLine"
             android:text="333333333333333333333333333333333333333333"
             android:lineSpacingMultiplier="1.3"
             android:layout_marginLeft="@dimen/margin_1"
             android:layout_marginTop="2dp"
             android:layout_toRightOf="@+id/remark_iv"
+            android:layout_marginBottom="@dimen/margin_10dp"
             />
 
     </RelativeLayout>
@@ -71,7 +72,6 @@
         android:autoLink="web"
         android:inputType="textMultiLine"
         android:text="附件下载：33333333333333333333333333333"
-        android:layout_marginTop="@dimen/margin_10dp"
         android:lineSpacingMultiplier="1.3"
         android:layout_marginBottom="@dimen/margin_10dp"
         />

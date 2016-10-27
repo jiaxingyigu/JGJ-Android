@@ -107,12 +107,12 @@ public class TaskDanagerFragment extends BaseFrag{
         ItemApi.getTaskList(getActivity(),userId, pageIndex + "", pageSize+"",  new RequestPageCallback<List<MapiTaskResult>>() {
             @Override
             public void success(Integer isNext, List<MapiTaskResult> success) {
+                swipeLayout.setRefreshing(false);
                 ISNEXT = isNext;
                 if(success.isEmpty())
                     return;
                 mList.addAll(success);
                 mAdapter.notifyDataSetChanged();
-                swipeLayout.setRefreshing(false);
             }
         }, new RequestExceptionCallback() {
             @Override

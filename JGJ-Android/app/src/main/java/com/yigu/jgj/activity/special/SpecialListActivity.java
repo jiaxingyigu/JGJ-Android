@@ -121,12 +121,12 @@ public class SpecialListActivity extends BaseActivity {
         ItemApi.specialactionlist(this, COMMUNITY,pageIndex + "", pageSize + "", new RequestPageCallback<List<MapiSepcialResult>>() {
             @Override
             public void success(Integer isNext, List<MapiSepcialResult> success) {
+                swipeLayout.setRefreshing(false);
                 ISNEXT = isNext;
                 if (success.isEmpty())
                     return;
                 mList.addAll(success);
                 mAdapter.notifyDataSetChanged();
-                swipeLayout.setRefreshing(false);
             }
         }, new RequestExceptionCallback() {
             @Override

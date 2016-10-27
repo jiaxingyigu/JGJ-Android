@@ -28,7 +28,7 @@
         <EditText
             android:id="@+id/search_et"
             style="@style/editViewStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/margin_2"
             android:hint="请输入店名或店主名称"

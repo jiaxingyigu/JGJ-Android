@@ -116,12 +116,18 @@ public class FilterAddsPop extends PopupWindow implements PopupWindow.OnDismissL
                             mOnPopItemClickListener.onItemClick(view, (Integer)view.getTag());
                         notifyDataSetChanged();
                         dismiss();
+                    }else{
+                        pos = -1;
+                        if (null != mOnPopItemClickListener)
+                            mOnPopItemClickListener.onItemClick(view, pos);
+                        notifyDataSetChanged();
+                        dismiss();
                     }
                 }
             });
             if(pos==position){
-                holder.adds.setTextColor(Color.parseColor("#019b79"));
-                holder.iv_status.setImageResource(R.mipmap.circle_green_right);
+                holder.adds.setTextColor(Color.parseColor("#0390d0"));
+                holder.iv_status.setImageResource(R.mipmap.circle_blue_right);
             }else{
                 holder.adds.setTextColor(Color.parseColor("#8c8c8c"));
                 holder.iv_status.setImageResource(R.mipmap.circle_white);

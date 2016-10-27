@@ -59,6 +59,7 @@
             android:layout_weight="1"
             android:text="粥行天下  (万达店)"
             android:gravity="center_vertical"
+            android:ellipsize="end"
             />
 
         <RelativeLayout
@@ -75,6 +76,7 @@
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:text="张一一"
+                android:ellipsize="end"
                 />
 
             <TextView
@@ -85,6 +87,7 @@
                 android:text="13738258025"
                 android:layout_toRightOf="@+id/lperson"
                 android:layout_marginLeft="67dp"
+                android:ellipsize="end"
                 />
 
         </RelativeLayout>
@@ -98,6 +101,7 @@
             android:text="嘉兴市南湖区广益路格林小镇A店铺"
             android:layout_marginTop="@dimen/margin_10dp"
             android:gravity="center_vertical"
+            android:ellipsize="end"
             />
 
 

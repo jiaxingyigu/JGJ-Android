@@ -119,12 +119,12 @@ public class PartyActivity extends BaseActivity{
         ItemApi.Dinnerlist(this, COMMUNITY,pageIndex + "", pageSize + "", new RequestPageCallback<List<MapiPartyResult>>() {
             @Override
             public void success(Integer isNext, List<MapiPartyResult> success) {
+                swipeLayout.setRefreshing(false);
                 ISNEXT = isNext;
                 if (success.isEmpty())
                     return;
                 mList.addAll(success);
                 mAdapter.notifyDataSetChanged();
-                swipeLayout.setRefreshing(false);
             }
         }, new RequestExceptionCallback() {
             @Override

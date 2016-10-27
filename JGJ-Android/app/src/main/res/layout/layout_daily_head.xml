@@ -42,7 +42,6 @@
                 android:textColor="@color/jgj_green"
                 android:textSize="15sp"
                 android:text="粥行天下 （万达店）"
-                android:maxLines="1"
                 android:ellipsize="end"
                 />
 

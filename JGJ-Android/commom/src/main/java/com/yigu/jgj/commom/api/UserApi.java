@@ -12,6 +12,7 @@ import com.yigu.jgj.commom.util.MapiUtil;
 import com.yigu.jgj.commom.util.RequestCallback;
 import com.yigu.jgj.commom.util.RequestExceptionCallback;
 import com.yigu.jgj.commom.util.RequestPageCallback;
+import com.yigu.jgj.commom.util.RequestPageTwoCallback;
 
 import java.util.HashMap;
 import java.util.List;
@@ -64,7 +65,7 @@ public class UserApi extends BasicApi{
      * @param callback
      * @param exceptionCallback
      */
-    public static void getUserList(Activity activity, String USERNAME, String COMPANY, String COMMUNITY,String ROLE_ID, String PAGENO, String SIZE, final RequestPageCallback callback, final RequestExceptionCallback exceptionCallback){
+    public static void getUserList(Activity activity, String USERNAME, String COMPANY, String COMMUNITY, String ROLE_ID, String PAGENO, String SIZE, final RequestPageTwoCallback callback, final RequestExceptionCallback exceptionCallback){
 
         Map<String,String> params = new HashMap<>();
         params.put("USERNAME",USERNAME);
@@ -82,7 +83,10 @@ public class UserApi extends BasicApi{
                 DebugLog.i("json="+json);
                 List<MapiUserResult> result = JSONArray.parseArray(json.getJSONObject("data").getJSONArray("users").toJSONString(),MapiUserResult.class);
                 Integer ISNEXT = json.getJSONObject("data").getInteger("ISNEXT");
-                callback.success(ISNEXT,result);
+                Integer countld = json.getJSONObject("data").getInteger("countld");
+                Integer countone = json.getJSONObject("data").getInteger("countone");
+                Integer counttwo = json.getJSONObject("data").getInteger("counttwo");
+                callback.success(ISNEXT,countld,countone,counttwo,result);
             }
         },new MapiUtil.MapiFailResponse(){
 
@@ -102,9 +106,11 @@ public class UserApi extends BasicApi{
      * @param callback
      * @param exceptionCallback
      */
-    public static void getdropdownlist(Activity activity,String type,final RequestPageCallback callback, final RequestExceptionCallback exceptionCallback){
+    public static void getdropdownlist(Activity activity,String type,String COMPANY,final RequestPageCallback callback, final RequestExceptionCallback exceptionCallback){
         Map<String,String> params = new HashMap<>();
         params.put("type",type);
+        if(!TextUtils.isEmpty(COMPANY))
+            params.put("COMPANY",COMPANY);
         MapiUtil.getInstance().call(activity,getdropdownlist,params,new MapiUtil.MapiSuccessResponse(){
             @Override
             public void success(JSONObject json) {

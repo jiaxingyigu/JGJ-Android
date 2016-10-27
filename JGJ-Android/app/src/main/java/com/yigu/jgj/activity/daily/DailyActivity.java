@@ -17,6 +17,8 @@ import com.yigu.jgj.commom.api.ItemApi;
 import com.yigu.jgj.commom.result.MapiItemResult;
 import com.yigu.jgj.commom.util.RequestExceptionCallback;
 import com.yigu.jgj.commom.util.RequestPageCallback;
+import com.yigu.jgj.commom.util.RequestPageTwoCallback;
+import com.yigu.jgj.commom.widget.MainToast;
 import com.yigu.jgj.jgjinterface.RecyOnItemClickListener;
 import com.yigu.jgj.util.ControllerUtil;
 import com.yigu.jgj.widget.BestSwipeRefreshLayout;
@@ -39,6 +41,8 @@ public class DailyActivity extends BaseActivity {
     BestSwipeRefreshLayout swipeLayout;
     @Bind(R.id.search_et)
     EditText searchEt;
+    @Bind(R.id.pepConutTV)
+    TextView pepConutTV;
 
     List<MapiItemResult> mList = new ArrayList<>();
 
@@ -127,10 +131,11 @@ public class DailyActivity extends BaseActivity {
 
     public void load() {
         String COMMUNITY = userSP.getUserBean().getCOMMUNITY();
-        ItemApi.getShoplist(this, search, COMMUNITY, 0 + "", pageIndex + "", pageSize + "", new RequestPageCallback<List<MapiItemResult>>() {
+        ItemApi.getShoplist(this, search, COMMUNITY, 0 + "", pageIndex + "", pageSize + "", new RequestPageTwoCallback<List<MapiItemResult>>() {
             @Override
-            public void success(Integer isNext, List<MapiItemResult> success) {
+            public void success(Integer isNext,Integer countld,Integer countone,Integer counttwo, List<MapiItemResult> success) {
                 swipeLayout.setRefreshing(false);
+                pepConutTV.setText("当前总共："+(null!=countld?countld:0)+"家企业");
                 ISNEXT = isNext;
                 if (success.isEmpty())
                     return;
@@ -141,6 +146,7 @@ public class DailyActivity extends BaseActivity {
             @Override
             public void error(String code, String message) {
                 swipeLayout.setRefreshing(false);
+                MainToast.showShortToast(message);
             }
         });
     }

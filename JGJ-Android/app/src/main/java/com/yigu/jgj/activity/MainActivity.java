@@ -56,11 +56,11 @@ public class MainActivity extends BaseActivity {
     TextView tvCenter;
     @Bind(R.id.recyclerView)
     RecyclerView recyclerView;
-//    @Bind(R.id.startLayout)
+    //    @Bind(R.id.startLayout)
 //    LinearLayout startLayout;
     MainAdapter mAdapter;
     List<MapiResourceResult> mList = new ArrayList<>();
-//    @Bind(R.id.fragment_content)
+    //    @Bind(R.id.fragment_content)
 //    FrameLayout fragmentContent;
 //    @Bind(R.id.drawerLayout)
 //    DrawerLayout drawerLayout;
@@ -86,10 +86,10 @@ public class MainActivity extends BaseActivity {
             initData();
             initListener();
             JpushUtil.getInstance().verifyInit(this);
-            if(JPushInterface.isPushStopped(AppContext.getInstance())){
+            if (JPushInterface.isPushStopped(AppContext.getInstance())) {
                 JPushInterface.resumePush(AppContext.getInstance());
             }
-            if(!userSP.getAlias()){
+            if (!userSP.getAlias()) {
                 JpushUtil.getInstance().setAlias(userSP.getUserBean().getUSER_ID());
             }
             registerMessageReceiver();  // used for receive msg
@@ -108,14 +108,15 @@ public class MainActivity extends BaseActivity {
 //                }
 //            }, 500);
         }
-        if(null!=getIntent()){
-            int type = getIntent().getIntExtra("type",0);
-            if(type==1){
-                ControllerUtil.go2NotifyList(); 
-            }else if(type==2){
+        if (null != getIntent()) {
+            int type = getIntent().getIntExtra("type", 0);
+            if (type == 1) {
+                ControllerUtil.go2NotifyList();
+            } else if (type == 2) {
                 ControllerUtil.go2WarningList();
             }
         }
+
     }
 
     private void initView() {
@@ -144,7 +145,7 @@ public class MainActivity extends BaseActivity {
             DownloadKey.changeLog = result.getRemark();
             DownloadKey.apkUrl = result.getUrl();
             //如果你想通过Dialog来进行下载，可以如下设置
-            UpdateKey.DialogOrNotification= UpdateKey.WITH_DIALOG;
+            UpdateKey.DialogOrNotification = UpdateKey.WITH_DIALOG;
             DownloadKey.ToShowDownloadView = DownloadKey.showUpdateView;
             UpdateFunGo.init(this);
         }
@@ -182,7 +183,7 @@ public class MainActivity extends BaseActivity {
         mList.addAll(JGJDataSource.getAllResource());
         GridLayoutManager manager = new GridLayoutManager(this, 3);
         recyclerView.setLayoutManager(manager);
-        recyclerView.addItemDecoration(new DividerGridItemDecoration(this, DPUtil.dip2px(0.5f),getResources().getColor(R.color.divider_line)));
+        recyclerView.addItemDecoration(new DividerGridItemDecoration(this, DPUtil.dip2px(0.5f), getResources().getColor(R.color.divider_line)));
         //如果可以确定每个item的高度是固定的，设置这个选项可以提高性能
         recyclerView.setHasFixedSize(true);
         mAdapter = new MainAdapter(this, mList);
@@ -208,14 +209,13 @@ public class MainActivity extends BaseActivity {
                     case JGJDataSource.TYPE_ASSIGN:
                         ControllerUtil.go2AssignTask();
                         break;
-                    case JGJDataSource.TYPE_DANGER://隐患档案
-//                        ControllerUtil.go2File();
+                    case JGJDataSource.TYPE_DANGER://隐患跟踪
                         ControllerUtil.go2DangerList();
                         break;
                     case JGJDataSource.TYPE_PERSON:
                         ControllerUtil.go2PersonInfo();
                         break;
-                    case JGJDataSource.TYPE_FILE:
+                    case JGJDataSource.TYPE_FILE://数据查询
                         ControllerUtil.go2File();
                         break;
                     case JGJDataSource.TYPE_TEL:
@@ -261,18 +261,18 @@ public class MainActivity extends BaseActivity {
             public void success(String success) {
                 hideLoading();
                 userSP.saveResource(success);
-                if(null!=userSP.getResource()){
+                if (null != userSP.getResource()) {
                     JSONObject jsonObject = JSONObject.parseObject(userSP.getResource());
                     Map<String, ArrayList<MapiResourceResult>> userBean = JSON.parseObject(jsonObject
                                     .getJSONObject("data").toJSONString(),
                             new TypeReference<Map<String, ArrayList<MapiResourceResult>>>() {
                             });
-                    if(null!=userBean){
+                    if (null != userBean) {
                         List<MapiResourceResult> list = new ArrayList<MapiResourceResult>();
                         list.clear();
-                        if(!userBean.get("version").isEmpty())
+                        if (!userBean.get("version").isEmpty())
                             list.addAll(userBean.get("version"));
-                        if(null!=list&&list.size()>0)
+                        if (null != list && list.size() > 0)
                             checkVersion(list.get(0));
                     }
 
@@ -293,7 +293,7 @@ public class MainActivity extends BaseActivity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             if ((System.currentTimeMillis() - exitTime) > 2000) {
-                Toast.makeText(getApplicationContext(), "再按一次退出市场智慧监管", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "再按一次退出智慧市场监管", Toast.LENGTH_SHORT).show();
                 exitTime = System.currentTimeMillis();
             } else {
                 finish();
@@ -331,6 +331,7 @@ public class MainActivity extends BaseActivity {
 
     //for receive customer msg from jpush server
     private MessageReceiver mMessageReceiver;
+
     public void registerMessageReceiver() {
         mMessageReceiver = new MessageReceiver();
         IntentFilter filter = new IntentFilter();
@@ -359,12 +360,12 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-        int type = intent.getIntExtra("type",0);
-        if(type==1){
+        int type = intent.getIntExtra("type", 0);
+        if (type == 1) {
             ControllerUtil.go2NotifyList();
-        }else if(type==2){
+        } else if (type == 2) {
             ControllerUtil.go2WarningList();
-        }else if(type==3){
+        } else if (type == 3) {
             ControllerUtil.go2Login();
             finish();
         }
@@ -372,9 +373,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onDestroy() {
-        if(null!=mMessageReceiver)
+        if (null != mMessageReceiver)
             unregisterReceiver(mMessageReceiver);
         super.onDestroy();
     }
-
 }

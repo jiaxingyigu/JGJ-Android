@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.yigu.jgj.R;
 import com.yigu.jgj.adapter.OtherPerManageAdapter;
+import com.yigu.jgj.base.BaseActivity;
 import com.yigu.jgj.commom.api.UserApi;
 import com.yigu.jgj.commom.result.MapiUserResult;
 import com.yigu.jgj.commom.util.DebugLog;
@@ -28,7 +29,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class OtherPersonActivity extends AppCompatActivity {
+public class OtherPersonActivity extends BaseActivity {
     @Bind(R.id.tv_center)
     TextView tvCenter;
     @Bind(R.id.tv_right)
@@ -129,7 +130,7 @@ public class OtherPersonActivity extends AppCompatActivity {
     }
 
     private void load() {
-        UserApi.getdropdownlist(this, type, new RequestPageCallback<List<MapiUserResult>>() {
+        UserApi.getdropdownlist(this, type,userSP.getUserBean().getCOMPANY(),new RequestPageCallback<List<MapiUserResult>>() {
             @Override
             public void success(Integer isNext, List<MapiUserResult> success) {
                 swipeLayout.setRefreshing(false);

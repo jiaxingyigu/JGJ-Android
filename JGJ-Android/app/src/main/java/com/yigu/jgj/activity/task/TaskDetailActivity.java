@@ -35,14 +35,18 @@ public class TaskDetailActivity extends BaseActivity {
 
     MapiTaskResult taskResult;
     List<Integer> list = new ArrayList();
-
+    String title = "";
+    boolean dell = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_detail);
         ButterKnife.bind(this);
-        if(null!=getIntent().getExtras())
+        if(null!=getIntent().getExtras()) {
             taskResult = (MapiTaskResult) getIntent().getSerializableExtra("item");
+            title = getIntent().getStringExtra("title");
+            dell = getIntent().getBooleanExtra("dell",true);
+        }
         if(null!=taskResult){
             initView();
             load();
@@ -50,7 +54,10 @@ public class TaskDetailActivity extends BaseActivity {
     }
 
     private void initView() {
-        tvCenter.setText("任务详情");
+        if(TextUtils.isEmpty(title))
+            tvCenter.setText("任务详情");
+        else
+            tvCenter.setText(title);
         list.add(Config.daily_head);
         list.add(Config.daily_project);
         if(taskResult.getFOODSALES()==1)
@@ -79,7 +86,8 @@ public class TaskDetailActivity extends BaseActivity {
                         list.add(Config.daily_remark);
                     if(null!=success.getImages()&&!success.getImages().isEmpty())
                         list.add(Config.daily_image);
-                    list.add(Config.daily_deel);
+                    if(dell)
+                        list.add(Config.daily_deel);
                     mAdapter.setItemResult(success);
                     mAdapter.notifyDataSetChanged();
                 }

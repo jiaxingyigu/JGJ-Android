@@ -42,7 +42,7 @@ public class DangerListActivity extends BaseActivity {
     @Bind(R.id.search_et)
     EditText searchEt;
     DanagerListAdapter mAdapter;
-    List<MapiItemResult> mList = new ArrayList<>();
+    List<MapiItemResult> mList;
 
     private Integer pageIndex = 0;
     private Integer pageSize = 8;
@@ -65,7 +65,8 @@ public class DangerListActivity extends BaseActivity {
     }
 
     private void initView() {
-        tvCenter.setText("隐患档案");
+        mList = new ArrayList<>();
+        tvCenter.setText("隐患跟踪");
         LinearLayoutManager manager = new LinearLayoutManager(this);
         manager.setOrientation(OrientationHelper.VERTICAL);
         recyclerView.setLayoutManager(manager);

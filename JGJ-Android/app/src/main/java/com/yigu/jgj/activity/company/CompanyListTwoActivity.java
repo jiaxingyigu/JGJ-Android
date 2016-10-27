@@ -30,6 +30,7 @@ import com.yigu.jgj.commom.result.MapiResourceResult;
 import com.yigu.jgj.commom.util.DebugLog;
 import com.yigu.jgj.commom.util.RequestExceptionCallback;
 import com.yigu.jgj.commom.util.RequestPageCallback;
+import com.yigu.jgj.commom.util.RequestPageTwoCallback;
 import com.yigu.jgj.commom.widget.MainToast;
 import com.yigu.jgj.jgjinterface.RecyOnItemClickListener;
 import com.yigu.jgj.util.ControllerUtil;
@@ -70,6 +71,8 @@ public class CompanyListTwoActivity extends BaseActivity {
     RelativeLayout filter_rl;
     @Bind(R.id.search_et)
     EditText searchEt;
+    @Bind(R.id.pepConutTV)
+    TextView pepConutTV;
 
     List<TextView> list = new ArrayList<>();
     CompanyAdapter mAdapter;
@@ -248,12 +251,12 @@ public class CompanyListTwoActivity extends BaseActivity {
                 refreshData();
                 break;
             case R.id.product_tv:
-                CATEGORY = "2";
+                CATEGORY = "3";
                 updateStatus(1);
                 refreshData();
                 break;
             case R.id.currency_tv:
-                CATEGORY = "3";
+                CATEGORY = "2";
                 updateStatus(2);
                 refreshData();
                 break;
@@ -307,10 +310,11 @@ public class CompanyListTwoActivity extends BaseActivity {
 
     public void load() {
 
-        ItemApi.getArchiveslist(this, search, COMMUNITY, CATEGORY,TYPE,flag ,pageIndex + "", pageSize + "", new RequestPageCallback<List<MapiItemResult>>() {
+        ItemApi.getArchiveslist(this, search, COMMUNITY, CATEGORY,TYPE,flag ,pageIndex + "", pageSize + "", new RequestPageTwoCallback<List<MapiItemResult>>() {
             @Override
-            public void success(Integer isNext, List<MapiItemResult> success) {
+            public void success(Integer isNext,Integer countld,Integer countone,Integer counttwo, List<MapiItemResult> success) {
                 swipeLayout.setRefreshing(false);
+                pepConutTV.setText("当前总共："+(null!=countld?countld:0)+"家企业");
                 ISNEXT = isNext;
                 if (success.isEmpty())
                     return;

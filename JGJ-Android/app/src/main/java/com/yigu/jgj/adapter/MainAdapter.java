@@ -89,6 +89,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>{
             case JGJDataSource.TYPE_PERSON:
                 resId = R.mipmap.main_twl;
                 break;
+            case JGJDataSource.TYPE_FILE:
+                resId = R.mipmap.main_thirteen;
+                break;
 
         }
         holder.image.setImageResource(resId);

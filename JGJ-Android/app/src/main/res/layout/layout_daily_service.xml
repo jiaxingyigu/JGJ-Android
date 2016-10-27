@@ -192,6 +192,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/disinfection_rl"
             android:id="@+id/poster_rl"
+            android:paddingBottom="@dimen/margin_10dp"
             >
 
             <ImageView

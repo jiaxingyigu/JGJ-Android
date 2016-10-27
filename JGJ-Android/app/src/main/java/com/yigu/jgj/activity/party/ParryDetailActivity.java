@@ -51,7 +51,7 @@ public class ParryDetailActivity extends BaseActivity {
     }
 
     private void initView() {
-        tvCenter.setText("专项行动");
+        tvCenter.setText("聚餐上报");
         startDate.setText(itemResult.getStardate());
         endDate.setText(itemResult.getEnddate());
         partyBasicLayout.loadData(itemResult,false);

@@ -170,9 +170,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.daily.DailyThirdActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:configChanges="orientation|keyboardHidden|screenSize"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".activity.person.PerManageActivity"
@@ -186,17 +186,23 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.company.CompanyListActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"
+            />
         <activity
             android:name=".activity.assign.AssignTaskActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.assign.AssignDetailActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"
+            />
         <activity
             android:name=".activity.danger.DangerListActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"
+            />
         <activity
             android:name=".activity.danger.DanagerDetailActivity"
             android:screenOrientation="portrait" />
@@ -230,7 +236,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.company.CompanyListTwoActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"
+            />
         <activity
             android:name=".activity.license.WithoutLicenseActivity"
             android:screenOrientation="portrait" />
@@ -243,11 +251,13 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.license.LicenseDetailActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"
+            />
         <activity
             android:name=".activity.assign.AssignAddActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize" />
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name=".activity.task.TaskTwoActivity"
             android:screenOrientation="portrait" />
@@ -260,16 +270,22 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activity.license.LicenseMessageActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"
+            />
         <activity
             android:name=".activity.task.TaskLicDetailActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"
+            />
         <activity
             android:name=".activity.person.OtherPersonActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.special.SpecialDetailActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"
+            />
         <activity
             android:name=".activity.LoginTwoActivity"
             android:launchMode="singleTask"
@@ -277,7 +293,8 @@
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name=".activity.task.TaskOtherDetailActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name=".activity.PersonInfoActivity"
             android:screenOrientation="portrait" />
@@ -295,18 +312,28 @@
             android:name=".activity.warning.WarningAddActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.ModifyPsdActivity"
+        <activity
+            android:name=".activity.ModifyPsdActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.party.PartyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.party.PartyAddActivity"
             android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity.party.ParryDetailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"
             />
-        <activity android:name=".activity.party.PartyActivity"
+        <activity android:name=".activity.file.FileTwoActivity"
             android:screenOrientation="portrait"
-            />
-        <activity android:name=".activity.party.PartyAddActivity"
+            android:windowSoftInputMode="stateHidden"
+            ></activity>
+        <activity android:name=".activity.file.FileLicenseActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"
-            />
-        <activity android:name=".activity.party.ParryDetailActivity"
-            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"
             />
     </application>
 

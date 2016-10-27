@@ -26,6 +26,8 @@ import com.yigu.jgj.activity.danger.DanagerDetailActivity;
 import com.yigu.jgj.activity.danger.DangerListActivity;
 import com.yigu.jgj.activity.file.FileActivity;
 import com.yigu.jgj.activity.file.FileDetailActivity;
+import com.yigu.jgj.activity.file.FileLicenseActivity;
+import com.yigu.jgj.activity.file.FileTwoActivity;
 import com.yigu.jgj.activity.license.LicenseAddActivity;
 import com.yigu.jgj.activity.license.LicenseDetailActivity;
 import com.yigu.jgj.activity.license.LicenseMessageActivity;
@@ -176,7 +178,7 @@ public class ControllerUtil {
      * 归档信息-列表
      */
     public static void go2File() {
-        Intent intent = new Intent(AppContext.getInstance(), FileActivity.class);
+        Intent intent = new Intent(AppContext.getInstance(), FileTwoActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         AppContext.getInstance().startActivity(intent);
     }
@@ -395,6 +397,16 @@ public class ControllerUtil {
      */
     public static void go2ParryDetail(MapiPartyResult itemResult) {
         Intent intent = new Intent(AppContext.getInstance(), ParryDetailActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("item",itemResult);
+        AppContext.getInstance().startActivity(intent);
+    }
+
+    /**
+     * 数据查询-无照上报详情
+     */
+    public static void go2FileLicense(MapiItemResult itemResult) {
+        Intent intent = new Intent(AppContext.getInstance(), FileLicenseActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("item",itemResult);
         AppContext.getInstance().startActivity(intent);

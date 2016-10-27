@@ -114,9 +114,9 @@ public class RlCheckLayout extends RelativeLayout {
         if(tvCatering.isChecked())
             return "1";
         else if(tvProduct.isChecked())
-            return "2";
-        else if(tvCurrency.isChecked())
             return "3";
+        else if(tvCurrency.isChecked())
+            return "2";
         return "";
     }
 
@@ -165,9 +165,9 @@ public class RlCheckLayout extends RelativeLayout {
         if (null != resourceResult.getCATEGORY()) {
             if(resourceResult.getCATEGORY().equals("1"))
                 tvCatering.setChecked(true);
-            if(resourceResult.getCATEGORY().equals("2"))
-                tvProduct.setChecked(true);
             if(resourceResult.getCATEGORY().equals("3"))
+                tvProduct.setChecked(true);
+            if(resourceResult.getCATEGORY().equals("2"))
                 tvCurrency.setChecked(true);
         }
 

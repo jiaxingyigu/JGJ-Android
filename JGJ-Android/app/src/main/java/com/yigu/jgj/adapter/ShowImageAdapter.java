@@ -7,10 +7,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.controller.BaseControllerListener;
+import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.facebook.imagepipeline.common.ResizeOptions;
+import com.facebook.imagepipeline.image.ImageInfo;
+import com.facebook.imagepipeline.request.ImageRequest;
+import com.facebook.imagepipeline.request.ImageRequestBuilder;
 import com.yigu.jgj.R;
 import com.yigu.jgj.commom.api.BasicApi;
 import com.yigu.jgj.commom.result.MapiImageResult;
+import com.yigu.jgj.commom.util.DPUtil;
 import com.yigu.jgj.jgjinterface.RecyOnItemClickListener;
 
 import java.util.List;
@@ -48,7 +56,20 @@ public class ShowImageAdapter extends RecyclerView.Adapter<ShowImageAdapter.View
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.simpleDraweeView.setImageURI(Uri.parse(BasicApi.BASIC_IMAGE+mList.get(position).getPATH()));
+
+        //创建将要下载的图片的URI
+        Uri imageUri = Uri.parse(BasicApi.BASIC_IMAGE+mList.get(position).getPATH());
+        ImageRequest request = ImageRequestBuilder.newBuilderWithSource(imageUri)
+                .setResizeOptions(new ResizeOptions(DPUtil.dip2px(100), DPUtil.dip2px(100)))
+                .build();
+        DraweeController controller = Fresco.newDraweeControllerBuilder()
+                .setImageRequest(request)
+                .setOldController( holder.simpleDraweeView.getController())
+                .setControllerListener(new BaseControllerListener<ImageInfo>())
+                .build();
+        holder.simpleDraweeView.setController(controller);
+
+//        holder.simpleDraweeView.setImageURI();
         holder.simpleDraweeView.setTag(position);
         holder.simpleDraweeView.setOnClickListener(new View.OnClickListener() {
             @Override

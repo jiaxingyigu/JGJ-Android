@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.yigu.jgj.R;
 import com.yigu.jgj.commom.result.MapiSepcialResult;
@@ -29,6 +30,8 @@ public class SpecialBasicLayout extends RelativeLayout {
     EditText responsibilityNum;
     @Bind(R.id.title_et)
     EditText titleEt;
+    @Bind(R.id.cid)
+    TextView cid;
     private Context mContext;
     private View view;
 
@@ -109,12 +112,15 @@ public class SpecialBasicLayout extends RelativeLayout {
             shopNum.setText(itemResult.getShop() + "");
             pledgeNum.setText(itemResult.getCbook() + "");
             responsibilityNum.setText(itemResult.getRbook() + "");
+            cid.setText(itemResult.getCOMMUNITY());
 
             titleEt.setEnabled(enable);
             peopleNum.setEnabled(enable);
             shopNum.setEnabled(enable);
             pledgeNum.setEnabled(enable);
             responsibilityNum.setEnabled(enable);
+            cid.setEnabled(enable);
+
         }
     }
 

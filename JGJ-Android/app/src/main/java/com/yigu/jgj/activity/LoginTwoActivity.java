@@ -10,10 +10,16 @@ import com.yigu.jgj.R;
 import com.yigu.jgj.base.BaseActivity;
 import com.yigu.jgj.commom.api.UserApi;
 import com.yigu.jgj.commom.result.MapiUserResult;
+import com.yigu.jgj.commom.util.DateUtil;
+import com.yigu.jgj.commom.util.DebugLog;
 import com.yigu.jgj.commom.util.RequestCallback;
 import com.yigu.jgj.commom.util.RequestExceptionCallback;
 import com.yigu.jgj.commom.widget.MainToast;
 import com.yigu.jgj.util.ControllerUtil;
+
+import org.xutils.common.util.MD5;
+
+import java.util.Date;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

@@ -79,7 +79,7 @@ public class TaskHeadLayout extends RelativeLayout {
             lperson.setText(itemResult.getLPERSON());
             tel.setText(itemResult.getTEL());
             project.setText(StringUtil.listToString(projectList, "  "));
-            idate.setText("检查日期："+DateUtil.getInstance().YMDHMS2YMD(itemResult.getIdate()));
+            idate.setText("检查日期："+DateUtil.getInstance().YMDHMS2YMD(itemResult.getTaskotime()));
             taskstime.setText("指派日期："+DateUtil.getInstance().YMDHMS2YMD(itemResult.getTaskstime()));
             senduser.setText("指派人："+itemResult.getSenduser());
             user.setText("检查人："+itemResult.getUser());

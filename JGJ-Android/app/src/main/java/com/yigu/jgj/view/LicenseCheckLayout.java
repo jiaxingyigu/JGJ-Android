@@ -1,6 +1,7 @@
 package com.yigu.jgj.view;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -170,11 +171,14 @@ public class LicenseCheckLayout extends RelativeLayout {
             else
                 tvPermitNull.setChecked(true);
         }
-        if (resourceResult.getSenduser().equals("所长"))
-            tvSz.setChecked(true);
-        else if (resourceResult.getSenduser().equals("联络员"))
-            tvZz.setChecked(true);
-        tvName.setText(resourceResult.getUser());
+        if(!TextUtils.isEmpty(resourceResult.getSenduser())){
+            if (resourceResult.getSenduser().equals("所长"))
+                tvSz.setChecked(true);
+            else if (resourceResult.getSenduser().equals("联络员"))
+                tvZz.setChecked(true);
+        }
+
+        tvName.setText(TextUtils.isEmpty(resourceResult.getUser())?"":resourceResult.getUser());
     }
 
     public void setNoEdit() {

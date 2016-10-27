@@ -28,6 +28,7 @@ import com.yigu.jgj.commom.util.DPUtil;
 import com.yigu.jgj.commom.util.RequestCallback;
 import com.yigu.jgj.commom.util.RequestExceptionCallback;
 import com.yigu.jgj.commom.util.RequestPageCallback;
+import com.yigu.jgj.commom.util.RequestPageTwoCallback;
 import com.yigu.jgj.commom.widget.MainToast;
 import com.yigu.jgj.jgjinterface.RecyOnItemClickListener;
 import com.yigu.jgj.util.ControllerUtil;
@@ -59,6 +60,8 @@ public class PerManageActivity extends BaseActivity {
     View bgColor;
     @Bind(R.id.address_tv)
     TextView addressTv;
+    @Bind(R.id.pepConutTV)
+    TextView pepConutTV;
 
     PerManageAdapter mAdapter;
     TopPopWindow topPopWindow;
@@ -224,11 +227,15 @@ public class PerManageActivity extends BaseActivity {
 
     private void load(){
 
-        UserApi.getUserList(this, search, COMPANY, COMMUNITY,ROLE_ID, pageIndex + "", pageSize+"",new RequestPageCallback< List<MapiUserResult>>() {
+        UserApi.getUserList(this, search, COMPANY, COMMUNITY,ROLE_ID, pageIndex + "", pageSize+"",new RequestPageTwoCallback< List<MapiUserResult>>() {
             @Override
-            public void success(Integer isNext,List<MapiUserResult> success) {
+            public void success(Integer isNext,Integer countld,Integer countone,Integer counttwo,List<MapiUserResult> success) {
                 swipeLayout.setRefreshing(false);
                 ISNEXT = isNext;
+                if(requestCode>0)
+                    pepConutTV.setText("管理层："+(null!=countld?countld:0)+"人");
+                else
+                    pepConutTV.setText("管理层："+(null!=countld?countld:0)+"人 ;"+"一级网格员："+(null!=countone?countone:0)+"人 ;"+"二级网格员："+(null!=counttwo?counttwo:0)+"人");
                 if(success.isEmpty())
                     return;
                 mList.addAll(success);
@@ -238,6 +245,7 @@ public class PerManageActivity extends BaseActivity {
             @Override
             public void error(String code, String message) {
                 swipeLayout.setRefreshing(false);
+                MainToast.showShortToast(message);
             }
         });
     }

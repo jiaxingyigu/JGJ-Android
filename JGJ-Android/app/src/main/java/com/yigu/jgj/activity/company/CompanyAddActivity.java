@@ -107,27 +107,27 @@ public class CompanyAddActivity extends BaseActivity {
                 String hcatenStr = hcaten.getText().toString();
                 String telStr = tel.getText().toString();
                 if (TextUtils.isEmpty(nameStr)) {
-                    MainToast.showLongToast("请输入企业名称");
+                    MainToast.showShortToast("请输入企业名称");
                     return;
                 }
                 if (TextUtils.isEmpty(addressStr)) {
-                    MainToast.showLongToast("请输入地址");
+                    MainToast.showShortToast("请输入地址");
                     return;
                 }
                 if (TextUtils.isEmpty(lpersonStr)) {
-                    MainToast.showLongToast("请输入法人");
+                    MainToast.showShortToast("请输入法人");
                     return;
                 }
                 if (TextUtils.isEmpty(telStr)) {
-                    MainToast.showLongToast("请输入电话");
+                    MainToast.showShortToast("请输入电话");
                     return;
                 }
                 if (TextUtils.isEmpty(cid_id)) {
-                    MainToast.showLongToast("请选择社区");
+                    MainToast.showShortToast("请选择社区");
                     return;
                 }
                 if (TextUtils.isEmpty(hcatenStr)) {
-                    MainToast.showLongToast("请输入健康证数");
+                    MainToast.showShortToast("请输入健康证数");
                     return;
                 }
                 if (!rlCheckLayout.vorify())

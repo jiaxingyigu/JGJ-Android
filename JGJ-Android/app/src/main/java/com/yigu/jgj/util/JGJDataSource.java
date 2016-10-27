@@ -35,7 +35,7 @@ public class JGJDataSource {
         list.add(new MapiResourceResult(TYPE_PERSON,"人员管理"));
         list.add(new MapiResourceResult(TYPE_COMPANY,"企业管理"));
         list.add(new MapiResourceResult(TYPE_ASSIGN,"任务分配"));
-        list.add(new MapiResourceResult(TYPE_DANGER,"隐患档案"));
+        list.add(new MapiResourceResult(TYPE_DANGER,"隐患跟踪"));
         list.add(new MapiResourceResult(TYPE_FILE,"归档信息"));
         return list;
     }
@@ -48,7 +48,7 @@ public class JGJDataSource {
         list.add(new MapiResourceResult(TYPE_PERSON,"人员管理"));
         list.add(new MapiResourceResult(TYPE_COMPANY,"企业管理"));
         list.add(new MapiResourceResult(TYPE_TASK,"我的任务"));
-        list.add(new MapiResourceResult(TYPE_DANGER,"隐患档案"));
+        list.add(new MapiResourceResult(TYPE_DANGER,"隐患跟踪"));
         list.add(new MapiResourceResult(TYPE_FILE,"归档信息"));
         return list;
     }
@@ -76,10 +76,11 @@ public class JGJDataSource {
         list.add(new MapiResourceResult(TYPE_SPECIAL,"专项行动"));
         list.add(new MapiResourceResult(TYPE_ASSIGN,"任务指令"));
         list.add(new MapiResourceResult(TYPE_TASK,"我的任务"));
-        list.add(new MapiResourceResult(TYPE_DANGER,"隐患档案"));
+        list.add(new MapiResourceResult(TYPE_DANGER,"隐患跟踪"));
         list.add(new MapiResourceResult(TYPE_NOTIFY,"通知公告"));
         list.add(new MapiResourceResult(TYPE_WARNING,"预警信息"));
         list.add(new MapiResourceResult(TYPE_PERSON,"个人信息"));
+        list.add(new MapiResourceResult(TYPE_FILE,"数据查询"));
         return list;
     }
 

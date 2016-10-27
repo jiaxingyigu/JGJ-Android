@@ -67,6 +67,7 @@
                 android:textColorHint="@color/gray_light"
                 android:hint="请输入手机号"
                 android:text=""
+                android:inputType="phone"
                 />
 
         </LinearLayout>

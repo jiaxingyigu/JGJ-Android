@@ -17,6 +17,7 @@ import com.yigu.jgj.commom.api.ItemApi;
 import com.yigu.jgj.commom.result.MapiItemResult;
 import com.yigu.jgj.commom.util.RequestExceptionCallback;
 import com.yigu.jgj.commom.util.RequestPageCallback;
+import com.yigu.jgj.commom.util.RequestPageTwoCallback;
 import com.yigu.jgj.jgjinterface.RecyOnItemClickListener;
 import com.yigu.jgj.util.ControllerUtil;
 import com.yigu.jgj.widget.BestSwipeRefreshLayout;
@@ -96,15 +97,15 @@ public class CompanyNoTitleFragment extends BaseFrag {
 
     public void load(){
         String COMMUNITY = userSP.getUserBean().getCOMMUNITY();
-        ItemApi.getShoplist(getActivity(), "", COMMUNITY, 1 + "", pageIndex+"",pageSize+"", new RequestPageCallback<List<MapiItemResult>>() {
+        ItemApi.getShoplist(getActivity(), "", COMMUNITY, 1 + "", pageIndex+"",pageSize+"", new RequestPageTwoCallback<List<MapiItemResult>>() {
             @Override
-            public void success(Integer isNext,List<MapiItemResult> success) {
+            public void success(Integer isNext,Integer countld,Integer countone,Integer counttwo, List<MapiItemResult> success) {
+                swipeLayout.setRefreshing(false);
                 ISNEXT = isNext;
                 if(success.isEmpty())
                     return;
                 mList.addAll(success);
                 mAdapter.notifyDataSetChanged();
-                swipeLayout.setRefreshing(false);
             }
         }, new RequestExceptionCallback() {
             @Override
