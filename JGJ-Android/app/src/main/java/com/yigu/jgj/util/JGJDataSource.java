@@ -79,8 +79,8 @@ public class JGJDataSource {
         list.add(new MapiResourceResult(TYPE_DANGER,"隐患跟踪"));
         list.add(new MapiResourceResult(TYPE_NOTIFY,"通知公告"));
         list.add(new MapiResourceResult(TYPE_WARNING,"预警信息"));
-        list.add(new MapiResourceResult(TYPE_PERSON,"个人信息"));
-        list.add(new MapiResourceResult(TYPE_FILE,"数据查询"));
+//        list.add(new MapiResourceResult(TYPE_PERSON,"个人信息"));
+        list.add(new MapiResourceResult(TYPE_FILE,"痕迹管理"));
         return list;
     }
 

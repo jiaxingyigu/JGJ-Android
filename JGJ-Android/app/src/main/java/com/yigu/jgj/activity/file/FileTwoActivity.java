@@ -36,6 +36,7 @@ import com.yigu.jgj.commom.util.DateUtil;
 import com.yigu.jgj.commom.util.DebugLog;
 import com.yigu.jgj.commom.util.RequestExceptionCallback;
 import com.yigu.jgj.commom.util.RequestPageCallback;
+import com.yigu.jgj.commom.util.RequestPageTwoCallback;
 import com.yigu.jgj.commom.widget.MainToast;
 import com.yigu.jgj.jgjinterface.RecyOnItemClickListener;
 import com.yigu.jgj.util.ControllerUtil;
@@ -75,6 +76,8 @@ public class FileTwoActivity extends BaseActivity {
     EditText searchEt;
     @Bind(R.id.clear_iv)
     ImageView clear_iv;
+    @Bind(R.id.pepConutTV)
+    TextView pepConutTV;
 
     private List<String> list_title = new ArrayList<>();
 
@@ -107,7 +110,7 @@ public class FileTwoActivity extends BaseActivity {
 
     private void initView() {
         back.setImageResource(R.mipmap.back);
-        tvCenter.setText("数据查询");
+        tvCenter.setText("痕迹管理");
 
         list_title.add("日常巡查");
         list_title.add("隐患");
@@ -417,11 +420,12 @@ public class FileTwoActivity extends BaseActivity {
     }
 
     public void load(){
-        ItemApi.GetHisData(this, type,COMMUNITY,search,startime,pageIndex+"",pageSize+"", new RequestPageCallback<List<MapiTaskResult>>() {
+        ItemApi.GetHisData(this, type,COMMUNITY,search,startime,pageIndex+"",pageSize+"", new RequestPageTwoCallback<List<MapiTaskResult>>() {
             @Override
-            public void success(Integer isNext,List<MapiTaskResult> success) {
+            public void success(Integer isNext,Integer countld,Integer countone,Integer counttwo,List<MapiTaskResult> success) {
                 swipeLayout.setRefreshing(false);
                 ISNEXT = isNext;
+                pepConutTV.setText("当前共有："+(null!=countld?countld:0)+"条记录");
                 if(success.isEmpty())
                     return;
                 itemList.addAll(success);

@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.yigu.jgj.R;
 import com.yigu.jgj.activity.task.TaskDetailActivity;
@@ -22,6 +23,7 @@ import com.yigu.jgj.commom.application.AppContext;
 import com.yigu.jgj.commom.result.MapiItemResult;
 import com.yigu.jgj.commom.util.RequestExceptionCallback;
 import com.yigu.jgj.commom.util.RequestPageCallback;
+import com.yigu.jgj.commom.util.RequestPageTwoCallback;
 import com.yigu.jgj.jgjinterface.RecyOnItemClickListener;
 import com.yigu.jgj.util.ControllerUtil;
 import com.yigu.jgj.widget.BestSwipeRefreshLayout;
@@ -41,6 +43,9 @@ public class TaskLicenseFragment extends BaseFrag {
     RecyclerView recyclerView;
     @Bind(R.id.swipeLayout)
     BestSwipeRefreshLayout swipeLayout;
+    @Bind(R.id.pepConutTV)
+    TextView pepConutTV;
+
     TaskLicenseAdapter mAdapter;
     List<MapiItemResult> mList = new ArrayList<>();
     private Integer pageIndex=0;
@@ -104,11 +109,12 @@ public class TaskLicenseFragment extends BaseFrag {
 
     public void load(){
         String id = userSP.getUserBean().getUSER_ID();
-        ItemApi.getAssignlist(getActivity(),"",id,"2", pageIndex + "", pageSize+"",  new RequestPageCallback<List<MapiItemResult>>() {
+        ItemApi.getAssignlist(getActivity(),"",id,"2", pageIndex + "", pageSize+"",  new RequestPageTwoCallback<List<MapiItemResult>>() {
             @Override
-            public void success(Integer isNext, List<MapiItemResult> success) {
+            public void success(Integer isNext,Integer countld,Integer countone,Integer counttwo,  List<MapiItemResult> success) {
                 swipeLayout.setRefreshing(false);
                 ISNEXT = isNext;
+                pepConutTV.setText("当前共有："+(null!=countld?countld:0)+"条记录");
                 if(success.isEmpty())
                     return;
                 mList.addAll(success);

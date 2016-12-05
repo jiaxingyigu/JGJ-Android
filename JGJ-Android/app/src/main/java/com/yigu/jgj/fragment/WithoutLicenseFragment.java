@@ -18,6 +18,7 @@ import com.yigu.jgj.commom.result.MapiItemResult;
 import com.yigu.jgj.commom.result.MapiTaskResult;
 import com.yigu.jgj.commom.util.RequestExceptionCallback;
 import com.yigu.jgj.commom.util.RequestPageCallback;
+import com.yigu.jgj.commom.util.RequestPageTwoCallback;
 import com.yigu.jgj.jgjinterface.RecyOnItemClickListener;
 import com.yigu.jgj.util.ControllerUtil;
 import com.yigu.jgj.widget.BestSwipeRefreshLayout;
@@ -37,6 +38,9 @@ public class WithoutLicenseFragment extends BaseFrag {
     RecyclerView recyclerView;
     @Bind(R.id.swipeLayout)
     BestSwipeRefreshLayout swipeLayout;
+    @Bind(R.id.pepConutTV)
+    TextView pepConutTV;
+
     LicenseTaskAdapter mAdapter;
     List<MapiItemResult> mList = new ArrayList<>();
     private Integer pageIndex=0;
@@ -97,11 +101,12 @@ public class WithoutLicenseFragment extends BaseFrag {
 
     public void load(){
         String role = userSP.getUserBean().getROLE_ID();
-        ItemApi.getAssignlist(getActivity(),role,"","1", pageIndex + "", pageSize+"",  new RequestPageCallback<List<MapiItemResult>>() {
+        ItemApi.getAssignlist(getActivity(),role,"","1", pageIndex + "", pageSize+"",  new RequestPageTwoCallback<List<MapiItemResult>>() {
             @Override
-            public void success(Integer isNext, List<MapiItemResult> success) {
+            public void success(Integer isNext,Integer countld,Integer countone,Integer counttwo, List<MapiItemResult> success) {
                 swipeLayout.setRefreshing(false);
                 ISNEXT = isNext;
+                pepConutTV.setText("当前共有："+(null!=countld?countld:0)+"条记录");
                 if(success.isEmpty())
                     return;
                 mList.addAll(success);

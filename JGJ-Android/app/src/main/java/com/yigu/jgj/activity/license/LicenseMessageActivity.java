@@ -1,6 +1,7 @@
 package com.yigu.jgj.activity.license;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -10,6 +11,7 @@ import com.yigu.jgj.R;
 import com.yigu.jgj.base.BaseActivity;
 import com.yigu.jgj.commom.result.MapiItemResult;
 import com.yigu.jgj.commom.result.MapiResourceResult;
+import com.yigu.jgj.commom.util.DateUtil;
 import com.yigu.jgj.view.LicenseCheckLayout;
 
 import java.util.ArrayList;
@@ -39,6 +41,11 @@ public class LicenseMessageActivity extends BaseActivity {
     EditText tel;
     @Bind(R.id.rlCheckLayout)
     LicenseCheckLayout rlCheckLayout;
+    @Bind(R.id.idate)
+    TextView idate;
+    @Bind(R.id.user)
+    TextView user;
+
     String cid_id = "";
     ArrayList<MapiResourceResult> mList = new ArrayList<>();
     MapiItemResult itemResult;
@@ -72,6 +79,10 @@ public class LicenseMessageActivity extends BaseActivity {
         cid.setEnabled(false);
         rlCheckLayout.setData(itemResult);
         rlCheckLayout.setNoEdit();
+
+        idate.setText(TextUtils.isEmpty(itemResult.getTIMES())?"":"检查日期："+ DateUtil.getInstance().YMDHMS2YMD(itemResult.getTIMES()));
+        user.setText(TextUtils.isEmpty(itemResult.getUser())?"":"检查人："+itemResult.getUser());
+
     }
 
     @OnClick({R.id.back})

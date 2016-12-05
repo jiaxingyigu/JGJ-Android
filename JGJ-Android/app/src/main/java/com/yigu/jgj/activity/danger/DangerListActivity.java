@@ -20,6 +20,7 @@ import com.yigu.jgj.commom.application.AppContext;
 import com.yigu.jgj.commom.result.MapiItemResult;
 import com.yigu.jgj.commom.util.RequestExceptionCallback;
 import com.yigu.jgj.commom.util.RequestPageCallback;
+import com.yigu.jgj.commom.util.RequestPageTwoCallback;
 import com.yigu.jgj.jgjinterface.RecyOnItemClickListener;
 import com.yigu.jgj.util.JGJDataSource;
 import com.yigu.jgj.widget.BestSwipeRefreshLayout;
@@ -41,6 +42,9 @@ public class DangerListActivity extends BaseActivity {
     BestSwipeRefreshLayout swipeLayout;
     @Bind(R.id.search_et)
     EditText searchEt;
+    @Bind(R.id.pepConutTV)
+    TextView pepConutTV;
+
     DanagerListAdapter mAdapter;
     List<MapiItemResult> mList;
 
@@ -132,11 +136,12 @@ public class DangerListActivity extends BaseActivity {
         if (!roleId.equals(JGJDataSource.root_one_roleid) && !roleId.equals(JGJDataSource.root_two_roleid)) {
             roleId = "";
         }
-        ItemApi.getDangerList(this, NAME, pageIndex + "", pageSize + "", userId, roleId, new RequestPageCallback<List<MapiItemResult>>() {
+        ItemApi.getDangerList(this, NAME, pageIndex + "", pageSize + "", userId, roleId, new RequestPageTwoCallback<List<MapiItemResult>>() {
             @Override
-            public void success(Integer isNext, List<MapiItemResult> success) {
+            public void success(Integer isNext, Integer countld,Integer countone,Integer counttwo, List<MapiItemResult> success) {
                 swipeLayout.setRefreshing(false);
                 ISNEXT = isNext;
+                pepConutTV.setText("当前共有："+(null!=countld?countld:0)+"条记录");
                 if (success.isEmpty()) {
                     return;
                 }

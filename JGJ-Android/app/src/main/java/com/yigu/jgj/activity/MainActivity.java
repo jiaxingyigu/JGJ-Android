@@ -38,7 +38,6 @@ import com.yigu.jgj.widget.DividerGridItemDecoration;
 import com.yigu.shop.update.UpdateFunGo;
 import com.yigu.shop.update.config.DownloadKey;
 import com.yigu.shop.update.config.UpdateKey;
-import com.yigu.shop.update.module.MapiUpdateVersionResult;
 import com.yigu.shop.update.utils.GetAppInfo;
 
 import java.util.ArrayList;
@@ -47,6 +46,7 @@ import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import cn.jpush.android.api.JPushInterface;
 
 public class MainActivity extends BaseActivity {
@@ -119,11 +119,12 @@ public class MainActivity extends BaseActivity {
 
     }
 
+
     private void initView() {
 //        back.setImageResource(R.mipmap.person_icon);
         back.setVisibility(View.INVISIBLE);
         tvCenter.setText(getResources().getString(R.string.main_title));
-//        ivRight.setImageResource(R.mipmap.msg_have_icon);
+        ivRight.setImageResource(R.mipmap.person_icon);
 //        fragmentManager = getSupportFragmentManager();
 //        try {
 //            personFragment = new PersonFragment();
@@ -162,6 +163,7 @@ public class MainActivity extends BaseActivity {
         super.onStop();
         UpdateFunGo.onStop();
     }
+
 
 
     /*private void replaceFragment(PersonFragment newFragment) {
@@ -338,6 +340,11 @@ public class MainActivity extends BaseActivity {
         filter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
         filter.addAction(ReceiverAction.MESSAGE_RECEIVED_ACTION);
         registerReceiver(mMessageReceiver, filter);
+    }
+
+    @OnClick(R.id.iv_right)
+    public void onClick() {
+        ControllerUtil.go2PersonInfo();
     }
 
     public class MessageReceiver extends BroadcastReceiver {

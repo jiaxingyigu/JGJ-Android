@@ -171,7 +171,7 @@ public class ItemApi extends BasicApi{
      * @param exceptionCallback
      */
     public static void getDangerList(Activity activity,String NAME,String PAGENO,String SIZE,
-                                     String receiver,String ROLE,final RequestPageCallback callback,final RequestExceptionCallback exceptionCallback){
+                                     String receiver,String ROLE,final RequestPageTwoCallback callback,final RequestExceptionCallback exceptionCallback){
         Map<String,String> params = new HashMap<>();
         params.put("type","3");
         params.put("NAME",NAME);
@@ -192,7 +192,8 @@ public class ItemApi extends BasicApi{
                 DebugLog.i("json="+json);
                 List<MapiItemResult> result = JSONArray.parseArray(json.getJSONObject("data").getJSONArray("lists").toJSONString(),MapiItemResult.class);
                 Integer ISNEXT = json.getJSONObject("data").getInteger("ISNEXT");
-                callback.success(ISNEXT,result);
+                Integer countld = json.getJSONObject("data").getInteger("count");
+                callback.success(ISNEXT,countld,countld,countld,result);
             }
         },new MapiUtil.MapiFailResponse(){
             @Override
@@ -241,7 +242,7 @@ public class ItemApi extends BasicApi{
      * @param exceptionCallback
      */
     public static void getAssignList(Activity activity,String COMMUNITY, String ROLE,String PAGENO,String SIZE
-                                    ,final RequestPageCallback callback,final RequestExceptionCallback exceptionCallback){
+                                    ,final RequestPageTwoCallback callback,final RequestExceptionCallback exceptionCallback){
         Map<String,String> params = new HashMap<>();
         params.put("type","1");
         if(!TextUtils.isEmpty(COMMUNITY))
@@ -256,7 +257,8 @@ public class ItemApi extends BasicApi{
                 DebugLog.i("json="+json);
                 List<MapiTaskResult> result = JSONArray.parseArray(json.getJSONObject("data").getJSONArray("lists").toJSONString(),MapiTaskResult.class);
                 Integer ISNEXT = json.getJSONObject("data").getInteger("ISNEXT");
-                callback.success(ISNEXT,result);
+                Integer countld = json.getJSONObject("data").getInteger("count");
+                callback.success(ISNEXT,countld,countld,countld,result);
             }
         },new MapiUtil.MapiFailResponse(){
             @Override
@@ -321,7 +323,7 @@ public class ItemApi extends BasicApi{
      * @param exceptionCallback
      */
     public static void getTaskList(Activity activity, String receiver,String PAGENO,String SIZE
-            ,final RequestPageCallback callback,final RequestExceptionCallback exceptionCallback){
+            ,final RequestPageTwoCallback callback,final RequestExceptionCallback exceptionCallback){
         Map<String,String> params = new HashMap<>();
         params.put("type","2");
         params.put("receiver",receiver);
@@ -333,7 +335,8 @@ public class ItemApi extends BasicApi{
                 DebugLog.i("json="+json);
                 List<MapiTaskResult> result = JSONArray.parseArray(json.getJSONObject("data").getJSONArray("lists").toJSONString(),MapiTaskResult.class);
                 Integer ISNEXT = json.getJSONObject("data").getInteger("ISNEXT");
-                callback.success(ISNEXT,result);
+                Integer countld = json.getJSONObject("data").getInteger("count");
+                callback.success(ISNEXT,countld,countld,countld,result);
             }
         },new MapiUtil.MapiFailResponse(){
             @Override
@@ -428,7 +431,7 @@ public class ItemApi extends BasicApi{
      * @param callback
      * @param exceptionCallback
      */
-    public static void getNlicenselist(Activity activity,String COMMUNITY,String PAGENO,String SIZE, final RequestPageCallback callback,final RequestExceptionCallback exceptionCallback){
+    public static void getNlicenselist(Activity activity,String COMMUNITY,String PAGENO,String SIZE, final RequestPageTwoCallback callback,final RequestExceptionCallback exceptionCallback){
         Map<String,String> params = new HashMap<>();
         if(!TextUtils.isEmpty(COMMUNITY))
             params.put("COMMUNITY",COMMUNITY);
@@ -440,7 +443,8 @@ public class ItemApi extends BasicApi{
                 DebugLog.i("json="+json);
                 List<MapiItemResult> result = JSONArray.parseArray(json.getJSONObject("data").getJSONArray("shops").toJSONString(),MapiItemResult.class);
                 Integer ISNEXT = json.getJSONObject("data").getInteger("ISNEXT");
-                callback.success(ISNEXT,result);
+                Integer count = json.getJSONObject("data").getInteger("count");
+                callback.success(ISNEXT,count,count,count,result);
             }
         },new MapiUtil.MapiFailResponse(){
             @Override
@@ -504,7 +508,7 @@ public class ItemApi extends BasicApi{
      * @param callback
      * @param exceptionCallback
      */
-    public static void getAssignlist(Activity activity,String ROLE,String receiver,String state,String PAGENO,String SIZE, final RequestPageCallback callback,final RequestExceptionCallback exceptionCallback){
+    public static void getAssignlist(Activity activity,String ROLE,String receiver,String state,String PAGENO,String SIZE, final RequestPageTwoCallback callback,final RequestExceptionCallback exceptionCallback){
         Map<String,String> params = new HashMap<>();
         if(!TextUtils.isEmpty(ROLE))
             params.put("ROLE",ROLE);
@@ -519,7 +523,8 @@ public class ItemApi extends BasicApi{
                 DebugLog.i("json="+json);
                 List<MapiItemResult> result = JSONArray.parseArray(json.getJSONObject("data").getJSONArray("shops").toJSONString(),MapiItemResult.class);
                 Integer ISNEXT = json.getJSONObject("data").getInteger("ISNEXT");
-                callback.success(ISNEXT,result);
+                Integer countld = json.getJSONObject("data").getInteger("count");
+                callback.success(ISNEXT,countld,countld,countld,result);
             }
         },new MapiUtil.MapiFailResponse(){
             @Override
@@ -539,7 +544,7 @@ public class ItemApi extends BasicApi{
      * @param callback
      * @param exceptionCallback
      */
-    public static void specialactionlist(Activity activity,String COMMUNITY,String PAGENO,String SIZE, final RequestPageCallback callback,final RequestExceptionCallback exceptionCallback){
+    public static void specialactionlist(Activity activity,String COMMUNITY,String PAGENO,String SIZE, final RequestPageTwoCallback callback,final RequestExceptionCallback exceptionCallback){
         Map<String,String> params = new HashMap<>();
         if(!TextUtils.isEmpty(COMMUNITY))
             params.put("COMMUNITY",COMMUNITY);
@@ -551,7 +556,8 @@ public class ItemApi extends BasicApi{
                 DebugLog.i("json="+json);
                 List<MapiSepcialResult> result = JSONArray.parseArray(json.getJSONObject("data").getJSONArray("specialaction").toJSONString(),MapiSepcialResult.class);
                 Integer ISNEXT = json.getJSONObject("data").getInteger("ISNEXT");
-                callback.success(ISNEXT,result);
+                Integer countld = json.getJSONObject("data").getInteger("count");
+                callback.success(ISNEXT,countld,countld,countld,result);
             }
         },new MapiUtil.MapiFailResponse(){
             @Override
@@ -630,7 +636,7 @@ public class ItemApi extends BasicApi{
      * @param callback
      * @param exceptionCallback
      */
-    public static void getOthertask(Activity activity,String userid,String PAGENO,String SIZE, final RequestPageCallback callback,final RequestExceptionCallback exceptionCallback){
+    public static void getOthertask(Activity activity,String userid,String PAGENO,String SIZE, final RequestPageTwoCallback callback,final RequestExceptionCallback exceptionCallback){
         Map<String,String> params = new HashMap<>();
         params.put("userid",userid);
         params.put("PAGENO",PAGENO);
@@ -642,7 +648,8 @@ public class ItemApi extends BasicApi{
                 DebugLog.i("json="+json);
                 List<MapiOtherResult> result = JSONArray.parseArray(json.getJSONObject("data").getJSONArray("tasks").toJSONString(),MapiOtherResult.class);
                 Integer ISNEXT = json.getJSONObject("data").getInteger("ISNEXT");
-                callback.success(ISNEXT,result);
+                Integer countld = json.getJSONObject("data").getInteger("count");
+                callback.success(ISNEXT,countld,countld,countld,result);
             }
         },new MapiUtil.MapiFailResponse(){
             @Override
@@ -742,7 +749,7 @@ public class ItemApi extends BasicApi{
      * @param callback
      * @param exceptionCallback
      */
-    public static void Dinnerlist(Activity activity,String COMMUNITY,String PAGENO,String SIZE, final RequestPageCallback callback,final RequestExceptionCallback exceptionCallback){
+    public static void Dinnerlist(Activity activity,String COMMUNITY,String PAGENO,String SIZE, final RequestPageTwoCallback callback,final RequestExceptionCallback exceptionCallback){
         Map<String,String> params = new HashMap<>();
         if(!TextUtils.isEmpty(COMMUNITY))
             params.put("COMMUNITY",COMMUNITY);
@@ -754,7 +761,8 @@ public class ItemApi extends BasicApi{
                 DebugLog.i("json="+json);
                 List<MapiPartyResult> result = JSONArray.parseArray(json.getJSONObject("data").getJSONArray("dinner").toJSONString(),MapiPartyResult.class);
                 Integer ISNEXT = json.getJSONObject("data").getInteger("ISNEXT");
-                callback.success(ISNEXT,result);
+                Integer countld = json.getJSONObject("data").getInteger("count");
+                callback.success(ISNEXT,countld,countld,countld,result);
             }
         },new MapiUtil.MapiFailResponse(){
             @Override
@@ -778,7 +786,7 @@ public class ItemApi extends BasicApi{
      * @param exceptionCallback
      */
     public static void GetHisData(Activity activity,String type,String COMMUNITY,String NAME,String startime,String PAGENO,String SIZE,
-                                   final RequestPageCallback callback,final RequestExceptionCallback exceptionCallback){
+                                   final RequestPageTwoCallback callback,final RequestExceptionCallback exceptionCallback){
         Map<String,String> params = new HashMap<>();
         params.put("type",type);
         if(!TextUtils.isEmpty(COMMUNITY))
@@ -794,7 +802,8 @@ public class ItemApi extends BasicApi{
                 DebugLog.i("json="+json);
                 List<MapiTaskResult> result = JSONArray.parseArray(json.getJSONObject("data").getJSONArray("lists").toJSONString(),MapiTaskResult.class);
                 Integer ISNEXT = json.getJSONObject("data").getInteger("ISNEXT");
-                callback.success(ISNEXT,result);
+                Integer count = json.getJSONObject("data").getInteger("count");
+                callback.success(ISNEXT,count,count,count,result);
             }
         },new MapiUtil.MapiFailResponse(){
             @Override

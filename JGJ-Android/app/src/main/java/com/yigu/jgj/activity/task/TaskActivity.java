@@ -17,6 +17,7 @@ import com.yigu.jgj.commom.application.AppContext;
 import com.yigu.jgj.commom.result.MapiTaskResult;
 import com.yigu.jgj.commom.util.RequestExceptionCallback;
 import com.yigu.jgj.commom.util.RequestPageCallback;
+import com.yigu.jgj.commom.util.RequestPageTwoCallback;
 import com.yigu.jgj.jgjinterface.RecyOnItemClickListener;
 import com.yigu.jgj.widget.BestSwipeRefreshLayout;
 
@@ -107,9 +108,9 @@ public class TaskActivity extends BaseActivity {
 
     public void load(){
         String userId = userSP.getUserBean().getUSER_ID();
-        ItemApi.getTaskList(this,userId, pageIndex + "", pageSize+"",  new RequestPageCallback<List<MapiTaskResult>>() {
+        ItemApi.getTaskList(this,userId, pageIndex + "", pageSize+"",  new RequestPageTwoCallback<List<MapiTaskResult>>() {
             @Override
-            public void success(Integer isNext, List<MapiTaskResult> success) {
+            public void success(Integer isNext,Integer countld,Integer countone,Integer counttwo, List<MapiTaskResult> success) {
                 swipeLayout.setRefreshing(false);
                 ISNEXT = isNext;
                 if(success.isEmpty())

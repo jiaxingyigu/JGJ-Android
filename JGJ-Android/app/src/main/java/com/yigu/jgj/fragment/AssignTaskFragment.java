@@ -16,6 +16,7 @@ import com.yigu.jgj.commom.api.ItemApi;
 import com.yigu.jgj.commom.result.MapiTaskResult;
 import com.yigu.jgj.commom.util.RequestExceptionCallback;
 import com.yigu.jgj.commom.util.RequestPageCallback;
+import com.yigu.jgj.commom.util.RequestPageTwoCallback;
 import com.yigu.jgj.jgjinterface.RecyOnItemClickListener;
 import com.yigu.jgj.util.ControllerUtil;
 import com.yigu.jgj.widget.BestSwipeRefreshLayout;
@@ -35,6 +36,9 @@ public class AssignTaskFragment extends BaseFrag {
     RecyclerView recyclerView;
     @Bind(R.id.swipeLayout)
     BestSwipeRefreshLayout swipeLayout;
+    @Bind(R.id.pepConutTV)
+    TextView pepConutTV;
+
     AssignTaskAdapter mAdapter;
     List<MapiTaskResult> mList = new ArrayList<>();
     private Integer pageIndex=0;
@@ -97,11 +101,12 @@ public class AssignTaskFragment extends BaseFrag {
         String COMMUNITY = userSP.getUserBean().getCOMMUNITY();
 //        String COMPANY = userSP.getUserBean().getCOMPANY();
         String role = userSP.getUserBean().getROLE_ID();
-        ItemApi.getAssignList(getActivity(),COMMUNITY,role, pageIndex + "", pageSize+"",  new RequestPageCallback<List<MapiTaskResult>>() {
+        ItemApi.getAssignList(getActivity(),COMMUNITY,role, pageIndex + "", pageSize+"",  new RequestPageTwoCallback<List<MapiTaskResult>>() {
             @Override
-            public void success(Integer isNext, List<MapiTaskResult> success) {
+            public void success(Integer isNext,Integer countld,Integer countone,Integer counttwo, List<MapiTaskResult> success) {
                 swipeLayout.setRefreshing(false);
                 ISNEXT = isNext;
+                pepConutTV.setText("当前共有："+(null!=countld?countld:0)+"条记录");
                 if(success.isEmpty())
                     return;
                 mList.addAll(success);

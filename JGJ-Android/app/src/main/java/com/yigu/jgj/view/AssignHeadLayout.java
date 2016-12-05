@@ -1,6 +1,7 @@
 package com.yigu.jgj.view;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,6 +33,8 @@ public class AssignHeadLayout extends RelativeLayout {
     TextView tel;
     @Bind(R.id.project)
     TextView project;
+    @Bind(R.id.user)
+    TextView user;
     private Context mContext;
     private View view;
 
@@ -63,17 +66,18 @@ public class AssignHeadLayout extends RelativeLayout {
     public void loadData(MapiItemResult itemResult) {
         if (null != itemResult) {
             List<String> projectList = new ArrayList<>();
-            if (null!=itemResult.getFOODSALES()&&itemResult.getFOODSALES() == 1)
+            if (null != itemResult.getFOODSALES() && itemResult.getFOODSALES() == 1)
                 projectList.add("食品销售");
-            if (null!=itemResult.getFOODSERVICE()&&itemResult.getFOODSERVICE() == 1)
+            if (null != itemResult.getFOODSERVICE() && itemResult.getFOODSERVICE() == 1)
                 projectList.add("餐饮服务");
-            if (null!=itemResult.getCANTEEN()&&itemResult.getCANTEEN() == 1)
+            if (null != itemResult.getCANTEEN() && itemResult.getCANTEEN() == 1)
                 projectList.add("单位食堂");
             name.setText(itemResult.getShopname());
             lperson.setText(itemResult.getLPERSON());
             tel.setText(itemResult.getTEL());
             project.setText(StringUtil.listToString(projectList, "  "));
             date.setText(DateUtil.getInstance().YMDHMS2YMD(itemResult.getIdate()));
+            user.setText(TextUtils.isEmpty(itemResult.getUser())?"":"检查人："+itemResult.getUser());
         }
     }
 }

@@ -44,6 +44,31 @@
         android:background="@color/divider_line"
         />-->
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/divider_line"
+        />
+
+    <TextView
+        android:id="@+id/pepConutTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="34dp"
+        android:text=""
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/margin_10dp"
+        android:layout_marginRight="@dimen/margin_10dp"
+        android:textColor="@color/jgj_black"
+        android:textSize="@dimen/text_normal"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/divider_line"
+        />
+
     <com.yigu.jgj.widget.BestSwipeRefreshLayout
         android:id="@+id/swipeLayout"
         android:layout_width="match_parent"

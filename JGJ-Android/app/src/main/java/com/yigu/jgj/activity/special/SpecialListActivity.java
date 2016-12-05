@@ -24,6 +24,7 @@ import com.yigu.jgj.commom.result.MapiSepcialResult;
 import com.yigu.jgj.commom.result.MapiTaskResult;
 import com.yigu.jgj.commom.util.RequestExceptionCallback;
 import com.yigu.jgj.commom.util.RequestPageCallback;
+import com.yigu.jgj.commom.util.RequestPageTwoCallback;
 import com.yigu.jgj.commom.widget.MainToast;
 import com.yigu.jgj.jgjinterface.RecyOnItemClickListener;
 import com.yigu.jgj.util.ControllerUtil;
@@ -46,6 +47,9 @@ public class SpecialListActivity extends BaseActivity {
     RecyclerView recyclerView;
     @Bind(R.id.swipeLayout)
     BestSwipeRefreshLayout swipeLayout;
+    @Bind(R.id.pepConutTV)
+    TextView pepConutTV;
+
     SpecialListAdapter mAdapter;
     List<MapiSepcialResult> mList = new ArrayList<>();
     private Integer pageIndex=0;
@@ -118,11 +122,12 @@ public class SpecialListActivity extends BaseActivity {
 
     public void load(){
         String COMMUNITY = userSP.getUserBean().getCOMMUNITY();
-        ItemApi.specialactionlist(this, COMMUNITY,pageIndex + "", pageSize + "", new RequestPageCallback<List<MapiSepcialResult>>() {
+        ItemApi.specialactionlist(this, COMMUNITY,pageIndex + "", pageSize + "", new RequestPageTwoCallback<List<MapiSepcialResult>>() {
             @Override
-            public void success(Integer isNext, List<MapiSepcialResult> success) {
+            public void success(Integer isNext,Integer countld,Integer countone,Integer counttwo, List<MapiSepcialResult> success) {
                 swipeLayout.setRefreshing(false);
                 ISNEXT = isNext;
+                pepConutTV.setText("当前共有："+(null!=countld?countld:0)+"条记录");
                 if (success.isEmpty())
                     return;
                 mList.addAll(success);

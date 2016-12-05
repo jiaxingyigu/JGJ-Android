@@ -19,6 +19,7 @@ import com.yigu.jgj.commom.api.ItemApi;
 import com.yigu.jgj.commom.result.MapiItemResult;
 import com.yigu.jgj.commom.util.RequestExceptionCallback;
 import com.yigu.jgj.commom.util.RequestPageCallback;
+import com.yigu.jgj.commom.util.RequestPageTwoCallback;
 import com.yigu.jgj.commom.widget.MainToast;
 import com.yigu.jgj.jgjinterface.RecyOnItemClickListener;
 import com.yigu.jgj.util.ControllerUtil;
@@ -42,6 +43,9 @@ public class WithoutLicenseActivity extends BaseActivity {
     RecyclerView recyclerView;
     @Bind(R.id.swipeLayout)
     BestSwipeRefreshLayout swipeLayout;
+    @Bind(R.id.pepConutTV)
+    TextView pepConutTV;
+
     List<MapiItemResult> mList = new ArrayList<>();
     CompanyAdapter mAdapter;
     private Integer pageIndex = 0;
@@ -103,11 +107,12 @@ public class WithoutLicenseActivity extends BaseActivity {
 
     public void load() {
         String COMMUNITY = userSP.getUserBean().getCOMMUNITY();
-        ItemApi.getNlicenselist(this, COMMUNITY,pageIndex + "", pageSize + "", new RequestPageCallback<List<MapiItemResult>>() {
+        ItemApi.getNlicenselist(this, COMMUNITY,pageIndex + "", pageSize + "", new RequestPageTwoCallback<List<MapiItemResult>>() {
             @Override
-            public void success(Integer isNext, List<MapiItemResult> success) {
+            public void success(Integer isNext,Integer countld,Integer countone,Integer counttwo, List<MapiItemResult> success) {
                 swipeLayout.setRefreshing(false);
                 ISNEXT = isNext;
+                pepConutTV.setText("当前共有："+(null!=countld?countld:0)+"条记录");
                 if (success.isEmpty())
                     return;
                 mList.addAll(success);

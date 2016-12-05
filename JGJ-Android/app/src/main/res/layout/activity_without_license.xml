@@ -1,11 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yigu.jgj.activity.license.WithoutLicenseActivity">
+    tools:context="com.yigu.jgj.activity.license.WithoutLicenseActivity"
+    android:orientation="vertical"
+    >
 
     <include layout="@layout/lay_header" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/divider_line"
+        />
+
+    <TextView
+        android:id="@+id/pepConutTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="34dp"
+        android:text=""
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/margin_10dp"
+        android:layout_marginRight="@dimen/margin_10dp"
+        android:textColor="@color/jgj_black"
+        android:textSize="@dimen/text_normal"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/divider_line"
+        />
 
     <com.yigu.jgj.widget.BestSwipeRefreshLayout
         android:id="@+id/swipeLayout"
@@ -23,4 +50,4 @@
 
     </com.yigu.jgj.widget.BestSwipeRefreshLayout>
 
-</RelativeLayout>
+</LinearLayout>

@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.yigu.jgj.R;
 import com.yigu.jgj.activity.task.TaskOtherDetailActivity;
@@ -21,6 +22,7 @@ import com.yigu.jgj.commom.result.MapiOtherResult;
 import com.yigu.jgj.commom.result.MapiTaskResult;
 import com.yigu.jgj.commom.util.RequestExceptionCallback;
 import com.yigu.jgj.commom.util.RequestPageCallback;
+import com.yigu.jgj.commom.util.RequestPageTwoCallback;
 import com.yigu.jgj.jgjinterface.RecyOnItemClickListener;
 import com.yigu.jgj.util.ControllerUtil;
 import com.yigu.jgj.widget.BestSwipeRefreshLayout;
@@ -40,6 +42,9 @@ public class OtherTaskFragment extends BaseFrag{
     RecyclerView recyclerView;
     @Bind(R.id.swipeLayout)
     BestSwipeRefreshLayout swipeLayout;
+    @Bind(R.id.pepConutTV)
+    TextView pepConutTV;
+
     OtherTaskAdapter mAdapter;
     List<MapiOtherResult> mList = new ArrayList<>();
     private Integer pageIndex=0;
@@ -101,11 +106,12 @@ public class OtherTaskFragment extends BaseFrag{
     }
 
     public void load(){
-        ItemApi.getOthertask(getActivity(),userSP.getUserBean().getUSER_ID(),pageIndex + "", pageSize+"",  new RequestPageCallback<List<MapiOtherResult>>() {
+        ItemApi.getOthertask(getActivity(),userSP.getUserBean().getUSER_ID(),pageIndex + "", pageSize+"",  new RequestPageTwoCallback<List<MapiOtherResult>>() {
             @Override
-            public void success(Integer isNext, List<MapiOtherResult> success) {
+            public void success(Integer isNext,Integer countld,Integer countone,Integer counttwo, List<MapiOtherResult> success) {
                 swipeLayout.setRefreshing(false);
                 ISNEXT = isNext;
+                pepConutTV.setText("当前共有："+(null!=countld?countld:0)+"条记录");
                 if(success.isEmpty())
                     return;
                 mList.addAll(success);
