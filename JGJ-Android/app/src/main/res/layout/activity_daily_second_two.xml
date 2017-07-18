@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.yigu.jgj.activity.daily.DailySecondTwoActivity"
+    android:orientation="vertical"
+    >
+
+    <include
+        layout="@layout/lay_header"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <com.yigu.jgj.view.DailyHeadLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:id="@+id/dailyHeadLayout"
+                />
+            <com.yigu.jgj.view.DailyProjectLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:id="@+id/dailyProjectLayout"
+                />
+
+            <com.yigu.jgj.view.DailySaleLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:id="@+id/dailySaleLayout"
+                />
+
+            <com.yigu.jgj.view.DailyServiceLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:id="@+id/dailyServiceLayout"
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

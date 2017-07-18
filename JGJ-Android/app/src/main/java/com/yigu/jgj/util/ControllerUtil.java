@@ -21,6 +21,7 @@ import com.yigu.jgj.activity.company.CompanyListTwoActivity;
 import com.yigu.jgj.activity.company.CompanyMessageActivity;
 import com.yigu.jgj.activity.daily.DailyActivity;
 import com.yigu.jgj.activity.daily.DailySecondActivity;
+import com.yigu.jgj.activity.daily.DailySecondTwoActivity;
 import com.yigu.jgj.activity.daily.DailyThirdActivity;
 import com.yigu.jgj.activity.danger.DanagerDetailActivity;
 import com.yigu.jgj.activity.danger.DangerListActivity;
@@ -75,7 +76,7 @@ public class ControllerUtil {
      * 日常巡查第二步
      */
     public static void go2DailySecond(MapiItemResult itemResult) {
-        Intent intent = new Intent(AppContext.getInstance(), DailySecondActivity.class);
+        Intent intent = new Intent(AppContext.getInstance(), DailySecondTwoActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("item",itemResult);
         AppContext.getInstance().startActivity(intent);

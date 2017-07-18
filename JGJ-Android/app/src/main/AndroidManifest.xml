@@ -187,8 +187,7 @@
         <activity
             android:name=".activity.company.CompanyListActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"
-            />
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activity.assign.AssignTaskActivity"
             android:launchMode="singleTask"
@@ -196,13 +195,11 @@
         <activity
             android:name=".activity.assign.AssignDetailActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"
-            />
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activity.danger.DangerListActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"
-            />
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activity.danger.DanagerDetailActivity"
             android:screenOrientation="portrait" />
@@ -237,8 +234,7 @@
         <activity
             android:name=".activity.company.CompanyListTwoActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"
-            />
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activity.license.WithoutLicenseActivity"
             android:screenOrientation="portrait" />
@@ -252,8 +248,7 @@
         <activity
             android:name=".activity.license.LicenseDetailActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"
-            />
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activity.assign.AssignAddActivity"
             android:screenOrientation="portrait"
@@ -271,21 +266,18 @@
         <activity
             android:name=".activity.license.LicenseMessageActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"
-            />
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activity.task.TaskLicDetailActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"
-            />
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activity.person.OtherPersonActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.special.SpecialDetailActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"
-            />
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".activity.LoginTwoActivity"
             android:launchMode="singleTask"
@@ -325,15 +317,17 @@
         <activity
             android:name=".activity.party.ParryDetailActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"
-            />
-        <activity android:name=".activity.file.FileTwoActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activity.file.FileTwoActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"
-            ></activity>
-        <activity android:name=".activity.file.FileLicenseActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".activity.file.FileLicenseActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".activity.daily.DailySecondTwoActivity"
+            android:screenOrientation="portrait"
             />
     </application>
 

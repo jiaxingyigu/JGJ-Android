@@ -26,6 +26,9 @@ public class DailySecondAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     private LayoutInflater mLayoutInflater;
     MapiItemResult itemResult;
     List<Integer> list;
+
+    private boolean initInfo = false;
+
     public DailySecondAdapter(Context context,List<Integer> list) {
         mLayoutInflater = LayoutInflater.from(context);
         this.list = list;

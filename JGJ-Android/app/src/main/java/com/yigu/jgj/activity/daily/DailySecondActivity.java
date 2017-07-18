@@ -13,6 +13,7 @@ import com.yigu.jgj.adapter.daily.DailySecondAdapter;
 import com.yigu.jgj.base.BaseActivity;
 import com.yigu.jgj.base.Config;
 import com.yigu.jgj.commom.result.MapiItemResult;
+import com.yigu.jgj.commom.util.DebugLog;
 import com.yigu.jgj.commom.widget.MainToast;
 import com.yigu.jgj.util.ControllerUtil;
 import com.yigu.jgj.view.DailyProjectLayout;
@@ -85,23 +86,32 @@ public class DailySecondActivity extends BaseActivity {
     private void initInfo(){
         item = new MapiItemResult();
         item.setID(itemResult.getID());
-        for(int i=0;i<recyclerView.getChildCount();i++){
-            View view = recyclerView.getChildAt(i);
+        LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+        DebugLog.i("recyclerView.getChildCount()=>"+layoutManager.getItemCount());
+        for(int i=0;i<layoutManager.getItemCount();i++){
+            View view =layoutManager.findViewByPosition(i);
             if(view instanceof DailyProjectLayout){
+                DebugLog.i("DailyProjectLayout");
                 DailyProjectLayout daily = (DailyProjectLayout)view;
+
                 if(daily.vorify()){
+                    DebugLog.i("daily.vorify()");
                     item.setPtioners(TextUtils.isEmpty(daily.getPtioners())?0:Integer.valueOf(daily.getPtioners()));
                     item.setHCATEN(TextUtils.isEmpty(daily.getHcate())?0:Integer.valueOf(daily.getHcate()));
                     item.setShowlicense(daily.showlicenseCheck());
                     item.setHygiene(daily.hygieneCheck());
                     item.setInvoice(daily.invoiceCheck());
+                    DebugLog.i(daily.getPtioners());
+                    DebugLog.i(daily.getHcate());
                 }else {
+                    DebugLog.i(" item = null");
                     item = null;
                     break;
                 }
             }
 
             if(view instanceof DailySaleLayout){
+                DebugLog.i("DailySaleLayout");
                 DailySaleLayout daily = (DailySaleLayout)view;
                 if(daily.vorify()){
                     item.setSanitation(daily.sanitationCheck());
@@ -114,6 +124,7 @@ public class DailySecondActivity extends BaseActivity {
             }
 
             if(view instanceof DailyServiceLayout){
+                DebugLog.i("DailyServiceLayout");
                 DailyServiceLayout daily = (DailyServiceLayout)view;
                 if(daily.vorify()){
                     item.setTrain(daily.trainCheck());
@@ -126,5 +137,7 @@ public class DailySecondActivity extends BaseActivity {
             }
         }
     }
+
+
 
 }
